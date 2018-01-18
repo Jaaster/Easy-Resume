@@ -8,12 +8,6 @@
 
 import UIKit
 
-extension Int {
-    mutating func c() -> CGFloat {
-        return CGFloat(self/255)
-    }
-}
-
 enum Gender: String {
     case male = "MALE"
     case female = "FEMALE"

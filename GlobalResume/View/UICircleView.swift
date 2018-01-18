@@ -9,7 +9,7 @@
 import UIKit
 protocol Roundable {}
 
-class CircleView: UIView, Roundable {}
+class UICircleView: UIView, Roundable {}
 
 extension Roundable where Self: CircleView {
     func round() {

@@ -8,12 +8,15 @@
 
 import UIKit
 
-protocol Loadable {
+protocol LoadableVC {
+    
     weak var loadingView: UIView! { get set }
     var loadingViewColor: UIColor! { get set }
     var currentExam: Exam! { get set }
     
     func defaultLoadingViewColor()
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) 
+    
 }
 
 
