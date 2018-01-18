@@ -13,7 +13,6 @@ protocol Fadeable: Animatable {
 }
 
 extension Fadeable where Self: UIView {
-    
     func fade(alpha: CGFloat) {
         UIView.animate(withDuration: time, animations: {
             self.alpha = alpha

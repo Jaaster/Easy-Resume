@@ -8,69 +8,36 @@
 
 import UIKit
 
-class InputVC: UIViewController, UITextFieldDelegate, Loadable {
+class InputVC: UIViewController, UITextFieldDelegate, LoadableVC {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var barView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var circleView: CircleView!
-    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var circleView: UICircleView!
+    @IBOutlet weak var loadingView: UILoadView!
+    
     var loadingViewColor: UIColor!
     var currentExam: Exam!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
-        Animations().load(seconds: 0.7, vc: self)
-        
+        loadingView.backgroundColor = loadingViewColor
     }
-
-    func saveData() {
-        if let data = textField.text {
-            
-            
-        } else {
-            print("No data")
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Exam.Kind.twoButtons.rawValue {
-            if let destination = segue.destination as? TwoIconButtonsVC {
-                destination.currentExam = sender as! Exam
-                destination.loadingViewColor = loadingView.backgroundColor
-
-            }
-        }
-    }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //add new data to model
-        saveData()
-        
+      
         loadingView.backgroundColor = currentExam.getValues().color.getUIColor()
-        if currentExam.next().kind() == Exam.Kind.input {
-            //Stay and update current view
-            currentExam = currentExam.next()
-            Animations().load(seconds: 0.7, vc: self)
-        } else if currentExam.next().kind() != currentExam.kind() {
-            //Perform segue
-            Animations().performSegue(vc: self, withIdentifier: currentExam.next().kind().rawValue, sender: currentExam.next())
+        
+        if let data = textField.text {
+            handleTransportation(dataType: currentExam, data: data)
+            return true
         }
-        
-       
-        
-        return true
-    }
-    func defaultLoadingViewColor() {
-        loadingViewColor = currentExam.getValues().color.getUIColor()
+        return false
     }
     
-   
-
 }
 
 

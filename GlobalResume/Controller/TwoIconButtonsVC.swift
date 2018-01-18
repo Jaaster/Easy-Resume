@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TwoIconButtonsVC: UIViewController, Loadable {
+class TwoIconButtonsVC: UIViewController, LoadableVC {
 
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var firstCircleView: CircleView!
-    @IBOutlet weak var secondCircleView: CircleView!
+    @IBOutlet weak var loadingView: UILoadView!
+    @IBOutlet weak var firstCircleButton: UICircleButton!
+    @IBOutlet weak var secondCircleButton: UICircleButton!
     
     @IBOutlet weak var firstTitleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!
@@ -25,42 +25,19 @@ class TwoIconButtonsVC: UIViewController, Loadable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Animations().load(seconds: 0.7, vc: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Exam.Kind.input.rawValue {
-            if let destination = segue.destination as? InputVC {
-                destination.currentExam = sender as! Exam
-                destination.loadingViewColor = loadingView.backgroundColor
-
-            }
-        }
+        loadingView.backgroundColor = loadingViewColor
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
+        
+        let text: String
         if sender.tag == 0 {
-            //Top save data
-            loadingView.backgroundColor = firstCircleView.backgroundColor
+            text = firstTitleLabel.text!
         } else {
-            //Bottom save data
-            loadingView.backgroundColor = secondCircleView.backgroundColor
-
+            text = secondTitleLabel.text!
         }
-        
-        
-        
-        if currentExam.next().kind() != currentExam.kind() {
-            //Needs to exicute segue
-            Animations().performSegue(vc: self, withIdentifier: currentExam.next().kind().rawValue, sender: currentExam.next())
-        } else {
-            //stay and update
-        }
-
-        
+        loadingView.backgroundColor = sender.backgroundColor
+        handleTransportation(dataType: currentExam, data: text)
     }
-    func defaultLoadingViewColor() {
-        loadingViewColor = currentExam.getValues().color.getUIColor()
-    }
-        
+    
 }

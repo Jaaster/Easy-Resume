@@ -8,28 +8,31 @@
 
 import UIKit
 
-class UnlimitedButtonsVC: UIViewController {
-
+class UnlimitedButtonsVC: UIViewController, LoadableVC {
+   
+    var loadingViewColor: UIColor!
+    var currentExam: Exam!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var circleView: UICircleView!
+    @IBOutlet weak var loadingView: UILoadView!
+    
+    
+    @IBOutlet weak var firstButton: UIButton!
+    @IBOutlet weak var secondButton: UIButton!
+    @IBOutlet weak var thirdButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        loadingView.backgroundColor = loadingViewColor
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func buttonsPressed(_ sender: UIButton) {
+        loadingView.backgroundColor = sender.backgroundColor
+        handleTransportation(dataType: currentExam, data: (sender.titleLabel?.text!)!)
     }
-    */
-
+    
+    
 }

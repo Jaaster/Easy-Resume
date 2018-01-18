@@ -6,4 +6,8 @@
 //  Copyright © 2018 Joriah Lasater. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol Animatable {
+    var time: Double { get set }
+}

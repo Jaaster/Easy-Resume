@@ -8,14 +8,16 @@
 
 import UIKit
 
-class UILoadView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class UILoadView: UIView, Loadable {
+    
+    private var _time = 0.7
+    
+    var time: Double {
+        get {
+            return _time
+        }
+        set {
+            _time = newValue
+        }
     }
-    */
-
 }

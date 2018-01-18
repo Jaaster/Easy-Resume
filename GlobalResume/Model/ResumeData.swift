@@ -9,26 +9,27 @@
 import UIKit
 
 class ResumeData {
-    var name: String!
-    var gender: Gender!
-    var email: String!
-    var phoneNumber: String!
-    var zipCode: String!
     
-    func saveData(exam: Exam, data: String) {
-        
-        switch exam {
-        case .name:
-            name = data
-        case .gender:
-           gender = Gender(rawValue: data)
-        case .email:
-            email = data
-        case .number:
-            phoneNumber = data
-        case .zipcode:
-            zipCode = data
+    static let shared = ResumeData()
+    private var data: [Exam : String]
+
+    init() {
+        data = [:]
+        loadValues()
+    }
+    
+    private func loadValues() {
+        for exam in Exam.allValues() {
+            data.updateValue("", forKey: exam)
         }
+    }
+    
+    func updateData(dataType: Exam, data: String) {
+        self.data.updateValue(data, forKey: dataType)
+    }
+
+    func getData(forKey: Exam) -> String {
+        return data[forKey]!
     }
 }
 

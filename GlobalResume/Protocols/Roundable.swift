@@ -6,4 +6,14 @@
 //  Copyright © 2018 Joriah Lasater. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol Roundable {}
+
+extension Roundable where Self: UIView {
+    
+    func round() {
+        layer.cornerRadius = frame.size.height / 2
+        clipsToBounds = true
+    }
+}

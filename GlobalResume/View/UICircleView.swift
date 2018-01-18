@@ -7,13 +7,5 @@
 //
 
 import UIKit
-protocol Roundable {}
 
 class UICircleView: UIView, Roundable {}
-
-extension Roundable where Self: CircleView {
-    func round() {
-        layer.cornerRadius = frame.size.height / 2
-        clipsToBounds = true
-    }
-}

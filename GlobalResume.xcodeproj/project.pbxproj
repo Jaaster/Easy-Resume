@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090C8AC720105DD100E58628 /* UICircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC620105DD100E58628 /* UICircleButton.swift */; };
+		090C8AC920105E1E00E58628 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC820105E1E00E58628 /* Roundable.swift */; };
+		09202DE7200FC87000320D60 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE6200FC87000320D60 /* Gender.swift */; };
+		09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE8200FCAAC00320D60 /* Animatable.swift */; };
+		09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEA200FCB6F00320D60 /* Fadeable.swift */; };
+		09202DED200FCBFB00320D60 /* UILoadAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEC200FCBFB00320D60 /* UILoadAppView.swift */; };
+		09202DF0200FD59700320D60 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEF200FD59700320D60 /* CustomSegue.swift */; };
+		09202DF2200FD6E300320D60 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DF1200FD6E300320D60 /* Loadable.swift */; };
+		09202DF4200FD7A800320D60 /* UILoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DF3200FD7A800320D60 /* UILoadView.swift */; };
+		09202DF7200FE3A500320D60 /* UpdateViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DF6200FE3A500320D60 /* UpdateViews.swift */; };
 		09388FA2200E585200A8B623 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA1200E585200A8B623 /* Exam.swift */; };
-		09388FA6200E6E9900A8B623 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA5200E6E9900A8B623 /* Animations.swift */; };
-		09388FA9200E72AC00A8B623 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA8200E72AC00A8B623 /* CustomView.swift */; };
+		09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA8200E72AC00A8B623 /* LoadableVC.swift */; };
+		09388FAB200EEC5300A8B623 /* UnlimitedButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FAA200EEC5300A8B623 /* UnlimitedButtonsVC.swift */; };
 		095E2003200D617D0078956B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2002200D617D0078956B /* AppDelegate.swift */; };
 		095E2005200D617D0078956B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2004200D617D0078956B /* MainVC.swift */; };
 		095E2008200D617D0078956B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095E2006200D617D0078956B /* Main.storyboard */; };
@@ -17,9 +27,9 @@
 		095E200D200D617D0078956B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 095E200C200D617D0078956B /* Assets.xcassets */; };
 		095E201B200D617D0078956B /* GlobalResumeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E201A200D617D0078956B /* GlobalResumeTests.swift */; };
 		095E2026200D617D0078956B /* GlobalResumeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2025200D617D0078956B /* GlobalResumeUITests.swift */; };
-		095E203E200D669C0078956B /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203D200D669C0078956B /* CircleView.swift */; };
+		095E203E200D669C0078956B /* UICircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203D200D669C0078956B /* UICircleView.swift */; };
 		095E2040200D71310078956B /* InputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203F200D71310078956B /* InputVC.swift */; };
-		095E2049200DA3450078956B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2048200DA3450078956B /* Constants.swift */; };
+		095E2049200DA3450078956B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2048200DA3450078956B /* Color.swift */; };
 		095E204B200DB6D80078956B /* ResumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204A200DB6D80078956B /* ResumeData.swift */; };
 		095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */; };
 /* End PBXBuildFile section */
@@ -42,9 +52,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090C8AC620105DD100E58628 /* UICircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircleButton.swift; sourceTree = "<group>"; };
+		090C8AC820105E1E00E58628 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
+		09202DE6200FC87000320D60 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		09202DE8200FCAAC00320D60 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		09202DEA200FCB6F00320D60 /* Fadeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fadeable.swift; sourceTree = "<group>"; };
+		09202DEC200FCBFB00320D60 /* UILoadAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadAppView.swift; sourceTree = "<group>"; };
+		09202DEF200FD59700320D60 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		09202DF1200FD6E300320D60 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		09202DF3200FD7A800320D60 /* UILoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILoadView.swift; sourceTree = "<group>"; };
+		09202DF6200FE3A500320D60 /* UpdateViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViews.swift; sourceTree = "<group>"; };
 		09388FA1200E585200A8B623 /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
-		09388FA5200E6E9900A8B623 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
-		09388FA8200E72AC00A8B623 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		09388FA8200E72AC00A8B623 /* LoadableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableVC.swift; sourceTree = "<group>"; };
+		09388FAA200EEC5300A8B623 /* UnlimitedButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlimitedButtonsVC.swift; sourceTree = "<group>"; };
 		095E1FFF200D617D0078956B /* GlobalResume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalResume.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		095E2002200D617D0078956B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		095E2004200D617D0078956B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -58,11 +78,11 @@
 		095E2021200D617D0078956B /* GlobalResumeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlobalResumeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		095E2025200D617D0078956B /* GlobalResumeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalResumeUITests.swift; sourceTree = "<group>"; };
 		095E2027200D617D0078956B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		095E203D200D669C0078956B /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		095E203D200D669C0078956B /* UICircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICircleView.swift; sourceTree = "<group>"; };
 		095E203F200D71310078956B /* InputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVC.swift; sourceTree = "<group>"; };
 		095E2044200D9BA80078956B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		095E2045200D9BAD0078956B /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		095E2048200DA3450078956B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		095E2048200DA3450078956B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		095E204A200DB6D80078956B /* ResumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeData.swift; sourceTree = "<group>"; };
 		095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoIconButtonsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,11 +112,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09202DEE200FCF9C00320D60 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				09202DEA200FCB6F00320D60 /* Fadeable.swift */,
+				09202DF1200FD6E300320D60 /* Loadable.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		09202DF5200FE38900320D60 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				09202DF6200FE3A500320D60 /* UpdateViews.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		09388FA0200E583900A8B623 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				095E2048200DA3450078956B /* Constants.swift */,
+				095E2048200DA3450078956B /* Color.swift */,
 				09388FA1200E585200A8B623 /* Exam.swift */,
+				09202DE6200FC87000320D60 /* Gender.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -104,7 +142,10 @@
 		09388FA7200E729E00A8B623 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				09388FA8200E72AC00A8B623 /* CustomView.swift */,
+				090C8AC820105E1E00E58628 /* Roundable.swift */,
+				09388FA8200E72AC00A8B623 /* LoadableVC.swift */,
+				09202DE8200FCAAC00320D60 /* Animatable.swift */,
+				09202DEE200FCF9C00320D60 /* Animations */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -132,6 +173,8 @@
 		095E2001200D617D0078956B /* GlobalResume */ = {
 			isa = PBXGroup;
 			children = (
+				09202DF5200FE38900320D60 /* Utils */,
+				09202DEF200FD59700320D60 /* CustomSegue.swift */,
 				09388FA7200E729E00A8B623 /* Protocols */,
 				09388FA0200E583900A8B623 /* Constants */,
 				095E203C200D66320078956B /* Model */,
@@ -171,6 +214,7 @@
 				095E2004200D617D0078956B /* MainVC.swift */,
 				095E203F200D71310078956B /* InputVC.swift */,
 				095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */,
+				09388FAA200EEC5300A8B623 /* UnlimitedButtonsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,8 +222,10 @@
 		095E203B200D661E0078956B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				095E203D200D669C0078956B /* CircleView.swift */,
-				09388FA5200E6E9900A8B623 /* Animations.swift */,
+				090C8AC620105DD100E58628 /* UICircleButton.swift */,
+				095E203D200D669C0078956B /* UICircleView.swift */,
+				09202DEC200FCBFB00320D60 /* UILoadAppView.swift */,
+				09202DF3200FD7A800320D60 /* UILoadView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -335,15 +381,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				095E2040200D71310078956B /* InputVC.swift in Sources */,
-				095E203E200D669C0078956B /* CircleView.swift in Sources */,
+				095E203E200D669C0078956B /* UICircleView.swift in Sources */,
+				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
 				095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */,
-				095E2049200DA3450078956B /* Constants.swift in Sources */,
+				095E2049200DA3450078956B /* Color.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
-				09388FA9200E72AC00A8B623 /* CustomView.swift in Sources */,
-				09388FA6200E6E9900A8B623 /* Animations.swift in Sources */,
+				09202DF0200FD59700320D60 /* CustomSegue.swift in Sources */,
+				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,
+				090C8AC920105E1E00E58628 /* Roundable.swift in Sources */,
+				09202DF7200FE3A500320D60 /* UpdateViews.swift in Sources */,
+				09202DF4200FD7A800320D60 /* UILoadView.swift in Sources */,
+				09202DED200FCBFB00320D60 /* UILoadAppView.swift in Sources */,
+				09202DF2200FD6E300320D60 /* Loadable.swift in Sources */,
+				09202DE7200FC87000320D60 /* Gender.swift in Sources */,
 				095E2003200D617D0078956B /* AppDelegate.swift in Sources */,
+				090C8AC720105DD100E58628 /* UICircleButton.swift in Sources */,
 				095E204B200DB6D80078956B /* ResumeData.swift in Sources */,
+				09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */,
+				09388FAB200EEC5300A8B623 /* UnlimitedButtonsVC.swift in Sources */,
 				095E200B200D617D0078956B /* GlobalResume.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

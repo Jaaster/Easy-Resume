@@ -8,15 +8,32 @@
 
 import UIKit
 
-protocol LoadableVC {
+protocol LoadableVC: class {
     
-    weak var loadingView: UIView! { get set }
+    weak var loadingView: UILoadView! { get set }
     var loadingViewColor: UIColor! { get set }
-    var currentExam: Exam! { get set }
-    
-    func defaultLoadingViewColor()
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) 
-    
+    var currentExam: Exam! { get set }    
 }
 
-
+extension LoadableVC where Self: UIViewController {
+    
+    
+    func handleTransportation(dataType: Exam, data: String) {
+        ResumeData.shared.updateData(dataType: dataType, data: data)
+        
+        if let nextExam = dataType.next() {
+         let currentKind = currentExam.kind()
+         let nextKind = nextExam.kind()
+        
+            if nextKind == currentKind {
+                //Stay and update current view
+                currentExam = nextExam
+                loadingView.loadThenUpdate(vc: self)
+            } else {
+                //Perform segue
+                self.performSegue(withIdentifier: nextKind.rawValue, sender: nextExam)
+            }
+        }
+        
+    }
+}

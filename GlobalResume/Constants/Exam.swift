@@ -9,13 +9,13 @@
 import Foundation
 
 enum Exam: String {
-    
+    case menu = "MENU"
     case name = "NAME"
     case gender = "GENDER"
     case email = "EMAIL"
-    case number = "NUMBER"
-    case zipcode = "ZIPCODE"
-    
+    case number = "PHONE NUMBER"
+    case zipcode = "ZIP CODE"
+    case employmentStatus = "EMPLOYMENT STATUS"
     
     enum Kind:String {
         case main = "MAIN"
@@ -30,49 +30,59 @@ enum Exam: String {
         
     }
     
-    func getValues() -> (kind: Kind, example: String, color: Color, buttons: [(name: String, color: Color)]){
+     func getValues() -> (kind: Kind, example: String, color: Color, buttons: [(name: String, color: Color)]){
         switch self {
         case .name:
-            return (kind: .input, "e.g Jerry Springer", Color.blue, [])
+            return (.input, "e.g Jerry Springer", Color.pink, [])
         case .gender:
-            return (kind: .twoButtons,"", Color.green, [("MALE", Color.blue), ("FEMALE", Color.pink)])
+            return (.twoButtons,"", Color.clear, [("MALE", Color.blue), ("FEMALE", Color.pink)])
         case .email:
-            return (kind: .input,"e.g stevejobs@gmail.com", Color.blue, [])
+            return (.twoButtons,"", Color.clear, [("JuNKY", Color.pink), ("SEXY", Color.blue)])
         case .number:
-            return (kind: .input,"e.g 1 (931) 390 3949", Color.grey, [])
+            return (.input,"e.g 1 (931) 390 3949", Color.grey, [])
         case .zipcode:
-            return (kind: .input,"", Color.grey, [])
+            return (.input,"", Color.grey, [])
+        case .employmentStatus:
+            return (.unlimitedButtons, "EMPLOYMENT STATUS", Color.blue, [("EMPLOYED", Color.grey), ("UNEMPLOYED", Color.pink), ("NO HISTORY", Color.blue)])
+        case .menu:
+            return (.main, "", Color.clear, [])
         }
     }
     
-    func allValues() -> [Exam] {
-        return [.name, .gender, .email, .number, .zipcode]
+    static func allValues() -> [Exam] {
+        return [.menu, .employmentStatus, .name, .email]
     }
     
     func kind() -> Kind {
         return getValues().kind
     }
     
-    func hasNext() -> Bool {
-        if allValues().indices.contains(self.hashValue + 1) {
+    private func hasNext() -> Bool {
+        if Exam.allValues().count > self.hashValue + 1 {
             return true
         }
         return false
     }
     
-    func next() -> Exam {
-        return allValues()[self.hashValue + 1]
+    func next() -> Exam? {
+        var exam: Exam?
+        if hasNext() {
+            exam = Exam.allValues()[self.hashValue + 1]
+            return exam
+        } else {
+            return exam
+        }
     }
     
     func hasBefore() -> Bool {
-        if allValues().indices.contains(self.hashValue-1) {
+        if Exam.allValues().indices.contains(self.hashValue-1) {
             return true
         }
         return false
     }
     
     func before() -> Exam? {
-        return allValues()[self.hashValue - 1]
+        return Exam.allValues()[self.hashValue - 1]
     }
     
 }

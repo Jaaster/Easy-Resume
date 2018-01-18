@@ -8,13 +8,8 @@
 
 import UIKit
 
-enum Gender: String {
-    case male = "MALE"
-    case female = "FEMALE"
-}
-
 enum Color {
-    case blue, grey, green, pink
+    case blue, grey, green, pink, clear
     
     func getUIColor() -> UIColor {
         let x = CGFloat(255)
@@ -30,7 +25,10 @@ enum Color {
             return UIColor(red: 74/x, green: 226/x, blue: 137/x, alpha: a)
         case .pink:
             return UIColor(red: 249/x, green: 133/x, blue: 238/x, alpha: a)
+        case .clear:
+            return UIColor.clear
         }
     }
 }
+
 
