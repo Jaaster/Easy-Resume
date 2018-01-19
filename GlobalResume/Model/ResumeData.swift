@@ -19,7 +19,7 @@ class ResumeData {
     }
     
     private func loadValues() {
-        for exam in Exam.allValues() {
+        for exam in Exam.examList() {
             data.updateValue("", forKey: exam)
         }
     }

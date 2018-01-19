@@ -20,7 +20,19 @@ class CustomSegue: UIStoryboardSegue {
         
             if let loadableSource = source as? LoadableVC, let loadableDestination = destination as? LoadableVC {
                 if let currentExam = loadableSource.currentExam {
+                    if OneInstance.shared.isTriggered {
+                        if let beforeExam = OneInstance.shared.trigger.isFirstExam(exam: OneInstance.shared.trigger.next(exam: currentExam)!) {
+                            loadableDestination.currentExam = beforeExam
+                        } else if let nextExam = OneInstance.shared.trigger.next(exam: currentExam) {
+                            loadableDestination.currentExam = nextExam
+                        }
+                        
+                    } else {
+                        //Normal exam
+                        
                         loadableDestination.currentExam = currentExam.next()!
+                    }
+                    
                 }
                     loadableDestination.loadingViewColor = loadableSource.loadingView.backgroundColor
                 

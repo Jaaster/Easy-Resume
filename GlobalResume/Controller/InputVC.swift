@@ -32,7 +32,7 @@ class InputVC: UIViewController, UITextFieldDelegate, LoadableVC {
         loadingView.backgroundColor = currentExam.getValues().color.getUIColor()
         
         if let data = textField.text {
-            handleTransportation(dataType: currentExam, data: data)
+            handleTransportation(data: data)
             return true
         }
         return false

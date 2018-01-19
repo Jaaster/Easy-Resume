@@ -16,6 +16,9 @@ enum Exam: String {
     case number = "PHONE NUMBER"
     case zipcode = "ZIP CODE"
     case employmentStatus = "EMPLOYMENT STATUS"
+    case companyName = "COMPANY NAME"
+    case jobTitle = "JOB TITLE"
+    case employmentRecord = "EMPLOYMENT RECORD"
     
     enum Kind:String {
         case main = "MAIN"
@@ -30,59 +33,60 @@ enum Exam: String {
         
     }
     
-     func getValues() -> (kind: Kind, example: String, color: Color, buttons: [(name: String, color: Color)]){
+    
+    func getValues() -> (kind: Kind, example: String, color: Color, buttons: [(name: String, color: Color)]){
         switch self {
         case .name:
             return (.input, "e.g Jerry Springer", Color.pink, [])
         case .gender:
             return (.twoButtons,"", Color.clear, [("MALE", Color.blue), ("FEMALE", Color.pink)])
         case .email:
-            return (.twoButtons,"", Color.clear, [("JuNKY", Color.pink), ("SEXY", Color.blue)])
+            return (.input, "example@gmail.com", Color.blue, [])
         case .number:
             return (.input,"e.g 1 (931) 390 3949", Color.grey, [])
         case .zipcode:
-            return (.input,"", Color.grey, [])
+            return (.input, "e.g 37052", Color.grey, [])
         case .employmentStatus:
-            return (.unlimitedButtons, "EMPLOYMENT STATUS", Color.blue, [("EMPLOYED", Color.grey), ("UNEMPLOYED", Color.pink), ("NO HISTORY", Color.blue)])
+            return (.unlimitedButtons, "", Color.grey, [("EMPLOYED", Color.grey), ("UNEMPLOYED", Color.grey), ("NO HISTORY", Color.grey)])
         case .menu:
             return (.main, "", Color.clear, [])
+        case .companyName:
+            return (.input, "e.g Apple", Color.grey, [])
+        case .jobTitle:
+            return (.input, "e.g Manager", Color.grey, [])
+        case .employmentRecord:
+            return (.twoButtons, "", Color.grey, [("START", Color.grey), ("END", Color.grey)])
         }
     }
     
-    static func allValues() -> [Exam] {
-        return [.menu, .employmentStatus, .name, .email]
+    //Do not put the same exam twice, you can change the order but that is all.
+    static func examList() -> [Exam] {
+        return [.menu, .employmentStatus, .name, .zipcode, .gender]
     }
     
     func kind() -> Kind {
         return getValues().kind
     }
     
-    private func hasNext() -> Bool {
-        if Exam.allValues().count > self.hashValue + 1 {
-            return true
-        }
-        return false
-    }
-    
     func next() -> Exam? {
-        var exam: Exam?
-        if hasNext() {
-            exam = Exam.allValues()[self.hashValue + 1]
-            return exam
-        } else {
-            return exam
+        let nextIndex = Exam.examList().index(of: self)! + 1
+        
+        if Exam.examList().count > nextIndex {
+            return Exam.examList()[nextIndex]
         }
+        return nil
+        
     }
     
     func hasBefore() -> Bool {
-        if Exam.allValues().indices.contains(self.hashValue-1) {
+        if Exam.examList().indices.contains(self.hashValue-1) {
             return true
         }
         return false
     }
     
     func before() -> Exam? {
-        return Exam.allValues()[self.hashValue - 1]
+        return Exam.examList()[self.hashValue - 1]
     }
     
 }

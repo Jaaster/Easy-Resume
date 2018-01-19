@@ -192,8 +192,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-Cg-FB2">
                                 <rect key="frame" x="0.0" y="288.5" width="375" height="90"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="e.g James Bond" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="iPt-Wi-4ZU">
-                                        <rect key="frame" x="0.0" y="19.5" width="375" height="52"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="e.g James Bond" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="iPt-Wi-4ZU">
+                                        <rect key="frame" x="0.0" y="21.5" width="375" height="48"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="35"/>
@@ -490,7 +490,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CcI-ky-DhN"/>
-        <segue reference="h8P-k2-wbf"/>
+        <segue reference="PqN-4I-pdd"/>
         <segue reference="NXR-hK-sa7"/>
         <segue reference="pZq-jC-NNo"/>
     </inferredMetricsTieBreakers>

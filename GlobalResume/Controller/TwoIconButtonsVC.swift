@@ -37,7 +37,7 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
             text = secondTitleLabel.text!
         }
         loadingView.backgroundColor = sender.backgroundColor
-        handleTransportation(dataType: currentExam, data: text)
+        handleTransportation(data: text)
     }
     
 }

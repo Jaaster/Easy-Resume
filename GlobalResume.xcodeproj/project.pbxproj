@@ -32,6 +32,8 @@
 		095E2049200DA3450078956B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2048200DA3450078956B /* Color.swift */; };
 		095E204B200DB6D80078956B /* ResumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204A200DB6D80078956B /* ResumeData.swift */; };
 		095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */; };
+		098324C620124991003B32FF /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C520124991003B32FF /* Trigger.swift */; };
+		098324C820124EF1003B32FF /* OneInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C720124EF1003B32FF /* OneInstance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		095E2048200DA3450078956B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		095E204A200DB6D80078956B /* ResumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeData.swift; sourceTree = "<group>"; };
 		095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoIconButtonsVC.swift; sourceTree = "<group>"; };
+		098324C520124991003B32FF /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
+		098324C720124EF1003B32FF /* OneInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneInstance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,7 @@
 			children = (
 				095E2048200DA3450078956B /* Color.swift */,
 				09388FA1200E585200A8B623 /* Exam.swift */,
+				098324C520124991003B32FF /* Trigger.swift */,
 				09202DE6200FC87000320D60 /* Gender.swift */,
 			);
 			path = Constants;
@@ -234,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				095E204A200DB6D80078956B /* ResumeData.swift */,
+				098324C720124EF1003B32FF /* OneInstance.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,8 +390,10 @@
 				095E203E200D669C0078956B /* UICircleView.swift in Sources */,
 				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
+				098324C820124EF1003B32FF /* OneInstance.swift in Sources */,
 				095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */,
 				095E2049200DA3450078956B /* Color.swift in Sources */,
+				098324C620124991003B32FF /* Trigger.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
 				09202DF0200FD59700320D60 /* CustomSegue.swift in Sources */,
 				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,

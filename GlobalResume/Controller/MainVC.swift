@@ -22,6 +22,7 @@ class MainVC: UIViewController, LoadableVC {
         super.viewDidLoad()
         currentExam = Exam.menu
         loadAppImageView.fade(alpha: 0.0)
+        UpdateViews().update(destinationVC: self)
     }
     
     
@@ -29,8 +30,7 @@ class MainVC: UIViewController, LoadableVC {
         if button.tag == 0 {
             //Create button Pressed
             loadingView.backgroundColor = Color.blue.getUIColor()
-            handleTransportation(dataType: currentExam, data: "")
-            //HMMM
+            handleTransportation(data: "")
         } else {
             //Edit Button Pressed
         }

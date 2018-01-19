@@ -31,7 +31,7 @@ class UnlimitedButtonsVC: UIViewController, LoadableVC {
     
     @IBAction func buttonsPressed(_ sender: UIButton) {
         loadingView.backgroundColor = sender.backgroundColor
-        handleTransportation(dataType: currentExam, data: (sender.titleLabel?.text!)!)
+        handleTransportation(data: (sender.titleLabel?.text!)!)
     }
     
     

@@ -34,24 +34,23 @@ class UpdateViews {
         
         let values = vc.currentExam.getValues()
         let buttons = values.buttons
-        
+        let color = values.color.getUIColor()
         vc.iconImageView.image = UIImage(named: vc.currentExam.rawValue)
         vc.titleLabel.text = vc.currentExam.rawValue
         
+        vc.titleLabel.textColor = color
         vc.circleView.round()
+        vc.circleView.backgroundColor = color
         
-        vc.circleView.backgroundColor = values.color.getUIColor()
+        let buttonArray = [vc.firstButton, vc.secondButton, vc.thirdButton]
         
-        vc.firstButton.titleLabel?.text = buttons[0].name
-        vc.secondButton.titleLabel?.text = buttons[1].name
-        vc.thirdButton.titleLabel?.text = buttons[2].name
-        
-        
-        vc.firstButton.backgroundColor = buttons[0].color.getUIColor()
-        vc.secondButton.backgroundColor = buttons[1].color.getUIColor()
-        vc.thirdButton.backgroundColor = buttons[2].color.getUIColor()
-        
-        
+        for i in 0..<buttonArray.count {
+          let button = buttonArray[i]
+          button?.setTitle(buttons[i].name, for: .normal)
+          button?.backgroundColor = buttons[i].color.getUIColor()
+          button?.titleLabel?.textAlignment = NSTextAlignment.center
+
+        }
     }
     
     
