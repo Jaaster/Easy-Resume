@@ -15,13 +15,6 @@ class ResumeData {
 
     init() {
         data = [:]
-        loadValues()
-    }
-    
-    private func loadValues() {
-        for exam in Exam.examList() {
-            data.updateValue("", forKey: exam)
-        }
     }
     
     func updateData(dataType: Exam, data: String) {

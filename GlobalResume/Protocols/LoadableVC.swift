@@ -54,8 +54,6 @@ extension LoadableVC where Self: UIViewController {
             } else {
                     //End of trigger
                     let beforeExam = instance.examBeforeTrigger
-                    self.currentExam = instance.examBeforeTrigger
-
                     instance.isTriggered = false
                 if let nextExam = beforeExam.next() {
                     handleSegues(currentExam: currentExam, nextExam: nextExam)
@@ -71,7 +69,6 @@ extension LoadableVC where Self: UIViewController {
     private func handleSegues(currentExam: Exam, nextExam: Exam) {
             let currentKind = currentExam.kind()
             let nextKind = nextExam.kind()
-            
             if nextKind == currentKind {
                 //Stay and update current view
                 self.currentExam = nextExam

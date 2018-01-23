@@ -428,11 +428,6 @@
                                 <color key="textColor" red="0.60780155660000001" green="0.60787415499999997" blue="0.60776895279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7t-Uv-CIG" customClass="UILoadView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="667" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <viewLayoutGuide key="safeArea" id="BZp-zK-hSO"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editIcon" translatesAutoresizingMaskIntoConstraints="NO" id="04E-sV-2i1" userLabel="Second Icon Image View">
                                 <rect key="frame" x="152" y="485" width="70" height="70"/>
                                 <constraints>
@@ -440,6 +435,11 @@
                                     <constraint firstAttribute="width" constant="70" id="IW8-Ju-oUT"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7t-Uv-CIG" customClass="UILoadView" customModule="GlobalResume" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="667" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <viewLayoutGuide key="safeArea" id="BZp-zK-hSO"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -490,8 +490,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CcI-ky-DhN"/>
-        <segue reference="PqN-4I-pdd"/>
-        <segue reference="NXR-hK-sa7"/>
-        <segue reference="pZq-jC-NNo"/>
+        <segue reference="4nN-r8-b9O"/>
+        <segue reference="oDn-70-WGn"/>
+        <segue reference="hJJ-Ts-gjH"/>
     </inferredMetricsTieBreakers>
 </document>

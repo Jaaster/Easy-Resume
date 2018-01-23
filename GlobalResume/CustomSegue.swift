@@ -21,7 +21,8 @@ class CustomSegue: UIStoryboardSegue {
             if let loadableSource = source as? LoadableVC, let loadableDestination = destination as? LoadableVC {
                 if let currentExam = loadableSource.currentExam {
                     if OneInstance.shared.isTriggered {
-                        if let beforeExam = OneInstance.shared.trigger.isFirstExam(exam: OneInstance.shared.trigger.next(exam: currentExam)!) {
+                        if let beforeExam = OneInstance.shared.trigger.isFirst(exam: currentExam) {
+                            //Is First Exam of Trigger
                             loadableDestination.currentExam = beforeExam
                         } else if let nextExam = OneInstance.shared.trigger.next(exam: currentExam) {
                             loadableDestination.currentExam = nextExam
@@ -29,14 +30,13 @@ class CustomSegue: UIStoryboardSegue {
                         
                     } else {
                         //Normal exam
-                        
                         loadableDestination.currentExam = currentExam.next()!
                     }
                     
                 }
                     loadableDestination.loadingViewColor = loadableSource.loadingView.backgroundColor
                 
-                
+                //Animation for Segue
                 
                 UIView.animate(withDuration: 0.7, animations: {
                      loadableSource.loadingView.transform = CGAffineTransform(scaleX: 5, y: 5)

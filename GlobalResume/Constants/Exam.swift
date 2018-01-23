@@ -19,6 +19,11 @@ enum Exam: String {
     case companyName = "COMPANY NAME"
     case jobTitle = "JOB TITLE"
     case employmentRecord = "EMPLOYMENT RECORD"
+    case pursuingEducation = "PURSUING EDUCATION"
+    case schoolName = "SCHOOL NAME"
+    case educationLevel = "EDUCATION LEVEL"
+    case specificFieldOfStudy = "SPECIFIC FIELD OF STUDY"
+    case completionDate = "COMPLETION DATE"
     
     enum Kind:String {
         case main = "MAIN"
@@ -56,12 +61,23 @@ enum Exam: String {
             return (.input, "e.g Manager", Color.grey, [])
         case .employmentRecord:
             return (.twoButtons, "", Color.grey, [("START", Color.grey), ("END", Color.grey)])
+        case .pursuingEducation:
+            return (.twoButtons, "", Color.blue, [("YES", Color.blue), ("NO", Color.blue)])
+        case .schoolName:
+            return (.input, "e.g Harvard", Color.blue, [])
+        case .educationLevel:
+            return (.input, "e.g Masters", Color.blue, [])
+        case .specificFieldOfStudy:
+            return (.input, "e.g Computer Science", Color.blue, [])
+        case .completionDate:
+            return (.twoButtons, "", Color.blue, [("START", Color.blue), ("END", Color.blue)])
+
         }
     }
     
     //Do not put the same exam twice, you can change the order but that is all.
     static func examList() -> [Exam] {
-        return [.menu, .employmentStatus, .name, .zipcode, .gender]
+        return [.menu, .employmentStatus, .pursuingEducation, .schoolName, .educationLevel, .specificFieldOfStudy, .completionDate]
     }
     
     func kind() -> Kind {
@@ -69,6 +85,7 @@ enum Exam: String {
     }
     
     func next() -> Exam? {
+        
         let nextIndex = Exam.examList().index(of: self)! + 1
         
         if Exam.examList().count > nextIndex {
