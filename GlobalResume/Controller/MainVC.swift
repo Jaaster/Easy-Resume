@@ -10,19 +10,22 @@ import UIKit
 
 class MainVC: UIViewController, LoadableVC {
     
-    @IBOutlet weak var loadAppImageView: UILoadAppView!
-    @IBOutlet weak var firstCircleView: UICircleView!
-    @IBOutlet weak var secondCircleView: UICircleView!
+    @IBOutlet weak var loadAppImageView: LoadAppView!
+    @IBOutlet weak var firstCircleView: CircleView!
+    @IBOutlet weak var secondCircleView: CircleView!
     
-    @IBOutlet weak var loadingView: UILoadView!
+    @IBOutlet weak var loadingView: LoadView!
     var loadingViewColor: UIColor!
     var currentExam: Exam!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentExam = Exam.menu
         loadAppImageView.fade(alpha: 0.0)
         UpdateViews().update(destinationVC: self)
+        
+        FIRFirebaseService.shared.updateExamples(for: .examples, for: .jobs)
+        
     }
     
     
@@ -34,8 +37,8 @@ class MainVC: UIViewController, LoadableVC {
         } else {
             //Edit Button Pressed
         }
-    
+        
     }
-   
-
+    
+    
 }

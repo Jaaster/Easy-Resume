@@ -10,9 +10,9 @@ import UIKit
 
 protocol LoadableVC: class {
     
-    weak var loadingView: UILoadView! { get set }
+    weak var loadingView: LoadView! { get set }
     var loadingViewColor: UIColor! { get set }
-    var currentExam: Exam! { get set }    
+    var currentExam: Exam! { get set }
 }
 
 extension LoadableVC where Self: UIViewController {
@@ -52,9 +52,9 @@ extension LoadableVC where Self: UIViewController {
                 //trigger has next exam
                 handleSegues(currentExam: currentExam, nextExam: nextExam)
             } else {
-                    //End of trigger
-                    let beforeExam = instance.examBeforeTrigger
-                    instance.isTriggered = false
+                //End of trigger
+                let beforeExam = instance.examBeforeTrigger
+                instance.isTriggered = false
                 if let nextExam = beforeExam.next() {
                     handleSegues(currentExam: currentExam, nextExam: nextExam)
                 }
@@ -62,21 +62,21 @@ extension LoadableVC where Self: UIViewController {
             
         }
         
-      
-
+        
+        
     }
     
     private func handleSegues(currentExam: Exam, nextExam: Exam) {
-            let currentKind = currentExam.kind()
-            let nextKind = nextExam.kind()
-            if nextKind == currentKind {
-                //Stay and update current view
-                self.currentExam = nextExam
-                loadingView.loadThenUpdate(vc: self)
-            } else {
-                //Perform segue
-                self.performSegue(withIdentifier: nextKind.rawValue, sender: currentExam)
-            }
+        let currentKind = currentExam.kind()
+        let nextKind = nextExam.kind()
+        if nextKind == currentKind {
+            //Stay and update current view
+            self.currentExam = nextExam
+            loadingView.loadThenUpdate(vc: self)
+        } else {
+            //Perform segue
+            self.performSegue(withIdentifier: nextKind.rawValue, sender: currentExam)
+        }
         
     }
 }

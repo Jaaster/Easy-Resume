@@ -9,7 +9,7 @@
 import Foundation
 
 enum Trigger: String {
-
+    
     case employed = "EMPLOYED"
     case unemployed = "UNEMPLOYED"
     
@@ -25,17 +25,17 @@ enum Trigger: String {
     func next(exam: Exam?) -> Exam? {
         
         if let exam = exam {
-        
+            
             let nextIndex = examList().index(of: exam)! + 1
-        
+            
             if examList().count > nextIndex {
                 return examList()[nextIndex]
-            
+                
             }
             return nil
         }
         return examList().first
-
+        
     }
     //Can edit what Exams come after the Trigger
     func examList() -> [Exam] {

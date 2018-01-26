@@ -15,7 +15,7 @@ protocol Loadable: Animatable {
 
 extension Loadable where Self: UIView {
     
-   func load() {
+    func load() {
         UIView.animate(withDuration: time, animations: {
             self.transform = CGAffineTransform(scaleX: 5, y: 5)
         })
@@ -38,3 +38,4 @@ extension Loadable where Self: UIView {
     }
     
 }
+

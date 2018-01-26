@@ -15,7 +15,7 @@ class OneInstance {
     private var _isTriggered: Bool
     private var _examBeforeTrigger: Exam
     private var _trigger: Trigger
-    
+    private var _exampleJobList: Set<String>
     
     
     init() {
@@ -23,6 +23,16 @@ class OneInstance {
         //Default values, mean nothing
         _examBeforeTrigger = Exam.email
         _trigger = Trigger.employed
+        _exampleJobList = Set<String>()
+    }
+    
+    var exampleJobList: Set<String> {
+        get {
+            return _exampleJobList
+        }
+        set {
+            _exampleJobList = newValue
+        }
     }
     
     var isTriggered: Bool {
@@ -51,5 +61,7 @@ class OneInstance {
             _trigger = newValue
         }
     }
+    
+    
     
 }

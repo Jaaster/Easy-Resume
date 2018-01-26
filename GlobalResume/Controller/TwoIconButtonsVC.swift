@@ -10,9 +10,9 @@ import UIKit
 
 class TwoIconButtonsVC: UIViewController, LoadableVC {
 
-    @IBOutlet weak var loadingView: UILoadView!
-    @IBOutlet weak var firstCircleButton: UICircleButton!
-    @IBOutlet weak var secondCircleButton: UICircleButton!
+    @IBOutlet weak var loadingView: LoadView!
+    @IBOutlet weak var firstCircleButton: CircleButton!
+    @IBOutlet weak var secondCircleButton: CircleButton!
     
     @IBOutlet weak var firstTitleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!

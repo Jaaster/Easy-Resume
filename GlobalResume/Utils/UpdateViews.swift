@@ -10,7 +10,7 @@ import UIKit
 
 class UpdateViews {
     
-     func update(destinationVC: LoadableVC) {
+    func update(destinationVC: LoadableVC) {
         
         if let vc = destinationVC as? MainVC {
             update(vc: vc)
@@ -18,7 +18,11 @@ class UpdateViews {
             update(vc: vc)
         } else if let vc = destinationVC as? TwoIconButtonsVC {
             update(vc: vc)
-        } else if let vc = destinationVC as? UnlimitedButtonsVC {
+        } else if let vc = destinationVC as? ThreeBarButtonsVC {
+            update(vc: vc)
+        } else if let vc = destinationVC as? TwoBarButtonsVC {
+            update(vc: vc)
+        } else if let vc = destinationVC as? DescriptionVCViewController {
             update(vc: vc)
         }
     }
@@ -30,7 +34,61 @@ class UpdateViews {
     }
     
     
-    private func update(vc: UnlimitedButtonsVC) {
+    private func update(vc: DescriptionVCViewController) {
+        let exam = vc.currentExam!
+        var list = [String]()
+        if exam == Exam.jobDescription {
+            list = OneInstance.shared.exampleJobList.sorted()
+        }
+        vc.examples = list
+        
+        vc.textField.text = "e.g \(list.first!)"
+
+        let values = exam.getValues()
+        let color = values.color.getUIColor()
+        vc.titleLabel.text = exam.rawValue
+        vc.examplesView.alpha = 0.0
+        vc.examplesView.isHidden = true
+        vc.exampleButton.backgroundColor = color
+        vc.exampleButton.round()
+        vc.exampleButton.setTitle(values.example, for: .normal)
+        vc.exampleButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        vc.exampleButton.titleLabel?.textAlignment = .center
+        vc.toolBar()
+        
+        vc.titleLabel.textColor = color
+        vc.backgroundView.backgroundColor = color
+        vc.tableView.reloadData()
+    }
+    
+    
+    private func update(vc: ThreeBarButtonsVC) {
+        
+        let values = vc.currentExam.getValues()
+        let buttons = values.buttons
+        let color = values.color.getUIColor()
+        
+       
+        
+        vc.iconImageView.image = UIImage(named: vc.currentExam.rawValue)
+        vc.titleLabel.text = vc.currentExam.rawValue
+        
+        vc.titleLabel.textColor = color
+        vc.circleView.round()
+        vc.circleView.backgroundColor = color
+        
+        let buttonArray = [vc.firstButton, vc.secondButton, vc.thirdButton]
+        
+        for i in 0..<buttonArray.count {
+            let button = buttonArray[i]
+            button?.setTitle(buttons[i].name, for: .normal)
+            button?.backgroundColor = buttons[i].color.getUIColor()
+            button?.titleLabel?.textAlignment = NSTextAlignment.center
+            
+        }
+    }
+    
+    private func update(vc: TwoBarButtonsVC) {
         
         let values = vc.currentExam.getValues()
         let buttons = values.buttons
@@ -42,14 +100,14 @@ class UpdateViews {
         vc.circleView.round()
         vc.circleView.backgroundColor = color
         
-        let buttonArray = [vc.firstButton, vc.secondButton, vc.thirdButton]
+        let buttonArray = [vc.firstButton, vc.secondButton]
         
         for i in 0..<buttonArray.count {
-          let button = buttonArray[i]
-          button?.setTitle(buttons[i].name, for: .normal)
-          button?.backgroundColor = buttons[i].color.getUIColor()
-          button?.titleLabel?.textAlignment = NSTextAlignment.center
-
+            let button = buttonArray[i]
+            button?.setTitle(buttons[i].name, for: .normal)
+            button?.backgroundColor = buttons[i].color.getUIColor()
+            button?.titleLabel?.textAlignment = NSTextAlignment.center
+            
         }
     }
     
@@ -84,7 +142,7 @@ class UpdateViews {
         
         vc.circleView.round()
         vc.titleLabel.text = vc.currentExam.rawValue
-        vc.textField.text = values.example
+        vc.textField.placeholder = values.example
         vc.iconImageView.image = UIImage(named: vc.currentExam.rawValue)
         
         vc.barView.backgroundColor = color

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class InputVC: UIViewController, UITextFieldDelegate, LoadableVC {
-
+class InputVC: UIViewController, LoadableVC {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var barView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var circleView: UICircleView!
-    @IBOutlet weak var loadingView: UILoadView!
+    @IBOutlet weak var circleView: CircleView!
+    @IBOutlet weak var loadingView: LoadView!
     
     var loadingViewColor: UIColor!
     var currentExam: Exam!
@@ -26,9 +26,15 @@ class InputVC: UIViewController, UITextFieldDelegate, LoadableVC {
         loadingView.backgroundColor = loadingViewColor
     }
     
+}
+
+
+
+extension InputVC: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-      
+        
         loadingView.backgroundColor = currentExam.getValues().color.getUIColor()
         
         if let data = textField.text {
@@ -37,7 +43,6 @@ class InputVC: UIViewController, UITextFieldDelegate, LoadableVC {
         }
         return false
     }
-    
 }
 
 

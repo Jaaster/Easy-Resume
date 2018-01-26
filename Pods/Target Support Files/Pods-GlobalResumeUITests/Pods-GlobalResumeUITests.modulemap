@@ -1,0 +1,6 @@
+framework module Pods_GlobalResumeUITests {
+  umbrella header "Pods-GlobalResumeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

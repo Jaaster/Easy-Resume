@@ -18,6 +18,7 @@ enum Exam: String {
     case employmentStatus = "EMPLOYMENT STATUS"
     case companyName = "COMPANY NAME"
     case jobTitle = "JOB TITLE"
+    case jobDescription = "JOB DESCRIPTION"
     case employmentRecord = "EMPLOYMENT RECORD"
     case pursuingEducation = "PURSUING EDUCATION"
     case schoolName = "SCHOOL NAME"
@@ -28,12 +29,13 @@ enum Exam: String {
     enum Kind:String {
         case main = "MAIN"
         case input = "INPUT"
-        case twoButtons = "TWOBUTTONS"
-        case unlimitedButtons = "UNLIMITEDBUTTONS"
-        
+        case description = "DESCRIPTION"
+        case twoButtons = "TWO_BUTTONS"
+        case threeBarButtons = "THREE_BAR_BUTTONS"
+        case twoBarButtons = "TWO_BAR_BUTTONS"
         static func get(from string: String) -> Kind? {
             return Kind(rawValue: string)
-          
+            
         }
         
     }
@@ -52,7 +54,7 @@ enum Exam: String {
         case .zipcode:
             return (.input, "e.g 37052", Color.grey, [])
         case .employmentStatus:
-            return (.unlimitedButtons, "", Color.grey, [("EMPLOYED", Color.grey), ("UNEMPLOYED", Color.grey), ("NO HISTORY", Color.grey)])
+            return (.threeBarButtons, "", Color.grey, [("EMPLOYED", Color.grey), ("UNEMPLOYED", Color.grey), ("NO HISTORY", Color.grey)])
         case .menu:
             return (.main, "", Color.clear, [])
         case .companyName:
@@ -60,9 +62,9 @@ enum Exam: String {
         case .jobTitle:
             return (.input, "e.g Manager", Color.grey, [])
         case .employmentRecord:
-            return (.twoButtons, "", Color.grey, [("START", Color.grey), ("END", Color.grey)])
+            return (.twoBarButtons, "", Color.grey, [("START", Color.grey), ("END", Color.grey)])
         case .pursuingEducation:
-            return (.twoButtons, "", Color.blue, [("YES", Color.blue), ("NO", Color.blue)])
+            return (.twoBarButtons, "", Color.blue, [("YES", Color.blue), ("NO", Color.blue)])
         case .schoolName:
             return (.input, "e.g Harvard", Color.blue, [])
         case .educationLevel:
@@ -71,13 +73,14 @@ enum Exam: String {
             return (.input, "e.g Computer Science", Color.blue, [])
         case .completionDate:
             return (.twoButtons, "", Color.blue, [("START", Color.blue), ("END", Color.blue)])
-
+        case .jobDescription:
+            return (.description, "EXAMPLES", Color.grey, [])
         }
     }
     
     //Do not put the same exam twice, you can change the order but that is all.
     static func examList() -> [Exam] {
-        return [.menu, .employmentStatus, .pursuingEducation, .schoolName, .educationLevel, .specificFieldOfStudy, .completionDate]
+        return [.menu, .jobDescription, .gender, .employmentStatus, .pursuingEducation, .specificFieldOfStudy, .completionDate]
     }
     
     func kind() -> Kind {
@@ -107,3 +110,4 @@ enum Exam: String {
     }
     
 }
+
