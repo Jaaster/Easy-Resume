@@ -8,6 +8,11 @@
 
 import Foundation
 
-enum FIRCollectionReference: String {
+enum FIRCollectionReferenceParent: String {
     case examples = "Examples"
+    
+    enum Child: String {
+        case jobs = "Jobs"
+    }
+
 }
