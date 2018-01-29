@@ -9,6 +9,7 @@ target 'GlobalResume' do
 
 	pod 'Firebase/Core'
  	pod 'Firebase/Database'
+	pod 'SAConfettiView'
 
  
   

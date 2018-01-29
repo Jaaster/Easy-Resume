@@ -10,17 +10,19 @@ import UIKit
 
 protocol LoadableVC: class {
     
-    weak var loadingView: LoadView! { get set }
+    weak var loadingView: FadeView! { get set }
     var loadingViewColor: UIColor! { get set }
     var currentExam: Exam! { get set }
+    
+    func updateData()
 }
 
 extension LoadableVC where Self: UIViewController {
+
     
     func handleTransportation(data: String) {
         ResumeData.shared.updateData(dataType: currentExam, data: data)
         //Loop whole need to fix...User can the name of a button that calls a trigger it will call it
-        
         
         let instance = OneInstance.shared
         
@@ -34,14 +36,17 @@ extension LoadableVC where Self: UIViewController {
                 //Get the exam for the trigger
                 if let triggerExam = trigger.next(exam: nil) {
                     currentExam = triggerExam
-                    handleSegues(currentExam: instance.examBeforeTrigger, nextExam: triggerExam)
+                    handleSegues(currentExamKind: instance.examBeforeTrigger.kind(), nextExam: triggerExam)
                 } else {
                     print("Data is a trigger, trigger does not any exams :(")
                 }
             } else {
                 //Normal segue
                 if let nextExam = currentExam.next() {
-                    handleSegues(currentExam: currentExam, nextExam: nextExam)
+                    handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
+                } else {
+                    //End of exam
+                    
                 }
             }
         } else {
@@ -50,13 +55,16 @@ extension LoadableVC where Self: UIViewController {
             
             if let nextExam = trigger.next(exam: currentExam) {
                 //trigger has next exam
-                handleSegues(currentExam: currentExam, nextExam: nextExam)
+                handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
             } else {
                 //End of trigger
                 let beforeExam = instance.examBeforeTrigger
+                
                 instance.isTriggered = false
                 if let nextExam = beforeExam.next() {
-                    handleSegues(currentExam: currentExam, nextExam: nextExam)
+                    let kind = currentExam.kind()
+                    currentExam = beforeExam
+                    handleSegues(currentExamKind: kind, nextExam: nextExam)
                 }
             }
             
@@ -66,18 +74,17 @@ extension LoadableVC where Self: UIViewController {
         
     }
     
-    private func handleSegues(currentExam: Exam, nextExam: Exam) {
-        let currentKind = currentExam.kind()
+    private func handleSegues(currentExamKind: Exam.Kind, nextExam: Exam) {
         let nextKind = nextExam.kind()
-        if nextKind == currentKind {
+        if nextKind == currentExamKind {
             //Stay and update current view
             self.currentExam = nextExam
-            loadingView.loadThenUpdate(vc: self)
+            loadingView.fade(alpha: 1.0, completion: {
+                self.updateData()
+                self.loadingView.fade(alpha: 0.0)
+            })
         } else {
-            //Perform segue
-            self.performSegue(withIdentifier: nextKind.rawValue, sender: currentExam)
-        }
-        
+            self.performSegue(withIdentifier: nextKind.rawValue, sender: nil)
     }
 }
-
+}

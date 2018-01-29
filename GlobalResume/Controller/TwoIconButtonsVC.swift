@@ -10,7 +10,7 @@ import UIKit
 
 class TwoIconButtonsVC: UIViewController, LoadableVC {
 
-    @IBOutlet weak var loadingView: LoadView!
+    @IBOutlet weak var loadingView: FadeView!
     @IBOutlet weak var firstCircleButton: CircleButton!
     @IBOutlet weak var secondCircleButton: CircleButton!
     
@@ -25,7 +25,36 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingView.backgroundColor = loadingViewColor
+    }
+    
+    override func loadView() {
+        super.loadView()
+        updateData()
+    }
+
+    
+    
+    func updateData() {
+        
+        let values = currentExam.getValues()
+        
+        let buttons = values.buttons
+        let color = buttons[0].color.getUIColor()
+        let color2 = buttons[1].color.getUIColor()
+        
+        firstTitleLabel.text = buttons[0].name
+        firstTitleLabel.textColor = color
+        secondTitleLabel.textColor = color2
+        secondTitleLabel.text = buttons[1].name
+        
+        firstIconImageView.image = UIImage(named: values.buttons[0].name)
+        secondIconImageView.image = UIImage(named:values.buttons[1].name)
+        
+        firstCircleButton.round()
+        secondCircleButton.round()
+        firstCircleButton.backgroundColor = color
+        secondCircleButton.backgroundColor = color2
+        
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -36,7 +65,6 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
         } else {
             text = secondTitleLabel.text!
         }
-        loadingView.backgroundColor = sender.backgroundColor
         handleTransportation(data: text)
     }
     

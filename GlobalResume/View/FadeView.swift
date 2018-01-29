@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ExampleView: UIView, Fadeable {
+class FadeView: UIView, Fadeable {
     var time: Double = 1.0
 }

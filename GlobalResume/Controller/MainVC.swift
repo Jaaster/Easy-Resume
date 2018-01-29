@@ -7,38 +7,45 @@
 //
 
 import UIKit
-
 class MainVC: UIViewController, LoadableVC {
+   
+    
     
     @IBOutlet weak var loadAppImageView: LoadAppView!
     @IBOutlet weak var firstCircleView: CircleView!
     @IBOutlet weak var secondCircleView: CircleView!
     
-    @IBOutlet weak var loadingView: LoadView!
+    @IBOutlet weak var loadingView: FadeView!
     var loadingViewColor: UIColor!
     var currentExam: Exam!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currentExam = Exam.menu
         loadAppImageView.fade(alpha: 0.0)
-        UpdateViews().update(destinationVC: self)
-        
-        FIRFirebaseService.shared.updateExamples(for: .examples, for: .jobs)
-        
-    }
-    
-    
-    @IBAction func buttonPressed(button: UIButton) {
-        if button.tag == 0 {
-            //Create button Pressed
-            loadingView.backgroundColor = Color.blue.getUIColor()
-            handleTransportation(data: "")
-        } else {
-            //Edit Button Pressed
+        updateData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            FIRFirebaseService.shared.updateExamples(for: .examples, for: .jobs)
         }
         
     }
     
+    func updateData() {
+        firstCircleView.round()
+        secondCircleView.round()
+    }
     
+    @IBAction func buttonPressed(button: UIButton) {
+        if button.tag == 0 {
+            //Create button Pressed
+            handleTransportation(data: "")
+        } else {
+            //Edit Button Pressed
+            
+        }
+        
+    }
 }
+

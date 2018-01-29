@@ -18,6 +18,7 @@ class CustomSegue: UIStoryboardSegue {
         let source = self.source
         let destination = self.destination
         
+        
         if let loadableSource = source as? LoadableVC, let loadableDestination = destination as? LoadableVC {
             if let currentExam = loadableSource.currentExam {
                 if OneInstance.shared.isTriggered {
@@ -34,27 +35,29 @@ class CustomSegue: UIStoryboardSegue {
                 }
                 
             }
-            loadableDestination.loadingViewColor = loadableSource.loadingView.backgroundColor
-            
             //Animation for Segue
             
-            UIView.animate(withDuration: 0.7, animations: {
-                loadableSource.loadingView.transform = CGAffineTransform(scaleX: 5, y: 5)
-            }, completion: { _ in
-                
+            
+            var fadeTime = 0.4
+            if source is MainVC {
+                fadeTime = 0.8
+            }
+            
+            loadableSource.loadingView.backgroundColor = UIColor.white
+            loadableSource.loadingView.time = fadeTime
+            loadableSource.loadingView.fade(alpha: 1.0, completion: {
                 source.present(destination, animated: false, completion: {
-                    loadableSource.loadingView.backgroundColor = UIColor.clear
-                    loadableDestination.loadingView.time = 0.0
-                    loadableDestination.loadingView.loadThenUpdate(vc: loadableDestination)
-                    loadableDestination.loadingView.time = 0.7
+                    loadableDestination.loadingView.backgroundColor = UIColor.white
+                    loadableDestination.loadingView.time = fadeTime
+                    loadableDestination.loadingView.fade(alpha: 0.0)
+                    
                 })
             })
+            
         }
-        
-        
     }
     
-    
+
     
 }
 

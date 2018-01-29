@@ -9,31 +9,27 @@
 import UIKit
 
 protocol Loadable: Animatable {
-    func load()
+    func load(completion: @escaping () -> ())
     func unload()
 }
 
 extension Loadable where Self: UIView {
     
-    func load() {
+    func load(completion: @escaping () -> ()) {
         UIView.animate(withDuration: time, animations: {
-            self.transform = CGAffineTransform(scaleX: 5, y: 5)
+            self.transform = CGAffineTransform.identity
+        }, completion: { _ in
+            completion()
         })
     }
     
     func unload() {
         UIView.animate(withDuration: time, animations: {
-            self.transform = CGAffineTransform.identity
-            
-        })
-    }
-    
-    func loadThenUpdate(vc: LoadableVC) {
-        UIView.animate(withDuration: time, animations: {
-            self.transform = CGAffineTransform(scaleX: 5, y: 5)
-        }, completion: { _ in
-            self.unload()
-            UpdateViews().update(destinationVC: vc)
+            self.center = CGPoint(x: self.superview!.center.x, y: self.frame.height*2)
+        }, completion: {
+            _ in
+            print("unload complete")
+            self.load { print("load complete")}
         })
     }
     

@@ -10,12 +10,22 @@ import UIKit
 
 protocol Fadeable: Animatable {
     func fade(alpha: CGFloat)
+    func fade(alpha: CGFloat, completion: @escaping ()->())
 }
 
 extension Fadeable where Self: UIView {
     func fade(alpha: CGFloat) {
         UIView.animate(withDuration: time, animations: {
             self.alpha = alpha
+        })
+    }
+    
+    func fade(alpha: CGFloat, completion: @escaping ()->()) {
+        UIView.animate(withDuration: time, animations: {
+            self.alpha = alpha
+        }, completion: {
+            _ in
+            completion()
         })
     }
 }
