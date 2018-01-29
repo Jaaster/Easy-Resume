@@ -8,6 +8,4 @@
 
 import Foundation
 
-enum Children: String {
-    case jobs = "Jobs"
-}
+

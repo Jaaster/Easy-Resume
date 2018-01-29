@@ -10,12 +10,10 @@ import UIKit
 
 class ThreeBarButtonsVC: UIViewController, LoadableVC {
    
-    var loadingViewColor: UIColor!
     var currentExam: Exam!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var loadingView: FadeView!
     @IBOutlet weak var circleView: CircleView!
     
     

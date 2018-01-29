@@ -16,4 +16,9 @@ extension Roundable where Self: UIView {
         layer.cornerRadius = frame.size.height / 2
         clipsToBounds = true
     }
+    
+    func round(scale: CGFloat) {
+        layer.cornerRadius = scale
+        clipsToBounds = true
+    }
 }

@@ -15,9 +15,6 @@ class InputVC: UIViewController, LoadableVC {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var circleView: CircleView!
-    @IBOutlet weak var loadingView: FadeView!
-    
-    var loadingViewColor: UIColor!
     var currentExam: Exam!
     
     

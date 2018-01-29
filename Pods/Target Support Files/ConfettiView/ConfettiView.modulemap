@@ -1,0 +1,6 @@
+framework module ConfettiView {
+  umbrella header "ConfettiView-umbrella.h"
+
+  export *
+  module * { export * }
+}

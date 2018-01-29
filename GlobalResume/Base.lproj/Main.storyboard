@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-Extrabold</string>
+        </array>
         <array key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
         </array>
@@ -106,18 +109,12 @@
                                     <action selector="buttonPressedWithButton:" destination="km8-jb-SwJ" eventType="touchUpInside" id="8Gl-dd-Spz"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lc8-vz-M0A" customClass="LoadView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="667" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lc8-vz-M0A" firstAttribute="width" secondItem="gEV-NF-eTM" secondAttribute="width" id="0ie-cd-coF"/>
                             <constraint firstItem="mms-Ef-u39" firstAttribute="bottom" secondItem="DjC-8m-7DM" secondAttribute="bottom" constant="20" id="3Hb-7W-Eni"/>
                             <constraint firstItem="XJY-1c-3eR" firstAttribute="centerX" secondItem="gEV-NF-eTM" secondAttribute="centerX" id="Abg-ao-1ux"/>
                             <constraint firstItem="CvJ-DH-f1J" firstAttribute="leading" secondItem="mms-Ef-u39" secondAttribute="leading" id="CKq-6G-WGC"/>
-                            <constraint firstItem="lc8-vz-M0A" firstAttribute="top" secondItem="gEV-NF-eTM" secondAttribute="bottom" id="IyW-3u-JTG"/>
                             <constraint firstItem="fK7-8Z-nYn" firstAttribute="centerX" secondItem="gEV-NF-eTM" secondAttribute="centerX" id="PCP-RN-fs0"/>
                             <constraint firstItem="Yy6-Ao-831" firstAttribute="centerX" secondItem="XJY-1c-3eR" secondAttribute="centerX" id="R91-1f-M0J"/>
                             <constraint firstItem="4vU-n8-D9w" firstAttribute="centerX" secondItem="fK7-8Z-nYn" secondAttribute="centerX" id="RFo-Ix-67F"/>
@@ -125,15 +122,12 @@
                             <constraint firstItem="q37-fo-3aw" firstAttribute="trailing" secondItem="mms-Ef-u39" secondAttribute="trailing" id="SgA-XM-Lyl"/>
                             <constraint firstItem="DjC-8m-7DM" firstAttribute="top" secondItem="XJY-1c-3eR" secondAttribute="bottom" constant="2" id="TK0-Mx-QWW"/>
                             <constraint firstItem="CvJ-DH-f1J" firstAttribute="bottom" secondItem="mms-Ef-u39" secondAttribute="bottom" id="Vsu-vh-ZA5"/>
-                            <constraint firstItem="lc8-vz-M0A" firstAttribute="height" secondItem="gEV-NF-eTM" secondAttribute="height" id="XS3-PO-gIT"/>
                             <constraint firstItem="q37-fo-3aw" firstAttribute="leading" secondItem="mms-Ef-u39" secondAttribute="leading" id="byy-qs-ny1"/>
                             <constraint firstItem="CvJ-DH-f1J" firstAttribute="top" secondItem="gEV-NF-eTM" secondAttribute="top" id="igM-9a-qyU"/>
                             <constraint firstItem="mms-Ef-u39" firstAttribute="trailing" secondItem="DjC-8m-7DM" secondAttribute="trailing" id="ioT-jY-duC"/>
                             <constraint firstItem="4vU-n8-D9w" firstAttribute="centerY" secondItem="fK7-8Z-nYn" secondAttribute="centerY" id="je7-Hk-j8m"/>
-                            <constraint firstItem="lc8-vz-M0A" firstAttribute="leading" secondItem="gEV-NF-eTM" secondAttribute="leading" id="kzC-or-LRq"/>
                             <constraint firstItem="DjC-8m-7DM" firstAttribute="leading" secondItem="mms-Ef-u39" secondAttribute="leading" id="och-nh-XDE"/>
                             <constraint firstItem="q37-fo-3aw" firstAttribute="top" secondItem="fK7-8Z-nYn" secondAttribute="bottom" constant="2" id="scN-h1-cAv"/>
-                            <constraint firstAttribute="trailing" secondItem="lc8-vz-M0A" secondAttribute="trailing" id="xpa-6D-7Xl"/>
                             <constraint firstItem="fK7-8Z-nYn" firstAttribute="top" secondItem="mms-Ef-u39" secondAttribute="top" constant="20" id="xss-V1-gHx"/>
                             <constraint firstItem="CvJ-DH-f1J" firstAttribute="trailing" secondItem="mms-Ef-u39" secondAttribute="trailing" id="y2C-8W-Cij"/>
                         </constraints>
@@ -142,7 +136,6 @@
                     <connections>
                         <outlet property="firstCircleView" destination="fK7-8Z-nYn" id="yO6-W2-mmc"/>
                         <outlet property="loadAppImageView" destination="CvJ-DH-f1J" id="Q6f-bQ-dpz"/>
-                        <outlet property="loadingView" destination="lc8-vz-M0A" id="GNS-Cc-nmR"/>
                         <outlet property="secondCircleView" destination="XJY-1c-3eR" id="F0y-Tw-BrT"/>
                         <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="GtA-eu-Puq"/>
                         <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="h8P-k2-wbf"/>
@@ -211,26 +204,17 @@
                                     <constraint firstItem="iPt-Wi-4ZU" firstAttribute="centerY" secondItem="fMq-Cg-FB2" secondAttribute="centerY" id="zQX-Yl-HU3"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXj-a4-lCz" customClass="FadeView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <viewLayoutGuide key="safeArea" id="0u7-kW-FaI"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xXj-a4-lCz" firstAttribute="centerY" secondItem="Al6-4W-VCq" secondAttribute="centerY" id="7XL-Fk-8MG"/>
-                            <constraint firstItem="xXj-a4-lCz" firstAttribute="width" secondItem="Al6-4W-VCq" secondAttribute="width" id="9ih-Hq-El7"/>
                             <constraint firstItem="fMq-Cg-FB2" firstAttribute="trailing" secondItem="o6K-hh-dCp" secondAttribute="trailing" id="A2X-Lh-f72"/>
                             <constraint firstItem="fMq-Cg-FB2" firstAttribute="leading" secondItem="o6K-hh-dCp" secondAttribute="leading" id="OQF-Bf-Zta"/>
-                            <constraint firstItem="xXj-a4-lCz" firstAttribute="height" secondItem="Al6-4W-VCq" secondAttribute="height" id="Qxf-EO-eIz"/>
                             <constraint firstItem="eTN-zh-2bZ" firstAttribute="trailing" secondItem="o6K-hh-dCp" secondAttribute="trailing" id="YZg-G4-ZDy"/>
                             <constraint firstItem="fUY-9b-FXZ" firstAttribute="top" secondItem="o6K-hh-dCp" secondAttribute="top" constant="20" id="Yep-w6-5uT"/>
                             <constraint firstItem="eTN-zh-2bZ" firstAttribute="top" secondItem="fUY-9b-FXZ" secondAttribute="bottom" constant="2" id="bjt-6L-aTD"/>
                             <constraint firstItem="fMq-Cg-FB2" firstAttribute="centerY" secondItem="Al6-4W-VCq" secondAttribute="centerY" id="bkV-DT-t3g"/>
                             <constraint firstItem="fUY-9b-FXZ" firstAttribute="centerX" secondItem="Al6-4W-VCq" secondAttribute="centerX" id="cPy-LP-EmP"/>
                             <constraint firstItem="eTN-zh-2bZ" firstAttribute="leading" secondItem="o6K-hh-dCp" secondAttribute="leading" id="hxH-mq-d10"/>
-                            <constraint firstItem="xXj-a4-lCz" firstAttribute="centerX" secondItem="Al6-4W-VCq" secondAttribute="centerX" id="n00-MG-7YK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o6K-hh-dCp"/>
                     </view>
@@ -238,7 +222,6 @@
                         <outlet property="barView" destination="fMq-Cg-FB2" id="raq-wO-9kO"/>
                         <outlet property="circleView" destination="fUY-9b-FXZ" id="BGC-Bm-RAH"/>
                         <outlet property="iconImageView" destination="Wnd-Nz-AGt" id="EyC-fQ-URe"/>
-                        <outlet property="loadingView" destination="xXj-a4-lCz" id="lgH-m8-bHG"/>
                         <outlet property="textField" destination="iPt-Wi-4ZU" id="gTr-SF-23C"/>
                         <outlet property="titleLabel" destination="eTN-zh-2bZ" id="4Nv-Bz-zhV"/>
                         <segue destination="i6s-0c-wJx" kind="custom" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="deR-QF-h3a"/>
@@ -246,6 +229,7 @@
                         <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Fqh-er-alG"/>
                         <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="TTD-E9-Ai7"/>
                         <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="7Zm-6a-3s5"/>
+                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="KkP-X5-hIT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yt-Gt-8li" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,23 +311,14 @@
                                     <action selector="buttonsPressed:" destination="at0-Vl-Iay" eventType="touchUpInside" id="rql-K0-ZdI"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUC-q7-b0Q" userLabel="loadingView" customClass="FadeView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <viewLayoutGuide key="safeArea" id="wzy-ea-IWW"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6B5-KB-QQs" firstAttribute="leading" secondItem="NgM-iB-qzz" secondAttribute="leading" id="3nr-Xd-kCW"/>
                             <constraint firstItem="PgG-6l-2un" firstAttribute="centerX" secondItem="NgM-iB-qzz" secondAttribute="centerX" id="4e3-1G-Lb3"/>
                             <constraint firstItem="tlg-CH-R9Y" firstAttribute="leading" secondItem="YOc-Mv-4QJ" secondAttribute="leading" id="Doj-Hz-lkz"/>
-                            <constraint firstItem="UUC-q7-b0Q" firstAttribute="height" secondItem="NgM-iB-qzz" secondAttribute="height" id="EQy-Fw-xk4"/>
                             <constraint firstItem="6B5-KB-QQs" firstAttribute="top" secondItem="PgG-6l-2un" secondAttribute="bottom" id="GfY-cE-g3p"/>
-                            <constraint firstItem="UUC-q7-b0Q" firstAttribute="centerX" secondItem="NgM-iB-qzz" secondAttribute="centerX" id="HNs-JL-ODs"/>
                             <constraint firstItem="YOc-Mv-4QJ" firstAttribute="trailing" secondItem="6B5-KB-QQs" secondAttribute="trailing" id="JRj-aJ-bu2"/>
-                            <constraint firstItem="UUC-q7-b0Q" firstAttribute="width" secondItem="NgM-iB-qzz" secondAttribute="width" id="JSI-3x-569"/>
-                            <constraint firstItem="UUC-q7-b0Q" firstAttribute="centerY" secondItem="NgM-iB-qzz" secondAttribute="centerY" id="Pyq-VA-cHU"/>
                             <constraint firstItem="tlg-CH-R9Y" firstAttribute="trailing" secondItem="YOc-Mv-4QJ" secondAttribute="trailing" id="Q0B-u0-8VK"/>
                             <constraint firstItem="eCL-p5-EGL" firstAttribute="leading" secondItem="YOc-Mv-4QJ" secondAttribute="leading" id="Qnt-2l-Wkc"/>
                             <constraint firstItem="KUH-yk-xq8" firstAttribute="centerX" secondItem="PgG-6l-2un" secondAttribute="centerX" id="S7A-G0-Yra"/>
@@ -362,7 +337,6 @@
                         <outlet property="circleView" destination="PgG-6l-2un" id="PTH-bE-dwv"/>
                         <outlet property="firstButton" destination="rEi-lm-YTu" id="p3B-7B-cgQ"/>
                         <outlet property="iconImageView" destination="KUH-yk-xq8" id="EMp-Xo-Af6"/>
-                        <outlet property="loadingView" destination="UUC-q7-b0Q" id="4Hf-9f-NB6"/>
                         <outlet property="secondButton" destination="eCL-p5-EGL" id="FKI-Nm-gIZ"/>
                         <outlet property="thirdButton" destination="tlg-CH-R9Y" id="uuk-JX-vNz"/>
                         <outlet property="titleLabel" destination="6B5-KB-QQs" id="APm-Xp-VHP"/>
@@ -371,6 +345,7 @@
                         <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="pZq-jC-NNo"/>
                         <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="QQZ-gW-9VG"/>
                         <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="WYm-y3-vVO"/>
+                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="b6x-z8-BTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjt-4M-Sak" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -413,7 +388,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6a-dP-P97" userLabel="SecondButton" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="112" y="407" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="407" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="9Gy-eA-1NF"/>
@@ -424,7 +399,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="04E-sV-2i1" userLabel="Second Icon Image View">
-                                <rect key="frame" x="152" y="447" width="70" height="70"/>
+                                <rect key="frame" x="152.5" y="447" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="DiC-v8-nyh"/>
                                     <constraint firstAttribute="width" constant="70" id="IW8-Ju-oUT"/>
@@ -439,11 +414,6 @@
                                 <color key="textColor" red="0.60780155660000001" green="0.60787415499999997" blue="0.60776895279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7t-Uv-CIG" customClass="FadeView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <viewLayoutGuide key="safeArea" id="BZp-zK-hSO"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -453,17 +423,13 @@
                             <constraint firstItem="Icc-zg-yw7" firstAttribute="top" secondItem="hVt-j3-aHe" secondAttribute="top" constant="40" id="8M9-Bs-aSE"/>
                             <constraint firstAttribute="trailing" secondItem="eOi-us-N2p" secondAttribute="trailing" id="CGM-29-Dn9"/>
                             <constraint firstItem="Icc-zg-yw7" firstAttribute="centerX" secondItem="Wgc-5k-F3u" secondAttribute="centerX" id="S6W-sf-4xR"/>
-                            <constraint firstItem="H7t-Uv-CIG" firstAttribute="centerX" secondItem="Wgc-5k-F3u" secondAttribute="centerX" id="TkZ-uN-5EE"/>
                             <constraint firstItem="S1M-N8-sZE" firstAttribute="centerY" secondItem="Icc-zg-yw7" secondAttribute="centerY" id="Xv5-Om-2ea"/>
-                            <constraint firstItem="H7t-Uv-CIG" firstAttribute="centerY" secondItem="Wgc-5k-F3u" secondAttribute="centerY" id="alx-Ad-Vo5"/>
-                            <constraint firstItem="H7t-Uv-CIG" firstAttribute="height" secondItem="Wgc-5k-F3u" secondAttribute="height" id="bx5-dD-ffF"/>
                             <constraint firstItem="hVt-j3-aHe" firstAttribute="bottom" secondItem="eOi-us-N2p" secondAttribute="bottom" constant="40" id="dlb-04-pg5"/>
                             <constraint firstItem="eOi-us-N2p" firstAttribute="top" secondItem="P6a-dP-P97" secondAttribute="bottom" id="emQ-Rd-0aw"/>
                             <constraint firstItem="cf8-Aq-7A7" firstAttribute="leading" secondItem="Wgc-5k-F3u" secondAttribute="leading" id="hVv-7p-mnF"/>
                             <constraint firstItem="04E-sV-2i1" firstAttribute="centerX" secondItem="P6a-dP-P97" secondAttribute="centerX" id="kp0-f1-Q37"/>
                             <constraint firstItem="cf8-Aq-7A7" firstAttribute="top" secondItem="Icc-zg-yw7" secondAttribute="bottom" constant="2" id="rdI-yl-bi9"/>
                             <constraint firstItem="P6a-dP-P97" firstAttribute="centerX" secondItem="Wgc-5k-F3u" secondAttribute="centerX" id="sPf-Il-EvQ"/>
-                            <constraint firstItem="H7t-Uv-CIG" firstAttribute="width" secondItem="Wgc-5k-F3u" secondAttribute="width" id="x8d-h0-fpO"/>
                             <constraint firstAttribute="trailing" secondItem="cf8-Aq-7A7" secondAttribute="trailing" id="zeh-Y0-ICV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hVt-j3-aHe"/>
@@ -472,7 +438,6 @@
                         <outlet property="firstCircleButton" destination="Icc-zg-yw7" id="iL9-Ms-Dvx"/>
                         <outlet property="firstIconImageView" destination="04E-sV-2i1" id="yHj-en-wNk"/>
                         <outlet property="firstTitleLabel" destination="cf8-Aq-7A7" id="cat-ka-VQJ"/>
-                        <outlet property="loadingView" destination="H7t-Uv-CIG" id="0Xh-MA-NO1"/>
                         <outlet property="secondCircleButton" destination="P6a-dP-P97" id="WsR-HN-NFJ"/>
                         <outlet property="secondIconImageView" destination="S1M-N8-sZE" id="mmb-gi-DGU"/>
                         <outlet property="secondTitleLabel" destination="eOi-us-N2p" id="3cH-Nu-571"/>
@@ -481,6 +446,7 @@
                         <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="hJJ-Ts-gjH"/>
                         <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="SyC-IS-iiY"/>
                         <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Me1-cz-Gji"/>
+                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="FWq-FI-lyk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cii-Zw-uxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -575,16 +541,10 @@
                                     <action selector="nextButtonPressed:" destination="aTC-Ld-YNp" eventType="touchUpInside" id="CxI-HX-b3V"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYV-eG-hgJ" userLabel="loadingView" customClass="FadeView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <viewLayoutGuide key="safeArea" id="gGk-eM-TGF"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LhH-XM-0Z3" firstAttribute="centerX" secondItem="VPt-E9-8SF" secondAttribute="centerX" id="33a-MG-0fj"/>
-                            <constraint firstItem="KYV-eG-hgJ" firstAttribute="width" secondItem="NDT-7a-PuD" secondAttribute="width" id="3DP-Um-UTC"/>
                             <constraint firstItem="MJQ-Gf-6eF" firstAttribute="leading" secondItem="5Bu-Em-Vjb" secondAttribute="leading" id="6Fy-NR-aRi"/>
                             <constraint firstAttribute="centerX" secondItem="ewg-Ne-ike" secondAttribute="centerX" id="6Wa-T9-Zsm"/>
                             <constraint firstItem="B3d-Md-e8c" firstAttribute="leading" secondItem="5Bu-Em-Vjb" secondAttribute="leading" id="6bT-qy-XUC"/>
@@ -593,12 +553,10 @@
                             <constraint firstItem="B3d-Md-e8c" firstAttribute="trailing" secondItem="5Bu-Em-Vjb" secondAttribute="trailing" id="98a-i7-KKz"/>
                             <constraint firstItem="MJQ-Gf-6eF" firstAttribute="trailing" secondItem="5Bu-Em-Vjb" secondAttribute="trailing" id="CiR-hF-uWb"/>
                             <constraint firstItem="5Bu-Em-Vjb" firstAttribute="trailing" secondItem="Gqb-Sp-yUT" secondAttribute="trailing" id="FVg-X0-JU1"/>
-                            <constraint firstItem="KYV-eG-hgJ" firstAttribute="centerY" secondItem="NDT-7a-PuD" secondAttribute="centerY" id="IMa-rl-R2K"/>
                             <constraint firstItem="2Yb-nN-IlY" firstAttribute="height" secondItem="NDT-7a-PuD" secondAttribute="height" multiplier="0.59" id="Maw-hF-s0D"/>
                             <constraint firstItem="2Yb-nN-IlY" firstAttribute="leading" secondItem="5Bu-Em-Vjb" secondAttribute="leading" id="Oos-dF-8L3"/>
                             <constraint firstItem="MJQ-Gf-6eF" firstAttribute="top" secondItem="2Yb-nN-IlY" secondAttribute="top" id="P1Q-Op-ps8"/>
                             <constraint firstItem="2Yb-nN-IlY" firstAttribute="bottom" secondItem="5Bu-Em-Vjb" secondAttribute="bottom" id="Pih-kh-c8A"/>
-                            <constraint firstItem="KYV-eG-hgJ" firstAttribute="height" secondItem="NDT-7a-PuD" secondAttribute="height" id="Q0J-eh-wJs"/>
                             <constraint firstItem="VPt-E9-8SF" firstAttribute="top" secondItem="5Bu-Em-Vjb" secondAttribute="top" id="Rju-I7-Opy"/>
                             <constraint firstItem="ewg-Ne-ike" firstAttribute="top" secondItem="B3d-Md-e8c" secondAttribute="bottom" constant="35" id="X6F-Cn-Api"/>
                             <constraint firstAttribute="bottom" secondItem="MJQ-Gf-6eF" secondAttribute="bottom" id="Yib-fs-doz"/>
@@ -606,7 +564,6 @@
                             <constraint firstItem="Skt-aJ-7Ry" firstAttribute="leading" secondItem="NDT-7a-PuD" secondAttribute="leading" id="bVl-Cz-eGc"/>
                             <constraint firstItem="LhH-XM-0Z3" firstAttribute="centerY" secondItem="VPt-E9-8SF" secondAttribute="centerY" id="cL6-G8-dGS"/>
                             <constraint firstItem="VPt-E9-8SF" firstAttribute="centerX" secondItem="NDT-7a-PuD" secondAttribute="centerX" id="g27-qi-PQR"/>
-                            <constraint firstItem="KYV-eG-hgJ" firstAttribute="centerX" secondItem="NDT-7a-PuD" secondAttribute="centerX" id="gcG-ye-e7w"/>
                             <constraint firstItem="Gqb-Sp-yUT" firstAttribute="leading" secondItem="5Bu-Em-Vjb" secondAttribute="leading" id="hOt-lD-wN8"/>
                             <constraint firstItem="Gqb-Sp-yUT" firstAttribute="top" secondItem="ewg-Ne-ike" secondAttribute="bottom" constant="35" id="jwR-mb-7Qb"/>
                             <constraint firstItem="ewg-Ne-ike" firstAttribute="trailing" secondItem="5Bu-Em-Vjb" secondAttribute="trailing" id="mEI-NJ-ex8"/>
@@ -620,7 +577,6 @@
                         <outlet property="endPicker" destination="MJQ-Gf-6eF" id="lLX-ed-80g"/>
                         <outlet property="firstButton" destination="B3d-Md-e8c" id="CEm-us-G1G"/>
                         <outlet property="iconImageView" destination="LhH-XM-0Z3" id="sFf-Dx-3RR"/>
-                        <outlet property="loadingView" destination="KYV-eG-hgJ" id="6y1-aa-M5X"/>
                         <outlet property="nextButton" destination="Gqb-Sp-yUT" id="evW-eg-9fs"/>
                         <outlet property="secondButton" destination="ewg-Ne-ike" id="SEe-mt-zjl"/>
                         <outlet property="startPicker" destination="2Yb-nN-IlY" id="2RI-5B-1r8"/>
@@ -630,6 +586,7 @@
                         <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="mQz-dj-Gly"/>
                         <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="L0E-OR-5nC"/>
                         <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="3n0-Ap-nyQ"/>
+                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="FXn-DO-ljH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPC-Lr-sRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -670,7 +627,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-4z-8HX" userLabel="exampleButton" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="112" y="467" width="150" height="150"/>
+                                <rect key="frame" x="112.5" y="467" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="sNG-jd-iNV"/>
@@ -771,28 +728,19 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="tkw-uy-ij6"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iiL-CN-aGQ" userLabel="loadingView" customClass="FadeView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <viewLayoutGuide key="safeArea" id="wtg-H1-Xqu"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ibh-xq-Ce7" firstAttribute="leading" secondItem="gGB-1W-9GA" secondAttribute="leading" id="0Fq-At-6yr"/>
-                            <constraint firstItem="iiL-CN-aGQ" firstAttribute="height" secondItem="IMQ-zw-Kks" secondAttribute="height" id="Bv0-LV-6LG"/>
-                            <constraint firstItem="iiL-CN-aGQ" firstAttribute="width" secondItem="IMQ-zw-Kks" secondAttribute="width" id="E0F-sN-rgI"/>
                             <constraint firstItem="gGB-1W-9GA" firstAttribute="trailing" secondItem="sr9-gk-qwd" secondAttribute="trailing" constant="15" id="EAk-bm-arE"/>
                             <constraint firstItem="K6Y-p7-xn7" firstAttribute="leading" secondItem="gGB-1W-9GA" secondAttribute="leading" constant="14" id="EBC-em-9c1"/>
                             <constraint firstItem="6ea-ZS-TrM" firstAttribute="top" secondItem="IMQ-zw-Kks" secondAttribute="top" id="QbK-Wm-Su7"/>
-                            <constraint firstItem="iiL-CN-aGQ" firstAttribute="centerY" secondItem="IMQ-zw-Kks" secondAttribute="centerY" id="QoL-HQ-jBp"/>
                             <constraint firstItem="ibh-xq-Ce7" firstAttribute="top" secondItem="K6Y-p7-xn7" secondAttribute="bottom" constant="16" id="RyD-2n-2P6"/>
                             <constraint firstItem="ibh-xq-Ce7" firstAttribute="trailing" secondItem="gGB-1W-9GA" secondAttribute="trailing" id="aOQ-gQ-hzX"/>
                             <constraint firstItem="XM4-4z-8HX" firstAttribute="centerX" secondItem="IMQ-zw-Kks" secondAttribute="centerX" id="cHb-Xs-h5e"/>
                             <constraint firstItem="sr9-gk-qwd" firstAttribute="centerY" secondItem="XM4-4z-8HX" secondAttribute="centerY" id="hKg-gg-q4Q"/>
                             <constraint firstItem="6ea-ZS-TrM" firstAttribute="trailing" secondItem="gGB-1W-9GA" secondAttribute="trailing" id="jJe-MJ-sfx"/>
                             <constraint firstItem="K6Y-p7-xn7" firstAttribute="top" secondItem="gGB-1W-9GA" secondAttribute="top" id="jYa-IS-RLy"/>
-                            <constraint firstItem="iiL-CN-aGQ" firstAttribute="centerX" secondItem="IMQ-zw-Kks" secondAttribute="centerX" id="kOa-nB-Qhs"/>
                             <constraint firstItem="6ea-ZS-TrM" firstAttribute="leading" secondItem="gGB-1W-9GA" secondAttribute="leading" id="lqI-wx-gns"/>
                             <constraint firstItem="6ea-ZS-TrM" firstAttribute="bottom" secondItem="gGB-1W-9GA" secondAttribute="bottom" id="n6l-Sg-PSc"/>
                             <constraint firstItem="XM4-4z-8HX" firstAttribute="top" secondItem="ibh-xq-Ce7" secondAttribute="bottom" constant="30" id="oec-x3-cnQ"/>
@@ -805,7 +753,6 @@
                         <outlet property="backgroundView" destination="ibh-xq-Ce7" id="RwE-Ta-5xG"/>
                         <outlet property="exampleButton" destination="XM4-4z-8HX" id="W68-VA-jMu"/>
                         <outlet property="examplesView" destination="6ea-ZS-TrM" id="UlQ-iF-KWJ"/>
-                        <outlet property="loadingView" destination="iiL-CN-aGQ" id="hcm-EN-JUf"/>
                         <outlet property="nextButton" destination="sr9-gk-qwd" id="a4D-0X-CF0"/>
                         <outlet property="tableView" destination="AD8-5q-tOJ" id="1TQ-bj-Ao6"/>
                         <outlet property="textField" destination="lEl-qB-IAg" id="hyj-Cu-p9j"/>
@@ -815,24 +762,142 @@
                         <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="TVy-Wg-Rn8"/>
                         <segue destination="km8-jb-SwJ" kind="custom" identifier="MAIN" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="uKE-Lg-6vu"/>
                         <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="6TT-Qq-IZ6"/>
+                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Oim-pv-mWT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMy-eC-HTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5393" y="-197"/>
         </scene>
+        <!--Exam EndedVC-->
+        <scene sceneID="Xk4-QD-bnx">
+            <objects>
+                <viewController id="bxZ-Ce-Pae" customClass="ExamEndedVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rSJ-5r-DN1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5L-ZU-erD" customClass="ConfettiView" customModule="ConfettiView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUCCESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc3-cK-mZT">
+                                <rect key="frame" x="10" y="88" width="355" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="TXG-2F-3kX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="65"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now ready to apply for a job!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wer-Ev-gDe">
+                                <rect key="frame" x="16" y="485" width="343" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="F8A-Rg-P4j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Extrabold" family="Open Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="INTERVIEWER" translatesAutoresizingMaskIntoConstraints="NO" id="yj4-4k-bf1" customClass="BobbingImageView" customModule="GlobalResume" customModuleProvider="target">
+                                <rect key="frame" x="210" y="233.5" width="155" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="PlU-ko-UJH"/>
+                                    <constraint firstAttribute="width" constant="155" id="SOT-Ld-0ZT"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SHADOW" translatesAutoresizingMaskIntoConstraints="NO" id="hse-Lg-Yo5">
+                                <rect key="frame" x="257.5" y="438.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="2gb-7j-CMB"/>
+                                    <constraint firstAttribute="height" constant="60" id="a4Q-lf-ccm"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SHADOW" translatesAutoresizingMaskIntoConstraints="NO" id="R9o-W5-W3W" customClass="ExpandableImageView" customModule="GlobalResume" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="438.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="73Q-3L-5KL"/>
+                                    <constraint firstAttribute="width" constant="60" id="eRc-aB-37D"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cL-Y3-GWe" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
+                                <rect key="frame" x="112.5" y="581" width="150" height="37"/>
+                                <color key="backgroundColor" red="0.28996708989143372" green="0.56393927335739136" blue="0.8858216404914856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="d1u-5w-8fz"/>
+                                    <constraint firstAttribute="width" constant="150" id="jVi-Gl-Y6h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <state key="normal" title="View Resume">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnPressedWithSender:" destination="bxZ-Ce-Pae" eventType="touchUpInside" id="Nrw-Yz-85e"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="APPLICANTFEMALE" translatesAutoresizingMaskIntoConstraints="NO" id="vJh-l6-Qpp" customClass="BobbingImageView" customModule="GlobalResume" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="243.5" width="155" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bdL-QG-teb"/>
+                                    <constraint firstAttribute="width" constant="155" id="tHK-I4-72U"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wer-Ev-gDe" firstAttribute="centerY" secondItem="rSJ-5r-DN1" secondAttribute="centerY" constant="188.5" id="2X4-WC-tE6"/>
+                            <constraint firstAttribute="trailing" secondItem="yj4-4k-bf1" secondAttribute="trailing" constant="10" id="2y1-Em-9sP"/>
+                            <constraint firstItem="aSZ-Ky-O3R" firstAttribute="top" secondItem="I5L-ZU-erD" secondAttribute="bottom" constant="-647" id="3c8-gs-l3h"/>
+                            <constraint firstItem="aSZ-Ky-O3R" firstAttribute="trailing" secondItem="Tc3-cK-mZT" secondAttribute="trailing" constant="10" id="56e-7w-HDz"/>
+                            <constraint firstItem="Tc3-cK-mZT" firstAttribute="leading" secondItem="aSZ-Ky-O3R" secondAttribute="leading" constant="10" id="B7W-o3-Xxr"/>
+                            <constraint firstItem="vJh-l6-Qpp" firstAttribute="centerY" secondItem="aSZ-Ky-O3R" secondAttribute="centerY" id="HQW-Yw-aDX"/>
+                            <constraint firstItem="Tc3-cK-mZT" firstAttribute="top" secondItem="aSZ-Ky-O3R" secondAttribute="top" constant="68" id="JL3-wl-I1z"/>
+                            <constraint firstItem="hse-Lg-Yo5" firstAttribute="centerY" secondItem="R9o-W5-W3W" secondAttribute="centerY" id="Ltb-IR-y27"/>
+                            <constraint firstItem="R9o-W5-W3W" firstAttribute="centerX" secondItem="vJh-l6-Qpp" secondAttribute="centerX" constant="20" id="MXz-bS-he7"/>
+                            <constraint firstItem="R9o-W5-W3W" firstAttribute="top" secondItem="vJh-l6-Qpp" secondAttribute="bottom" constant="-5" id="Uvf-Fv-olc"/>
+                            <constraint firstItem="I5L-ZU-erD" firstAttribute="leading" secondItem="aSZ-Ky-O3R" secondAttribute="trailing" constant="-375" id="XKv-to-Lxp"/>
+                            <constraint firstItem="3cL-Y3-GWe" firstAttribute="centerX" secondItem="rSJ-5r-DN1" secondAttribute="centerX" id="Zco-0w-4pi"/>
+                            <constraint firstItem="wer-Ev-gDe" firstAttribute="leading" secondItem="aSZ-Ky-O3R" secondAttribute="leading" constant="16" id="acD-R0-JSz"/>
+                            <constraint firstItem="aSZ-Ky-O3R" firstAttribute="trailing" secondItem="wer-Ev-gDe" secondAttribute="trailing" constant="16" id="agV-RQ-T34"/>
+                            <constraint firstItem="I5L-ZU-erD" firstAttribute="width" secondItem="aSZ-Ky-O3R" secondAttribute="width" id="bhf-7g-pGj"/>
+                            <constraint firstItem="yj4-4k-bf1" firstAttribute="centerY" secondItem="rSJ-5r-DN1" secondAttribute="centerY" id="giQ-sz-P6r"/>
+                            <constraint firstItem="vJh-l6-Qpp" firstAttribute="leading" secondItem="aSZ-Ky-O3R" secondAttribute="leading" id="lVs-HP-zm3"/>
+                            <constraint firstItem="3cL-Y3-GWe" firstAttribute="top" secondItem="wer-Ev-gDe" secondAttribute="bottom" constant="22" id="nQg-Qx-7Ta"/>
+                            <constraint firstItem="hse-Lg-Yo5" firstAttribute="centerX" secondItem="yj4-4k-bf1" secondAttribute="centerX" id="rTE-SM-Z98"/>
+                            <constraint firstItem="I5L-ZU-erD" firstAttribute="height" secondItem="aSZ-Ky-O3R" secondAttribute="height" id="xDi-Ag-wRd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aSZ-Ky-O3R"/>
+                    </view>
+                    <connections>
+                        <outlet property="applicantImage" destination="vJh-l6-Qpp" id="bQn-hl-Z8C"/>
+                        <outlet property="applicantsShadowImage" destination="R9o-W5-W3W" id="Ioc-qE-6lO"/>
+                        <outlet property="btn" destination="3cL-Y3-GWe" id="7Sx-8y-2sq"/>
+                        <outlet property="confettiVIew" destination="I5L-ZU-erD" id="iy5-2P-uO3"/>
+                        <outlet property="interviewerImage" destination="yj4-4k-bf1" id="czk-Rr-lEa"/>
+                        <outlet property="secondTitleLabel" destination="wer-Ev-gDe" id="r8z-qQ-hTc"/>
+                        <outlet property="titleLabel" destination="Tc3-cK-mZT" id="M7n-Un-ylg"/>
+                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Qia-b0-Hwo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYZ-eT-Kvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6402.3999999999996" y="-197.45127436281859"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="APPLICANTFEMALE" width="113" height="222"/>
+        <image name="INTERVIEWER" width="84" height="209"/>
         <image name="LoadAppScreen" width="374" height="666"/>
+        <image name="SHADOW" width="61" height="25"/>
         <image name="createIcon" width="72" height="72"/>
         <image name="editIcon" width="66" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3n0-Ap-nyQ"/>
-        <segue reference="S8G-qb-OL8"/>
-        <segue reference="vfj-eR-YFB"/>
-        <segue reference="5ON-JT-DbY"/>
-        <segue reference="mQz-dj-Gly"/>
-        <segue reference="L0E-OR-5nC"/>
+        <segue reference="FWq-FI-lyk"/>
+        <segue reference="Me1-cz-Gji"/>
+        <segue reference="DC8-RV-6hg"/>
+        <segue reference="Wsr-eA-LLM"/>
+        <segue reference="TVy-Wg-Rn8"/>
+        <segue reference="6TT-Qq-IZ6"/>
+        <segue reference="Qia-b0-Hwo"/>
     </inferredMetricsTieBreakers>
 </document>

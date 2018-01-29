@@ -12,7 +12,6 @@
 		09202DE7200FC87000320D60 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE6200FC87000320D60 /* Gender.swift */; };
 		09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE8200FCAAC00320D60 /* Animatable.swift */; };
 		09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEA200FCB6F00320D60 /* Fadeable.swift */; };
-		09202DED200FCBFB00320D60 /* LoadAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEC200FCBFB00320D60 /* LoadAppView.swift */; };
 		09202DF0200FD59700320D60 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEF200FD59700320D60 /* CustomSegue.swift */; };
 		09202DF2200FD6E300320D60 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DF1200FD6E300320D60 /* Loadable.swift */; };
 		09202DF4200FD7A800320D60 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DF3200FD7A800320D60 /* LoadView.swift */; };
@@ -38,9 +37,14 @@
 		095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */; };
 		098324C620124991003B32FF /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C520124991003B32FF /* Trigger.swift */; };
 		098324C820124EF1003B32FF /* OneInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C720124EF1003B32FF /* OneInstance.swift */; };
-		0989E41C201998630075E674 /* FadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0989E41B201998630075E674 /* FadeView.swift */; };
+		098EA4B0201FE49F006D7E02 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 098EA4AF201FE49E006D7E02 /* OpenSans-ExtraBold.ttf */; };
 		09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */; };
-		09B33547201A84FD005FDEC2 /* FIRCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33546201A84FD005FDEC2 /* FIRCollectionReference.swift */; };
+		09B33547201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33546201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift */; };
+		09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */; };
+		09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */; };
+		09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB7201FA9E10073BC4C /* Bobbable.swift */; };
+		09CE5FBA201FC6720073BC4C /* Expandable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB9201FC6720073BC4C /* Expandable.swift */; };
+		09CE5FBC201FC7DA0073BC4C /* ExpandableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FBB201FC7DA0073BC4C /* ExpandableImageView.swift */; };
 		25902A771625EBB83E1693F2 /* Pods_GlobalResume.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F198AD1B0C9D4A2DDAAD90F2 /* Pods_GlobalResume.framework */; };
 		3D2A283D99D3F54FA12D7A07 /* Pods_GlobalResumeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82C8D505BAED6B881487A3C /* Pods_GlobalResumeUITests.framework */; };
 		AD1E4D958F0E2153E6FCD9C8 /* Pods_GlobalResumeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FED253CE7340D78FE827612D /* Pods_GlobalResumeTests.framework */; };
@@ -69,7 +73,6 @@
 		09202DE6200FC87000320D60 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		09202DE8200FCAAC00320D60 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		09202DEA200FCB6F00320D60 /* Fadeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fadeable.swift; sourceTree = "<group>"; };
-		09202DEC200FCBFB00320D60 /* LoadAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAppView.swift; sourceTree = "<group>"; };
 		09202DEF200FD59700320D60 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		09202DF1200FD6E300320D60 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		09202DF3200FD7A800320D60 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
@@ -103,10 +106,15 @@
 		095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoIconButtonsVC.swift; sourceTree = "<group>"; };
 		098324C520124991003B32FF /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		098324C720124EF1003B32FF /* OneInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneInstance.swift; sourceTree = "<group>"; };
-		0989E41B201998630075E674 /* FadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeView.swift; sourceTree = "<group>"; };
+		098EA4AF201FE49E006D7E02 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "../../../../../Downloads/Open-Sans-Light/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		098F1BE8609678B660108273 /* Pods-GlobalResume.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalResume.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalResume/Pods-GlobalResume.release.xcconfig"; sourceTree = "<group>"; };
 		09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRFirebaseService.swift; sourceTree = "<group>"; };
-		09B33546201A84FD005FDEC2 /* FIRCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCollectionReference.swift; sourceTree = "<group>"; };
+		09B33546201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCollectionReferenceParent.swift; sourceTree = "<group>"; };
+		09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamEndedVC.swift; sourceTree = "<group>"; };
+		09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobbingImageView.swift; sourceTree = "<group>"; };
+		09CE5FB7201FA9E10073BC4C /* Bobbable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bobbable.swift; sourceTree = "<group>"; };
+		09CE5FB9201FC6720073BC4C /* Expandable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expandable.swift; sourceTree = "<group>"; };
+		09CE5FBB201FC7DA0073BC4C /* ExpandableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableImageView.swift; sourceTree = "<group>"; };
 		30C5ECFDACCE568DC9634724 /* Pods-GlobalResumeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalResumeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalResumeUITests/Pods-GlobalResumeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		805B89746B92149B9FF41B00 /* Pods-GlobalResume.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalResume.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalResume/Pods-GlobalResume.debug.xcconfig"; sourceTree = "<group>"; };
 		A65ED7BFFECE6A7EC422AE08 /* Pods-GlobalResumeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalResumeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalResumeUITests/Pods-GlobalResumeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +159,8 @@
 				09202DE8200FCAAC00320D60 /* Animatable.swift */,
 				09202DEA200FCB6F00320D60 /* Fadeable.swift */,
 				09202DF1200FD6E300320D60 /* Loadable.swift */,
+				09CE5FB7201FA9E10073BC4C /* Bobbable.swift */,
+				09CE5FB9201FC6720073BC4C /* Expandable.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -170,7 +180,7 @@
 				09388FA1200E585200A8B623 /* Exam.swift */,
 				098324C520124991003B32FF /* Trigger.swift */,
 				09202DE6200FC87000320D60 /* Gender.swift */,
-				09B33546201A84FD005FDEC2 /* FIRCollectionReference.swift */,
+				09B33546201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift */,
 				093F3CF9201A8D8D0086B540 /* Children.swift */,
 			);
 			path = Constants;
@@ -251,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				095E2004200D617D0078956B /* MainVC.swift */,
+				09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */,
 				095E203F200D71310078956B /* InputVC.swift */,
 				095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */,
 				09388FAA200EEC5300A8B623 /* ThreeBarButtonsVC.swift */,
@@ -265,10 +276,10 @@
 			children = (
 				090C8AC620105DD100E58628 /* CircleButton.swift */,
 				095E203D200D669C0078956B /* CircleView.swift */,
-				09202DEC200FCBFB00320D60 /* LoadAppView.swift */,
 				09202DF3200FD7A800320D60 /* LoadView.swift */,
 				094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */,
-				0989E41B201998630075E674 /* FadeView.swift */,
+				09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */,
+				09CE5FBB201FC7DA0073BC4C /* ExpandableImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,6 +296,7 @@
 		095E2043200D9B9B0078956B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				098EA4AF201FE49E006D7E02 /* OpenSans-ExtraBold.ttf */,
 				095E2045200D9BAD0078956B /* OpenSans-Regular.ttf */,
 				095E2044200D9BA80078956B /* OpenSans-Light.ttf */,
 			);
@@ -433,6 +445,7 @@
 				0950C362201A568C007CA442 /* GoogleService-Info.plist in Resources */,
 				095E200D200D617D0078956B /* Assets.xcassets in Resources */,
 				095E2008200D617D0078956B /* Main.storyboard in Resources */,
+				098EA4B0201FE49F006D7E02 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,15 +602,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResume/Pods-GlobalResume-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ConfettiView/ConfettiView.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/SAConfettiView/SAConfettiView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConfettiView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SAConfettiView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -619,24 +632,27 @@
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
 				098324C820124EF1003B32FF /* OneInstance.swift in Sources */,
 				095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */,
+				09CE5FBC201FC7DA0073BC4C /* ExpandableImageView.swift in Sources */,
 				094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */,
 				095E2049200DA3450078956B /* Color.swift in Sources */,
 				094DDD582017FF5800A9D3F0 /* TwoBarButtonsVC.swift in Sources */,
 				098324C620124991003B32FF /* Trigger.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
+				09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */,
 				09202DF0200FD59700320D60 /* CustomSegue.swift in Sources */,
 				093F3CFA201A8D8D0086B540 /* Children.swift in Sources */,
 				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,
 				090C8AC920105E1E00E58628 /* Roundable.swift in Sources */,
-				09B33547201A84FD005FDEC2 /* FIRCollectionReference.swift in Sources */,
-				0989E41C201998630075E674 /* FadeView.swift in Sources */,
+				09B33547201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift in Sources */,
+				09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */,
 				09202DF4200FD7A800320D60 /* LoadView.swift in Sources */,
 				094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */,
-				09202DED200FCBFB00320D60 /* LoadAppView.swift in Sources */,
 				09202DF2200FD6E300320D60 /* Loadable.swift in Sources */,
 				09202DE7200FC87000320D60 /* Gender.swift in Sources */,
 				095E2003200D617D0078956B /* AppDelegate.swift in Sources */,
+				09CE5FBA201FC6720073BC4C /* Expandable.swift in Sources */,
 				09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */,
+				09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */,
 				090C8AC720105DD100E58628 /* CircleButton.swift in Sources */,
 				095E204B200DB6D80078956B /* ResumeData.swift in Sources */,
 				09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */,
@@ -803,12 +819,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BMHTCPUWH7;
 				INFOPLIST_FILE = GlobalResume/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.dev.joriah.GlobalResume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -821,12 +837,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BMHTCPUWH7;
 				INFOPLIST_FILE = GlobalResume/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.dev.joriah.GlobalResume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

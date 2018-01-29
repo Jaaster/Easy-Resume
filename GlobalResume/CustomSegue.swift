@@ -31,33 +31,25 @@ class CustomSegue: UIStoryboardSegue {
                     
                 } else {
                     //Normal exam
-                    loadableDestination.currentExam = currentExam.next()!
+                    if let nextExam = currentExam.next() {
+                        loadableDestination.currentExam = nextExam
+                    }
                 }
                 
             }
-            //Animation for Segue
-            
-            
-            var fadeTime = 0.4
-            if source is MainVC {
-                fadeTime = 0.8
-            }
-            
-            loadableSource.loadingView.backgroundColor = UIColor.white
-            loadableSource.loadingView.time = fadeTime
-            loadableSource.loadingView.fade(alpha: 1.0, completion: {
-                source.present(destination, animated: false, completion: {
-                    loadableDestination.loadingView.backgroundColor = UIColor.white
-                    loadableDestination.loadingView.time = fadeTime
-                    loadableDestination.loadingView.fade(alpha: 0.0)
-                    
-                })
-            })
-            
         }
+        
+        source.view.fadeSubviews(alpha: 1.0, completion: {
+            source.present(destination, animated: false, completion: {
+                for subVew in destination.view.subviews {
+                        subVew.alpha = 0.0
+                }
+                destination.view.fadeSubviews(alpha: 1.0)
+                
+            
+            })
+        })
     }
-    
-
     
 }
 

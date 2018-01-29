@@ -13,8 +13,16 @@ class FIRFirebaseService {
     static let shared = FIRFirebaseService()
     private init() {}
     
-    func updateExamples(for reference: FIRCollectionReference, for children: Children) {
-        let ref = getReference(for: reference, for: children)
+    func configure() {
+        FirebaseApp.configure()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.updateData(for: .examples, with: .jobs)
+
+        }
+    }
+    
+    private func updateData(for parent: FIRCollectionReferenceParent, with child: FIRCollectionReferenceParent.Child) {
+        let ref = getReference(for: parent, with: child)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? [String] {
@@ -27,11 +35,9 @@ class FIRFirebaseService {
     }
 
     
-    private func getReference(for reference : FIRCollectionReference, for children: Children) -> DatabaseReference {
-        return Database.database().reference(withPath: reference.rawValue).child(children.rawValue)
+    private func getReference(for reference: FIRCollectionReferenceParent, with child: FIRCollectionReferenceParent.Child) -> DatabaseReference {
+        return Database.database().reference(withPath: reference.rawValue).child(child.rawValue)
     }
     
-    func configure() {
-        FirebaseApp.configure()
-    }
+   
 }

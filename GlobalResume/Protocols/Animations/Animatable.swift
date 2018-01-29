@@ -9,5 +9,5 @@
 import UIKit
 
 protocol Animatable {
-    var time: Double { get set }
+    var time: Double { get }
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class TwoBarButtonsVC: UIViewController, LoadableVC {
     
-    @IBOutlet var loadingView: FadeView!
     @IBOutlet weak var circleView: CircleView!
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!
@@ -21,9 +20,7 @@ class TwoBarButtonsVC: UIViewController, LoadableVC {
     //DatePickers
     @IBOutlet weak var startPicker: UIDatePicker!
     @IBOutlet weak var endPicker: UIDatePicker!
-    
-    
-    var loadingViewColor: UIColor!
+
     var currentExam: Exam!
     
     var dateSet = (false, false)

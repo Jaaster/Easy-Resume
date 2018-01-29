@@ -8,15 +8,11 @@
 
 import UIKit
 class MainVC: UIViewController, LoadableVC {
-   
     
-    
-    @IBOutlet weak var loadAppImageView: LoadAppView!
+    @IBOutlet weak var loadAppImageView: UIImageView!
     @IBOutlet weak var firstCircleView: CircleView!
     @IBOutlet weak var secondCircleView: CircleView!
     
-    @IBOutlet weak var loadingView: FadeView!
-    var loadingViewColor: UIColor!
     var currentExam: Exam!
     
     
@@ -26,9 +22,6 @@ class MainVC: UIViewController, LoadableVC {
         currentExam = Exam.menu
         loadAppImageView.fade(alpha: 0.0)
         updateData()
-        DispatchQueue.global(qos: .userInteractive).async {
-            FIRFirebaseService.shared.updateExamples(for: .examples, for: .jobs)
-        }
         
     }
     

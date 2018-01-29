@@ -7,29 +7,58 @@
 //
 
 import UIKit
-
-class ExamEndedVC: UIViewController {
-
+import ConfettiView
+class ExamEndedVC: UIViewController, LoadableVC {
+   
+    var currentExam: Exam!
+    
+    @IBOutlet weak var applicantImage: BobbingImageView!
+    @IBOutlet weak var interviewerImage: BobbingImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var secondTitleLabel: UILabel!
+    @IBOutlet weak var btn: CircleButton!
+    
+    @IBOutlet weak var confettiVIew: ConfettiView!
+    @IBOutlet weak var applicantsShadowImage: ExpandableImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    override func loadView() {
+        super.loadView()
+        updateData()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    func updateData() {
+        
+        confettiVIew.startAnimating()
+        let color = Color.blue.getUIColor()
+        titleLabel.textColor = color
+        titleLabel.text = "SUCCESS!"
+        
+        secondTitleLabel.textColor = color
+        secondTitleLabel.text = "You are now ready to apply for a job!"
+        
+        
+        btn.backgroundColor = color
+        btn.titleLabel?.textColor = UIColor.white
+        btn.round(scale: 7.5)
+        btn.setTitle("View Resume", for: .normal)
+        interviewerImage.image = UIImage(named: "INTERVIEWER")
+        applicantImage.image = UIImage(named: "APPLICANT\(ResumeData.shared.getData(forKey: Exam.gender))")
+        
+        applicantImage.toggleBobbing()
+        applicantsShadowImage.toggleExpansion()
+        
+        
+    }
+    @IBAction func btnPressed(sender: CircleButton) {
+        handleTransportation(data: "")
+    }
+ 
+    
 }

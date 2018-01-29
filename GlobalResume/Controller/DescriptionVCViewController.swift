@@ -11,13 +11,11 @@ import UIKit
 
 class DescriptionVCViewController: UIViewController, LoadableVC {
     
-    var loadingViewColor: UIColor!
     var currentExam: Exam!
     
     var examples = [String]()
 
-    @IBOutlet var loadingView: FadeView!
-    @IBOutlet weak var examplesView: FadeView!
+    @IBOutlet weak var examplesView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextView!

@@ -10,10 +10,7 @@ import UIKit
 
 protocol LoadableVC: class {
     
-    weak var loadingView: FadeView! { get set }
-    var loadingViewColor: UIColor! { get set }
     var currentExam: Exam! { get set }
-    
     func updateData()
 }
 
@@ -21,6 +18,11 @@ extension LoadableVC where Self: UIViewController {
 
     
     func handleTransportation(data: String) {
+        
+        if currentExam == nil {
+            self.performSegue(withIdentifier: "MENU", sender: nil)
+            return
+        }
         ResumeData.shared.updateData(dataType: currentExam, data: data)
         //Loop whole need to fix...User can the name of a button that calls a trigger it will call it
         
@@ -45,8 +47,7 @@ extension LoadableVC where Self: UIViewController {
                 if let nextExam = currentExam.next() {
                     handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
                 } else {
-                    //End of exam
-                    
+                    self.performSegue(withIdentifier: "EXAM_ENDED", sender: nil)
                 }
             }
         } else {
@@ -79,12 +80,12 @@ extension LoadableVC where Self: UIViewController {
         if nextKind == currentExamKind {
             //Stay and update current view
             self.currentExam = nextExam
-            loadingView.fade(alpha: 1.0, completion: {
+            view.fadeSubviews(alpha: 0.0, completion: {
                 self.updateData()
-                self.loadingView.fade(alpha: 0.0)
+                self.view.fadeSubviews(alpha: 1.0)
             })
         } else {
             self.performSegue(withIdentifier: nextKind.rawValue, sender: nil)
+        }
     }
-}
 }

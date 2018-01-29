@@ -8,16 +8,4 @@
 
 import UIKit
 
-class LoadView: UIView, Loadable {
-
-    private var _time = 0.7
-    
-    var time: Double {
-        get {
-            return _time
-        }
-        set {
-            _time = newValue
-        }
-    }
-}
+class LoadView: UIView, Loadable {}

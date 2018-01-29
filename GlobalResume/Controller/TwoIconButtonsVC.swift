@@ -10,7 +10,6 @@ import UIKit
 
 class TwoIconButtonsVC: UIViewController, LoadableVC {
 
-    @IBOutlet weak var loadingView: FadeView!
     @IBOutlet weak var firstCircleButton: CircleButton!
     @IBOutlet weak var secondCircleButton: CircleButton!
     
@@ -19,7 +18,6 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
     
     @IBOutlet weak var firstIconImageView: UIImageView!
     @IBOutlet weak var secondIconImageView: UIImageView!
-    var loadingViewColor: UIColor!
 
     var currentExam: Exam!
     

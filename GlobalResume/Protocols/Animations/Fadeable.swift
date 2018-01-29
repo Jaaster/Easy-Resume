@@ -11,15 +11,57 @@ import UIKit
 protocol Fadeable: Animatable {
     func fade(alpha: CGFloat)
     func fade(alpha: CGFloat, completion: @escaping ()->())
+    func fade(alpha: CGFloat, newTime: Double, completion: @escaping ()->())
+    func fade(alpha: CGFloat, newTime: Double)
+    
+    func fadeSubviews(alpha: CGFloat, completion: @escaping ()->())
+    func fadeSubviews(alpha: CGFloat)
 }
 
-extension Fadeable where Self: UIView {
-    func fade(alpha: CGFloat) {
-        UIView.animate(withDuration: time, animations: {
+extension UIView: Fadeable {
+  
+    
+    
+    var time: Double {
+        get {
+            return 1.0
+        }
+    }
+    
+    func fade(alpha: CGFloat, newTime: Double, completion: @escaping () -> ()) {
+        UIView.animate(withDuration: newTime, animations: {
             self.alpha = alpha
+        }, completion: {
+            _ in
+            completion()
         })
     }
     
+    
+    func fade(alpha: CGFloat, newTime: Double) {
+        fade(alpha: alpha, newTime: newTime, completion: { })
+    }
+    
+    
+    func fadeSubviews(alpha: CGFloat) {
+        fadeSubviews(alpha: alpha, completion: { })
+    }
+    
+    func fade(alpha: CGFloat) {
+        fade(alpha: alpha, completion: { })
+    }
+    
+    func fadeSubviews(alpha: CGFloat, completion: @escaping () -> ()) {
+        for subview in subviews {
+            if !subview.isHidden {
+                subview.fade(alpha: alpha)
+            }
+        }
+        defer {
+            completion()
+        }
+    }
+   
     func fade(alpha: CGFloat, completion: @escaping ()->()) {
         UIView.animate(withDuration: time, animations: {
             self.alpha = alpha
@@ -29,4 +71,5 @@ extension Fadeable where Self: UIView {
         })
     }
 }
+
 
