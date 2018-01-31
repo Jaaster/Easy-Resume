@@ -523,6 +523,7 @@
                             </datePicker>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MJQ-Gf-6eF" userLabel="End Picker">
                                 <rect key="frame" x="0.0" y="273.5" width="375" height="393.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <date key="date" timeIntervalSinceReferenceDate="538680316.33014095">
                                     <!--2018-01-26 17:25:16 +0000-->
                                 </date>
@@ -892,12 +893,12 @@
         <image name="editIcon" width="66" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FWq-FI-lyk"/>
-        <segue reference="Me1-cz-Gji"/>
-        <segue reference="DC8-RV-6hg"/>
-        <segue reference="Wsr-eA-LLM"/>
-        <segue reference="TVy-Wg-Rn8"/>
-        <segue reference="6TT-Qq-IZ6"/>
-        <segue reference="Qia-b0-Hwo"/>
+        <segue reference="FXn-DO-ljH"/>
+        <segue reference="3n0-Ap-nyQ"/>
+        <segue reference="QQZ-gW-9VG"/>
+        <segue reference="vfj-eR-YFB"/>
+        <segue reference="5ON-JT-DbY"/>
+        <segue reference="mQz-dj-Gly"/>
+        <segue reference="L0E-OR-5nC"/>
     </inferredMetricsTieBreakers>
 </document>

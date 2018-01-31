@@ -30,6 +30,10 @@ class InputVC: UIViewController, LoadableVC {
     
     
     func updateData() {
+        if currentExam == .zipcode {
+            textField.keyboardType = .numberPad
+        }
+        
         let values = currentExam.getValues()
         
         let color = values.color.getUIColor()

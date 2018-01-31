@@ -62,9 +62,9 @@ class TwoBarButtonsVC: UIViewController, LoadableVC {
     }
     
     @IBAction func buttonsPressed(_ sender: UIButton) {
-        
+
         if currentExam.getValues().buttons[0].name == "START" {
-            if sender.tag == 0 {
+            if sender.tag == 0 {            
                 startPicker.isHidden = false
             } else {
                 endPicker.isHidden = false

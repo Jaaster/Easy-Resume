@@ -36,7 +36,7 @@ class MainVC: UIViewController, LoadableVC {
             handleTransportation(data: "")
         } else {
             //Edit Button Pressed
-            
+            ResumeDataHandler.shared.editingResume = true 
         }
         
     }

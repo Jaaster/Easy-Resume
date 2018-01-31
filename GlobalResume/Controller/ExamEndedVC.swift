@@ -49,7 +49,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
         btn.round(scale: 7.5)
         btn.setTitle("View Resume", for: .normal)
         interviewerImage.image = UIImage(named: "INTERVIEWER")
-        applicantImage.image = UIImage(named: "APPLICANT\(ResumeData.shared.getData(forKey: Exam.gender))")
+        applicantImage.image = UIImage(named: "APPLICANT\(ResumeDataHandler.shared.getData(forKey: Exam.gender))")
         
         applicantImage.toggleBobbing()
         applicantsShadowImage.toggleExpansion()

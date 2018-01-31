@@ -13,6 +13,9 @@ enum Trigger: String {
     case employed = "EMPLOYED"
     case unemployed = "UNEMPLOYED"
     
+    case inSchool = "IN SCHOOL"
+    case graduated = "GRADUATED"
+    
     func allValues() -> [Trigger] {
         return [.employed, .unemployed]
     }
@@ -41,10 +44,26 @@ enum Trigger: String {
     func examList() -> [Exam] {
         switch self {
         case .employed, .unemployed:
-            return [Exam.companyName, Exam.jobTitle, Exam.employmentRecord, Exam.jobDescription]
-            
+            return [.companyName, .jobTitle, .employmentRecord, .jobDescription]
+        case .inSchool, .graduated:
+            return [.educationRecord, .educationLevel, .specificFieldOfStudy, .schoolName]
         }
         
+    }
+    
+    func isEmployment() -> Bool {
+        if self == .employed || self == .unemployed {
+            return true
+        }
+        return false
+    }
+    
+    func isEducation() -> Bool {
+        if self == .graduated || self == .inSchool {
+            return true
+        }
+        return false
+    
     }
     
     func isFirst(exam: Exam) -> Exam? {

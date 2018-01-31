@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		090C8AC720105DD100E58628 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC620105DD100E58628 /* CircleButton.swift */; };
 		090C8AC920105E1E00E58628 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC820105E1E00E58628 /* Roundable.swift */; };
+		0913F9EE2021688900760EEA /* LoadableVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F9ED2021688900760EEA /* LoadableVCExtension.swift */; };
+		0913F9F020216A5C00760EEA /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F9EF20216A5C00760EEA /* Saveable.swift */; };
+		0913F9F220216A7800760EEA /* SaveableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F9F120216A7800760EEA /* SaveableExtension.swift */; };
 		09202DE7200FC87000320D60 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE6200FC87000320D60 /* Gender.swift */; };
 		09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE8200FCAAC00320D60 /* Animatable.swift */; };
 		09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEA200FCB6F00320D60 /* Fadeable.swift */; };
@@ -23,6 +26,13 @@
 		094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */; };
 		094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */; };
 		0950C362201A568C007CA442 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0950C361201A568C007CA442 /* GoogleService-Info.plist */; };
+		095C4B432021291C00271CAB /* PersistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B422021291C00271CAB /* PersistantService.swift */; };
+		095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */; };
+		095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */; };
+		095C4B4D20212A7000271CAB /* Employment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4720212A6F00271CAB /* Employment+CoreDataClass.swift */; };
+		095C4B4E20212A7000271CAB /* ResumeData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4820212A6F00271CAB /* ResumeData+CoreDataProperties.swift */; };
+		095C4B4F20212A7000271CAB /* Education+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4920212A6F00271CAB /* Education+CoreDataProperties.swift */; };
+		095C4B5020212A7000271CAB /* ResumeData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4A20212A6F00271CAB /* ResumeData+CoreDataClass.swift */; };
 		095E2003200D617D0078956B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2002200D617D0078956B /* AppDelegate.swift */; };
 		095E2005200D617D0078956B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2004200D617D0078956B /* MainVC.swift */; };
 		095E2008200D617D0078956B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095E2006200D617D0078956B /* Main.storyboard */; };
@@ -33,7 +43,7 @@
 		095E203E200D669C0078956B /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203D200D669C0078956B /* CircleView.swift */; };
 		095E2040200D71310078956B /* InputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203F200D71310078956B /* InputVC.swift */; };
 		095E2049200DA3450078956B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2048200DA3450078956B /* Color.swift */; };
-		095E204B200DB6D80078956B /* ResumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204A200DB6D80078956B /* ResumeData.swift */; };
+		095E204B200DB6D80078956B /* ResumeDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204A200DB6D80078956B /* ResumeDataHandler.swift */; };
 		095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */; };
 		098324C620124991003B32FF /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C520124991003B32FF /* Trigger.swift */; };
 		098324C820124EF1003B32FF /* OneInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C720124EF1003B32FF /* OneInstance.swift */; };
@@ -70,6 +80,9 @@
 /* Begin PBXFileReference section */
 		090C8AC620105DD100E58628 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		090C8AC820105E1E00E58628 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
+		0913F9ED2021688900760EEA /* LoadableVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableVCExtension.swift; sourceTree = "<group>"; };
+		0913F9EF20216A5C00760EEA /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
+		0913F9F120216A7800760EEA /* SaveableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveableExtension.swift; sourceTree = "<group>"; };
 		09202DE6200FC87000320D60 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		09202DE8200FCAAC00320D60 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		09202DEA200FCB6F00320D60 /* Fadeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fadeable.swift; sourceTree = "<group>"; };
@@ -84,6 +97,13 @@
 		094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVCViewController.swift; sourceTree = "<group>"; };
 		0950C361201A568C007CA442 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Firebase/Google Info Docs/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		095C4B422021291C00271CAB /* PersistantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantService.swift; sourceTree = "<group>"; };
+		095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Employment+CoreDataProperties.swift"; path = "GlobalResume/Model/Employment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Education+CoreDataClass.swift"; path = "GlobalResume/Model/Education+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		095C4B4720212A6F00271CAB /* Employment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Employment+CoreDataClass.swift"; path = "GlobalResume/Model/Employment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		095C4B4820212A6F00271CAB /* ResumeData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ResumeData+CoreDataProperties.swift"; path = "GlobalResume/Model/ResumeData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		095C4B4920212A6F00271CAB /* Education+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Education+CoreDataProperties.swift"; path = "GlobalResume/Model/Education+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		095C4B4A20212A6F00271CAB /* ResumeData+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ResumeData+CoreDataClass.swift"; path = "GlobalResume/Model/ResumeData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		095E1FFF200D617D0078956B /* GlobalResume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalResume.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		095E2002200D617D0078956B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		095E2004200D617D0078956B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -102,7 +122,7 @@
 		095E2044200D9BA80078956B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		095E2045200D9BAD0078956B /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		095E2048200DA3450078956B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		095E204A200DB6D80078956B /* ResumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeData.swift; sourceTree = "<group>"; };
+		095E204A200DB6D80078956B /* ResumeDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDataHandler.swift; sourceTree = "<group>"; };
 		095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoIconButtonsVC.swift; sourceTree = "<group>"; };
 		098324C520124991003B32FF /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
 		098324C720124EF1003B32FF /* OneInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneInstance.swift; sourceTree = "<group>"; };
@@ -153,6 +173,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0913F9EC2021687000760EEA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0913F9ED2021688900760EEA /* LoadableVCExtension.swift */,
+				0913F9F120216A7800760EEA /* SaveableExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		09202DEE200FCF9C00320D60 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,7 +197,10 @@
 		09202DF5200FE38900320D60 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				095E204A200DB6D80078956B /* ResumeDataHandler.swift */,
+				098324C720124EF1003B32FF /* OneInstance.swift */,
 				09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */,
+				095C4B422021291C00271CAB /* PersistantService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -189,6 +221,7 @@
 		09388FA7200E729E00A8B623 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				0913F9EF20216A5C00760EEA /* Saveable.swift */,
 				090C8AC820105E1E00E58628 /* Roundable.swift */,
 				09388FA8200E72AC00A8B623 /* LoadableVC.swift */,
 				09202DEE200FCF9C00320D60 /* Animations */,
@@ -221,6 +254,7 @@
 		095E2001200D617D0078956B /* GlobalResume */ = {
 			isa = PBXGroup;
 			children = (
+				0913F9EC2021687000760EEA /* Extensions */,
 				09202DEF200FD59700320D60 /* CustomSegue.swift */,
 				09202DF5200FE38900320D60 /* Utils */,
 				09388FA7200E729E00A8B623 /* Protocols */,
@@ -287,8 +321,12 @@
 		095E203C200D66320078956B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				095E204A200DB6D80078956B /* ResumeData.swift */,
-				098324C720124EF1003B32FF /* OneInstance.swift */,
+				095C4B4A20212A6F00271CAB /* ResumeData+CoreDataClass.swift */,
+				095C4B4820212A6F00271CAB /* ResumeData+CoreDataProperties.swift */,
+				095C4B4720212A6F00271CAB /* Employment+CoreDataClass.swift */,
+				095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */,
+				095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */,
+				095C4B4920212A6F00271CAB /* Education+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -630,15 +668,21 @@
 				095E203E200D669C0078956B /* CircleView.swift in Sources */,
 				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
+				095C4B4F20212A7000271CAB /* Education+CoreDataProperties.swift in Sources */,
+				095C4B4E20212A7000271CAB /* ResumeData+CoreDataProperties.swift in Sources */,
+				095C4B432021291C00271CAB /* PersistantService.swift in Sources */,
+				095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */,
 				098324C820124EF1003B32FF /* OneInstance.swift in Sources */,
 				095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */,
 				09CE5FBC201FC7DA0073BC4C /* ExpandableImageView.swift in Sources */,
 				094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */,
 				095E2049200DA3450078956B /* Color.swift in Sources */,
 				094DDD582017FF5800A9D3F0 /* TwoBarButtonsVC.swift in Sources */,
+				0913F9EE2021688900760EEA /* LoadableVCExtension.swift in Sources */,
 				098324C620124991003B32FF /* Trigger.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
 				09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */,
+				095C4B4D20212A7000271CAB /* Employment+CoreDataClass.swift in Sources */,
 				09202DF0200FD59700320D60 /* CustomSegue.swift in Sources */,
 				093F3CFA201A8D8D0086B540 /* Children.swift in Sources */,
 				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,
@@ -654,10 +698,14 @@
 				09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */,
 				09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */,
 				090C8AC720105DD100E58628 /* CircleButton.swift in Sources */,
-				095E204B200DB6D80078956B /* ResumeData.swift in Sources */,
+				095E204B200DB6D80078956B /* ResumeDataHandler.swift in Sources */,
+				095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */,
+				0913F9F020216A5C00760EEA /* Saveable.swift in Sources */,
 				09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */,
+				0913F9F220216A7800760EEA /* SaveableExtension.swift in Sources */,
 				09388FAB200EEC5300A8B623 /* ThreeBarButtonsVC.swift in Sources */,
 				095E200B200D617D0078956B /* GlobalResume.xcdatamodeld in Sources */,
+				095C4B5020212A7000271CAB /* ResumeData+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class CustomSegue: UIStoryboardSegue {
     
     override func perform() {
