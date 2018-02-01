@@ -53,9 +53,9 @@ extension UIView: Fadeable {
     
     func fadeSubviews(alpha: CGFloat, completion: @escaping () -> ()) {
         for subview in subviews {
-            if !subview.isHidden {
+//            if !subview.isHidden {
                 subview.fade(alpha: alpha)
-            }
+//            }
         }
         defer {
             completion()

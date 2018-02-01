@@ -17,27 +17,28 @@ enum Trigger: String {
     case graduated = "GRADUATED"
     
     func allValues() -> [Trigger] {
-        return [.employed, .unemployed]
+        return [.employed, .unemployed, .inSchool, .graduated]
     }
     
-    func isTriggered() -> Bool {
-        return OneInstance.shared.isTriggered
-    }
     
     //If a nil value is passed it returns the first exam of examList
     func next(exam: Exam?) -> Exam? {
-        
+        let list = examList()
+
         if let exam = exam {
             
-            let nextIndex = examList().index(of: exam)! + 1
+            if !list.contains(exam) {
+                return nil
+            }
             
-            if examList().count > nextIndex {
-                return examList()[nextIndex]
-                
+            let nextIndex = list.index(of: exam)! + 1
+            
+            if list.count > nextIndex {
+                return list[nextIndex]
             }
             return nil
         }
-        return examList().first
+        return list.first
         
     }
     //Can edit what Exams come after the Trigger
@@ -66,11 +67,8 @@ enum Trigger: String {
     
     }
     
-    func isFirst(exam: Exam) -> Exam? {
-        if examList().first == exam {
-            return exam
-        }
-        return nil
+    func isFirst(exam: Exam) -> Bool {
+        return examList().first! == exam
     }
 }
 

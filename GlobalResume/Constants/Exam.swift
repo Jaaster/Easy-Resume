@@ -9,6 +9,7 @@
 import Foundation
 
 enum Exam: String {
+    //Standard
     case menu = "MENU"
     case name = "NAME"
     case gender = "GENDER"
@@ -16,14 +17,17 @@ enum Exam: String {
     case number = "PHONE NUMBER"
     case zipcode = "ZIP CODE"
     
+    //Employment
     case employmentStatus = "EMPLOYMENT STATUS"
+    
     case employmentRecord = "EMPLOYMENT RECORD"
     case jobTitle = "JOB TITLE"
     case jobDescription = "JOB DESCRIPTION"
     case companyName = "COMPANY NAME"
 
-    case pursuingEducation = "PURSUING EDUCATION"
+    //Education
     case educationStatus = "EDUCATION STATUS"
+
     case schoolName = "SCHOOL NAME"
     case educationLevel = "EDUCATION LEVEL"
     case specificFieldOfStudy = "FIELD OF STUDY"
@@ -66,8 +70,6 @@ enum Exam: String {
             return (.input, "e.g Manager", Color.grey, [])
         case .employmentRecord:
             return (.twoBarButtons, "", Color.grey, [("START", Color.grey), ("END", Color.grey)])
-        case .pursuingEducation:
-            return (.twoBarButtons, "", Color.blue, [("YES", Color.blue), ("NO", Color.blue)])
         case .schoolName:
             return (.input, "e.g Harvard", Color.blue, [])
         case .educationLevel:
@@ -85,7 +87,7 @@ enum Exam: String {
     
     //Do not put the same exam twice, you can change the order but that is all.
     static func examList() -> [Exam] {
-        return [.menu, .educationStatus]
+        return [.menu, .name, .educationStatus, .gender]
     }
     
     func kind() -> Kind {

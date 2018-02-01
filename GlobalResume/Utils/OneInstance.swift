@@ -12,17 +12,14 @@ class OneInstance {
     
     static let shared = OneInstance()
     
-    private var _isTriggered: Bool
     private var _examBeforeTrigger: Exam
-    private var _trigger: Trigger
+    var trigger: Trigger?
     private var _exampleJobList: Set<String>
     
     
     init() {
-        _isTriggered = false
         //Default values, mean nothing
         _examBeforeTrigger = Exam.email
-        _trigger = Trigger.employed
         _exampleJobList = Set<String>()
     }
     
@@ -35,15 +32,6 @@ class OneInstance {
         }
     }
     
-    var isTriggered: Bool {
-        get {
-            return _isTriggered
-        }
-        set{
-            _isTriggered = newValue
-        }
-    }
-    
     var examBeforeTrigger: Exam {
         get {
             return _examBeforeTrigger
@@ -52,16 +40,5 @@ class OneInstance {
             _examBeforeTrigger = newValue
         }
     }
-    
-    var trigger: Trigger {
-        get {
-            return _trigger
-        }
-        set {
-            _trigger = newValue
-        }
-    }
-    
-    
     
 }

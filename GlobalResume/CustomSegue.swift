@@ -20,18 +20,21 @@ class CustomSegue: UIStoryboardSegue {
         
         
         if let loadableSource = source as? LoadableVC, let loadableDestination = destination as? LoadableVC {
-            if let currentExam = loadableSource.currentExam {
-                if OneInstance.shared.isTriggered {
-                    if let beforeExam = OneInstance.shared.trigger.isFirst(exam: currentExam) {
-                        //Is First Exam of Trigger
-                        loadableDestination.currentExam = beforeExam
-                    } else if let nextExam = OneInstance.shared.trigger.next(exam: currentExam) {
+            if let sourceExam = loadableSource.currentExam {
+                if let trigger = OneInstance.shared.trigger {
+                    if let nextExam = trigger.next(exam: sourceExam) {
                         loadableDestination.currentExam = nextExam
+                    } else {
+                        //was triggered and hasn't set the value of current exam to first trigger
+                        if let firstExam = trigger.examList().first {
+                            loadableDestination.currentExam = firstExam
+                            
+                        }
                     }
                     
                 } else {
                     //Normal exam
-                    if let nextExam = currentExam.next() {
+                    if let nextExam = sourceExam.next() {
                         loadableDestination.currentExam = nextExam
                     }
                 }
@@ -42,11 +45,11 @@ class CustomSegue: UIStoryboardSegue {
         source.view.fadeSubviews(alpha: 1.0, completion: {
             source.present(destination, animated: false, completion: {
                 for subVew in destination.view.subviews {
-                        subVew.alpha = 0.0
+                    subVew.alpha = 0.0
                 }
                 destination.view.fadeSubviews(alpha: 1.0)
                 
-            
+                
             })
         })
     }

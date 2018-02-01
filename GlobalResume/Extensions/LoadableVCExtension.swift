@@ -22,14 +22,33 @@ extension LoadableVC where Self: UIViewController {
         
         let instance = OneInstance.shared
         
-        if !instance.isTriggered {
+        if let trigger = instance.trigger {
+            //Is triggered
+            ResumeDataHandler.shared.updateData(for: trigger, exam: currentExam, data: data)
+            
+            if let nextExam = trigger.next(exam: currentExam) {
+                //trigger has next exam
+                
+                handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
+            } else {
+                //End of trigger
+                let beforeExam = instance.examBeforeTrigger
+                instance.trigger = nil
+                if let nextExam = beforeExam.next() {
+                    let kind = currentExam.kind()
+                    currentExam = beforeExam
+                    handleSegues(currentExamKind: kind, nextExam: nextExam)
+                }
+                ResumeDataHandler.shared.putEmploymentAndEducationInResume()
+            }
+            
+            
+        } else {
             //Not triggered
             if let trigger = Trigger(rawValue: data) {
                 //If the data is a a trigger
-                instance.isTriggered = true
                 instance.trigger = trigger
                 instance.examBeforeTrigger = currentExam
-                
                 //First Exam of Trigger
                 //Create a new Model for the Trigger
                 ResumeDataHandler.shared.updateData(for: trigger, exam: currentExam, data: data)
@@ -37,8 +56,7 @@ extension LoadableVC where Self: UIViewController {
                 
                 //Get the exam for the first trigger
                 if let triggerExam = trigger.next(exam: nil) {
-                    currentExam = triggerExam
-                    handleSegues(currentExamKind: instance.examBeforeTrigger.kind(), nextExam: triggerExam)
+                    handleSegues(currentExamKind: currentExam.kind(), nextExam: triggerExam)
                 } else {
                     print("Data is a trigger, trigger does not any exams :(")
                 }
@@ -57,34 +75,14 @@ extension LoadableVC where Self: UIViewController {
                 ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
 
             }
-        } else {
-            //Is triggered
-            let trigger = instance.trigger
-            
-            ResumeDataHandler.shared.updateData(for: trigger, exam: currentExam, data: data)
-
-            
-            if let nextExam = trigger.next(exam: currentExam) {
-                //trigger has next exam
-                handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
-            } else {
-                //End of trigger
-                let beforeExam = instance.examBeforeTrigger
-                
-                instance.isTriggered = false
-                if let nextExam = beforeExam.next() {
-                    let kind = currentExam.kind()
-                    currentExam = beforeExam
-                    handleSegues(currentExamKind: kind, nextExam: nextExam)
-                }
-                ResumeDataHandler.shared.putEmploymentAndEducationInResume()
-            }
-            
         }
         
-        
-        
     }
+    
+    
+    
+    
+    
     
     private func handleSegues(currentExamKind: Exam.Kind, nextExam: Exam) {
         let nextKind = nextExam.kind()

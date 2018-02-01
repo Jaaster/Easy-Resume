@@ -17,9 +17,8 @@ extension Employment {
     }
 
     @NSManaged public var company_name: String?
-    @NSManaged public var endDate: NSDate?
     @NSManaged public var job_description: String?
     @NSManaged public var job_title: String?
-    @NSManaged public var startDate: NSDate?
+    @NSManaged public var employment_record: String?
 
 }
