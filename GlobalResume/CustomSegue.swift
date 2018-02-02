@@ -37,21 +37,12 @@ class CustomSegue: UIStoryboardSegue {
                     if let nextExam = sourceExam.next() {
                         loadableDestination.currentExam = nextExam
                     }
+                    
                 }
                 
             }
         }
-        
-        source.view.fadeSubviews(alpha: 1.0, completion: {
-            source.present(destination, animated: false, completion: {
-                for subVew in destination.view.subviews {
-                    subVew.alpha = 0.0
-                }
-                destination.view.fadeSubviews(alpha: 1.0)
-                
-                
-            })
-        })
+        source.present(destination, animated: true, completion: nil)
     }
     
 }

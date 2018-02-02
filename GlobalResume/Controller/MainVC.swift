@@ -22,12 +22,15 @@ class MainVC: UIViewController, LoadableVC {
         currentExam = Exam.menu
         loadAppImageView.fade(alpha: 0.0)
         updateData()
-        
     }
     
     func updateData() {
         firstCircleView.round()
         secondCircleView.round()
+        
+        if ResumeDataHandler.shared.getResumeList() != nil {
+            secondCircleView.backgroundColor = Color.blue.getUIColor()
+        }
     }
     
     @IBAction func buttonPressed(button: UIButton) {
@@ -36,7 +39,10 @@ class MainVC: UIViewController, LoadableVC {
             handleTransportation(data: "")
         } else {
             //Edit Button Pressed
-            ResumeDataHandler.shared.editingResume = true 
+            if ResumeDataHandler.shared.getResumeList() != nil {
+                ResumeDataHandler.shared.editingResume = true
+                performSegue(withIdentifier: "chooseResume", sender: nil)
+            }
         }
         
     }

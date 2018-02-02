@@ -16,7 +16,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
     @IBOutlet weak var interviewerImage: BobbingImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!
-    @IBOutlet weak var btn: CircleButton!
+    @IBOutlet weak var btn: CustomButton!
     
     @IBOutlet weak var confettiVIew: ConfettiView!
     @IBOutlet weak var applicantsShadowImage: ExpandableImageView!
@@ -49,14 +49,14 @@ class ExamEndedVC: UIViewController, LoadableVC {
         btn.round(scale: 7.5)
         btn.setTitle("View Resume", for: .normal)
         interviewerImage.image = UIImage(named: "INTERVIEWER")
-        applicantImage.image = UIImage(named: "APPLICANT\(ResumeDataHandler.shared.getData(forKey: Exam.gender))")
+        applicantImage.image = UIImage(named: "APPLICANT\(ResumeDataHandler.shared.gender())")
         
         applicantImage.toggleBobbing()
         applicantsShadowImage.toggleExpansion()
         
-        
+        ResumeDataHandler.shared.currentResume = nil
     }
-    @IBAction func btnPressed(sender: CircleButton) {
+    @IBAction func btnPressed(sender: CustomButton) {
         handleTransportation(data: "")
     }
  

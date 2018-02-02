@@ -16,12 +16,15 @@ extension ResumeData {
         return NSFetchRequest<ResumeData>(entityName: "ResumeData")
     }
 
+    @NSManaged public var resume_name: String?
+
+    
     @NSManaged public var email: String?
     @NSManaged public var employment_status: String?
     @NSManaged public var education_status: String?
     @NSManaged public var gender: String?
     @NSManaged public var name: String?
-    @NSManaged public var number: String?
+    @NSManaged public var phone_number: String?
     @NSManaged public var zip_code: String?
     @NSManaged public var education: NSSet?
     @NSManaged public var employment: NSSet?

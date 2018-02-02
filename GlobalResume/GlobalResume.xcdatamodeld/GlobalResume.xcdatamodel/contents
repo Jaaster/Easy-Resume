@@ -18,7 +18,8 @@
         <attribute name="employment_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resume_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip_code" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" syncable="YES"/>
         <relationship name="employment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Employment" syncable="YES"/>
@@ -26,6 +27,6 @@
     <elements>
         <element name="Education" positionX="-297" positionY="99" width="128" height="105"/>
         <element name="Employment" positionX="63" positionY="-45" width="128" height="105"/>
-        <element name="ResumeData" positionX="-459" positionY="-190" width="128" height="180"/>
+        <element name="ResumeData" positionX="-459" positionY="-190" width="128" height="195"/>
     </elements>
 </model>

@@ -16,9 +16,9 @@ extension Education {
         return NSFetchRequest<Education>(entityName: "Education")
     }
     
-    @NSManaged public var educationLevel: String?
+    @NSManaged public var education_level: String?
     @NSManaged public var education_record: String?
-    @NSManaged public var fieldOfStudy: String?
-    @NSManaged public var schoolName: String?
+    @NSManaged public var field_of_study: String?
+    @NSManaged public var school_name: String?
 
 }

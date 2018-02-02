@@ -20,7 +20,7 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var exampleButton: CircleButton!
+    @IBOutlet weak var exampleButton: CustomButton!
     
     @IBOutlet weak var nextButton: UIButton!
    
@@ -78,7 +78,7 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
     }
     
 
-    @IBAction func exampleButtonPressed(_ sender: CircleButton) {
+    @IBAction func exampleButtonPressed(_ sender: CustomButton) {
         examplesView.isHidden = false
         examplesView.fade(alpha: 1.0)
     }

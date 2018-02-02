@@ -28,12 +28,21 @@ class InputVC: UIViewController, LoadableVC {
     }
 
     
+    func generateKeyboardStyle() -> UIKeyboardType {
+        switch currentExam! {
+        case .email:
+            return UIKeyboardType.emailAddress
+        case .zipcode:
+            toolBar()
+            return UIKeyboardType.numberPad
+        default:
+            return UIKeyboardType.default
+        }
+    }
     
     func updateData() {
-        if currentExam == .zipcode {
-            textField.keyboardType = .numberPad
-        }
-        
+        textField.keyboardType = generateKeyboardStyle()
+
         let values = currentExam.getValues()
         
         let color = values.color.getUIColor()
@@ -55,14 +64,37 @@ class InputVC: UIViewController, LoadableVC {
 extension InputVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-                
         if let data = textField.text {
+            textField.endEditing(true)
             handleTransportation(data: data)
             return true
         }
         return false
     }
+    
+    
+    func toolBar() {
+        let toolBar = UIToolbar()
+        
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.sizeToFit()
+        toolBar.setItems([flexibleSpace, button], animated: false)
+        
+        textField.inputAccessoryView = toolBar
+        
+        
+    }
+    
+    @objc func doneButtonPressed() {
+        if let data = textField.text {
+            textField.endEditing(true)
+            handleTransportation(data: data)
+        }
+    }
+    
 }
+
 
 

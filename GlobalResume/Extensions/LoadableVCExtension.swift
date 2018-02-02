@@ -63,36 +63,28 @@ extension LoadableVC where Self: UIViewController {
             } else {
                 //Normal segue
                 if let nextExam = currentExam.next() {
+                    if currentExam != .menu {
+                        ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
+                    }
                     handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
                 } else {
                     //End of Exams
+                    ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
                     PersistantService.saveContext()
                     self.performSegue(withIdentifier: "EXAM_ENDED", sender: nil)
-                }
-                if currentExam == Exam.menu {
                     return
                 }
-                ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
-
             }
         }
         
     }
-    
-    
-    
-    
-    
     
     private func handleSegues(currentExamKind: Exam.Kind, nextExam: Exam) {
         let nextKind = nextExam.kind()
         if nextKind == currentExamKind {
             //Stay and update current view
             self.currentExam = nextExam
-            view.fadeSubviews(alpha: 0.0, completion: {
-                self.updateData()
-                self.view.fadeSubviews(alpha: 1.0)
-            })
+            self.updateData()
         } else {
             self.performSegue(withIdentifier: nextKind.rawValue, sender: nil)
         }

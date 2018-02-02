@@ -33,7 +33,10 @@ enum Exam: String {
     case specificFieldOfStudy = "FIELD OF STUDY"
     case educationRecord = "EDUCATION RECORD"
     
-    enum Kind:String {
+    
+    case resumeName = "RESUME NAME"
+    
+    enum Kind: String {
         case main = "MAIN"
         case input = "INPUT"
         case description = "DESCRIPTION"
@@ -82,12 +85,14 @@ enum Exam: String {
             return (.description, "EXAMPLES", Color.grey, [])
         case .educationStatus:
              return (.threeBarButtons, "", Color.grey, [("IN SCHOOL", Color.grey), ("GRADUATED", Color.grey), ("NO HISTORY", Color.grey)])
+        case .resumeName:
+            return (.input, "e.g MyResume", Color.blue, [])
         }
     }
     
     //Do not put the same exam twice, you can change the order but that is all.
     static func examList() -> [Exam] {
-        return [.menu, .name, .educationStatus, .gender]
+        return [.menu, .name, .zipcode, .email, .gender, .employmentStatus, .educationStatus, .resumeName]
     }
     
     func kind() -> Kind {

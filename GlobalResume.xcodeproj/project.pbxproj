@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090C8AC720105DD100E58628 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC620105DD100E58628 /* CircleButton.swift */; };
+		090C8AC720105DD100E58628 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC620105DD100E58628 /* CustomButton.swift */; };
 		090C8AC920105E1E00E58628 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC820105E1E00E58628 /* Roundable.swift */; };
 		0913F9EE2021688900760EEA /* LoadableVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F9ED2021688900760EEA /* LoadableVCExtension.swift */; };
 		0913F9F020216A5C00760EEA /* Saveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F9EF20216A5C00760EEA /* Saveable.swift */; };
@@ -26,6 +26,11 @@
 		094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */; };
 		094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */; };
 		0950C362201A568C007CA442 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0950C361201A568C007CA442 /* GoogleService-Info.plist */; };
+		09554C55202374730043B822 /* ChooseResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C54202374730043B822 /* ChooseResumeVC.swift */; };
+		09554C57202374A80043B822 /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C56202374A80043B822 /* ResumeCell.swift */; };
+		09554C592023A0170043B822 /* EditResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C582023A0170043B822 /* EditResumeVC.swift */; };
+		09554C5B2023A7560043B822 /* EditResumeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C5A2023A7560043B822 /* EditResumeNavigationController.swift */; };
+		09554C5E2023C9AC0043B822 /* EditResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C5D2023C9AC0043B822 /* EditResumeCell.swift */; };
 		095C4B432021291C00271CAB /* PersistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B422021291C00271CAB /* PersistantService.swift */; };
 		095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */; };
 		095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */; };
@@ -78,7 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		090C8AC620105DD100E58628 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		090C8AC620105DD100E58628 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		090C8AC820105E1E00E58628 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
 		0913F9ED2021688900760EEA /* LoadableVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableVCExtension.swift; sourceTree = "<group>"; };
 		0913F9EF20216A5C00760EEA /* Saveable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saveable.swift; sourceTree = "<group>"; };
@@ -97,6 +102,11 @@
 		094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
 		094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVCViewController.swift; sourceTree = "<group>"; };
 		0950C361201A568C007CA442 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Firebase/Google Info Docs/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		09554C54202374730043B822 /* ChooseResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseResumeVC.swift; sourceTree = "<group>"; };
+		09554C56202374A80043B822 /* ResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
+		09554C582023A0170043B822 /* EditResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeVC.swift; sourceTree = "<group>"; };
+		09554C5A2023A7560043B822 /* EditResumeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeNavigationController.swift; sourceTree = "<group>"; };
+		09554C5D2023C9AC0043B822 /* EditResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeCell.swift; sourceTree = "<group>"; };
 		095C4B422021291C00271CAB /* PersistantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantService.swift; sourceTree = "<group>"; };
 		095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Employment+CoreDataProperties.swift"; path = "GlobalResume/Model/Employment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Education+CoreDataClass.swift"; path = "GlobalResume/Model/Education+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -229,6 +239,16 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		09554C5C2023A7A70043B822 /* EditResume */ = {
+			isa = PBXGroup;
+			children = (
+				09554C54202374730043B822 /* ChooseResumeVC.swift */,
+				09554C582023A0170043B822 /* EditResumeVC.swift */,
+				09554C5A2023A7560043B822 /* EditResumeNavigationController.swift */,
+			);
+			path = EditResume;
+			sourceTree = "<group>";
+		};
 		095E1FF6200D617D0078956B = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +314,7 @@
 		095E203A200D660E0078956B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				09554C5C2023A7A70043B822 /* EditResume */,
 				095E2004200D617D0078956B /* MainVC.swift */,
 				09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */,
 				095E203F200D71310078956B /* InputVC.swift */,
@@ -308,12 +329,14 @@
 		095E203B200D661E0078956B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				090C8AC620105DD100E58628 /* CircleButton.swift */,
+				090C8AC620105DD100E58628 /* CustomButton.swift */,
 				095E203D200D669C0078956B /* CircleView.swift */,
 				09202DF3200FD7A800320D60 /* LoadView.swift */,
 				094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */,
 				09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */,
 				09CE5FBB201FC7DA0073BC4C /* ExpandableImageView.swift */,
+				09554C56202374A80043B822 /* ResumeCell.swift */,
+				09554C5D2023C9AC0043B822 /* EditResumeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -674,10 +697,12 @@
 				095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */,
 				098324C820124EF1003B32FF /* OneInstance.swift in Sources */,
 				095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */,
+				09554C5B2023A7560043B822 /* EditResumeNavigationController.swift in Sources */,
 				09CE5FBC201FC7DA0073BC4C /* ExpandableImageView.swift in Sources */,
 				094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */,
 				095E2049200DA3450078956B /* Color.swift in Sources */,
 				094DDD582017FF5800A9D3F0 /* TwoBarButtonsVC.swift in Sources */,
+				09554C5E2023C9AC0043B822 /* EditResumeCell.swift in Sources */,
 				0913F9EE2021688900760EEA /* LoadableVCExtension.swift in Sources */,
 				098324C620124991003B32FF /* Trigger.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
@@ -688,6 +713,8 @@
 				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,
 				090C8AC920105E1E00E58628 /* Roundable.swift in Sources */,
 				09B33547201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift in Sources */,
+				09554C57202374A80043B822 /* ResumeCell.swift in Sources */,
+				09554C55202374730043B822 /* ChooseResumeVC.swift in Sources */,
 				09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */,
 				09202DF4200FD7A800320D60 /* LoadView.swift in Sources */,
 				094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */,
@@ -697,10 +724,11 @@
 				09CE5FBA201FC6720073BC4C /* Expandable.swift in Sources */,
 				09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */,
 				09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */,
-				090C8AC720105DD100E58628 /* CircleButton.swift in Sources */,
+				090C8AC720105DD100E58628 /* CustomButton.swift in Sources */,
 				095E204B200DB6D80078956B /* ResumeDataHandler.swift in Sources */,
 				095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */,
 				0913F9F020216A5C00760EEA /* Saveable.swift in Sources */,
+				09554C592023A0170043B822 /* EditResumeVC.swift in Sources */,
 				09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */,
 				0913F9F220216A7800760EEA /* SaveableExtension.swift in Sources */,
 				09388FAB200EEC5300A8B623 /* ThreeBarButtonsVC.swift in Sources */,
@@ -872,7 +900,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ios.dev.joriah.GlobalResume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -890,7 +918,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ios.dev.joriah.GlobalResume;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.2;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

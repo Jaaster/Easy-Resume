@@ -22,6 +22,44 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Choose ResumeVC-->
+        <scene sceneID="Hk8-II-MjN">
+            <objects>
+                <collectionViewController id="E4X-Te-cl7" customClass="ChooseResumeVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="EBm-Wy-zFn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="osd-9A-lEl">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="chooseResume" id="8kh-0t-8lt" customClass="ResumeCell" customModule="GlobalResume" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="E4X-Te-cl7" id="mvW-b7-xiD"/>
+                            <outlet property="delegate" destination="E4X-Te-cl7" id="umK-UX-xA6"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="NLD-Ux-wy4"/>
+                    <connections>
+                        <segue destination="km8-jb-SwJ" kind="presentation" identifier="MENU" modalTransitionStyle="crossDissolve" id="i96-yF-Cyx"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oig-Ot-U8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1665" y="-1203"/>
+        </scene>
         <!--MainVC-->
         <scene sceneID="i0i-o4-acu">
             <objects>
@@ -137,16 +175,17 @@
                         <outlet property="firstCircleView" destination="fK7-8Z-nYn" id="yO6-W2-mmc"/>
                         <outlet property="loadAppImageView" destination="CvJ-DH-f1J" id="Q6f-bQ-dpz"/>
                         <outlet property="secondCircleView" destination="XJY-1c-3eR" id="F0y-Tw-BrT"/>
-                        <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="GtA-eu-Puq"/>
-                        <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="h8P-k2-wbf"/>
-                        <segue destination="i6s-0c-wJx" kind="custom" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="pnT-cV-xTt"/>
-                        <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="S8G-qb-OL8"/>
-                        <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="hw9-ZS-deb"/>
+                        <segue destination="GO5-nk-4id" kind="presentation" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="GtA-eu-Puq"/>
+                        <segue destination="at0-Vl-Iay" kind="presentation" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="h8P-k2-wbf"/>
+                        <segue destination="i6s-0c-wJx" kind="presentation" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="pnT-cV-xTt"/>
+                        <segue destination="aTC-Ld-YNp" kind="presentation" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="S8G-qb-OL8"/>
+                        <segue destination="cpY-yW-4wO" kind="presentation" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="hw9-ZS-deb"/>
+                        <segue destination="MQC-6M-oQS" kind="presentation" identifier="chooseResume" id="sJz-HN-HKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGC-6g-dHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="-210"/>
+            <point key="canvasLocation" x="522" y="-197"/>
         </scene>
         <!--InputVC-->
         <scene sceneID="IEt-Ne-6ZS">
@@ -224,12 +263,12 @@
                         <outlet property="iconImageView" destination="Wnd-Nz-AGt" id="EyC-fQ-URe"/>
                         <outlet property="textField" destination="iPt-Wi-4ZU" id="gTr-SF-23C"/>
                         <outlet property="titleLabel" destination="eTN-zh-2bZ" id="4Nv-Bz-zhV"/>
-                        <segue destination="i6s-0c-wJx" kind="custom" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="deR-QF-h3a"/>
-                        <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="PqN-4I-pdd"/>
-                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Fqh-er-alG"/>
-                        <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="TTD-E9-Ai7"/>
-                        <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="7Zm-6a-3s5"/>
-                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="KkP-X5-hIT"/>
+                        <segue destination="i6s-0c-wJx" kind="presentation" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="deR-QF-h3a"/>
+                        <segue destination="at0-Vl-Iay" kind="presentation" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="PqN-4I-pdd"/>
+                        <segue destination="km8-jb-SwJ" kind="presentation" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="Fqh-er-alG"/>
+                        <segue destination="aTC-Ld-YNp" kind="presentation" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="TTD-E9-Ai7"/>
+                        <segue destination="cpY-yW-4wO" kind="presentation" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="7Zm-6a-3s5"/>
+                        <segue destination="bxZ-Ce-Pae" kind="presentation" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="KkP-X5-hIT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yt-Gt-8li" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -340,12 +379,12 @@
                         <outlet property="secondButton" destination="eCL-p5-EGL" id="FKI-Nm-gIZ"/>
                         <outlet property="thirdButton" destination="tlg-CH-R9Y" id="uuk-JX-vNz"/>
                         <outlet property="titleLabel" destination="6B5-KB-QQs" id="APm-Xp-VHP"/>
-                        <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="NXR-hK-sa7"/>
-                        <segue destination="i6s-0c-wJx" kind="custom" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="CcI-ky-DhN"/>
-                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="pZq-jC-NNo"/>
-                        <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="QQZ-gW-9VG"/>
-                        <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="WYm-y3-vVO"/>
-                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="b6x-z8-BTx"/>
+                        <segue destination="GO5-nk-4id" kind="presentation" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="NXR-hK-sa7"/>
+                        <segue destination="i6s-0c-wJx" kind="presentation" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="CcI-ky-DhN"/>
+                        <segue destination="km8-jb-SwJ" kind="presentation" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="pZq-jC-NNo"/>
+                        <segue destination="aTC-Ld-YNp" kind="presentation" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="QQZ-gW-9VG"/>
+                        <segue destination="cpY-yW-4wO" kind="presentation" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="WYm-y3-vVO"/>
+                        <segue destination="bxZ-Ce-Pae" kind="presentation" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="b6x-z8-BTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjt-4M-Sak" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,7 +399,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-zg-yw7" userLabel="FirstButton" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icc-zg-yw7" userLabel="FirstButton" customClass="CustomButton" customModule="GlobalResume" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="60" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -387,7 +426,7 @@
                                     <constraint firstAttribute="height" constant="70" id="wDb-BM-2jZ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6a-dP-P97" userLabel="SecondButton" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6a-dP-P97" userLabel="SecondButton" customClass="CustomButton" customModule="GlobalResume" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="407" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -441,12 +480,12 @@
                         <outlet property="secondCircleButton" destination="P6a-dP-P97" id="WsR-HN-NFJ"/>
                         <outlet property="secondIconImageView" destination="S1M-N8-sZE" id="mmb-gi-DGU"/>
                         <outlet property="secondTitleLabel" destination="eOi-us-N2p" id="3cH-Nu-571"/>
-                        <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="oDn-70-WGn"/>
-                        <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="4nN-r8-b9O"/>
-                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="hJJ-Ts-gjH"/>
-                        <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="SyC-IS-iiY"/>
-                        <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Me1-cz-Gji"/>
-                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="FWq-FI-lyk"/>
+                        <segue destination="GO5-nk-4id" kind="presentation" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="oDn-70-WGn"/>
+                        <segue destination="at0-Vl-Iay" kind="presentation" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="4nN-r8-b9O"/>
+                        <segue destination="km8-jb-SwJ" kind="presentation" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="hJJ-Ts-gjH"/>
+                        <segue destination="aTC-Ld-YNp" kind="presentation" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="SyC-IS-iiY"/>
+                        <segue destination="cpY-yW-4wO" kind="presentation" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="Me1-cz-Gji"/>
+                        <segue destination="bxZ-Ce-Pae" kind="presentation" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="FWq-FI-lyk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cii-Zw-uxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -582,12 +621,12 @@
                         <outlet property="secondButton" destination="ewg-Ne-ike" id="SEe-mt-zjl"/>
                         <outlet property="startPicker" destination="2Yb-nN-IlY" id="2RI-5B-1r8"/>
                         <outlet property="titleLabel" destination="Skt-aJ-7Ry" id="ww4-vJ-IwV"/>
-                        <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="5ON-JT-DbY"/>
-                        <segue destination="i6s-0c-wJx" kind="custom" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="vfj-eR-YFB"/>
-                        <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="mQz-dj-Gly"/>
-                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="L0E-OR-5nC"/>
-                        <segue destination="cpY-yW-4wO" kind="custom" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="3n0-Ap-nyQ"/>
-                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="FXn-DO-ljH"/>
+                        <segue destination="at0-Vl-Iay" kind="presentation" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="5ON-JT-DbY"/>
+                        <segue destination="i6s-0c-wJx" kind="presentation" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="vfj-eR-YFB"/>
+                        <segue destination="GO5-nk-4id" kind="presentation" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="mQz-dj-Gly"/>
+                        <segue destination="km8-jb-SwJ" kind="presentation" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="L0E-OR-5nC"/>
+                        <segue destination="cpY-yW-4wO" kind="presentation" identifier="DESCRIPTION" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="3n0-Ap-nyQ"/>
+                        <segue destination="bxZ-Ce-Pae" kind="presentation" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="FXn-DO-ljH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPC-Lr-sRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -627,7 +666,7 @@
                                     <constraint firstAttribute="trailing" secondItem="lEl-qB-IAg" secondAttribute="trailing" id="k1w-sy-DLQ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-4z-8HX" userLabel="exampleButton" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XM4-4z-8HX" userLabel="exampleButton" customClass="CustomButton" customModule="GlobalResume" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="467" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -758,12 +797,12 @@
                         <outlet property="tableView" destination="AD8-5q-tOJ" id="1TQ-bj-Ao6"/>
                         <outlet property="textField" destination="lEl-qB-IAg" id="hyj-Cu-p9j"/>
                         <outlet property="titleLabel" destination="K6Y-p7-xn7" id="POM-jd-txN"/>
-                        <segue destination="aTC-Ld-YNp" kind="custom" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="DC8-RV-6hg"/>
-                        <segue destination="i6s-0c-wJx" kind="custom" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Wsr-eA-LLM"/>
-                        <segue destination="at0-Vl-Iay" kind="custom" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="TVy-Wg-Rn8"/>
-                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MAIN" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="uKE-Lg-6vu"/>
-                        <segue destination="GO5-nk-4id" kind="custom" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="6TT-Qq-IZ6"/>
-                        <segue destination="bxZ-Ce-Pae" kind="custom" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Oim-pv-mWT"/>
+                        <segue destination="aTC-Ld-YNp" kind="modal" identifier="TWO_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="DC8-RV-6hg"/>
+                        <segue destination="i6s-0c-wJx" kind="modal" identifier="TWO_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Wsr-eA-LLM"/>
+                        <segue destination="at0-Vl-Iay" kind="modal" identifier="THREE_BAR_BUTTONS" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="TVy-Wg-Rn8"/>
+                        <segue destination="km8-jb-SwJ" kind="modal" identifier="MAIN" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="uKE-Lg-6vu"/>
+                        <segue destination="GO5-nk-4id" kind="modal" identifier="INPUT" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="6TT-Qq-IZ6"/>
+                        <segue destination="bxZ-Ce-Pae" kind="modal" identifier="EXAM_ENDED" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Oim-pv-mWT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMy-eC-HTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -820,7 +859,7 @@
                                     <constraint firstAttribute="width" constant="60" id="eRc-aB-37D"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cL-Y3-GWe" customClass="CircleButton" customModule="GlobalResume" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cL-Y3-GWe" customClass="CustomButton" customModule="GlobalResume" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="581" width="150" height="37"/>
                                 <color key="backgroundColor" red="0.28996708989143372" green="0.56393927335739136" blue="0.8858216404914856" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -876,12 +915,30 @@
                         <outlet property="interviewerImage" destination="yj4-4k-bf1" id="czk-Rr-lEa"/>
                         <outlet property="secondTitleLabel" destination="wer-Ev-gDe" id="r8z-qQ-hTc"/>
                         <outlet property="titleLabel" destination="Tc3-cK-mZT" id="M7n-Un-ylg"/>
-                        <segue destination="km8-jb-SwJ" kind="custom" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" id="Qia-b0-Hwo"/>
+                        <segue destination="km8-jb-SwJ" kind="presentation" identifier="MENU" customClass="CustomSegue" customModule="GlobalResume" customModuleProvider="target" modalTransitionStyle="crossDissolve" id="Qia-b0-Hwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYZ-eT-Kvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6402.3999999999996" y="-197.45127436281859"/>
+        </scene>
+        <!--Edit Resume Navigation Controller-->
+        <scene sceneID="vzz-dW-IGg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="MQC-6M-oQS" customClass="EditResumeNavigationController" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="StK-9D-S0q">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="E4X-Te-cl7" kind="relationship" relationship="rootViewController" id="0d6-6v-mgL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyo-J6-rMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="809" y="-1191"/>
         </scene>
     </scenes>
     <resources>
@@ -893,12 +950,12 @@
         <image name="editIcon" width="66" height="69"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FXn-DO-ljH"/>
-        <segue reference="3n0-Ap-nyQ"/>
-        <segue reference="QQZ-gW-9VG"/>
-        <segue reference="vfj-eR-YFB"/>
-        <segue reference="5ON-JT-DbY"/>
-        <segue reference="mQz-dj-Gly"/>
-        <segue reference="L0E-OR-5nC"/>
+        <segue reference="KkP-X5-hIT"/>
+        <segue reference="hw9-ZS-deb"/>
+        <segue reference="S8G-qb-OL8"/>
+        <segue reference="pnT-cV-xTt"/>
+        <segue reference="h8P-k2-wbf"/>
+        <segue reference="GtA-eu-Puq"/>
+        <segue reference="i96-yF-Cyx"/>
     </inferredMetricsTieBreakers>
 </document>

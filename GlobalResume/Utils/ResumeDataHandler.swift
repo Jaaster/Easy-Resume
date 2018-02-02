@@ -11,7 +11,7 @@ import CoreData
 class ResumeDataHandler {
     static let shared = ResumeDataHandler()
     
-    private var currentResume: ResumeData?
+    var currentResume: ResumeData?
     private var currentEducation: Education?
     private var currentEmployment: Employment?
     
@@ -57,11 +57,18 @@ class ResumeDataHandler {
     }
     
     func setValue(object: NSManagedObject, data: String, forKey: String) {
+        print(data)
+        print(forKey)
         object.setValue(data, forKey: forKey.lowercased().replacingOccurrences(of: " ", with: "_"))
     }
 
-    func getData(forKey: Exam) -> String {
-        return "String"
+    func gender() -> String {
+        if let resume = currentResume {
+            if let gender = resume.gender {
+                return gender.capitalized
+            }
+        }
+        return ""
     }
     
     func putEmploymentAndEducationInResume() {
@@ -87,6 +94,31 @@ class ResumeDataHandler {
         //set currentResume to returned resume
         return nil
     }
+    
+    func getResumeList() -> [ResumeData]? {
+        //Grab data from coredata
+        do {
+            let list = try PersistantService.context.fetch(ResumeData.fetchRequest())
+            
+            if let resumeList = list as? [ResumeData] {
+                if !resumeList.isEmpty {
+                    
+                    for i in resumeList {
+                        print(i)
+                    
+                    }
+                    
+                    return resumeList
+
+                }
+              
+            }
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
+        return nil
+    }
+    
 }
 
 
