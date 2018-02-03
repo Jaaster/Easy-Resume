@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoadableVC: class {
     
+    var presenting: UIViewController! { get set }
     var currentExam: Exam! { get set }
     func updateData()
 }

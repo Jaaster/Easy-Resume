@@ -9,7 +9,8 @@
 import UIKit
 
 class TwoBarButtonsVC: UIViewController, LoadableVC {
-    
+    var presenting: UIViewController!
+
     @IBOutlet weak var circleView: CircleView!
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!
@@ -27,6 +28,7 @@ class TwoBarButtonsVC: UIViewController, LoadableVC {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenting.dismiss(animated: false, completion: nil)
         events()
     }
     

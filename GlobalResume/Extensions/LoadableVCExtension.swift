@@ -16,8 +16,11 @@ extension LoadableVC where Self: UIViewController {
 
         //End of exam
         if currentExam == nil {
-            let main = sb.instantiateViewController(withIdentifier: "MENU")
-            present(main, animated: true, completion: nil)
+            let main = sb.instantiateInitialViewController()
+            
+            if let loadableVC = main as? LoadableVC {
+                present(vc: loadableVC)
+            }
             return
         }
         //Loop hole need to fix...User can the name of a button that calls a trigger it will call it
@@ -76,7 +79,10 @@ extension LoadableVC where Self: UIViewController {
                     
                     
                     let vc = sb.instantiateViewController(withIdentifier: "EXAM_ENDED")
-                    present(vc, animated: true, completion: nil)
+                    if let loadableVC = vc as? LoadableVC {
+                        present(vc: loadableVC)
+                    }
+                    
                     return
                 }
             }
@@ -91,16 +97,30 @@ extension LoadableVC where Self: UIViewController {
             self.currentExam = nextExam
             self.updateData()
         } else {
-           
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            
             let vc = sb.instantiateViewController(withIdentifier: nextKind.rawValue)
-                present(vc, animated: true, completion: nil)
-
-            if let vc = vc as? LoadableVC {
-                vc.currentExam = nextExam
-                vc.updateData()
+            if let loadableVC = vc as? LoadableVC {
+                loadableVC.currentExam = nextExam
+                present(vc: loadableVC)
+                
             }
+            
         }
     }
+    
+    private func present(vc: LoadableVC) {
+            vc.presenting = self
+            present(vc as! UIViewController, animated: true, completion: {
+                self.removeSubViews()
+            })
+            vc.updateData()
+        
+    }
+    
+    private func removeSubViews() {
+        for v in view.subviews{
+            v.removeFromSuperview()
+        }
+    }
+
 }

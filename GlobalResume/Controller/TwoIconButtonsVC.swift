@@ -9,6 +9,7 @@
 import UIKit
 
 class TwoIconButtonsVC: UIViewController, LoadableVC {
+    var presenting: UIViewController!
 
     @IBOutlet weak var firstCircleButton: CustomButton!
     @IBOutlet weak var secondCircleButton: CustomButton!
@@ -23,6 +24,7 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenting.dismiss(animated: false, completion: nil)
     }
     
     func updateData() {

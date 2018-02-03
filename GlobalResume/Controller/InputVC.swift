@@ -9,6 +9,8 @@
 import UIKit
 
 class InputVC: UIViewController, LoadableVC {
+    var presenting: UIViewController!
+    
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var barView: UIView!
@@ -19,7 +21,10 @@ class InputVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentingViewController?.dismiss(animated: false, completion: nil)
         textField.delegate = self
+        presenting.dismiss(animated: false, completion: nil)
+
     }
 
     

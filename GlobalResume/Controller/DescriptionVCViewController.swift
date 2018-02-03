@@ -10,7 +10,8 @@
 import UIKit
 
 class DescriptionVCViewController: UIViewController, LoadableVC {
-    
+    var presenting: UIViewController!
+
     var currentExam: Exam!
     
     var examples = [String]()
@@ -29,6 +30,8 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
         tableView.delegate = self
         tableView.dataSource = self
         textField.delegate = self
+        presenting.dismiss(animated: false, completion: nil)
+
         
     }
 

@@ -9,7 +9,8 @@
 import UIKit
 
 class ThreeBarButtonsVC: UIViewController, LoadableVC {
-   
+    var presenting: UIViewController!
+
     var currentExam: Exam!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,7 +25,7 @@ class ThreeBarButtonsVC: UIViewController, LoadableVC {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenting.dismiss(animated: false, completion: nil)
     }
     
    

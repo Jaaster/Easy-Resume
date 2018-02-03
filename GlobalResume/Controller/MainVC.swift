@@ -9,6 +9,8 @@
 import UIKit
 class MainVC: UIViewController, LoadableVC {
     
+    var presenting: UIViewController!
+    
     @IBOutlet weak var loadAppImageView: UIImageView!
     @IBOutlet weak var firstCircleView: CircleView!
     @IBOutlet weak var secondCircleView: CircleView!
@@ -22,6 +24,10 @@ class MainVC: UIViewController, LoadableVC {
         currentExam = Exam.menu
         loadAppImageView.fade(alpha: 0.0)
         updateData()
+        if presenting == nil {
+            presenting = UIViewController()
+        }
+        presenting.dismiss(animated: false, completion: nil)
     }
     
     func updateData() {

@@ -9,6 +9,8 @@
 import UIKit
 import ConfettiView
 class ExamEndedVC: UIViewController, LoadableVC {
+    var presenting: UIViewController!
+    
    
     var currentExam: Exam!
     
@@ -24,7 +26,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenting.dismiss(animated: false, completion: nil)
     }
 
     func updateData() {

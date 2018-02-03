@@ -92,9 +92,8 @@ enum Exam: String {
     
     //Do not put the same exam twice, you can change the order but that is all.
     static func examList() -> [Exam] {
-        return [.menu, .name, .zipcode, .email, .gender, .employmentStatus, .educationStatus, .resumeName]
+        return [.menu, .name, /*.zipcode, .email, .gender ,*/ .employmentStatus, .educationStatus, .resumeName]
     }
-    
     func kind() -> Kind {
         return getValues().kind
     }
