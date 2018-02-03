@@ -20,6 +20,7 @@ class EditResumeVC: UIViewController {
         textView.font = UIFont.boldSystemFont(ofSize: 32)
         textView.isEditable = false
         textView.textAlignment = .center
+        textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -107,8 +108,8 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             openEditor(for: .standard)
             return
         }
-        
-       navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -132,11 +133,7 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             titleView.text = info.rawValue
             bottomStackView.addArrangedSubview(addButton)
             addButton.isHidden = false
-            
-
         }
-       
-        
         collectionView.reloadData()
     }
     

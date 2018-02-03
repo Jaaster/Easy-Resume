@@ -14,9 +14,10 @@ private let reuseIdentifier = "resumeCell"
 
 class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let list = ResumeDataHandler.shared.getResumeList()!
+    let resumes = ResumeDataHandler.shared.getResumeList()!
     var currentCellIndex = 0
-    
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+
     let editButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.transportationStyle(title: "EDIT", bgcolor: Color.green.getUIColor())
@@ -69,12 +70,12 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
 
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count
+        return resumes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ResumeCell {
-            cell.resume = list[indexPath.item]
+            cell.resume = resumes[indexPath.item]
             cell.viewUpdate()
             return cell
         }
@@ -93,17 +94,18 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
 }
 
 extension ChooseResumeVC {
-    
     @objc func backButtonPressed() {
-        performSegue(withIdentifier: "MENU", sender: nil)
+        dismiss(animated: true, completion: nil)
+       
     }
     
     @objc func editButtonPressed() {
         let editResumeVC = EditResumeVC()
-        let resume = list[currentCellIndex]
+        let resume = resumes[currentCellIndex]
+        
         editResumeVC.resumeName = resume.resume_name
         ResumeDataHandler.shared.currentResume = resume
-        navigationController?.pushViewController(editResumeVC, animated: true)
+        present(editResumeVC, animated: true, completion: nil)
     }
     
 }

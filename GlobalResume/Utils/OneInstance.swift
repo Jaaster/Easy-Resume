@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 class OneInstance {
     
     static let shared = OneInstance()
@@ -38,6 +38,16 @@ class OneInstance {
         }
         set {
             _examBeforeTrigger = newValue
+        }
+    }
+    private var n: UINavigationController!
+    
+    var nController: UINavigationController {
+        set {
+            n = newValue
+        }
+        get {
+            return n
         }
     }
     

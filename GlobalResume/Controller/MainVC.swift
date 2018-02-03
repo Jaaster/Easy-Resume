@@ -41,7 +41,10 @@ class MainVC: UIViewController, LoadableVC {
             //Edit Button Pressed
             if ResumeDataHandler.shared.getResumeList() != nil {
                 ResumeDataHandler.shared.editingResume = true
-                performSegue(withIdentifier: "chooseResume", sender: nil)
+               let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "CHOOSE_RESUME")
+                present(vc, animated: true, completion: nil)
+                
             }
         }
         

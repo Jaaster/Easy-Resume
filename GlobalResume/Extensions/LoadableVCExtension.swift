@@ -12,10 +12,12 @@ extension LoadableVC where Self: UIViewController {
     
     func handleTransportation(data: String) {
         
-        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+
         //End of exam
         if currentExam == nil {
-            self.performSegue(withIdentifier: "MENU", sender: nil)
+            let main = sb.instantiateViewController(withIdentifier: "MENU")
+            present(main, animated: true, completion: nil)
             return
         }
         //Loop hole need to fix...User can the name of a button that calls a trigger it will call it
@@ -71,7 +73,10 @@ extension LoadableVC where Self: UIViewController {
                     //End of Exams
                     ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
                     PersistantService.saveContext()
-                    self.performSegue(withIdentifier: "EXAM_ENDED", sender: nil)
+                    
+                    
+                    let vc = sb.instantiateViewController(withIdentifier: "EXAM_ENDED")
+                    present(vc, animated: true, completion: nil)
                     return
                 }
             }
@@ -86,7 +91,16 @@ extension LoadableVC where Self: UIViewController {
             self.currentExam = nextExam
             self.updateData()
         } else {
-            self.performSegue(withIdentifier: nextKind.rawValue, sender: nil)
+           
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            
+            let vc = sb.instantiateViewController(withIdentifier: nextKind.rawValue)
+                present(vc, animated: true, completion: nil)
+
+            if let vc = vc as? LoadableVC {
+                vc.currentExam = nextExam
+                vc.updateData()
+            }
         }
     }
 }

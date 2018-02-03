@@ -27,10 +27,7 @@ class ThreeBarButtonsVC: UIViewController, LoadableVC {
 
     }
     
-    override func loadView() {
-        super.loadView()
-        updateData()
-    }
+   
     func updateData() {
         
         let values = currentExam.getValues()

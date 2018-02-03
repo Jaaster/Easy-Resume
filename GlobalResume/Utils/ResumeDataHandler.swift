@@ -102,12 +102,6 @@ class ResumeDataHandler {
             
             if let resumeList = list as? [ResumeData] {
                 if !resumeList.isEmpty {
-                    
-                    for i in resumeList {
-                        print(i)
-                    
-                    }
-                    
                     return resumeList
 
                 }

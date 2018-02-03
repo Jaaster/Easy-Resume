@@ -31,11 +31,7 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
         textField.delegate = self
         
     }
-    
-    override func loadView() {
-        super.loadView()
-        updateData()
-    }
+
      func updateData() {
         var list = [String]()
         if currentExam == Exam.jobDescription {

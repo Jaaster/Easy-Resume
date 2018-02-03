@@ -17,11 +17,6 @@ class InputVC: UIViewController, LoadableVC {
     @IBOutlet weak var circleView: CircleView!
     var currentExam: Exam!
     
-    
-    override func loadView() {
-       super.loadView()
-        updateData()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self

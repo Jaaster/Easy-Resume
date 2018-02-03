@@ -29,10 +29,6 @@ class TwoBarButtonsVC: UIViewController, LoadableVC {
         super.viewDidLoad()
         events()
     }
-    override func loadView() {
-        super.loadView()
-        updateData()
-    }
     
     func updateData() {
         

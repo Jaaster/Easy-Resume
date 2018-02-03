@@ -26,13 +26,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
         super.viewDidLoad()
 
     }
-    
-    override func loadView() {
-        super.loadView()
-        updateData()
 
-    }
-    
     func updateData() {
         
         confettiVIew.startAnimating()

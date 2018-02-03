@@ -17,7 +17,7 @@ class EditResumeCell: UICollectionViewCell {
         textView.text = "TEST"
         textView.textAlignment = .center
         textView.isEditable = false
-        textView.isUserInteractionEnabled = false 
+        textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .clear
         return textView
@@ -41,10 +41,5 @@ class EditResumeCell: UICollectionViewCell {
         titleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         titleView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.70).isActive = true
         titleView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.80).isActive = true
-        
-        
     }
-    
-    
-    
 }
