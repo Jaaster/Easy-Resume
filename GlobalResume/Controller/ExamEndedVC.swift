@@ -52,6 +52,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
         
         ResumeDataHandler.shared.currentResume = nil
     }
+    
     @IBAction func btnPressed(sender: CustomButton) {
         handleTransportation(data: "")
     }

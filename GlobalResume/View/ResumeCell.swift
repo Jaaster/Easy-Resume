@@ -38,7 +38,8 @@ class ResumeCell: UICollectionViewCell {
     let textView: UITextView = {
         let textView = UITextView()
         textView.textColor = Color.blue.getUIColor()
-        textView.font = UIFont.boldSystemFont(ofSize: 20)
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        textView.font = font.withSize(20)
         textView.textAlignment = .center
         textView.isEditable = false
         return textView

@@ -63,7 +63,7 @@ class ResumeDataHandler {
     func gender() -> String {
         if let resume = currentResume {
             if let gender = resume.gender {
-                return gender.capitalized
+                return gender
             }
         }
         return ""

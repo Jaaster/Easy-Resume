@@ -54,25 +54,25 @@ enum Exam: String {
     func getValues() -> (kind: Kind, example: String, color: Color, buttons: [(name: String, color: Color)]){
         switch self {
         case .name:
-            return (.input, "e.g Jerry Springer", Color.pink, [])
+            return (.input, "e.g Jerry Springer", Color.blue, [])
         case .gender:
             return (.twoButtons,"", Color.clear, [("MALE", Color.blue), ("FEMALE", Color.pink)])
         case .email:
             return (.input, "example@gmail.com", Color.blue, [])
         case .number:
-            return (.input,"e.g 1 (931) 390 3949", Color.grey, [])
+            return (.input,"e.g 1 (931) 390 3949", Color.blue, [])
         case .zipcode:
-            return (.input, "e.g 37052", Color.grey, [])
+            return (.input, "e.g 37052", Color.blue, [])
         case .employmentStatus:
-            return (.threeBarButtons, "", Color.grey, [("EMPLOYED", Color.grey), ("UNEMPLOYED", Color.grey), ("NO HISTORY", Color.grey)])
+            return (.threeBarButtons, "", Color.blue, [("EMPLOYED", Color.blue), ("UNEMPLOYED", Color.blue), ("NO HISTORY", Color.blue)])
         case .menu:
             return (.main, "", Color.clear, [])
         case .companyName:
-            return (.input, "e.g Apple", Color.grey, [])
+            return (.input, "e.g Apple", Color.blue, [])
         case .jobTitle:
-            return (.input, "e.g Manager", Color.grey, [])
+            return (.input, "e.g Manager", Color.blue, [])
         case .employmentRecord:
-            return (.twoBarButtons, "", Color.grey, [("START", Color.grey), ("END", Color.grey)])
+            return (.twoBarButtons, "", Color.blue, [("START", Color.blue), ("END", Color.blue)])
         case .schoolName:
             return (.input, "e.g Harvard", Color.blue, [])
         case .educationLevel:
@@ -82,9 +82,9 @@ enum Exam: String {
         case .educationRecord:
             return (.twoBarButtons, "", Color.blue, [("START", Color.blue), ("END", Color.blue)])
         case .jobDescription:
-            return (.description, "EXAMPLES", Color.grey, [])
+            return (.description, "EXAMPLES", Color.blue, [])
         case .educationStatus:
-             return (.threeBarButtons, "", Color.grey, [("IN SCHOOL", Color.grey), ("GRADUATED", Color.grey), ("NO HISTORY", Color.grey)])
+             return (.threeBarButtons, "", Color.blue, [("IN SCHOOL", Color.blue), ("GRADUATED", Color.blue), ("NO HISTORY", Color.blue)])
         case .resumeName:
             return (.input, "e.g MyResume", Color.blue, [])
         }

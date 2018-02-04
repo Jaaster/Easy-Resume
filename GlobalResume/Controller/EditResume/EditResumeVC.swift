@@ -12,18 +12,19 @@ class EditResumeVC: UIViewController {
     
     var resumeName: String!
     var editOptions: [String?] = []
+    var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code"]
     private let cellid = "editResumeCell"
     
-    let titleView: UITextView = {
+    let titleLabel: UILabel = {
         
-        var textView = UITextView()
-        textView.textColor = Color.blue.getUIColor()
-        textView.font = UIFont.boldSystemFont(ofSize: 32)
-        textView.isEditable = false
-        textView.textAlignment = .center
-        textView.isUserInteractionEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+        var label = UILabel()
+        label.textColor = Color.blue.getUIColor()
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        label.font = font.withSize(35)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     
@@ -39,6 +40,8 @@ class EditResumeVC: UIViewController {
     let addButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.transportationStyle(title: "ADD", bgcolor: Color.green.getUIColor())
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        button.titleLabel?.font = font.withSize(30)
         button.addTarget(self, action: #selector(addButtonPressed), for: UIControlEvents.touchDown)
         return button
     }()
@@ -46,6 +49,8 @@ class EditResumeVC: UIViewController {
     let backButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.transportationStyle(title: "BACK", bgcolor: Color.blue.getUIColor())
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        button.titleLabel?.font = font.withSize(30)
         button.addTarget(self, action: #selector(backButtonPressed), for: UIControlEvents.touchDown)
         return button
     }()
@@ -61,8 +66,11 @@ class EditResumeVC: UIViewController {
         editOptions = ResumeInfo.getOptions(info: .standard)
         updateViews()
         collectionView.reloadData()
+ 
         
     }
+    
+  
     
     private func updateViews() {
         bottomStackView.addArrangedSubview(backButton)
@@ -70,7 +78,7 @@ class EditResumeVC: UIViewController {
         bottomStackView.distribution = .fillEqually
         bottomStackView.spacing = 20
         
-        view.addSubview(titleView)
+        view.addSubview(titleLabel)
         view.addSubview(collectionView)
         view.addSubview(bottomStackView)
         
@@ -79,16 +87,16 @@ class EditResumeVC: UIViewController {
         bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         bottomStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        titleView.text = resumeName
-        titleView.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
-        titleView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        titleView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        titleView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        titleLabel.text = resumeName
+        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -20).isActive = true
-        collectionView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 20).isActive = true
+        collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
         
     }
     
@@ -99,7 +107,7 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     
     @objc func backButtonPressed() {
-        if titleView.text == resumeName {
+        if titleLabel.text == resumeName {
             dismiss(animated: true, completion: nil)
         } else {
             //Is editing info
@@ -109,7 +117,7 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     @objc func addButtonPressed() {
-        if let info = ResumeInfo(rawValue: titleView.text) {
+        if let info = ResumeInfo(rawValue: titleLabel.text!) {
             if info == .contact {
                 return
             }
@@ -145,7 +153,7 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
         
         
-        if let resumeInfo = ResumeInfo(rawValue: titleView.text) {
+        if let resumeInfo = ResumeInfo(rawValue: titleLabel.text!) {
             
             switch resumeInfo {
                 
@@ -200,16 +208,23 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if let loadableVC = vc as? LoadableVC {
             loadableVC.presenting = UIViewController()
             loadableVC.currentExam = exam
+            
+            let newView = UIView(frame: view.frame)
+            newView.backgroundColor = .white
+            view.addSubview(newView)
+            
             present(vc, animated: true, completion: {
                 Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (time) in
                     if info == ResumeInfo.contact {
                         if self.viewIfLoaded?.window != nil {
                             self.openEditor(for: info)
+                            newView.removeFromSuperview()
                             time.invalidate()
                         }
                     } else if OneInstance.shared.trigger == nil {
                         //Trigger is over
                         self.openEditor(for: info)
+                        newView.removeFromSuperview()
                         time.invalidate()
                     }
                 })
@@ -217,26 +232,22 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             loadableVC.updateData()
         }
     }
-    
-    private func removeSubViews() {
-        for v in view.subviews{
-            v.removeFromSuperview()
-        }
-    }
+
 
     func openEditor(for info: ResumeInfo) {
         editOptions = ResumeInfo.getOptions(info: info)
         collectionView.reloadData()
+        
         if info == .standard {
             bottomStackView.removeArrangedSubview(addButton)
             addButton.isHidden = true
-            titleView.text = resumeName
+            titleLabel.text = resumeName
         } else if info == .contact {
             bottomStackView.removeArrangedSubview(addButton)
             addButton.isHidden = true
-            titleView.text = info.rawValue
+            titleLabel.text = info.rawValue
         } else {
-            titleView.text = info.rawValue
+            titleLabel.text = info.rawValue
             bottomStackView.addArrangedSubview(addButton)
             addButton.isHidden = false
         }
@@ -246,6 +257,21 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath) as? EditResumeCell {
+            if let info = ResumeInfo(rawValue: titleLabel.text!) {
+                switch info {
+                case .contact:
+                    cell.descriptingView.text = contactInfoCategories[indexPath.row]
+                case .employment:
+                    cell.descriptingView.text = "company"
+                case .education:
+                    cell.descriptingView.text = "school"
+                case .standard:
+                    cell.descriptingView.text = " "
+                }
+            } else {
+                cell.descriptingView.text = " "
+            }
+            
             cell.titleView.text = editOptions[indexPath.row]
             return cell
         }

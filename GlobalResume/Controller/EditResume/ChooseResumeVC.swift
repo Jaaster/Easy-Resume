@@ -16,7 +16,12 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var resumes: [ResumeData?] {
         get {
-             return ResumeDataHandler.shared.getResumeList()!
+            if let resumes = ResumeDataHandler.shared.getResumeList() {
+                return resumes
+            } else {
+                handleTransportation(forward: false)
+                return []
+            }
         }
     }
     var currentCellIndex = 0
@@ -26,12 +31,18 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
         let button = CustomButton(type: .system)
         button.transportationStyle(title: "EDIT", bgcolor: Color.green.getUIColor())
         button.addTarget(self, action: #selector(editButtonPressed), for: UIControlEvents.touchDown)
+        
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        button.titleLabel?.font = font.withSize(35)
         return button
     }()
     
     let backButton: CustomButton = {
         let button = CustomButton(type: .system)
         button.transportationStyle(title: "BACK", bgcolor: Color.blue.getUIColor())
+        
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        button.titleLabel?.font = font.withSize(35)
         button.addTarget(self, action: #selector(backButtonPressed), for: UIControlEvents.touchDown)
         return button
     }()
@@ -47,8 +58,20 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
              layout.scrollDirection = .horizontal
         }
         updateLayout()
-       
+        
+        let upGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp))
+        upGesture.direction = .up
+        collectionView?.addGestureRecognizer(upGesture)
     }
+    
+    @objc func swipedUp() {
+        let popup = PopupVC()
+        popup.resume = resumes[currentCellIndex]
+        present(popup, animated: true, completion: nil)
+    }
+
+       
+    
     
     func updateLayout() {
         let bottomStackView = UIStackView(arrangedSubviews: [backButton, editButton])
@@ -91,6 +114,14 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+        //Open resume in ResumePresenter
+        let resumePresentor = ResumePresentationVC()
+        resumePresentor.resume = resumes[currentCellIndex]
+        present(resumePresentor, animated: true, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
@@ -99,19 +130,34 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
 
 extension ChooseResumeVC {
     @objc func backButtonPressed() {
-        dismiss(animated: true, completion: nil)
-        ResumeDataHandler.shared.editingResume = false
-        ResumeDataHandler.shared.currentResume = nil
+        handleTransportation(forward: false)
+    }
+    @objc func editButtonPressed() {
+        handleTransportation(forward: true)
     }
     
-    @objc func editButtonPressed() {
-        let editResumeVC = EditResumeVC()
-        let resume = resumes[currentCellIndex]
+    func handleTransportation(forward: Bool) {
+        if forward {
+            let editResumeVC = EditResumeVC()
+            if resumes.isEmpty {
+                handleTransportation(forward: false)
+                return
+            }
+            let resume = resumes[currentCellIndex]
         
-        ResumeDataHandler.shared.editingResume = true
-        ResumeDataHandler.shared.currentResume = resume
-        editResumeVC.resumeName = resume!.resume_name
-        present(editResumeVC, animated: true, completion: nil)
+            ResumeDataHandler.shared.editingResume = true
+            ResumeDataHandler.shared.currentResume = resume
+            editResumeVC.resumeName = resume!.resume_name
+            present(editResumeVC, animated: true, completion: nil)
+        } else {
+            if let vc = presentingViewController as? MainVC {
+                vc.updateData()
+            }
+            
+            dismiss(animated: true, completion: nil)
+            ResumeDataHandler.shared.editingResume = false
+            ResumeDataHandler.shared.currentResume = nil
+        }
     }
     
 }

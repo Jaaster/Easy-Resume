@@ -15,6 +15,10 @@ class MainVC: UIViewController, LoadableVC {
     @IBOutlet weak var firstCircleView: CircleView!
     @IBOutlet weak var secondCircleView: CircleView!
     
+    @IBOutlet weak var createLabel: UILabel!
+    
+    @IBOutlet weak var createdLabel: UILabel!
+    
     var currentExam: Exam!
     
     
@@ -34,9 +38,13 @@ class MainVC: UIViewController, LoadableVC {
         firstCircleView.round()
         secondCircleView.round()
         
-        if ResumeDataHandler.shared.getResumeList() != nil {
-            secondCircleView.backgroundColor = Color.blue.getUIColor()
+        var color = Color.blue.getUIColor()
+        if ResumeDataHandler.shared.getResumeList() == nil {
+           color = Color.grey.getUIColor()
         }
+        
+        secondCircleView.backgroundColor = color
+        createdLabel.textColor = color
     }
     
     @IBAction func buttonPressed(button: UIButton) {
@@ -50,7 +58,6 @@ class MainVC: UIViewController, LoadableVC {
                let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "CHOOSE_RESUME")
                 present(vc, animated: true, completion: nil)
-                
             }
         }
         

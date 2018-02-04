@@ -29,6 +29,11 @@
 		09554C57202374A80043B822 /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C56202374A80043B822 /* ResumeCell.swift */; };
 		09554C592023A0170043B822 /* EditResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C582023A0170043B822 /* EditResumeVC.swift */; };
 		09554C5E2023C9AC0043B822 /* EditResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C5D2023C9AC0043B822 /* EditResumeCell.swift */; };
+		095BE574202763950011D55C /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE573202763950011D55C /* PopupVC.swift */; };
+		095BE57D2027C66E0011D55C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE57C2027C66E0011D55C /* HistoryView.swift */; };
+		095BE57F2027C6920011D55C /* ResumePresentationVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE57E2027C6920011D55C /* ResumePresentationVCViewController.swift */; };
+		095BE5812027C6B60011D55C /* ResumeLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE5802027C6B60011D55C /* ResumeLeftView.swift */; };
+		095BE5832027C6D70011D55C /* ResumeRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE5822027C6D70011D55C /* ResumeRightView.swift */; };
 		095C4B432021291C00271CAB /* PersistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B422021291C00271CAB /* PersistantService.swift */; };
 		095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */; };
 		095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */; };
@@ -103,6 +108,11 @@
 		09554C56202374A80043B822 /* ResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
 		09554C582023A0170043B822 /* EditResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeVC.swift; sourceTree = "<group>"; };
 		09554C5D2023C9AC0043B822 /* EditResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeCell.swift; sourceTree = "<group>"; };
+		095BE573202763950011D55C /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
+		095BE57C2027C66E0011D55C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		095BE57E2027C6920011D55C /* ResumePresentationVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumePresentationVCViewController.swift; sourceTree = "<group>"; };
+		095BE5802027C6B60011D55C /* ResumeLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeLeftView.swift; sourceTree = "<group>"; };
+		095BE5822027C6D70011D55C /* ResumeRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRightView.swift; sourceTree = "<group>"; };
 		095C4B422021291C00271CAB /* PersistantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantService.swift; sourceTree = "<group>"; };
 		095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Employment+CoreDataProperties.swift"; path = "GlobalResume/Model/Employment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Education+CoreDataClass.swift"; path = "GlobalResume/Model/Education+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -238,10 +248,22 @@
 		09554C5C2023A7A70043B822 /* EditResume */ = {
 			isa = PBXGroup;
 			children = (
+				095BE57E2027C6920011D55C /* ResumePresentationVCViewController.swift */,
 				09554C54202374730043B822 /* ChooseResumeVC.swift */,
 				09554C582023A0170043B822 /* EditResumeVC.swift */,
+				095BE573202763950011D55C /* PopupVC.swift */,
 			);
 			path = EditResume;
+			sourceTree = "<group>";
+		};
+		095BE57B2027C6580011D55C /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				095BE57C2027C66E0011D55C /* HistoryView.swift */,
+				095BE5802027C6B60011D55C /* ResumeLeftView.swift */,
+				095BE5822027C6D70011D55C /* ResumeRightView.swift */,
+			);
+			path = Resume;
 			sourceTree = "<group>";
 		};
 		095E1FF6200D617D0078956B = {
@@ -323,6 +345,7 @@
 		095E203B200D661E0078956B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				095BE57B2027C6580011D55C /* Resume */,
 				090C8AC620105DD100E58628 /* CustomButton.swift */,
 				095E203D200D669C0078956B /* CircleView.swift */,
 				09202DF3200FD7A800320D60 /* LoadView.swift */,
@@ -685,6 +708,7 @@
 				095E203E200D669C0078956B /* CircleView.swift in Sources */,
 				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
+				095BE5832027C6D70011D55C /* ResumeRightView.swift in Sources */,
 				095C4B4F20212A7000271CAB /* Education+CoreDataProperties.swift in Sources */,
 				095C4B4E20212A7000271CAB /* ResumeData+CoreDataProperties.swift in Sources */,
 				095C4B432021291C00271CAB /* PersistantService.swift in Sources */,
@@ -705,10 +729,12 @@
 				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,
 				090C8AC920105E1E00E58628 /* Roundable.swift in Sources */,
 				09B33547201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift in Sources */,
+				095BE57F2027C6920011D55C /* ResumePresentationVCViewController.swift in Sources */,
 				09554C57202374A80043B822 /* ResumeCell.swift in Sources */,
 				09554C55202374730043B822 /* ChooseResumeVC.swift in Sources */,
 				09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */,
 				09202DF4200FD7A800320D60 /* LoadView.swift in Sources */,
+				095BE5812027C6B60011D55C /* ResumeLeftView.swift in Sources */,
 				094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */,
 				09202DF2200FD6E300320D60 /* Loadable.swift in Sources */,
 				09202DE7200FC87000320D60 /* Gender.swift in Sources */,
@@ -716,7 +742,9 @@
 				09CE5FBA201FC6720073BC4C /* Expandable.swift in Sources */,
 				09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */,
 				09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */,
+				095BE574202763950011D55C /* PopupVC.swift in Sources */,
 				090C8AC720105DD100E58628 /* CustomButton.swift in Sources */,
+				095BE57D2027C66E0011D55C /* HistoryView.swift in Sources */,
 				095E204B200DB6D80078956B /* ResumeDataHandler.swift in Sources */,
 				095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */,
 				0913F9F020216A5C00760EEA /* Saveable.swift in Sources */,

@@ -63,12 +63,11 @@ extension UIView: Fadeable {
     }
    
     func fade(alpha: CGFloat, completion: @escaping ()->()) {
-        UIView.animate(withDuration: time, animations: {
-            self.alpha = alpha
-        }, completion: {
-            _ in
-            completion()
-        })
+        UIView.animate(withDuration: time, delay: 0, options: [.allowUserInteraction], animations: {
+             self.alpha = alpha
+        }) { (_) in
+              completion()
+        }
     }
 }
 

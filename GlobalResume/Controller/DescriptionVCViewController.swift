@@ -23,6 +23,7 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var exampleButton: CustomButton!
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
    
     override func viewDidLoad() {
@@ -56,10 +57,11 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
         exampleButton.titleLabel?.textAlignment = .center
         
         nextButton.isHidden = true
+        backButton.setTitleColor(color, for: .normal)
         nextButton.setTitleColor(color, for: .normal)
         toolBar()
-        
         titleLabel.textColor = color
+    
         backgroundView.backgroundColor = color
         tableView.reloadData()
     }
@@ -117,6 +119,7 @@ extension DescriptionVCViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ExampleCell") as? ExampleCell {
             cell.exampleLabel.text = examples[indexPath.row]
+            cell.exampleLabel.backgroundColor = currentExam.getValues().color.getUIColor()
             return cell
         }
         
