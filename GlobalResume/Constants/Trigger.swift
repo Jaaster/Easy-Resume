@@ -45,9 +45,9 @@ enum Trigger: String {
     func examList() -> [Exam] {
         switch self {
         case .employed, .unemployed:
-            return [.companyName, .jobTitle, .employmentRecord, .jobDescription]
+            return [.companyName, .jobTitle, .jobDescription, .employmentRecord]
         case .inSchool, .graduated:
-            return [.educationRecord, .educationLevel, .specificFieldOfStudy, .schoolName]
+            return [.schoolName, .specificFieldOfStudy, .educationLevel, .educationRecord]
         }
         
     }

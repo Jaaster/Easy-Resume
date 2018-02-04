@@ -12,8 +12,8 @@ class ResumeDataHandler {
     static let shared = ResumeDataHandler()
     
     var currentResume: ResumeData?
-    private var currentEducation: Education?
-    private var currentEmployment: Employment?
+    var currentEducation: Education?
+    var currentEmployment: Employment?
     
     var editingResume: Bool = false
     
@@ -56,9 +56,7 @@ class ResumeDataHandler {
         }
     }
     
-    func setValue(object: NSManagedObject, data: String, forKey: String) {
-        print(data)
-        print(forKey)
+    private func setValue(object: NSManagedObject, data: String, forKey: String) {
         object.setValue(data, forKey: forKey.lowercased().replacingOccurrences(of: " ", with: "_"))
     }
 
@@ -113,6 +111,15 @@ class ResumeDataHandler {
         return nil
     }
     
+    func employment(from index: Int) -> Employment {
+        let eList = currentResume?.employment?.allObjects as! [Employment]
+        return eList[index]
+    }
+    
+    func education(from index: Int) -> Education {
+        let eList = currentResume?.education?.allObjects as! [Education]
+        return eList[index]
+    }
 }
 
 

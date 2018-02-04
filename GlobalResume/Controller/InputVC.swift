@@ -65,9 +65,11 @@ extension InputVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let data = textField.text {
-            textField.endEditing(true)
-            handleTransportation(data: data)
-            return true
+            if !data.isEmpty{
+                textField.endEditing(true)
+                handleTransportation(data: data)
+                return true
+            }
         }
         return false
     }

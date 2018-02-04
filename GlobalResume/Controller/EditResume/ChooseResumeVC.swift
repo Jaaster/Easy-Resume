@@ -14,7 +14,11 @@ private let reuseIdentifier = "resumeCell"
 
 class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let resumes = ResumeDataHandler.shared.getResumeList()!
+    var resumes: [ResumeData?] {
+        get {
+             return ResumeDataHandler.shared.getResumeList()!
+        }
+    }
     var currentCellIndex = 0
     let sb = UIStoryboard(name: "Main", bundle: nil)
 
@@ -96,15 +100,17 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
 extension ChooseResumeVC {
     @objc func backButtonPressed() {
         dismiss(animated: true, completion: nil)
-       
+        ResumeDataHandler.shared.editingResume = false
+        ResumeDataHandler.shared.currentResume = nil
     }
     
     @objc func editButtonPressed() {
         let editResumeVC = EditResumeVC()
         let resume = resumes[currentCellIndex]
         
-        editResumeVC.resumeName = resume.resume_name
+        ResumeDataHandler.shared.editingResume = true
         ResumeDataHandler.shared.currentResume = resume
+        editResumeVC.resumeName = resume!.resume_name
         present(editResumeVC, animated: true, completion: nil)
     }
     

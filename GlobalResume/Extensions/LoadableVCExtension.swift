@@ -12,6 +12,8 @@ extension LoadableVC where Self: UIViewController {
     
     func handleTransportation(data: String) {
         
+       
+        
         let sb = UIStoryboard(name: "Main", bundle: nil)
 
         //End of exam
@@ -39,6 +41,15 @@ extension LoadableVC where Self: UIViewController {
                 //End of trigger
                 let beforeExam = instance.examBeforeTrigger
                 instance.trigger = nil
+                
+                if ResumeDataHandler.shared.editingResume {
+                    ResumeDataHandler.shared.updateData(for: trigger, exam: currentExam, data: data)
+                    ResumeDataHandler.shared.putEmploymentAndEducationInResume()
+                    PersistantService.saveContext()
+                    dismiss(animated: true, completion: nil)
+                    return
+                }
+                
                 if let nextExam = beforeExam.next() {
                     let kind = currentExam.kind()
                     currentExam = beforeExam
@@ -67,6 +78,15 @@ extension LoadableVC where Self: UIViewController {
                 }
             } else {
                 //Normal segue
+                if ResumeDataHandler.shared.editingResume {
+                    //Editing data from EditResumeVC
+                    ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
+                    PersistantService.saveContext()
+                    dismiss(animated: true, completion: nil)
+                    return
+                }
+                
+                
                 if let nextExam = currentExam.next() {
                     if currentExam != .menu {
                         ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
