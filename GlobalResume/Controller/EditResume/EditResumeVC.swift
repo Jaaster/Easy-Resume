@@ -12,7 +12,7 @@ class EditResumeVC: UIViewController {
     
     var resumeName: String!
     var editOptions: [String?] = []
-    var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code"]
+    var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code", "profile description"]
     private let cellid = "editResumeCell"
     
     let titleLabel: UILabel = {
@@ -145,10 +145,12 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let selectedTitle = editOptions[indexPath.row] {
-            if let info = ResumeInfo(rawValue: selectedTitle) {
-                openEditor(for: info)
-                return
+        if let selectedTitle = editOptions[indexPath.row]{
+            if !selectedTitle.isEmpty {
+                if let info = ResumeInfo(rawValue: selectedTitle) {
+                    openEditor(for: info)
+                    return
+                }
             }
         }
         
@@ -174,6 +176,8 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                     case 4:
                         editData(exam: Exam.zipcode, info: resumeInfo)
                         //Zipcode
+                case 5:
+                    editData(exam: Exam.profileDescription, info: resumeInfo)
                 default:
                     openEditor(for: .contact)
                 }
@@ -309,7 +313,7 @@ enum ResumeInfo: String {
         if let resume = ResumeDataHandler.shared.currentResume {
         switch info {
         case .contact:
-            return [resume.name, resume.gender, resume.email, resume.phone_number, resume.zip_code]
+            return [resume.name, resume.gender, resume.email, resume.phone_number, resume.zip_code, resume.profile_description]
         case .employment:
            
             let eList = resume.employment?.allObjects as! [Employment]

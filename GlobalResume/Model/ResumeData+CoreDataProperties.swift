@@ -28,6 +28,7 @@ extension ResumeData {
     @NSManaged public var zip_code: String?
     @NSManaged public var education: NSSet?
     @NSManaged public var employment: NSSet?
+    @NSManaged public var profile_description: String?
 
 }
 

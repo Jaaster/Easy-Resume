@@ -63,16 +63,7 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
         upGesture.direction = .up
         collectionView?.addGestureRecognizer(upGesture)
     }
-    
-    @objc func swipedUp() {
-        let popup = PopupVC()
-        popup.resume = resumes[currentCellIndex]
-        present(popup, animated: true, completion: nil)
-    }
-
-       
-    
-    
+  
     func updateLayout() {
         let bottomStackView = UIStackView(arrangedSubviews: [backButton, editButton])
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -118,6 +109,8 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
        
         //Open resume in ResumePresenter
         let resumePresentor = ResumePresentationVC()
+        resumePresentor.modalPresentationStyle = .formSheet
+        resumePresentor.modalTransitionStyle = .flipHorizontal
         resumePresentor.resume = resumes[currentCellIndex]
         present(resumePresentor, animated: true, completion: nil)
     }
@@ -129,6 +122,14 @@ class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLa
 }
 
 extension ChooseResumeVC {
+    
+    
+    @objc func swipedUp() {
+        let popup = PopupVC()
+        popup.resume = resumes[currentCellIndex]
+        present(popup, animated: true, completion: nil)
+    }
+    
     @objc func backButtonPressed() {
         handleTransportation(forward: false)
     }

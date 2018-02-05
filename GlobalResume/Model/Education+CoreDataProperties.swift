@@ -17,6 +17,7 @@ extension Education {
     }
     
     @NSManaged public var education_level: String?
+    @NSManaged public var education_description: String?
     @NSManaged public var education_record: String?
     @NSManaged public var field_of_study: String?
     @NSManaged public var school_name: String?

@@ -75,7 +75,7 @@
         <!--MainVC-->
         <scene sceneID="i0i-o4-acu">
             <objects>
-                <viewController storyboardIdentifier="MENU" id="km8-jb-SwJ" customClass="MainVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MENU" modalTransitionStyle="crossDissolve" id="km8-jb-SwJ" customClass="MainVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEV-NF-eTM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,9 +136,6 @@
                                     <constraint firstAttribute="width" constant="150" id="hU8-CO-seg"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoadAppScreen" translatesAutoresizingMaskIntoConstraints="NO" id="CvJ-DH-f1J" customClass="LoadAppView" customModule="GlobalResume" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yy6-Ao-831" userLabel="EditBtn">
                                 <rect key="frame" x="112.5" y="425" width="150" height="150"/>
                                 <constraints>
@@ -164,22 +161,18 @@
                         <constraints>
                             <constraint firstItem="mms-Ef-u39" firstAttribute="bottom" secondItem="DjC-8m-7DM" secondAttribute="bottom" constant="20" id="3Hb-7W-Eni"/>
                             <constraint firstItem="XJY-1c-3eR" firstAttribute="centerX" secondItem="gEV-NF-eTM" secondAttribute="centerX" id="Abg-ao-1ux"/>
-                            <constraint firstItem="CvJ-DH-f1J" firstAttribute="leading" secondItem="mms-Ef-u39" secondAttribute="leading" id="CKq-6G-WGC"/>
                             <constraint firstItem="fK7-8Z-nYn" firstAttribute="centerX" secondItem="gEV-NF-eTM" secondAttribute="centerX" id="PCP-RN-fs0"/>
                             <constraint firstItem="Yy6-Ao-831" firstAttribute="centerX" secondItem="XJY-1c-3eR" secondAttribute="centerX" id="R91-1f-M0J"/>
                             <constraint firstItem="4vU-n8-D9w" firstAttribute="centerX" secondItem="fK7-8Z-nYn" secondAttribute="centerX" id="RFo-Ix-67F"/>
                             <constraint firstItem="Yy6-Ao-831" firstAttribute="centerY" secondItem="XJY-1c-3eR" secondAttribute="centerY" id="SfX-OS-OPJ"/>
                             <constraint firstItem="q37-fo-3aw" firstAttribute="trailing" secondItem="mms-Ef-u39" secondAttribute="trailing" id="SgA-XM-Lyl"/>
                             <constraint firstItem="DjC-8m-7DM" firstAttribute="top" secondItem="XJY-1c-3eR" secondAttribute="bottom" constant="2" id="TK0-Mx-QWW"/>
-                            <constraint firstItem="CvJ-DH-f1J" firstAttribute="bottom" secondItem="mms-Ef-u39" secondAttribute="bottom" id="Vsu-vh-ZA5"/>
                             <constraint firstItem="q37-fo-3aw" firstAttribute="leading" secondItem="mms-Ef-u39" secondAttribute="leading" id="byy-qs-ny1"/>
-                            <constraint firstItem="CvJ-DH-f1J" firstAttribute="top" secondItem="gEV-NF-eTM" secondAttribute="top" id="igM-9a-qyU"/>
                             <constraint firstItem="mms-Ef-u39" firstAttribute="trailing" secondItem="DjC-8m-7DM" secondAttribute="trailing" id="ioT-jY-duC"/>
                             <constraint firstItem="4vU-n8-D9w" firstAttribute="centerY" secondItem="fK7-8Z-nYn" secondAttribute="centerY" id="je7-Hk-j8m"/>
                             <constraint firstItem="DjC-8m-7DM" firstAttribute="leading" secondItem="mms-Ef-u39" secondAttribute="leading" id="och-nh-XDE"/>
                             <constraint firstItem="q37-fo-3aw" firstAttribute="top" secondItem="fK7-8Z-nYn" secondAttribute="bottom" constant="2" id="scN-h1-cAv"/>
                             <constraint firstItem="fK7-8Z-nYn" firstAttribute="top" secondItem="mms-Ef-u39" secondAttribute="top" constant="20" id="xss-V1-gHx"/>
-                            <constraint firstItem="CvJ-DH-f1J" firstAttribute="trailing" secondItem="mms-Ef-u39" secondAttribute="trailing" id="y2C-8W-Cij"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mms-Ef-u39"/>
                     </view>
@@ -188,7 +181,6 @@
                         <outlet property="createLabel" destination="q37-fo-3aw" id="Btf-kW-4Md"/>
                         <outlet property="createdLabel" destination="DjC-8m-7DM" id="tjC-F6-Ojz"/>
                         <outlet property="firstCircleView" destination="fK7-8Z-nYn" id="yO6-W2-mmc"/>
-                        <outlet property="loadAppImageView" destination="CvJ-DH-f1J" id="Q6f-bQ-dpz"/>
                         <outlet property="secondCircleView" destination="XJY-1c-3eR" id="F0y-Tw-BrT"/>
                     </connections>
                 </viewController>
@@ -918,7 +910,6 @@
     <resources>
         <image name="APPLICANTFEMALE" width="113" height="222"/>
         <image name="INTERVIEWER" width="84" height="209"/>
-        <image name="LoadAppScreen" width="374" height="666"/>
         <image name="SHADOW" width="61" height="25"/>
         <image name="createIcon" width="72" height="72"/>
         <image name="editIcon" width="66" height="69"/>

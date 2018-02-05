@@ -9,7 +9,7 @@
 import UIKit
 
 enum Color {
-    case blue, grey, green, pink, clear
+    case blue, grey, green, pink, clear, red
     
     func getUIColor() -> UIColor {
         let x = CGFloat(255)
@@ -27,6 +27,8 @@ enum Color {
             return UIColor(red: 249/x, green: 133/x, blue: 238/x, alpha: a)
         case .clear:
             return UIColor.clear
+        case .red:
+            return UIColor(red: 226/x, green: 74/x, blue: 74/x, alpha: a)
         }
     }
 }

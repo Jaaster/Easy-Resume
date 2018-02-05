@@ -94,15 +94,11 @@ extension LoadableVC where Self: UIViewController {
                     handleSegues(currentExamKind: currentExam.kind(), nextExam: nextExam)
                 } else {
                     //End of Exams
+                    let vc = sb.instantiateViewController(withIdentifier: "EXAM_ENDED") as! ExamEndedVC
+                    vc.gender = ResumeDataHandler.shared.gender()
                     ResumeDataHandler.shared.updateData(dataType: currentExam, data: data)
                     PersistantService.saveContext()
-                    
-                    
-                    let vc = sb.instantiateViewController(withIdentifier: "EXAM_ENDED")
-                    if let loadableVC = vc as? LoadableVC {
-                        present(vc: loadableVC)
-                    }
-                    
+                    present(vc: vc)
                     return
                 }
             }

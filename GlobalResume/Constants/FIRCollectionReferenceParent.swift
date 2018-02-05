@@ -13,6 +13,8 @@ enum FIRCollectionReferenceParent: String {
     
     enum Child: String {
         case jobs = "Jobs"
+        case education = "EducationDescription"
+        case profile = "ProfileDescription"
     }
 
 }

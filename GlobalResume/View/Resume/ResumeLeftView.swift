@@ -21,24 +21,26 @@ class ResumeLeftView: UIView {
     let userName: UILabel = {
         let label = UILabel()
         label.text = "Joriah Lasater"
-        label.font = label.font.withSize(25)
-        label.textColor = .red
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-ExtraBold"))
+        label.font = font.withSize(30)
+        label.sizeToFit()
+        label.textColor = Color.red.getUIColor()
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .white
         return label
     }()
     
-    let userDescription: UILabel = {
+   lazy var profileDescription: UILabel = {
         
         let label = UILabel()
         label.text = "e.g A self-motived and orginized professional with over 10 years of experience in software engineering and AI technologies"
-        label.backgroundColor = .gray
+        label.textColor = Color.blue.getUIColor()
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        label.font = font.withSize(15)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        
         return label
         
     }()
@@ -46,19 +48,20 @@ class ResumeLeftView: UIView {
     
     let employmentSectionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Employment History"
-        label.textColor = .red
-        label.backgroundColor = .black
+        label.text = "Employment History:"
+        label.textColor = Color.red.getUIColor()
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        label.font = font.withSize(20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let educationSectionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Education History"
-        label.textColor = .red
-        label.backgroundColor = .black
-        
+        label.text = "Education History:"
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        label.font = font.withSize(20)
+        label.textColor = Color.red.getUIColor()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -71,14 +74,15 @@ class ResumeLeftView: UIView {
         addSubview(userName)
         addSubview(employmentSectionLabel)
         addSubview(educationSectionLabel)
-        addSubview(userDescription)
-        educationViews = [HistoryView(), HistoryView()]
+        addSubview(profileDescription)
+        educationViews = []
         employmentViews = []
     }
     
     func loadData() {
-        userName.text = resume.resume_name
-        
+        userName.text = resume.name
+        profileDescription.text = resume.profile_description
+
         var eList = resume.employment?.allObjects as! [Employment]
         
         if eList.isEmpty {
@@ -104,9 +108,9 @@ class ResumeLeftView: UIView {
             let hView = HistoryView()
             hView.place.text = eList1[i].school_name
             hView.startAndEndDate.text = eList1[i].education_record
-            hView.position.text = eList1[i].education_level
-            hView.myDescription.text = eList1[i].field_of_study
-            employmentViews.append(hView)
+            hView.position.text = "\(eList1[i].education_level!) in \(eList1[i].field_of_study!)"
+            hView.myDescription.text = eList1[i].education_description
+            educationViews.append(hView)
         }
     }
     
@@ -123,7 +127,6 @@ class ResumeLeftView: UIView {
             e.topAnchor.constraint(equalTo: previousE.bottomAnchor).isActive = true
             e.leadingAnchor.constraint(equalTo:  previousE.leadingAnchor).isActive = true
             e.trailingAnchor.constraint(equalTo: previousE.trailingAnchor).isActive = true
-            e.heightAnchor.constraint(equalToConstant: 200).isActive = true
             previousE = e
         }
         
@@ -142,7 +145,6 @@ class ResumeLeftView: UIView {
             e.topAnchor.constraint(equalTo: previousE.bottomAnchor).isActive = true
             e.leadingAnchor.constraint(equalTo:  previousE.leadingAnchor).isActive = true
             e.trailingAnchor.constraint(equalTo: previousE.trailingAnchor).isActive = true
-            e.heightAnchor.constraint(equalToConstant: 200).isActive = true
             previousE = e
         }
         
@@ -153,26 +155,31 @@ class ResumeLeftView: UIView {
         heightAnchor.constraint(equalToConstant: CGFloat(employmentViews.count + educationViews.count) * 200 + 320).isActive = true
         
         
-        userName.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        userName.topAnchor.constraint(equalTo: topAnchor).isActive = true
         userName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         userName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
-        userName.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        userName.heightAnchor.constraint(equalToConstant: userName.frame.height).isActive = true
         
-        userDescription.topAnchor.constraint(equalTo: userName.bottomAnchor).isActive = true
-        userDescription.leadingAnchor.constraint(equalTo: userName.leadingAnchor).isActive = true
-        userDescription.trailingAnchor.constraint(equalTo: userName.trailingAnchor).isActive = true
-        userDescription.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        profileDescription.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 10).isActive = true
+        profileDescription.leadingAnchor.constraint(equalTo: userName.leadingAnchor).isActive = true
+        profileDescription.trailingAnchor.constraint(equalTo: userName.trailingAnchor).isActive = true
+ 
         
-        employmentSectionLabel.topAnchor.constraint(equalTo: userDescription.bottomAnchor).isActive = true
-        employmentSectionLabel.leadingAnchor.constraint(equalTo: userDescription.leadingAnchor).isActive = true
-        employmentSectionLabel.trailingAnchor.constraint(equalTo: userDescription.trailingAnchor).isActive = true
+        
+        employmentSectionLabel.topAnchor.constraint(equalTo: profileDescription.bottomAnchor).isActive = true
+        employmentSectionLabel.leadingAnchor.constraint(equalTo: profileDescription.leadingAnchor).isActive = true
+        employmentSectionLabel.trailingAnchor.constraint(equalTo: profileDescription.trailingAnchor).isActive = true
         employmentSectionLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         setupEmploymentViews()
-        
-        educationSectionLabel.topAnchor.constraint(equalTo: employmentViews.last!.bottomAnchor).isActive = true
-        educationSectionLabel.leadingAnchor.constraint(equalTo: userDescription.leadingAnchor).isActive = true
-        educationSectionLabel.trailingAnchor.constraint(equalTo: userDescription.trailingAnchor).isActive = true
+        if let last = employmentViews.last {
+            educationSectionLabel.topAnchor.constraint(equalTo: last.bottomAnchor).isActive = true
+        } else {
+            educationSectionLabel.topAnchor.constraint(equalTo: employmentSectionLabel.bottomAnchor).isActive = true
+
+        }
+        educationSectionLabel.leadingAnchor.constraint(equalTo: profileDescription.leadingAnchor).isActive = true
+        educationSectionLabel.trailingAnchor.constraint(equalTo: profileDescription.trailingAnchor).isActive = true
         educationSectionLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         setupEducationViews()
@@ -182,6 +189,7 @@ class ResumeLeftView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
 }
 

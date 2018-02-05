@@ -60,13 +60,8 @@ class ResumeDataHandler {
         object.setValue(data, forKey: forKey.lowercased().replacingOccurrences(of: " ", with: "_"))
     }
 
-    func gender() -> String {
-        if let resume = currentResume {
-            if let gender = resume.gender {
-                return gender
-            }
-        }
-        return ""
+    func gender() -> Gender {
+        return Gender(rawValue: currentResume!.gender!)!
     }
     
     func putEmploymentAndEducationInResume() {

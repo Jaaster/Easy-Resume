@@ -47,7 +47,7 @@ enum Trigger: String {
         case .employed, .unemployed:
             return [.companyName, .jobTitle, .jobDescription, .employmentRecord]
         case .inSchool, .graduated:
-            return [.schoolName, .specificFieldOfStudy, .educationLevel, .educationRecord]
+            return [.schoolName, .specificFieldOfStudy, .educationLevel, .educationDescription, .educationRecord]
         }
         
     }

@@ -20,6 +20,7 @@
 		09388FA2200E585200A8B623 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA1200E585200A8B623 /* Exam.swift */; };
 		09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA8200E72AC00A8B623 /* LoadableVC.swift */; };
 		09388FAB200EEC5300A8B623 /* ThreeBarButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FAA200EEC5300A8B623 /* ThreeBarButtonsVC.swift */; };
+		093A36C72028F3A2007CA443 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093A36C62028F3A2007CA443 /* Launch Screen.storyboard */; };
 		093F3CFA201A8D8D0086B540 /* Children.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093F3CF9201A8D8D0086B540 /* Children.swift */; };
 		094DDD582017FF5800A9D3F0 /* TwoBarButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD572017FF5800A9D3F0 /* TwoBarButtonsVC.swift */; };
 		094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */; };
@@ -99,6 +100,7 @@
 		09388FA1200E585200A8B623 /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 		09388FA8200E72AC00A8B623 /* LoadableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableVC.swift; sourceTree = "<group>"; };
 		09388FAA200EEC5300A8B623 /* ThreeBarButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeBarButtonsVC.swift; sourceTree = "<group>"; };
+		093A36C62028F3A2007CA443 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		093F3CF9201A8D8D0086B540 /* Children.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Children.swift; sourceTree = "<group>"; };
 		094DDD572017FF5800A9D3F0 /* TwoBarButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoBarButtonsVC.swift; sourceTree = "<group>"; };
 		094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				095E203A200D660E0078956B /* Controller */,
 				095E2002200D617D0078956B /* AppDelegate.swift */,
 				095E2006200D617D0078956B /* Main.storyboard */,
+				093A36C62028F3A2007CA443 /* Launch Screen.storyboard */,
 				095E200C200D617D0078956B /* Assets.xcassets */,
 				095E2011200D617D0078956B /* Info.plist */,
 				095E2009200D617D0078956B /* GlobalResume.xcdatamodeld */,
@@ -523,6 +526,7 @@
 				0950C362201A568C007CA442 /* GoogleService-Info.plist in Resources */,
 				095E200D200D617D0078956B /* Assets.xcassets in Resources */,
 				095E2008200D617D0078956B /* Main.storyboard in Resources */,
+				093A36C72028F3A2007CA443 /* Launch Screen.storyboard in Resources */,
 				098EA4B0201FE49F006D7E02 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

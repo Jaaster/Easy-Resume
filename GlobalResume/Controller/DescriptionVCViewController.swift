@@ -40,6 +40,10 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
         var list = [String]()
         if currentExam == Exam.jobDescription {
             list = OneInstance.shared.exampleJobList.sorted()
+        } else if currentExam == Exam.educationDescription {
+            list = OneInstance.shared.exampleEducationDescriptionList.sorted()
+        } else if currentExam == Exam.profileDescription {
+            list = OneInstance.shared.exampleProfileDescriptionList.sorted()
         }
         examples = list
         

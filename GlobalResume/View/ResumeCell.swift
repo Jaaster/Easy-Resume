@@ -42,6 +42,7 @@ class ResumeCell: UICollectionViewCell {
         textView.font = font.withSize(20)
         textView.textAlignment = .center
         textView.isEditable = false
+        textView.isUserInteractionEnabled = false 
         return textView
     }()
     

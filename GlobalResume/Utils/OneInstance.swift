@@ -15,12 +15,14 @@ class OneInstance {
     private var _examBeforeTrigger: Exam
     var trigger: Trigger?
     private var _exampleJobList: Set<String>
-    
-    
+    private var _exampleEducationList: Set<String>
+    private var _exampleProfileDescriptionList: Set<String>
     init() {
         //Default values, mean nothing
         _examBeforeTrigger = Exam.email
         _exampleJobList = Set<String>()
+        _exampleEducationList = Set<String>()
+        _exampleProfileDescriptionList = Set<String>()
     }
     
     var exampleJobList: Set<String> {
@@ -32,12 +34,30 @@ class OneInstance {
         }
     }
     
+    var exampleEducationDescriptionList: Set<String> {
+        get {
+            return _exampleEducationList
+        }
+        set {
+            _exampleEducationList = newValue
+        }
+    }
+    
     var examBeforeTrigger: Exam {
         get {
             return _examBeforeTrigger
         }
         set {
             _examBeforeTrigger = newValue
+        }
+    }
+    
+    var exampleProfileDescriptionList: Set<String> {
+        get {
+            return _exampleProfileDescriptionList
+        }
+        set {
+            _exampleProfileDescriptionList = newValue
         }
     }
     private var n: UINavigationController!

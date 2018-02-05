@@ -22,7 +22,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
     
     @IBOutlet weak var confettiVIew: ConfettiView!
     @IBOutlet weak var applicantsShadowImage: ExpandableImageView!
-    
+    var gender: Gender!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class ExamEndedVC: UIViewController, LoadableVC {
         btn.round(scale: 7.5)
         btn.setTitle("View Resume", for: .normal)
         interviewerImage.image = UIImage(named: "INTERVIEWER")
-        applicantImage.image = UIImage(named: "APPLICANT\(ResumeDataHandler.shared.gender())")
+        applicantImage.image = UIImage(named: "APPLICANT\(gender.rawValue)")
         
         applicantImage.toggleBobbing()
         applicantsShadowImage.toggleExpansion()

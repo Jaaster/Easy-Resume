@@ -10,7 +10,13 @@ import UIKit
 
 class ResumeRightView: UIView {
     
-    var resume: ResumeData!
+    var resume: ResumeData! {
+        willSet {
+            resume = newValue
+            setupViews()
+
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,18 +25,23 @@ class ResumeRightView: UIView {
     
     func setupViews() {
         
-        let email = customView(titleString: "Email:", infoString: "my email")
-        let phone = customView(titleString: "Phone:", infoString: "2323234")
-        let zip_code = customView(titleString: "Zip Code:", infoString: "233455")
-        let gender = customView(titleString: "Gender:", infoString: "Male")
+        let email = customView(titleString: "Email:", infoString: resume.email)
+        let phone = customView(titleString: "Phone:", infoString: resume.phone_number)
+        let zip_code = customView(titleString: "Zip Code:", infoString: resume.zip_code)
+        let gender = customView(titleString: "Gender:", infoString: resume.gender)
         
-        var myViews = [email, phone, zip_code, gender]
+        let myViews = [email, phone, zip_code, gender]
         heightAnchor.constraint(equalToConstant: CGFloat(myViews.count) * 55 + 20).isActive = true
         
         var lastView: UIView = self
         
         for v in myViews {
+            if v .isHidden {
+                continue
+            }
+            
             addSubview(v)
+            
             if myViews.index(of: v) == 0 {
                 v.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
                 
@@ -51,22 +62,34 @@ class ResumeRightView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func customView(titleString: String, infoString: String) -> UIView {
-        
+    func customView(titleString: String, infoString: String?) -> UIView {
+        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+
         let view = UIView()
-        
         let title = UILabel()
         title.text = titleString
-        title.textColor = .black
-        title.font.withSize(15)
+        title.textColor = Color.red.getUIColor()
+        title.font = font.withSize(15)
         title.translatesAutoresizingMaskIntoConstraints = false
         
         
         let info = UILabel()
-        info.text = infoString
-        info.font.withSize(10)
-        info.translatesAutoresizingMaskIntoConstraints = false
         
+        if let infoString = infoString {
+            info.text = infoString
+            if infoString.isEmpty {
+                view.isHidden = true
+                return view
+            }
+        } else {
+            return view
+        }
+        info.textColor = Color.blue.getUIColor()
+        
+        info.font = font.withSize(10)
+        info.translatesAutoresizingMaskIntoConstraints = false
+        info.lineBreakMode = .byCharWrapping
+        info.numberOfLines = 0
         view.addSubview(title)
         view.addSubview(info)
         

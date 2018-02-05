@@ -17,7 +17,8 @@ class FIRFirebaseService {
         FirebaseApp.configure()
         DispatchQueue.global(qos: .userInteractive).async {
             self.updateData(for: .examples, with: .jobs)
-
+            self.updateData(for: .examples, with: .education)
+            self.updateData(for: .examples, with: .profile)
         }
     }
     
@@ -27,7 +28,13 @@ class FIRFirebaseService {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? [String] {
                 for v in value {
-                    OneInstance.shared.exampleJobList.insert(v)
+                    if child == .jobs {
+                        OneInstance.shared.exampleJobList.insert(v)
+                    } else if child == .education {
+                        OneInstance.shared.exampleEducationDescriptionList.insert(v)
+                    } else if child == .profile {
+                        OneInstance.shared.exampleProfileDescriptionList.insert(v)
+                    }
                 }
             }
             
