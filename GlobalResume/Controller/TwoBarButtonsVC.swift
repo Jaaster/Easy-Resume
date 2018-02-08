@@ -9,102 +9,115 @@
 import UIKit
 
 class TwoBarButtonsVC: UIViewController, LoadableVC {
+    
+    var currentExam: Exam!
     var presenting: UIViewController!
-
+    private var startDate: String?
+    private var endDate: String?
+    
     @IBOutlet weak var circleView: CircleView!
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
-    //DatePickers
     @IBOutlet weak var startPicker: UIDatePicker!
     @IBOutlet weak var endPicker: UIDatePicker!
 
-    var currentExam: Exam!
-    
-    var dateSet = (false, false)
+    var dateHasBeenSet = (start: false, end: false)
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenting.dismiss(animated: false, completion: nil)
-        events()
+        handlePreviousController()
+        addTargets()
     }
     
     func updateData() {
         
         let values = currentExam.getValues()
-        let buttons = values.buttons
-        let color = values.color.getUIColor()
+        let color = values.color
+
         iconImageView.image = UIImage(named: currentExam.rawValue)
         titleLabel.text = currentExam.rawValue
-        
         titleLabel.textColor = color
-        circleView.round()
+        
         circleView.backgroundColor = color
+        circleView.round()
+
         startPicker.backgroundColor = color
         endPicker.backgroundColor = color
+       
         nextButton.backgroundColor = color
-
         nextButton.isHidden = true
+        
+        setupButtons()
+    }
+    
+    private func setupButtons() {
         let buttonArray = [firstButton, secondButton]
+        let buttonDataFromExam = currentExam.getValues().buttons
         
         for i in 0..<buttonArray.count {
             let button = buttonArray[i]
-            button?.setTitle(buttons[i].name, for: .normal)
-            button?.backgroundColor = buttons[i].color.getUIColor()
+            button?.setTitle(buttonDataFromExam[i].name, for: .normal)
+            button?.backgroundColor = buttonDataFromExam[i].color
             button?.titleLabel?.textAlignment = NSTextAlignment.center
-            
         }
     }
     
-    @IBAction func buttonsPressed(_ sender: UIButton) {
+    private func addTargets() {
+        startPicker.addTarget(self, action: #selector(startAction), for: UIControlEvents.valueChanged)
+        endPicker.addTarget(self, action: #selector(endAction), for: UIControlEvents.valueChanged)
+    }
+}
 
+extension TwoBarButtonsVC: UIPickerViewDelegate {
+    
+    @IBAction func buttonsPressed(_ sender: UIButton) {
+        
         if currentExam.getValues().buttons[0].name == "START" {
-            if sender.tag == 0 {            
+            if sender.tag == 0 {
                 startPicker.isHidden = false
             } else {
                 endPicker.isHidden = false
             }
             nextButton.isHidden = true
         } else {
-            handleTransportation(data: (sender.titleLabel?.text!)!)
+            if let text = sender.titleLabel?.text {
+                handleTransportation(data: text)
+            }
         }
     }
     
-    
-    
     @IBAction func nextButtonPressed(_ sender: UIButton) {
-        handleTransportation(data: firstButton.titleLabel!.text! + " - " + secondButton.titleLabel!.text!)
+        if let startDate = startDate, let endDate = endDate {
+            handleTransportation(data: "\(startDate) - \(endDate)")
+        }
     }
     
-}
-
-extension TwoBarButtonsVC: UIPickerViewDelegate {
-   
-    func events() {
-        startPicker.addTarget(self, action: #selector(startEvent), for: UIControlEvents.valueChanged)
-        endPicker.addTarget(self, action: #selector(endEvent), for: UIControlEvents.valueChanged)
-    }
-    
-    @objc func startEvent() {
-        firstButton.setTitle(dateToString(date: startPicker.date), for: .normal)
+    @objc func startAction() {
+        let date = dateToString(date: startPicker.date)
+        startDate = date
+        
+        firstButton.setTitle(date, for: .normal)
         startPicker.isHidden = true
-        dateSet = (true, dateSet.1)
+        
+        dateHasBeenSet.start = true
         nextExamButton()
-
     }
     
-    @objc func endEvent() {
-        secondButton.setTitle(dateToString(date: endPicker.date), for: .normal)
+    @objc func endAction() {
+        let date = dateToString(date: endPicker.date)
+        endDate = date
+        secondButton.setTitle(date, for: .normal)
         endPicker.isHidden = true
-        dateSet = (dateSet.0, true )
+        
+        dateHasBeenSet.end = true
         nextExamButton()
     }
     
-    func nextExamButton() {
-        if dateSet == (true, true) {
+    private func nextExamButton() {
+        if dateHasBeenSet == (true, true) {
             nextButton.isHidden = false
         }
     }
@@ -113,4 +126,3 @@ extension TwoBarButtonsVC: UIPickerViewDelegate {
       return DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .none)
     }
 }
-

@@ -8,51 +8,51 @@
 
 import UIKit
 import CoreData
+
 class ResumeDataHandler {
+    
     static let shared = ResumeDataHandler()
     
     var currentResume: ResumeData?
     var currentEducation: Education?
     var currentEmployment: Employment?
-    
-    var editingResume: Bool = false
-    
+    var isEditingResume: Bool = false
     var creatingResume: Bool = false
     
     private init() {}
     
-    
     func updateData(dataType: Exam, data: String) {
-        
-        if currentResume == nil {
-            currentResume = ResumeData(context: PersistantService.context)
+        guard let currentResume = currentResume else {
+            self.currentResume = ResumeData(context: PersistantService.context)
+            return
         }
-        setValue(object: currentResume!, data: data, forKey: dataType.rawValue)
+        setValue(object: currentResume, data: data, forKey: dataType.rawValue)
     }
-    
     
     func updateData(for trigger: Trigger, exam: Exam, data: String) {
         if trigger.isEmployment() {
-            if currentEmployment == nil {
-                currentEmployment = Employment(context: PersistantService.context)
+            guard let currentEmployment = currentEmployment else {
+                self.currentEmployment = Employment(context: PersistantService.context)
+                
                 if let currentResume = currentResume {
-                    //Status's are always saved in the resume
+                    //Status is always saved in the resume
                     setValue(object: currentResume, data: data, forKey: exam.rawValue)
                 }
                 return
             }
-            setValue(object: currentEmployment!, data: data, forKey: exam.rawValue)
-
+        
+            setValue(object: currentEmployment, data: data, forKey: exam.rawValue)
+            
         } else if trigger.isEducation() {
-            if currentEducation == nil {
-                currentEducation = Education(context: PersistantService.context)
+            guard let currentEducation = currentEducation else {
+                self.currentEducation = Education(context: PersistantService.context)
                 if let currentResume = currentResume {
-                    //Status's are always saved in the resume
+                    //Status is always saved in the resume
                     setValue(object: currentResume, data: data, forKey: exam.rawValue)
                 }
                 return
             }
-            setValue(object: currentEducation!, data: data, forKey: exam.rawValue)
+            setValue(object: currentEducation, data: data, forKey: exam.rawValue)
         }
     }
     
@@ -76,29 +76,17 @@ class ResumeDataHandler {
                 currentResume.addToEmployment(currentEmployment)
                 self.currentEmployment = nil
             }
-            
         }
-        
     }
     
-    func editResume(resumeName: String) -> ResumeData? {
-        editingResume = true
-        //Get resume based off of title of resume
-        //set currentResume to returned resume
-        return nil
-    }
-    
-    func getResumeList() -> [ResumeData]? {
+    func getCoreDataResumeList() -> [ResumeData]? {
         //Grab data from coredata
         do {
             let list = try PersistantService.context.fetch(ResumeData.fetchRequest())
-            
             if let resumeList = list as? [ResumeData] {
                 if !resumeList.isEmpty {
                     return resumeList
-
                 }
-              
             }
         } catch let err as NSError {
             print(err.debugDescription)
@@ -116,7 +104,3 @@ class ResumeDataHandler {
         return eList[index]
     }
 }
-
-
-
-

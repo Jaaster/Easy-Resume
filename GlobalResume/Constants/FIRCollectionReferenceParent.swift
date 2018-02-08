@@ -16,5 +16,4 @@ enum FIRCollectionReferenceParent: String {
         case education = "EducationDescription"
         case profile = "ProfileDescription"
     }
-
 }

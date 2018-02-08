@@ -8,7 +8,8 @@
 
 import UIKit
 
-protocol Fadeable: Animatable {
+protocol Fadeable: Animatable{
+    
     func fade(alpha: CGFloat)
     func fade(alpha: CGFloat, completion: @escaping ()->())
     func fade(alpha: CGFloat, newTime: Double, completion: @escaping ()->())
@@ -19,8 +20,6 @@ protocol Fadeable: Animatable {
 }
 
 extension UIView: Fadeable {
-  
-    
     
     var time: Double {
         get {
@@ -53,22 +52,18 @@ extension UIView: Fadeable {
     
     func fadeSubviews(alpha: CGFloat, completion: @escaping () -> ()) {
         for subview in subviews {
-//            if !subview.isHidden {
-                subview.fade(alpha: alpha)
-//            }
+            subview.fade(alpha: alpha)
         }
         defer {
             completion()
         }
     }
-   
+    
     func fade(alpha: CGFloat, completion: @escaping ()->()) {
         UIView.animate(withDuration: time, delay: 0, options: [.allowUserInteraction], animations: {
-             self.alpha = alpha
+            self.alpha = alpha
         }) { (_) in
-              completion()
+            completion()
         }
     }
 }
-
-

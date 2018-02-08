@@ -9,8 +9,8 @@
 import UIKit
 
 class InputVC: UIViewController, LoadableVC {
-    var presenting: UIViewController!
     
+    var presenting: UIViewController!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var barView: UIView!
@@ -21,19 +21,21 @@ class InputVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentingViewController?.dismiss(animated: false, completion: nil)
+        
         textField.delegate = self
-        presenting.dismiss(animated: false, completion: nil)
-
+        handlePreviousController()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        textField.becomeFirstResponder()
+    }
     
     func generateKeyboardStyle() -> UIKeyboardType {
         switch currentExam! {
         case .email:
             return UIKeyboardType.emailAddress
         case .zipcode:
-            toolBar()
+            addToolBarToKeyboard()
             return UIKeyboardType.numberPad
         default:
             return UIKeyboardType.default
@@ -41,13 +43,12 @@ class InputVC: UIViewController, LoadableVC {
     }
     
     func updateData() {
+        circleView.round()
         textField.keyboardType = generateKeyboardStyle()
 
         let values = currentExam.getValues()
+        let color = values.color
         
-        let color = values.color.getUIColor()
-        
-        circleView.round()
         titleLabel.text = currentExam.rawValue
         textField.placeholder = values.example
         textField.text = ""
@@ -60,34 +61,7 @@ class InputVC: UIViewController, LoadableVC {
     
 }
 
-
 extension InputVC: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let data = textField.text {
-            if !data.isEmpty{
-                textField.endEditing(true)
-                handleTransportation(data: data)
-                return true
-            }
-        }
-        return false
-    }
-    
-    
-    func toolBar() {
-        let toolBar = UIToolbar()
-        
-        let button = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolBar.sizeToFit()
-        toolBar.setItems([flexibleSpace, button], animated: false)
-        
-        textField.inputAccessoryView = toolBar
-        
-        
-    }
     
     @objc func doneButtonPressed() {
         if let data = textField.text {
@@ -95,8 +69,26 @@ extension InputVC: UITextFieldDelegate {
             handleTransportation(data: data)
         }
     }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            if !text.isEmpty{
+                textField.endEditing(true)
+                handleTransportation(data: text)
+                return true
+            }
+        }
+        return false
+    }
     
+    func addToolBarToKeyboard() {
+        let toolBar = UIToolbar()
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolBar.sizeToFit()
+        toolBar.setItems([flexibleSpace, button], animated: false)
+        
+        textField.inputAccessoryView = toolBar
+    }
 }
-
-
-

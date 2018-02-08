@@ -20,7 +20,6 @@ enum Trigger: String {
         return [.employed, .unemployed, .inSchool, .graduated]
     }
     
-    
     //If a nil value is passed it returns the first exam of examList
     func next(exam: Exam?) -> Exam? {
         let list = examList()
@@ -42,7 +41,7 @@ enum Trigger: String {
         
     }
     //Can edit what Exams come after the Trigger
-    func examList() -> [Exam] {
+    private func examList() -> [Exam] {
         switch self {
         case .employed, .unemployed:
             return [.companyName, .jobTitle, .jobDescription, .employmentRecord]

@@ -9,27 +9,26 @@
 import UIKit
 class EditResumeCell: UICollectionViewCell {
     
-    let titleView: UILabel = {
-        var titleView = UILabel()
-        titleView.textColor = UIColor.white
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        titleView.font = font.withSize(25)
-        titleView.text = "TEST"
-        titleView.adjustsFontSizeToFitWidth = true
-        titleView.textAlignment = .center
-        titleView.isUserInteractionEnabled = false
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleView.backgroundColor = .clear
-        return titleView
+    let titleLabel: UILabel = {
+        var label = UILabel()
+        let font = UIFont.myFontRegular.withSize(25)
+
+        label.textColor = UIColor.white
+        label.font = font
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        return label
     }()
     
     let descriptingView: UITextView = {
         var textView = UITextView()
+        let font = UIFont.myFontRegular.withSize(15)
+        
         textView.textColor = UIColor.white
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        textView.font = font.withSize(15)
+        textView.font = font
         textView.isEditable = false
-        textView.text = ""
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isUserInteractionEnabled = false
@@ -40,8 +39,9 @@ class EditResumeCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Color.blue.getUIColor()
-        addSubview(titleView)
+       
+        backgroundColor = UIColor.myBlue
+        addSubview(titleLabel)
         addSubview(descriptingView)
         updateViews()
     }
@@ -51,14 +51,14 @@ class EditResumeCell: UICollectionViewCell {
     }
     
     private func updateViews() {
-        titleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        titleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        titleView.heightAnchor.constraint(equalToConstant: 38).isActive = true
-        titleView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        titleLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         
         descriptingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        descriptingView.topAnchor.constraint(equalTo: titleView.bottomAnchor).isActive = true
-        descriptingView.widthAnchor.constraint(equalTo: titleView.widthAnchor, multiplier: 0.50).isActive = true
+        descriptingView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        descriptingView.widthAnchor.constraint(equalTo: titleLabel.widthAnchor, multiplier: 0.50).isActive = true
         descriptingView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }

@@ -68,7 +68,7 @@ class ResumeRightView: UIView {
         let view = UIView()
         let title = UILabel()
         title.text = titleString
-        title.textColor = Color.red.getUIColor()
+        title.textColor = UIColor.myRed
         title.font = font.withSize(15)
         title.translatesAutoresizingMaskIntoConstraints = false
         
@@ -84,7 +84,7 @@ class ResumeRightView: UIView {
         } else {
             return view
         }
-        info.textColor = Color.blue.getUIColor()
+        info.textColor = UIColor.myBlue
         
         info.font = font.withSize(10)
         info.translatesAutoresizingMaskIntoConstraints = false

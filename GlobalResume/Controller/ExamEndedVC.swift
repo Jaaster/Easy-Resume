@@ -9,41 +9,39 @@
 import UIKit
 import ConfettiView
 class ExamEndedVC: UIViewController, LoadableVC {
-    var presenting: UIViewController!
-    
    
+    var presenting: UIViewController!
     var currentExam: Exam!
-    
+    var gender: Gender!
+
     @IBOutlet weak var applicantImage: BobbingImageView!
     @IBOutlet weak var interviewerImage: BobbingImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!
     @IBOutlet weak var btn: CustomButton!
-    
     @IBOutlet weak var confettiVIew: ConfettiView!
     @IBOutlet weak var applicantsShadowImage: ExpandableImageView!
-    var gender: Gender!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenting.dismiss(animated: false, completion: nil)
+        handlePreviousController()
     }
-
+    
     func updateData() {
-        
         confettiVIew.startAnimating()
-        let color = Color.blue.getUIColor()
+
+        let color = UIColor.myBlue
         titleLabel.textColor = color
         titleLabel.text = "SUCCESS!"
         
         secondTitleLabel.textColor = color
         secondTitleLabel.text = "You are now ready to apply for a job!"
         
-        
         btn.backgroundColor = color
         btn.titleLabel?.textColor = UIColor.white
         btn.round(scale: 7.5)
         btn.setTitle("View Resume", for: .normal)
+        
         interviewerImage.image = UIImage(named: "INTERVIEWER")
         applicantImage.image = UIImage(named: "APPLICANT\(gender.rawValue)")
         
@@ -56,6 +54,4 @@ class ExamEndedVC: UIViewController, LoadableVC {
     @IBAction func btnPressed(sender: CustomButton) {
         handleTransportation(data: "")
     }
- 
-    
 }

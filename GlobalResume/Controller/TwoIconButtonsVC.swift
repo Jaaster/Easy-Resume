@@ -9,22 +9,20 @@
 import UIKit
 
 class TwoIconButtonsVC: UIViewController, LoadableVC {
+    
+    var currentExam: Exam!
     var presenting: UIViewController!
 
     @IBOutlet weak var firstCircleButton: CustomButton!
     @IBOutlet weak var secondCircleButton: CustomButton!
-    
     @IBOutlet weak var firstTitleLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!
-    
     @IBOutlet weak var firstIconImageView: UIImageView!
     @IBOutlet weak var secondIconImageView: UIImageView!
 
-    var currentExam: Exam!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenting.dismiss(animated: false, completion: nil)
+        handlePreviousController()
     }
     
     func updateData() {
@@ -32,8 +30,8 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
         let values = currentExam.getValues()
         
         let buttons = values.buttons
-        let color = buttons[0].color.getUIColor()
-        let color2 = buttons[1].color.getUIColor()
+        let color = buttons[0].color
+        let color2 = buttons[1].color
         
         firstTitleLabel.text = buttons[0].name
         firstTitleLabel.textColor = color
@@ -47,18 +45,21 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
         secondCircleButton.round()
         firstCircleButton.backgroundColor = color
         secondCircleButton.backgroundColor = color2
-        
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
-        let text: String
+        var text = ""
         if sender.tag == 0 {
-            text = firstTitleLabel.text!
+            if let title = firstTitleLabel.text {
+                text = title
+            }
         } else {
-            text = secondTitleLabel.text!
+            if let title = secondTitleLabel.text {
+                text = title
+            }
         }
+        
         handleTransportation(data: text)
     }
-    
 }

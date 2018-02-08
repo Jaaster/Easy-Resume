@@ -13,32 +13,30 @@ class MainVC: UIViewController, LoadableVC {
     
     @IBOutlet weak var firstCircleView: CircleView!
     @IBOutlet weak var secondCircleView: CircleView!
-    
     @IBOutlet weak var createLabel: UILabel!
-    
     @IBOutlet weak var createdLabel: UILabel!
     
     var currentExam: Exam!
-    
-    
-    
+    let shared = ResumeDataHandler.shared
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         currentExam = Exam.menu
+        
         updateData()
-        if presenting == nil {
-            presenting = UIViewController()
-        }
-        presenting.dismiss(animated: false, completion: nil)
+        setupViews()
+        handlePreviousController()
+    }
+    
+    func setupViews() {
+        firstCircleView.round()
+        secondCircleView.round()
     }
     
     func updateData() {
-        firstCircleView.round()
-        secondCircleView.round()
-        
-        var color = Color.blue.getUIColor()
-        if ResumeDataHandler.shared.getResumeList() == nil {
-           color = Color.grey.getUIColor()
+        var color = UIColor.myBlue
+        if shared.getCoreDataResumeList() == nil {
+           color = UIColor.myGrey
         }
         
         secondCircleView.backgroundColor = color
@@ -51,14 +49,17 @@ class MainVC: UIViewController, LoadableVC {
             handleTransportation(data: "")
         } else {
             //Edit Button Pressed
-            if ResumeDataHandler.shared.getResumeList() != nil {
-                ResumeDataHandler.shared.editingResume = true
-               let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let resumeList = shared.getCoreDataResumeList() else {
+                return
+            }
+            if resumeList.isEmpty {
+                return
+            }
+                shared.isEditingResume = true
+                let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "CHOOSE_RESUME")
                 present(vc, animated: true, completion: nil)
-            }
         }
-        
     }
 }
 

@@ -12,30 +12,27 @@ class HistoryView: UIView {
     
     let place: UILabel = {
         let label = UILabel()
-        label.text = "APPLE"
-        label.textColor = Color.red.getUIColor()
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        label.font = font.withSize(18)
+        let font = UIFont.myFontRegular.withSize(18)
+        label.textColor = UIColor.myRed
+        label.font = font
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let position: UILabel = {
         let label = UILabel()
-        label.text = "DESIGNINER"
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        label.font = font.withSize(15)
-        label.textColor = Color.red.getUIColor()
+        let font = UIFont.myFontRegular.withSize(15)
+        label.font = font
+        label.textColor = UIColor.myRed
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let myDescription: UILabel = {
         let label = UILabel()
-        label.text = "DJADIA DAND NDA DAM DD ia diad aiwdma ida dajd daw ai ir ir fsi f"
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
+        let font = UIFont.myFontRegular.withSize(10)
         label.font = font.withSize(10)
-        label.textColor = Color.blue.getUIColor()
+        label.textColor = UIColor.myBlue
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -45,10 +42,9 @@ class HistoryView: UIView {
     
     let startAndEndDate: UILabel = {
         let label = UILabel()
-        label.text = "32 - 32"
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        label.font = font.withSize(10)
-        label.textColor = Color.blue.getUIColor()
+        let font = UIFont.myFontRegular.withSize(10)
+        label.font = font
+        label.textColor = UIColor.myBlue
         label.translatesAutoresizingMaskIntoConstraints = false        
         return label
     }()
@@ -63,6 +59,9 @@ class HistoryView: UIView {
         setupViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func setupViews() {
         
@@ -85,19 +84,5 @@ class HistoryView: UIView {
         myDescription.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         myDescription.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         myDescription.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
-        
-        
     }
-    
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        
-        
-    }
-    
-    
 }
-

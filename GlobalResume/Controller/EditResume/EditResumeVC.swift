@@ -8,30 +8,34 @@
 
 import UIKit
 import Foundation
+
 class EditResumeVC: UIViewController {
     
+    typealias color = UIColor
     var resumeName: String!
-    var editOptions: [String?] = []
-    var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code", "profile description"]
+    private var editOptions: [String?] = []
+    private var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code", "profile description"]
     private let cellid = "editResumeCell"
+    private var isEditingInfo: Bool = false
+    private let resumeHandler = ResumeDataHandler.shared
+    private let oneInstance = OneInstance.shared
+    private let bottomStackView = UIStackView()
+    private var currentEditor = ResumeInfo.standard
     
     let titleLabel: UILabel = {
-        
         var label = UILabel()
-        label.textColor = Color.blue.getUIColor()
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        label.font = font.withSize(35)
+        let font = UIFont.myFontRegular.withSize(35)
+        label.textColor = color.myBlue
+        label.font = font
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    
     let collectionView: UICollectionView = {
-        
         let layout = UICollectionViewFlowLayout()
-        var collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         return collectionView
@@ -39,40 +43,42 @@ class EditResumeVC: UIViewController {
     
     let addButton: CustomButton = {
         let button = CustomButton(type: .system)
-        button.transportationStyle(title: "ADD", bgcolor: Color.green.getUIColor())
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        button.titleLabel?.font = font.withSize(30)
+        let font = UIFont.myFontRegular.withSize(30)
+        button.transportationStyle(title: "ADD", bgcolor: color.myBlue)
+        button.titleLabel?.font = font
         button.addTarget(self, action: #selector(addButtonPressed), for: UIControlEvents.touchDown)
         return button
     }()
     
     let backButton: CustomButton = {
         let button = CustomButton(type: .system)
-        button.transportationStyle(title: "BACK", bgcolor: Color.blue.getUIColor())
-        let font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "OpenSans-Regular"))
-        button.titleLabel?.font = font.withSize(30)
+        let font = UIFont.myFontRegular.withSize(30)
+        button.transportationStyle(title: "BACK", bgcolor: color.myBlue)
+        button.titleLabel?.font = font
         button.addTarget(self, action: #selector(backButtonPressed), for: UIControlEvents.touchDown)
         return button
     }()
     
-    let bottomStackView = UIStackView()
-
+    lazy var whenEditingView: UIView = {
+        let view = UIView(frame: self.view.frame)
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(EditResumeCell.self, forCellWithReuseIdentifier: cellid)
-        view.backgroundColor = .white
+        
         editOptions = ResumeInfo.getOptions(info: .standard)
         updateViews()
-        collectionView.reloadData()
- 
-        
     }
     
-  
-    
     private func updateViews() {
+        view.backgroundColor = .white
+        
         bottomStackView.addArrangedSubview(backButton)
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomStackView.distribution = .fillEqually
@@ -97,148 +103,69 @@ class EditResumeVC: UIViewController {
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -20).isActive = true
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        
+        collectionView.reloadData()
     }
-    
 }
-
 
 extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
     @objc func backButtonPressed() {
-        if titleLabel.text == resumeName {
-            dismiss(animated: true, completion: nil)
-        } else {
-            //Is editing info
+        if isEditingInfo {
             openEditor(for: .standard)
-            return
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
     
     @objc func addButtonPressed() {
         if let info = ResumeInfo(rawValue: titleLabel.text!) {
+            isEditingInfo = true
             if info == .contact {
                 return
             }
             
             if info == .education {
                 editData(exam: Exam.schoolName, info: info)
-                let handler = ResumeDataHandler.shared
+                oneInstance.trigger = Trigger.graduated
                 
-                OneInstance.shared.trigger = Trigger.graduated
                 let education = Education(context: PersistantService.context)
-                handler.currentEducation = education
-                
+                resumeHandler.currentEducation = education
             } else if info == .employment {
                 editData(exam: Exam.companyName, info: info)
-                let handler = ResumeDataHandler.shared
                 
-                OneInstance.shared.trigger = Trigger.employed
+                oneInstance.trigger = Trigger.employed
                 let employment = Employment(context: PersistantService.context)
-                handler.currentEmployment = employment
+                resumeHandler.currentEmployment = employment
             }
         }
-        
-        
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let selectedTitle = editOptions[indexPath.row]{
-            if !selectedTitle.isEmpty {
-                if let info = ResumeInfo(rawValue: selectedTitle) {
-                    openEditor(for: info)
-                    return
-                }
-            }
-        }
-        
-        
-        if let resumeInfo = ResumeInfo(rawValue: titleLabel.text!) {
-            
-            switch resumeInfo {
-                
-            case .contact:
-                switch indexPath.row {
-                    case 0:
-                        //Name
-                    editData(exam: Exam.name, info: resumeInfo)
-                    case 1:
-                        //Gender
-                        editData(exam: Exam.gender, info: resumeInfo)
-                    case 2:
-                        //Email
-                        editData(exam: Exam.email, info: resumeInfo)
-                    case 3:
-                        editData(exam: Exam.number, info: resumeInfo)
-                        //Phone Number
-                    case 4:
-                        editData(exam: Exam.zipcode, info: resumeInfo)
-                        //Zipcode
-                case 5:
-                    editData(exam: Exam.profileDescription, info: resumeInfo)
-                default:
-                    openEditor(for: .contact)
-                }
-            case .employment:
-                editData(exam: Exam.companyName, info: resumeInfo)
-                let handler = ResumeDataHandler.shared
-
-                OneInstance.shared.trigger = Trigger.employed
-                let employment = handler.employment(from: indexPath.row)
-                handler.currentEmployment = employment
-                
-                return
-            case .education:
-                editData(exam: Exam.schoolName, info: resumeInfo)
-                OneInstance.shared.trigger = Trigger.graduated
-              
-                let handler = ResumeDataHandler.shared
-                let education = handler.education(from: indexPath.row)
-                handler.currentEducation = education
-
-                return
-            case .standard:
-                return
-            }
+    override func viewDidAppear(_ animated: Bool) {
+        if isEditingInfo {
+            isEditingInfo = false
+            openEditor(for: currentEditor)
+            whenEditingView.fade(alpha: 0.0, completion: {
+              self.whenEditingView.removeFromSuperview()
+              self.whenEditingView.alpha = 1.0
+            })
         }
     }
     
     private func editData(exam: Exam, info: ResumeInfo) {
+        isEditingInfo = true
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: exam.kind().rawValue)
-       
+        currentEditor = info
         if let loadableVC = vc as? LoadableVC {
-            loadableVC.presenting = UIViewController()
             loadableVC.currentExam = exam
-            
-            let newView = UIView(frame: view.frame)
-            newView.backgroundColor = .white
-            view.addSubview(newView)
-            
-            present(vc, animated: true, completion: {
-                Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (time) in
-                    if info == ResumeInfo.contact {
-                        if self.viewIfLoaded?.window != nil {
-                            self.openEditor(for: info)
-                            newView.removeFromSuperview()
-                            time.invalidate()
-                        }
-                    } else if OneInstance.shared.trigger == nil {
-                        //Trigger is over
-                        self.openEditor(for: info)
-                        newView.removeFromSuperview()
-                        time.invalidate()
-                    }
-                })
-            })
+            view.addSubview(whenEditingView)
+            present(vc, animated: true)
             loadableVC.updateData()
         }
     }
 
-
     func openEditor(for info: ResumeInfo) {
+        currentEditor = info
         editOptions = ResumeInfo.getOptions(info: info)
         collectionView.reloadData()
         
@@ -255,9 +182,67 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             bottomStackView.addArrangedSubview(addButton)
             addButton.isHidden = false
         }
-
     }
     
+    private func handleEditingData(indexPath: IndexPath) {
+        
+        if let resumeInfo = ResumeInfo(rawValue: titleLabel.text!) {
+            
+            switch resumeInfo {
+                
+            case .contact:
+                switch indexPath.row {
+                case 0:
+                    editData(exam: Exam.name, info: resumeInfo)
+                case 1:
+                    editData(exam: Exam.gender, info: resumeInfo)
+                case 2:
+                    editData(exam: Exam.email, info: resumeInfo)
+                case 3:
+                    editData(exam: Exam.number, info: resumeInfo)
+                case 4:
+                    editData(exam: Exam.zipcode, info: resumeInfo)
+                case 5:
+                    editData(exam: Exam.profileDescription, info: resumeInfo)
+                default:
+                    openEditor(for: .contact)
+                }
+                
+            case .employment:
+                editData(exam: Exam.companyName, info: resumeInfo)
+                let handler = ResumeDataHandler.shared
+                
+                OneInstance.shared.trigger = Trigger.employed
+                let employment = handler.employment(from: indexPath.row)
+                handler.currentEmployment = employment
+                
+                return
+            case .education:
+                editData(exam: Exam.schoolName, info: resumeInfo)
+                OneInstance.shared.trigger = Trigger.graduated
+                
+                let handler = ResumeDataHandler.shared
+                let education = handler.education(from: indexPath.row)
+                handler.currentEducation = education
+                
+                return
+            case .standard:
+                return
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let selectedTitle = editOptions[indexPath.row]{
+            if !selectedTitle.isEmpty {
+                if let resumeInfo = ResumeInfo(rawValue: selectedTitle) {
+                    openEditor(for: resumeInfo)
+                    return
+                }
+            }
+        }
+        handleEditingData(indexPath: indexPath)
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath) as? EditResumeCell {
@@ -276,12 +261,11 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.descriptingView.text = " "
             }
             
-            cell.titleView.text = editOptions[indexPath.row]
+            cell.titleLabel.text = editOptions[indexPath.row]
             return cell
         }
         return UICollectionViewCell()
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return editOptions.count
@@ -291,7 +275,6 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 100)
     }
@@ -299,55 +282,4 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-    
 }
-
-enum ResumeInfo: String {
-    case contact = "CONTACT INFO"
-    case employment = "EMPLOYMENT INFO"
-    case education = "EDUCATION INFO"
-    case standard = ""
-    
-    
-    static func getOptions(info: ResumeInfo) -> [String?] {
-        if let resume = ResumeDataHandler.shared.currentResume {
-        switch info {
-        case .contact:
-            return [resume.name, resume.gender, resume.email, resume.phone_number, resume.zip_code, resume.profile_description]
-        case .employment:
-           
-            let eList = resume.employment?.allObjects as! [Employment]
-            if eList.isEmpty {
-                return []
-            }
-            var companies: [String?] = Array<String?>(repeating: " ", count: eList.count)
-            for i in 0 ..< eList.count {
-                
-                companies[i] = eList[i].company_name
-            }
-            return companies
-            
-        case .education:
-            let eList = resume.education?.allObjects as! [Education]
-            if eList.isEmpty {
-                return []
-            }
-            var schoolNames: [String?] = Array<String?>(repeating: " ", count: eList.count)
-            for i in 0 ..< eList.count {
-                
-                schoolNames[i] = eList[i].school_name
-            }
-            return schoolNames
-            
-        case .standard:
-            let list: [String?] = ["CONTACT INFO", "EMPLOYMENT INFO", "EDUCATION INFO"]
-            return list
-        }
-        
-    }
-        return []
-    }
-}
-
-
-

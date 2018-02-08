@@ -6,9 +6,10 @@
 //  Copyright © 2018 Joriah Lasater. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Exam: String {
+    
     //Standard
     case menu = "MENU"
     case name = "NAME"
@@ -17,6 +18,7 @@ enum Exam: String {
     case number = "PHONE NUMBER"
     case zipcode = "ZIP CODE"
     case profileDescription = "PROFILE DESCRIPTION"
+   
     //Employment
     case employmentStatus = "EMPLOYMENT STATUS"
     
@@ -45,85 +47,71 @@ enum Exam: String {
         case twoBarButtons = "TWO_BAR_BUTTONS"
         static func get(from string: String) -> Kind? {
             return Kind(rawValue: string)
-            
         }
-        
     }
     
-    
-    func getValues() -> (kind: Kind, example: String, color: Color, buttons: [(name: String, color: Color)]){
+    func getValues() -> (kind: Kind, example: String, color: UIColor, buttons: [(name: String, color: UIColor)]){
+        let color = UIColor.self
         switch self {
         case .name:
-            return (.input, "e.g Jerry Springer", Color.blue, [])
+            return (.input, "e.g Jerry Springer", color.myPink, [])
         case .gender:
-            return (.twoButtons,"", Color.clear, [("MALE", Color.blue), ("FEMALE", Color.pink)])
+            return (.twoButtons,"", color.clear, [("MALE", color.myBlue), ("FEMALE", color.myPink)])
         case .email:
-            return (.input, "example@gmail.com", Color.blue, [])
+            return (.input, "example@gmail.com", color.myBlue, [])
         case .number:
-            return (.input,"e.g 1 (931) 390 3949", Color.blue, [])
+            return (.input,"e.g 1 (931) 390 3949", color.myBlue, [])
         case .zipcode:
-            return (.input, "e.g 37052", Color.blue, [])
+            return (.input, "e.g 37052", color.myBlue, [])
         case .employmentStatus:
-            return (.threeBarButtons, "", Color.blue, [("EMPLOYED", Color.blue), ("UNEMPLOYED", Color.blue), ("NO HISTORY", Color.blue)])
+            return (.threeBarButtons, "", color.myBlue, [("EMPLOYED", color.myBlue), ("UNEMPLOYED", color.myBlue), ("NO HISTORY", color.myBlue)])
         case .menu:
-            return (.main, "", Color.clear, [])
+            return (.main, "", color.clear, [])
         case .companyName:
-            return (.input, "e.g Apple", Color.blue, [])
+            return (.input, "e.g Apple", color.myBlue, [])
         case .jobTitle:
-            return (.input, "e.g Manager", Color.blue, [])
+            return (.input, "e.g Manager", color.myBlue, [])
         case .employmentRecord:
-            return (.twoBarButtons, "", Color.blue, [("START", Color.blue), ("END", Color.blue)])
+            return (.twoBarButtons, "", color.myBlue, [("START", color.myBlue), ("END", color.myBlue)])
         case .schoolName:
-            return (.input, "e.g Harvard", Color.blue, [])
+            return (.input, "e.g Harvard", color.myBlue, [])
         case .educationLevel:
-            return (.input, "e.g Masters", Color.blue, [])
+            return (.input, "e.g Masters", color.myBlue, [])
         case .specificFieldOfStudy:
-            return (.input, "e.g Computer Science", Color.blue, [])
+            return (.input, "e.g Computer Science", color.myBlue, [])
         case .educationRecord:
-            return (.twoBarButtons, "", Color.blue, [("START", Color.blue), ("END", Color.blue)])
+            return (.twoBarButtons, "", color.myBlue, [("START", color.myBlue), ("END", color.myBlue)])
         case .jobDescription:
-            return (.description, "EXAMPLES", Color.blue, [])
+            return (.description, "EXAMPLES", color.myBlue, [])
         case .educationStatus:
-             return (.threeBarButtons, "", Color.blue, [("IN SCHOOL", Color.blue), ("GRADUATED", Color.blue), ("NO HISTORY", Color.blue)])
+             return (.threeBarButtons, "", color.myBlue, [("IN SCHOOL", color.myBlue), ("GRADUATED", color.myBlue), ("NO HISTORY", color.myBlue)])
         case .resumeName:
-            return (.input, "e.g MyResume", Color.blue, [])
+            return (.input, "e.g MyResume", color.myBlue, [])
         case .educationDescription:
-            return (.description, "EXAMPLES", Color.blue, [])
+            return (.description, "EXAMPLES", color.myBlue, [])
         case .profileDescription:
-            return (.description, "EXAMPLES", Color.blue, [])
+            return (.description, "EXAMPLES", color.myBlue, [])
 
         }
     }
     
-    //Do not put the same exam twice, you can change the order but that is all.
-    static func examList() -> [Exam] {
+    //Do not put the same exam twice, you can change the order but resumeName must always be the last element.
+    private func examList() -> [Exam] {
         return [.menu, .name, .zipcode, .email, .gender , .employmentStatus, .educationStatus, .profileDescription, .resumeName]
     }
+    
     func kind() -> Kind {
         return getValues().kind
     }
     
     func next() -> Exam? {
         
-        let nextIndex = Exam.examList().index(of: self)! + 1
+        let nextIndex = examList().index(of: self)! + 1
         
-        if Exam.examList().count > nextIndex {
-            return Exam.examList()[nextIndex]
+        if examList().count > nextIndex {
+            return examList()[nextIndex]
         }
         return nil
-        
     }
-    
-    func hasBefore() -> Bool {
-        if Exam.examList().indices.contains(self.hashValue-1) {
-            return true
-        }
-        return false
-    }
-    
-    func before() -> Exam? {
-        return Exam.examList()[self.hashValue - 1]
-    }
-    
 }
 

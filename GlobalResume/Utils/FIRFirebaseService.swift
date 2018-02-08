@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+
 class FIRFirebaseService {
     
     static let shared = FIRFirebaseService()
@@ -40,11 +41,9 @@ class FIRFirebaseService {
             
         })
     }
-
     
     private func getReference(for reference: FIRCollectionReferenceParent, with child: FIRCollectionReferenceParent.Child) -> DatabaseReference {
         return Database.database().reference(withPath: reference.rawValue).child(child.rawValue)
     }
-    
-   
 }
+
