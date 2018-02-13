@@ -11,11 +11,11 @@ import UIKit
 
 class ChooseResumeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
    typealias color = UIColor
-   private var resumeHandler = ResumeDataHandler.shared
+    private var resumeHandler: ResumeDataHandler!
     
     var resumes: [ResumeData?] {
         get {
-            if let resumes = resumeHandler.getCoreDataResumeList() {
+            if let resumes = resumeHandler.resumeList{
                 return resumes
             } else {
                 present(forward: false)
@@ -148,18 +148,18 @@ extension ChooseResumeVC {
             }
             
             let editResumeVC = EditResumeVC()
-            resumeHandler.isEditingResume = true
-            resumeHandler.currentResume = resume
+//            resumeHandler.isEditingResume = true
+//            resumeHandler.currentResume = resume
             editResumeVC.resumeName = resume.resume_name
             present(editResumeVC, animated: true, completion: nil)
         } else {
             if let vc = presentingViewController as? MainVC {
-                vc.updateData()
+                vc.updateViewsWithNewData()
             }
             
             dismiss(animated: true, completion: nil)
-            resumeHandler.isEditingResume = false
-            resumeHandler.currentResume = nil
+//            resumeHandler.isEditingResume = false
+//            resumeHandler.currentResume = nil
         }
     }
     

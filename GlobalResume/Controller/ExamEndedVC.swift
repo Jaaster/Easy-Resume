@@ -8,10 +8,10 @@
 
 import UIKit
 import ConfettiView
-class ExamEndedVC: UIViewController, LoadableVC {
+class ExamEndedVC: UIViewController, ExamViewController {
    
-    var presenting: UIViewController!
-    var currentExam: Exam!
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
     var gender: Gender!
 
     @IBOutlet weak var applicantImage: BobbingImageView!
@@ -24,10 +24,13 @@ class ExamEndedVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        handlePreviousController()
     }
     
-    func updateData() {
+    func updateViewsWithNewData() {
+        if gender == nil {
+            gender = Gender.male
+        }
+        
         confettiVIew.startAnimating()
 
         let color = UIColor.myBlue
@@ -46,12 +49,11 @@ class ExamEndedVC: UIViewController, LoadableVC {
         applicantImage.image = UIImage(named: "APPLICANT\(gender.rawValue)")
         
         applicantImage.toggleBobbing()
-        applicantsShadowImage.toggleExpansion()
-        
-        ResumeDataHandler.shared.currentResume = nil
+        applicantsShadowImage.toggleExpansion()        
     }
     
     @IBAction func btnPressed(sender: CustomButton) {
-        handleTransportation(data: "")
+        let transitionHandler = TransitionHandler(currentExamViewController: self)
+        transitionHandler.decideCourse(data: nil)
     }
 }

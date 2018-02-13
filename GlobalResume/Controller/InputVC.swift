@@ -8,87 +8,58 @@
 
 import UIKit
 
-class InputVC: UIViewController, LoadableVC {
+class InputVC: UIViewController, ExamViewController {
     
-    var presenting: UIViewController!
-    
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var barView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var circleView: CircleView!
-    var currentExam: Exam!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         textField.delegate = self
-        handlePreviousController()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        textField.becomeFirstResponder()
-    }
-    
-    func generateKeyboardStyle() -> UIKeyboardType {
-        switch currentExam! {
-        case .email:
-            return UIKeyboardType.emailAddress
-        case .zipcode:
-            addToolBarToKeyboard()
-            return UIKeyboardType.numberPad
-        default:
-            return UIKeyboardType.default
-        }
-    }
-    
-    func updateData() {
+    func updateViewsWithNewData() {
         circleView.round()
-        textField.keyboardType = generateKeyboardStyle()
-
-        let values = currentExam.getValues()
-        let color = values.color
+        let keyboard = Keyboard(inputableVC: self)
+        keyboard?.setup()
+        guard let currentModelExam = modelManager.currentModel else { return }
         
-        titleLabel.text = currentExam.rawValue
-        textField.placeholder = values.example
+        let color = currentModelExam.color
+        let title = currentModelExam.title
+        titleLabel.text = title
+        textField.placeholder = title
+        iconImageView.image = UIImage(named: title)
         textField.text = ""
-        iconImageView.image = UIImage(named: currentExam.rawValue)
         
         barView.backgroundColor = color
         circleView.backgroundColor = color
         titleLabel.textColor = color
     }
-    
 }
 
 extension InputVC: UITextFieldDelegate {
-    
-    @objc func doneButtonPressed() {
-        if let data = textField.text {
-            textField.endEditing(true)
-            handleTransportation(data: data)
-        }
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
             if !text.isEmpty{
                 textField.endEditing(true)
-                handleTransportation(data: text)
+                let transitionHandler = TransitionHandler(currentExamViewController: self)
+                transitionHandler.decideCourse(data: text)
                 return true
             }
         }
         return false
     }
-    
-    func addToolBarToKeyboard() {
-        let toolBar = UIToolbar()
-        let button = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneButtonPressed))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolBar.sizeToFit()
-        toolBar.setItems([flexibleSpace, button], animated: false)
-        
-        textField.inputAccessoryView = toolBar
+}
+
+extension InputVC: Inputable {
+    @objc func doneButtonPressed() {
+        guard let data = textField.text else { return }
+        let transitionHandler = TransitionHandler(currentExamViewController: self)
+        transitionHandler.decideCourse(data: data)
     }
 }

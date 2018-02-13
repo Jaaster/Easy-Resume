@@ -16,7 +16,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRFirebaseService.shared.configure()
+        
+        let modelManager = ModelManager<ModelExam>()
+        let models = getModels(modelManager: modelManager)
+        modelManager.setValues(models: models, currentModel: models.first)
+        let dataHandler = ResumeDataHandler()
+        if let mainVC = window?.rootViewController as? MainVC {
+            mainVC.dataHandler = dataHandler
+            mainVC.modelManager = modelManager
+        }
+        
         return true
+    }
+    func getModels(modelManager: ModelManager<ModelExam>) -> [ModelExam] {
+        
+        var models = [ModelExam]()
+        let color = UIColor.myBlue
+        models.append(ModelExam(exam: Exam.menu, type: .main, title: "MAIN", color: color, parentModelExamManager: modelManager))
+        models.append(ModelExam(exam: Exam.educationRecord, type: .threeBarButtons, title: "EDUCATION RECORD", color: UIColor.myBlue, buttonModels: [ModelButton(title: "EDUCATED", color: UIColor.myPink), ModelButton(title: "UN-EDUCATED", color: UIColor.myBlue), ModelButton(title: "SCHOOL", color: UIColor.myGrey)], parentModelExamManager: modelManager))
+        models.append(ModelExam(exam: Exam.educationDescription, type: .description, title: "Education Description", color: UIColor.myBlue, parentModelExamManager: modelManager))
+       
+        let childModelManager = ModelManager<ModelExam>()
+        childModelManager.setValues(models: [ModelExam(exam: Exam.name, type: .input, title: "MY NAME!", color: UIColor.myPink, parentModelExamManager: modelManager), ModelExam(exam: Exam.email, type: .input, title: "EMAIL!!!", color: UIColor.myGrey, parentModelExamManager: childModelManager)], currentModel: nil)
+        
+        models.append(ModelExam(exam: Exam.gender, type: .twoButtons, title: "GENDER", color: color, buttonModels: [ModelButton(title: "MALE", color: color), ModelButton(title: "FEMALE", color: UIColor.myPink)], parentModelExamManager: modelManager, childModelExamManager: childModelManager))
+        
+        
+        
+       
+        
+      
+        return models
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

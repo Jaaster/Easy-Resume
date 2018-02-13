@@ -7,25 +7,23 @@
 //
 
 import UIKit
-class MainVC: UIViewController, LoadableVC {
+class MainVC: UIViewController, ExamViewController {
     
-    var presenting: UIViewController!
-    
+    // MARK: Already Initialized Variables
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
     @IBOutlet weak var firstCircleView: CircleView!
     @IBOutlet weak var secondCircleView: CircleView!
     @IBOutlet weak var createLabel: UILabel!
     @IBOutlet weak var createdLabel: UILabel!
     
     var currentExam: Exam!
-    let shared = ResumeDataHandler.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         currentExam = Exam.menu
-        
-        updateData()
+        updateViewsWithNewData()
         setupViews()
-        handlePreviousController()
     }
     
     func setupViews() {
@@ -33,9 +31,9 @@ class MainVC: UIViewController, LoadableVC {
         secondCircleView.round()
     }
     
-    func updateData() {
+    func updateViewsWithNewData() {
         var color = UIColor.myBlue
-        if shared.getCoreDataResumeList() == nil {
+        if dataHandler.resumeList == nil {
            color = UIColor.myGrey
         }
         
@@ -46,20 +44,19 @@ class MainVC: UIViewController, LoadableVC {
     @IBAction func buttonPressed(button: UIButton) {
         if button.tag == 0 {
             //Create button Pressed
-            handleTransportation(data: "")
+            let transitionHandler = TransitionHandler(currentExamViewController: self)
+            transitionHandler.decideCourse(data: nil)
         } else {
             //Edit Button Pressed
-            guard let resumeList = shared.getCoreDataResumeList() else {
+            guard let resumeList = dataHandler.resumeList else {
                 return
             }
             if resumeList.isEmpty {
                 return
             }
-                shared.isEditingResume = true
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateViewController(withIdentifier: "CHOOSE_RESUME")
                 present(vc, animated: true, completion: nil)
         }
     }
 }
-

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ThreeBarButtonsVC: UIViewController, LoadableVC {
-   
-    var currentExam: Exam!
-    var presenting: UIViewController!
+class ThreeBarButtonsVC: UIViewController, ExamViewController {
     
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var circleView: CircleView!
@@ -22,18 +22,18 @@ class ThreeBarButtonsVC: UIViewController, LoadableVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        handlePreviousController()
     }
     
-    func updateData() {
+    func updateViewsWithNewData() {
         circleView.round()
 
-        let values = currentExam.getValues()
-        let buttons = values.buttons
-        let color = values.color
+        guard let currentModelExam = modelManager.currentModel else { return }
+
+        let buttons = currentModelExam.buttonModels
+        let color = currentModelExam.color
     
-        iconImageView.image = UIImage(named: currentExam.rawValue)
-        titleLabel.text = currentExam.rawValue
+        iconImageView.image = UIImage(named: currentModelExam.title)
+        titleLabel.text = currentModelExam.title
         
         titleLabel.textColor = color
         circleView.backgroundColor = color
@@ -42,16 +42,18 @@ class ThreeBarButtonsVC: UIViewController, LoadableVC {
         
         for i in 0..<buttonArray.count {
             let button = buttonArray[i]
-            button?.setTitle(buttons[i].name, for: .normal)
-            button?.backgroundColor = buttons[i].color
+            button?.setTitle(buttons?[i].title, for: .normal)
+            button?.backgroundColor = buttons?[i].color
             button?.titleLabel?.textAlignment = NSTextAlignment.center
             
         }
     }
     
     @IBAction func buttonsPressed(_ sender: UIButton) {
-        if let text = sender.titleLabel?.text {
-            handleTransportation(data: text)
+        if let data = sender.titleLabel?.text {
+            
+            let transitionHandler = TransitionHandler(currentExamViewController: self)
+            transitionHandler.decideCourse(data: data)
         }
     }
 }

@@ -9,10 +9,11 @@
 
 import UIKit
 
-class DescriptionVCViewController: UIViewController, LoadableVC {
+class DescriptionVCViewController: UIViewController, ExamViewController {
     
-    var currentExam: Exam!
-    var presenting: UIViewController!
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
+
     private var examples = [String]()
 
     @IBOutlet weak var examplesView: UIView!
@@ -26,21 +27,17 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        handlePreviousController()
-
         textField.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        textField.becomeFirstResponder()
-    }
-     func updateData() {
+    
+     func updateViewsWithNewData() {
         addToolBarToKeyboard()
+        guard let currentModelExam = modelManager.currentModel else { return }
         
         let shared = OneInstance.shared
-        switch currentExam {
+        switch currentModelExam.exam {
         case .jobDescription:
             examples = shared.exampleJobList.sorted()
         case .educationDescription:
@@ -55,17 +52,17 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
             textField.text = "e.g \(first)"
         }
         
-        let values = currentExam.getValues()
-        let color = values.color
         
-        titleLabel.text = currentExam.rawValue
+        let color = currentModelExam.color
+        
+        titleLabel.text = currentModelExam.title
         
         examplesView.alpha = 0.0
         examplesView.isHidden = true
         
         exampleButton.backgroundColor = color
         exampleButton.round()
-        exampleButton.setTitle(values.example, for: .normal)
+        exampleButton.setTitle("Example", for: .normal)
         exampleButton.titleLabel?.adjustsFontSizeToFitWidth = true
         exampleButton.titleLabel?.textAlignment = .center
         
@@ -93,7 +90,8 @@ class DescriptionVCViewController: UIViewController, LoadableVC {
 extension DescriptionVCViewController: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
-        handleTransportation(data: textField.text)
+        let transitionHandler = TransitionHandler(currentExamViewController: self)
+        transitionHandler.decideCourse(data: textField.text)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -119,7 +117,11 @@ extension DescriptionVCViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ExampleCell") as? ExampleCell {
             cell.exampleLabel.text = examples[indexPath.row]
-            cell.exampleLabel.backgroundColor = currentExam.getValues().color
+            guard let currentModel = modelManager.currentModel else {
+                return cell
+            }
+            cell.exampleLabel.backgroundColor = currentModel.color
+
             return cell
         }
         

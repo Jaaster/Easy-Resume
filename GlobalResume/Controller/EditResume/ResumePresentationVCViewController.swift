@@ -35,7 +35,6 @@ class ResumePresentationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
         leftView.resume = resume
         rightView.resume = resume
         view.backgroundColor = .white
@@ -70,16 +69,11 @@ class ResumePresentationVC: UIViewController {
         view.addGestureRecognizer(holdDown)
     }
 }
-extension ResumePresentationVC: UIScrollViewDelegate {
+extension ResumePresentationVC {
     
     @objc func tapped() {
         dismiss(animated: true, completion: nil)
     }
-//
-//    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-//        return mainView
-//    }
-//
 }
 
 

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TwoBarButtonsVC: UIViewController, LoadableVC {
+class TwoBarButtonsVC: UIViewController, ExamViewController {
     
-    var currentExam: Exam!
-    var presenting: UIViewController!
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
+
     private var startDate: String?
     private var endDate: String?
     
@@ -25,20 +26,19 @@ class TwoBarButtonsVC: UIViewController, LoadableVC {
     @IBOutlet weak var endPicker: UIDatePicker!
 
     var dateHasBeenSet = (start: false, end: false)
- 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        handlePreviousController()
         addTargets()
     }
     
-    func updateData() {
+    func updateViewsWithNewData() {
         
-        let values = currentExam.getValues()
-        let color = values.color
+        guard let currentModelExam = modelManager.currentModel else { return }
+        let color = currentModelExam.color
 
-        iconImageView.image = UIImage(named: currentExam.rawValue)
-        titleLabel.text = currentExam.rawValue
+        iconImageView.image = UIImage(named: currentModelExam.title)
+        titleLabel.text = currentModelExam.title
         titleLabel.textColor = color
         
         circleView.backgroundColor = color
@@ -55,12 +55,15 @@ class TwoBarButtonsVC: UIViewController, LoadableVC {
     
     private func setupButtons() {
         let buttonArray = [firstButton, secondButton]
-        let buttonDataFromExam = currentExam.getValues().buttons
+        
+        guard let currentExamModel = modelManager.currentModel else { return }
+        
+        let buttonDataFromExam = currentExamModel.buttonModels
         
         for i in 0..<buttonArray.count {
             let button = buttonArray[i]
-            button?.setTitle(buttonDataFromExam[i].name, for: .normal)
-            button?.backgroundColor = buttonDataFromExam[i].color
+            button?.setTitle(buttonDataFromExam?[i].title, for: .normal)
+            button?.backgroundColor = buttonDataFromExam?[i].color
             button?.titleLabel?.textAlignment = NSTextAlignment.center
         }
     }
@@ -75,7 +78,7 @@ extension TwoBarButtonsVC: UIPickerViewDelegate {
     
     @IBAction func buttonsPressed(_ sender: UIButton) {
         
-        if currentExam.getValues().buttons[0].name == "START" {
+        if modelManager.currentModel?.buttonModels?[0].title == "START" {
             if sender.tag == 0 {
                 startPicker.isHidden = false
             } else {
@@ -84,14 +87,16 @@ extension TwoBarButtonsVC: UIPickerViewDelegate {
             nextButton.isHidden = true
         } else {
             if let text = sender.titleLabel?.text {
-                handleTransportation(data: text)
+                let transitionHandler = TransitionHandler(currentExamViewController: self)
+                transitionHandler.decideCourse(data: text)
             }
         }
     }
     
     @IBAction func nextButtonPressed(_ sender: UIButton) {
         if let startDate = startDate, let endDate = endDate {
-            handleTransportation(data: "\(startDate) - \(endDate)")
+            let transitionHandler = TransitionHandler(currentExamViewController: self)
+            transitionHandler.decideCourse(data: "\(startDate) - \(endDate)")
         }
     }
     

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TwoIconButtonsVC: UIViewController, LoadableVC {
+class TwoIconButtonsVC: UIViewController, ExamViewController {
     
-    var currentExam: Exam!
-    var presenting: UIViewController!
+    var modelManager: ModelManager<ModelExam>!
+    var dataHandler: ResumeDataHandler!
 
     @IBOutlet weak var firstCircleButton: CustomButton!
     @IBOutlet weak var secondCircleButton: CustomButton!
@@ -22,24 +22,23 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        handlePreviousController()
     }
     
-    func updateData() {
+    func updateViewsWithNewData() {
+        guard let currentModelExam = modelManager.currentModel else { return }
+
+        guard let buttons = currentModelExam.buttonModels else { return }
         
-        let values = currentExam.getValues()
-        
-        let buttons = values.buttons
         let color = buttons[0].color
         let color2 = buttons[1].color
         
-        firstTitleLabel.text = buttons[0].name
+        firstTitleLabel.text = buttons[0].title
         firstTitleLabel.textColor = color
         secondTitleLabel.textColor = color2
-        secondTitleLabel.text = buttons[1].name
+        secondTitleLabel.text = buttons[1].title
         
-        firstIconImageView.image = UIImage(named: values.buttons[0].name)
-        secondIconImageView.image = UIImage(named:values.buttons[1].name)
+        firstIconImageView.image = UIImage(named: buttons[0].title)
+        secondIconImageView.image = UIImage(named: buttons[1].title)
         
         firstCircleButton.round()
         secondCircleButton.round()
@@ -49,7 +48,7 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
-        var text = ""
+        var text: String?
         if sender.tag == 0 {
             if let title = firstTitleLabel.text {
                 text = title
@@ -59,7 +58,8 @@ class TwoIconButtonsVC: UIViewController, LoadableVC {
                 text = title
             }
         }
-        
-        handleTransportation(data: text)
+       
+        let transitionHandler = TransitionHandler(currentExamViewController: self)
+        transitionHandler.decideCourse(data: text)
     }
 }

@@ -75,7 +75,7 @@
         <!--MainVC-->
         <scene sceneID="i0i-o4-acu">
             <objects>
-                <viewController storyboardIdentifier="MENU" modalTransitionStyle="crossDissolve" id="km8-jb-SwJ" customClass="MainVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" modalTransitionStyle="crossDissolve" id="km8-jb-SwJ" customClass="MainVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEV-NF-eTM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
         <!--InputVC-->
         <scene sceneID="IEt-Ne-6ZS">
             <objects>
-                <viewController storyboardIdentifier="INPUT" id="GO5-nk-4id" customClass="InputVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InputVC" id="GO5-nk-4id" customClass="InputVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Al6-4W-VCq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,7 +288,7 @@
         <!--Three Bar ButtonsVC-->
         <scene sceneID="0Ax-nZ-3NX">
             <objects>
-                <viewController storyboardIdentifier="THREE_BAR_BUTTONS" id="at0-Vl-Iay" customClass="ThreeBarButtonsVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThreeBarButtonsVC" id="at0-Vl-Iay" customClass="ThreeBarButtonsVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NgM-iB-qzz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,7 +397,7 @@
         <!--Two Icon ButtonsVC-->
         <scene sceneID="fH4-fK-muD">
             <objects>
-                <viewController storyboardIdentifier="TWO_BUTTONS" id="i6s-0c-wJx" customClass="TwoIconButtonsVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TwoIconButtonsVC" id="i6s-0c-wJx" customClass="TwoIconButtonsVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wgc-5k-F3u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -492,7 +492,7 @@
         <!--Two Bar ButtonsVC-->
         <scene sceneID="zaL-Ob-ime">
             <objects>
-                <viewController storyboardIdentifier="TWO_BAR_BUTTONS" id="aTC-Ld-YNp" customClass="TwoBarButtonsVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TwoBarButtonsVC" id="aTC-Ld-YNp" customClass="TwoBarButtonsVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NDT-7a-PuD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -626,7 +626,7 @@
         <!--DescriptionVC View Controller-->
         <scene sceneID="NpM-DT-0FP">
             <objects>
-                <viewController storyboardIdentifier="DESCRIPTION" id="cpY-yW-4wO" customClass="DescriptionVCViewController" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DescriptionVCViewController" id="cpY-yW-4wO" customClass="DescriptionVCViewController" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IMQ-zw-Kks">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -797,7 +797,7 @@
         <!--Exam EndedVC-->
         <scene sceneID="Xk4-QD-bnx">
             <objects>
-                <viewController storyboardIdentifier="EXAM_ENDED" id="bxZ-Ce-Pae" customClass="ExamEndedVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExamEndedVC" id="bxZ-Ce-Pae" customClass="ExamEndedVC" customModule="GlobalResume" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rSJ-5r-DN1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

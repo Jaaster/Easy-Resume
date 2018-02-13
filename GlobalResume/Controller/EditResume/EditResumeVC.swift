@@ -13,11 +13,12 @@ class EditResumeVC: UIViewController {
     
     typealias color = UIColor
     var resumeName: String!
+    
     private var editOptions: [String?] = []
     private var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code", "profile description"]
     private let cellid = "editResumeCell"
     private var isEditingInfo: Bool = false
-    private let resumeHandler = ResumeDataHandler.shared
+    private let resumeHandler = ResumeDataHandler()
     private let oneInstance = OneInstance.shared
     private let bottomStackView = UIStackView()
     private var currentEditor = ResumeInfo.standard
@@ -72,7 +73,7 @@ class EditResumeVC: UIViewController {
         collectionView.delegate = self
         collectionView.register(EditResumeCell.self, forCellWithReuseIdentifier: cellid)
         
-        editOptions = ResumeInfo.getOptions(info: .standard)
+//        editOptions = ResumeInfo.getOptions(info: .standard)
         updateViews()
     }
     
@@ -129,13 +130,13 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 oneInstance.trigger = Trigger.graduated
                 
                 let education = Education(context: PersistantService.context)
-                resumeHandler.currentEducation = education
+//                resumeHandler.currentEducation = education
             } else if info == .employment {
                 editData(exam: Exam.companyName, info: info)
                 
                 oneInstance.trigger = Trigger.employed
                 let employment = Employment(context: PersistantService.context)
-                resumeHandler.currentEmployment = employment
+//                resumeHandler.currentEmployment = employment
             }
         }
     }
@@ -154,19 +155,20 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     private func editData(exam: Exam, info: ResumeInfo) {
         isEditingInfo = true
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: exam.kind().rawValue)
+        let vc = sb.instantiateViewController(withIdentifier: exam.rawValue)
         currentEditor = info
-        if let loadableVC = vc as? LoadableVC {
-            loadableVC.currentExam = exam
+        if let examViewController = vc as? ExamViewController {
+            //TODO: Make functional
+            examViewController.modelManager.currentModel = ModelExam(exam: exam, type: Type.input, title: "TODO RESUMEEDITVC", color: UIColor.myRed, parentModelExamManager: ModelManager<ModelExam>())
             view.addSubview(whenEditingView)
             present(vc, animated: true)
-            loadableVC.updateData()
+            //TODO: Load data
         }
     }
 
     func openEditor(for info: ResumeInfo) {
         currentEditor = info
-        editOptions = ResumeInfo.getOptions(info: info)
+//        editOptions = ResumeInfo.getOptions(info: info)
         collectionView.reloadData()
         
         if info == .standard {
@@ -210,20 +212,20 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 
             case .employment:
                 editData(exam: Exam.companyName, info: resumeInfo)
-                let handler = ResumeDataHandler.shared
+//                let handler = ResumeDataHandler.shared
                 
                 OneInstance.shared.trigger = Trigger.employed
-                let employment = handler.employment(from: indexPath.row)
-                handler.currentEmployment = employment
-                
+//                let employment = handler.employment(from: indexPath.row)
+//                handler.currentEmployment = employment
+//
                 return
             case .education:
                 editData(exam: Exam.schoolName, info: resumeInfo)
                 OneInstance.shared.trigger = Trigger.graduated
                 
-                let handler = ResumeDataHandler.shared
-                let education = handler.education(from: indexPath.row)
-                handler.currentEducation = education
+//                let handler = ResumeDataHandler.shared
+//                let education = handler.education(from: indexPath.row)
+//                handler.currentEducation = education
                 
                 return
             case .standard:

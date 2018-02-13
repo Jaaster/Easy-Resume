@@ -9,30 +9,9 @@
 import UIKit
 
 extension UIColor {
-    static let myBlue = getUIColor(color: "blue")
-    static let myRed = getUIColor(color: "red")
-    static let myGrey = getUIColor(color: "grey")
-    static let myGreen = getUIColor(color: "green")
-    static let myPink = getUIColor(color: "pink")
-}
-
-func getUIColor(color: String) -> UIColor {
-    let x = CGFloat(255)
-    let a = CGFloat(1.0)
-    
-    switch color {
-    case "blue":
-        return UIColor(red: 74/x, green: 144/x, blue: 226/x, alpha: a)
-    case "grey":
-        let g = 155/x
-        return UIColor(red: g, green: g, blue: g, alpha: a)
-    case "green":
-        return UIColor(red: 74/x, green: 226/x, blue: 137/x, alpha: a)
-    case "pink":
-        return UIColor(red: 249/x, green: 133/x, blue: 238/x, alpha: a)
-    case "red":
-        return UIColor(red: 226/x, green: 74/x, blue: 74/x, alpha: a)
-    default:
-         return UIColor()
-    }
+    static let myBlue = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+    static let myRed = UIColor(red: 226/255, green: 74/255, blue: 74/255, alpha: 1)
+    static let myGrey = UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1)
+    static let myGreen = UIColor(red: 74/255, green: 226/255, blue: 137/255, alpha: 1)
+    static let myPink = UIColor(red: 249/255, green: 133/255, blue: 238/255, alpha: 1)
 }
