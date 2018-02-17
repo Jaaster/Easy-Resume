@@ -9,25 +9,22 @@
 import UIKit
 // MARK: - This Struct manages the current view controller and the current state of the application and decides what view should be displayed next
 class TransitionHandler {
+
+    // MARK: Initializing variables
     
-    // MARK: Current ExamModel being displayed in the presented view controller
     private var currentModelExam: ModelExam
     private var examEnded: Bool = false
-    // MARK: The current Exam View Controller being displayed on the application
+    
     private var currentExamViewController: ExamViewController
     
-    // MARK: A reference to the only ModelManager in the application. No Singleton here :P
     private var modelManager: ModelManager<ModelExam>
-    private let resumeDataHandler: ResumeDataHandler
     private let transitionService = TransitionService()
  
-    // MARK: Initializing variables
     init(currentExamViewController: ExamViewController) {
         self.currentExamViewController = currentExamViewController
         
         // MARK: - Classes that will be Injected into any newly presented ExamViewControllers
         modelManager = currentExamViewController.modelManager
-        resumeDataHandler = currentExamViewController.dataHandler
         
         // MARK: - Checks to see if the current model is equal to nil if so this means that the exams are over
         if let currentModel = modelManager.currentModel {
@@ -37,7 +34,7 @@ class TransitionHandler {
             examEnded = true
             
             // TODO: get rid of this ugly thing
-            currentModelExam = ModelExam(exam: Exam.name, type: Type.input, title: "NEVER GOING TO HAPPEN", color: UIColor.red, parentModelExamManager: modelManager)
+            currentModelExam = ModelExam(exam: Exam.name, type: Type.informationInput, title: "NEVER GOING TO HAPPEN", color: UIColor.red, parentModelExamManager: modelManager)
         }
     }
 }
@@ -98,29 +95,15 @@ private extension TransitionHandler {
     
     // MARK: - Takes the next model exam to be presented and the data entered by the user for the previous exam. 
     func transitionTo(nextModelExam: ModelExam, data: String?) {
-        
-        // MARK: Instantiate the Storyboard with all of the View Controllers for this application
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        
-        // MARK: - Initialization of identifier for the appropiate View Controller required to represent the nextModelExam
-        let identifier = nextModelExam.type.rawValue
-        
-        // MARK: - Next View Controller
-        let nextViewController = sb.instantiateViewController(withIdentifier: identifier)
-        
-        // MARK: - If the View Controller to be presented is an ExamViewController(Can present the data from the nextModelExam)
+        let nextViewController = getViewController(for: nextModelExam.type)
         if var nextExamViewController = nextViewController as? ExamViewController {
             // MARK: - Update the current model to the next one before it is injected
             modelManager.currentModel = nextModelExam
             
-            // MARK: - Inject Dependencies like specified in the initializer
             injectDependencies(examViewController: &nextExamViewController)
         }
-        
-        // MARK: - Handles the actual transition
         transitionService.present(nextViewController: nextViewController, from: currentExamViewController as! UIViewController)
         
-        // MARK: - Transfer the data passed in by the user to data management
         if let data = data {
             dataManagement(currentExam: currentModelExam.exam, data: data)
         }
@@ -146,22 +129,35 @@ private extension TransitionHandler {
     func dataManagement(currentExam: Exam, data: String?) {
         
         // MARK: - Handler is for deciding where the data should go
-        let resumeDataHandler = ResumeDataHandler()
-        
+
         // MARK: - Takes a key which in the CoreData Database is of type Exam and the value which is the data
-        resumeDataHandler.handleData(key: currentExam, data: data)
     }
 }
 
 private extension TransitionHandler {
+   
+    func getViewController(for type: Type) -> UIViewController {
+        switch type {
+        case .informationInput:
+            return InformationVC()
+        case .descriptionInput:
+            return DescriptionVC()
+        case .main:
+            return MainVC()
+        case .examEnded:
+            return ExamEndedVC()
+        }
+    }
+    
     // MARK: - Checks to see if there is a resume being edited by the user
     func isEditingCurrentResume() -> Bool {
         return false
     }
     
     // MARK: - Should transition
+    // TODO: change condition of statement
     func shouldTransition(type: Type) -> Bool {
-        return type != currentModelExam.type
+        return currentModelExam.type != type
     }
     
     // MARK: - When the resume created by the user has been completed
@@ -172,7 +168,6 @@ private extension TransitionHandler {
    
     // MARK: - Injects the dependencies required for the  next view controller to be presented without unwrapped nil values
     func injectDependencies(examViewController: inout ExamViewController) {
-        examViewController.dataHandler = resumeDataHandler
         examViewController.modelManager = modelManager
     }
  

@@ -2,4 +2,115 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GlobalResume/Controller/DescriptionVC.swift"
+            timestampString = "540538382.605817"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "DescriptionVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GlobalResume.DescriptionVC.__deallocating_deinit"
+                  moduleName = "GlobalResume"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joriahlasater/Documents/Xcode%20Projects/GlobalResume/GlobalResume/Controller/DescriptionVC.swift"
+                  timestampString = "540538382.836905"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GlobalResume.DescriptionVC.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; GlobalResume.DescriptionVC"
+                  moduleName = "GlobalResume"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joriahlasater/Documents/Xcode%20Projects/GlobalResume/GlobalResume/Controller/DescriptionVC.swift"
+                  timestampString = "540538382.838828"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GlobalResume.DescriptionVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; GlobalResume.DescriptionVC"
+                  moduleName = "GlobalResume"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joriahlasater/Documents/Xcode%20Projects/GlobalResume/GlobalResume/Controller/DescriptionVC.swift"
+                  timestampString = "540538382.8411601"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GlobalResume.DescriptionVC.__allocating_init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;GlobalResume.DescriptionVC&gt;"
+                  moduleName = "GlobalResume"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joriahlasater/Documents/Xcode%20Projects/GlobalResume/GlobalResume/Controller/DescriptionVC.swift"
+                  timestampString = "540538382.8430769"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GlobalResume.DescriptionVC.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;GlobalResume.DescriptionVC&gt;"
+                  moduleName = "GlobalResume"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joriahlasater/Documents/Xcode%20Projects/GlobalResume/GlobalResume/Controller/DescriptionVC.swift"
+                  timestampString = "540538382.844891"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "136">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GlobalResume/Utils/Classes/Transitions/TransitionHandler.swift"
+            timestampString = "540538382.606135"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "decideCourse(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

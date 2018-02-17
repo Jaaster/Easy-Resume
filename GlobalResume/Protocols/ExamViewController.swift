@@ -10,6 +10,5 @@ import UIKit
 
 protocol ExamViewController: class {
     var modelManager: ModelManager<ModelExam>! { get set }
-    var dataHandler: ResumeDataHandler! { get set }
     func updateViewsWithNewData()
 }

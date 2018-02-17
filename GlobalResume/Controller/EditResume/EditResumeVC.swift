@@ -18,8 +18,7 @@ class EditResumeVC: UIViewController {
     private var contactInfoCategories: [String] = ["name", "gender", "email", "phone number", "zip code", "profile description"]
     private let cellid = "editResumeCell"
     private var isEditingInfo: Bool = false
-    private let resumeHandler = ResumeDataHandler()
-    private let oneInstance = OneInstance.shared
+//    private let resumeHandler = ResumeDataHandler()
     private let bottomStackView = UIStackView()
     private var currentEditor = ResumeInfo.standard
     
@@ -127,15 +126,15 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             
             if info == .education {
                 editData(exam: Exam.schoolName, info: info)
-                oneInstance.trigger = Trigger.graduated
+//                oneInstance.trigger = Trigger.graduated
                 
-                let education = Education(context: PersistantService.context)
+//                let education = Education(context: PersistantService.context)
 //                resumeHandler.currentEducation = education
             } else if info == .employment {
                 editData(exam: Exam.companyName, info: info)
                 
-                oneInstance.trigger = Trigger.employed
-                let employment = Employment(context: PersistantService.context)
+//                oneInstance.trigger = Trigger.employed
+//                let employment = Employment(context: PersistantService.context)
 //                resumeHandler.currentEmployment = employment
             }
         }
@@ -159,7 +158,7 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         currentEditor = info
         if let examViewController = vc as? ExamViewController {
             //TODO: Make functional
-            examViewController.modelManager.currentModel = ModelExam(exam: exam, type: Type.input, title: "TODO RESUMEEDITVC", color: UIColor.myRed, parentModelExamManager: ModelManager<ModelExam>())
+            examViewController.modelManager.currentModel = ModelExam(exam: exam, type: Type.informationInput, title: "TODO RESUMEEDITVC", color: UIColor.myRed, parentModelExamManager: ModelManager<ModelExam>())
             view.addSubview(whenEditingView)
             present(vc, animated: true)
             //TODO: Load data
@@ -214,14 +213,14 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 editData(exam: Exam.companyName, info: resumeInfo)
 //                let handler = ResumeDataHandler.shared
                 
-                OneInstance.shared.trigger = Trigger.employed
+//                OneInstance.shared.trigger = Trigger.employed
 //                let employment = handler.employment(from: indexPath.row)
 //                handler.currentEmployment = employment
 //
                 return
             case .education:
                 editData(exam: Exam.schoolName, info: resumeInfo)
-                OneInstance.shared.trigger = Trigger.graduated
+//                OneInstance.shared.trigger = Trigger.graduated
                 
 //                let handler = ResumeDataHandler.shared
 //                let education = handler.education(from: indexPath.row)

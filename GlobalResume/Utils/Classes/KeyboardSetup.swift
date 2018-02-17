@@ -12,20 +12,17 @@ struct Keyboard {
     
     // MARK: Variables
     var textField: UITextField
-    var inputableVC: Inputable
+    var examViewController: ExamViewController
     var currentExam: Exam
     
     // MARK: Dependency Injection of the current Inputable View Controller being presented and the textfield that users will accesable to users.
-    init?(inputableVC: Inputable) {
-        self.inputableVC = inputableVC
-        self.textField = inputableVC.textField
+    init?(textField: UITextField, examViewController: ExamViewController) {
+        self.examViewController = examViewController
+        self.textField = textField
         
         //Mark: Checks to see if the Inputable View Controller is part of the Exam(An Exam is part of the app when a user is inputing data to customize or create their Resume)
-        guard let currentVC = inputableVC as? ExamViewController else {
-            return nil
-        }
         
-        let modelManager = currentVC.modelManager
+        let modelManager = examViewController.modelManager
         // MARK: - Check to see if the currentModel is nil, if so return initializer
         guard let currentExam = modelManager?.currentModel?.exam else {
             return nil
@@ -87,13 +84,14 @@ private extension Keyboard {
         
         // MARK: Checks to see if the
         let toolBar = UIToolbar()
-        
-        let button = UIBarButtonItem(barButtonSystemItem: .done, target: inputableVC, action: #selector(inputableVC.doneButtonPressed))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
-        toolBar.sizeToFit()
-        toolBar.setItems([flexibleSpace, button], animated: false)
+        if let informationVC = examViewController as? InformationVC {
+            let button = UIBarButtonItem(barButtonSystemItem: .done, target: informationVC, action: #selector(informationVC.doneButtonPressed))
+            toolBar.setItems([flexibleSpace, button], animated: false)
+        }
         
+        toolBar.sizeToFit()
         textField.inputAccessoryView = toolBar
     }
 }

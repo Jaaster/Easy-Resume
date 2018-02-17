@@ -15,9 +15,7 @@ struct TransitionService {
         guard let nextExamViewController = nextViewController as? ExamViewController else {
             fatalError("Attempted to present view controller from Transportation that does not inheret the ExamViewController Protocol") }
         
-        // MARK: Presents the Next View Controller that was passed in the parameters
-        currentViewController.present(nextViewController, animated: true, completion: {
-            // MARK: Updates the View of the presented controller with ModelExam data stored in the currentModelExam variable of ModelManager
+        currentViewController.navigationController?.present(nextViewController, animated: true, completion: {
             nextExamViewController.updateViewsWithNewData()
         })
     }
@@ -34,28 +32,5 @@ struct TransitionService {
             dismiss(to: rootVC, animated: true, completion: nil)
         }
         return
-    }
-}
-
-private extension TransitionService {
-    
-    // MARK: - Returns the Top View Controller ;)
-    func topViewController() -> UIViewController? {
-        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
-            if let topViewController = rootVC.presentedViewController {
-                // MARK: - Loops until it finds that the current View Controller in the loop doesn't have a Presenting View Controller
-                var nextTopViewController = topViewController
-                while nextTopViewController.presentedViewController != nil {
-                    if let presentedViewController = nextTopViewController.presentedViewController {
-                        // MARK: - Set the topViewController to the latest presented view controller
-                        nextTopViewController = presentedViewController
-                    } else {
-                        break
-                    }
-                }
-            }
-            return rootVC
-        }
-        return nil
     }
 }

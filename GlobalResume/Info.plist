@@ -22,6 +22,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>KGTenThousandReasons.ttf</string>
+		<string>Krungthep.ttf</string>
 		<string>OpenSans-ExtraBold.ttf</string>
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans-Regular.ttf</string>

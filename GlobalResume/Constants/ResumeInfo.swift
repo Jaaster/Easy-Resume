@@ -13,7 +13,7 @@ enum ResumeInfo: String {
     case employment = "EMPLOYMENT INFO"
     case education = "EDUCATION INFO"
     case standard = ""
-    
+     
 //    static func getOptions(info: ResumeInfo) -> [String?] {
 ////        if let resume = {
 //            switch info {

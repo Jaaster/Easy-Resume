@@ -9,7 +9,8 @@ target 'GlobalResume' do
 
 	pod 'Firebase/Core'
  	pod 'Firebase/Database'
- 	pod 'ConfettiView', '~> 0.1'
+	pod 'Firebase/Firestore'
+	pod 'ConfettiView', '~> 0.1'
 
   
   target 'GlobalResumeTests' do

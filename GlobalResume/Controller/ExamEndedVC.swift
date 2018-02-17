@@ -11,7 +11,6 @@ import ConfettiView
 class ExamEndedVC: UIViewController, ExamViewController {
    
     var modelManager: ModelManager<ModelExam>!
-    var dataHandler: ResumeDataHandler!
     var gender: Gender!
 
     @IBOutlet weak var applicantImage: BobbingImageView!

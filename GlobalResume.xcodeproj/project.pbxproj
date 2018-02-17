@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		090C8AC720105DD100E58628 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC620105DD100E58628 /* CustomButton.swift */; };
 		090C8AC920105E1E00E58628 /* Roundable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C8AC820105E1E00E58628 /* Roundable.swift */; };
-		0913F9EE2021688900760EEA /* LoadableVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913F9ED2021688900760EEA /* LoadableVCExtension.swift */; };
 		09189827202F9D7800DD9B6A /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189826202F9D7800DD9B6A /* Inputable.swift */; };
 		092018862031162000387E0E /* TransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092018852031162000387E0E /* TransitionHandler.swift */; };
 		092018882031263A00387E0E /* TransitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092018872031263A00387E0E /* TransitionService.swift */; };
-		0920188A20314EA500387E0E /* ResumeDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0920188920314EA500387E0E /* ResumeDataService.swift */; };
 		09202DE7200FC87000320D60 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE6200FC87000320D60 /* Gender.swift */; };
 		09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DE8200FCAAC00320D60 /* Animatable.swift */; };
 		09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEA200FCB6F00320D60 /* Fadeable.swift */; };
@@ -23,39 +21,31 @@
 		09206D2D202BFBB500AFEC6C /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D2C202BFBB500AFEC6C /* UIFontExtension.swift */; };
 		09206D2F202BFF1C00AFEC6C /* ExpandableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D2E202BFF1C00AFEC6C /* ExpandableImageView.swift */; };
 		09206D31202BFFF700AFEC6C /* CustomButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D30202BFFF700AFEC6C /* CustomButtonExtension.swift */; };
+		0937533D20346AFB0046B8C5 /* FirebaseModelExamHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937533C20346AFB0046B8C5 /* FirebaseModelExamHandler.swift */; };
 		09388FA2200E585200A8B623 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA1200E585200A8B623 /* Exam.swift */; };
-		09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FA8200E72AC00A8B623 /* LoadableVC.swift */; };
-		09388FAB200EEC5300A8B623 /* ThreeBarButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09388FAA200EEC5300A8B623 /* ThreeBarButtonsVC.swift */; };
 		093A36C72028F3A2007CA443 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093A36C62028F3A2007CA443 /* Launch Screen.storyboard */; };
 		09428DC6202E27E600EC1376 /* KeyboardSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DC5202E27E600EC1376 /* KeyboardSetup.swift */; };
 		09428DCA202E392700EC1376 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DC9202E392700EC1376 /* UIViewExtension.swift */; };
-		09428DCE202E584A00EC1376 /* InputModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DCD202E584A00EC1376 /* InputModelView.swift */; };
 		09428DD0202E586F00EC1376 /* ModelViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DCF202E586F00EC1376 /* ModelViewProtocol.swift */; };
 		09428DD2202E5A5600EC1376 /* ModelExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD1202E5A5600EC1376 /* ModelExam.swift */; };
 		09428DD4202E5A7100EC1376 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD3202E5A7100EC1376 /* Type.swift */; };
 		09428DD6202E5BF600EC1376 /* ModelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD5202E5BF600EC1376 /* ModelButton.swift */; };
 		09497194202E933F00065CAE /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09497193202E933F00065CAE /* ModelManager.swift */; };
 		09497198202EB25600065CAE /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09497197202EB25600065CAE /* ExamViewController.swift */; };
-		094DDD582017FF5800A9D3F0 /* TwoBarButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD572017FF5800A9D3F0 /* TwoBarButtonsVC.swift */; };
 		094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */; };
-		094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */; };
+		094DDD5C20180EB600A9D3F0 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5B20180EB600A9D3F0 /* DescriptionVC.swift */; };
 		0950C362201A568C007CA442 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0950C361201A568C007CA442 /* GoogleService-Info.plist */; };
 		09554C55202374730043B822 /* ChooseResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C54202374730043B822 /* ChooseResumeVC.swift */; };
 		09554C57202374A80043B822 /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C56202374A80043B822 /* ResumeCell.swift */; };
 		09554C592023A0170043B822 /* EditResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C582023A0170043B822 /* EditResumeVC.swift */; };
 		09554C5E2023C9AC0043B822 /* EditResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09554C5D2023C9AC0043B822 /* EditResumeCell.swift */; };
+		0958CAD520362C69000D7819 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0958CAD420362C69000D7819 /* CustomTransition.swift */; };
 		095BE574202763950011D55C /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE573202763950011D55C /* PopupVC.swift */; };
 		095BE57D2027C66E0011D55C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE57C2027C66E0011D55C /* HistoryView.swift */; };
 		095BE57F2027C6920011D55C /* ResumePresentationVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE57E2027C6920011D55C /* ResumePresentationVCViewController.swift */; };
 		095BE5812027C6B60011D55C /* ResumeLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE5802027C6B60011D55C /* ResumeLeftView.swift */; };
 		095BE5832027C6D70011D55C /* ResumeRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095BE5822027C6D70011D55C /* ResumeRightView.swift */; };
 		095C4B432021291C00271CAB /* PersistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B422021291C00271CAB /* PersistantService.swift */; };
-		095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */; };
-		095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */; };
-		095C4B4D20212A7000271CAB /* Employment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4720212A6F00271CAB /* Employment+CoreDataClass.swift */; };
-		095C4B4E20212A7000271CAB /* ResumeData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4820212A6F00271CAB /* ResumeData+CoreDataProperties.swift */; };
-		095C4B4F20212A7000271CAB /* Education+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4920212A6F00271CAB /* Education+CoreDataProperties.swift */; };
-		095C4B5020212A7000271CAB /* ResumeData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C4B4A20212A6F00271CAB /* ResumeData+CoreDataClass.swift */; };
 		095E2003200D617D0078956B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2002200D617D0078956B /* AppDelegate.swift */; };
 		095E2005200D617D0078956B /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2004200D617D0078956B /* MainVC.swift */; };
 		095E2008200D617D0078956B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095E2006200D617D0078956B /* Main.storyboard */; };
@@ -65,13 +55,18 @@
 		095E2026200D617D0078956B /* GlobalResumeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E2025200D617D0078956B /* GlobalResumeUITests.swift */; };
 		095E203E200D669C0078956B /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203D200D669C0078956B /* CircleView.swift */; };
 		095E2040200D71310078956B /* InputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E203F200D71310078956B /* InputVC.swift */; };
-		095E204B200DB6D80078956B /* ResumeDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204A200DB6D80078956B /* ResumeDataHandler.swift */; };
-		095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */; };
-		098324C620124991003B32FF /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C520124991003B32FF /* Trigger.swift */; };
-		098324C820124EF1003B32FF /* OneInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098324C720124EF1003B32FF /* OneInstance.swift */; };
+		098DC7202034F59E00383302 /* ResumeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DC71F2034F59E00383302 /* ResumeData.swift */; };
+		098DC7222035011100383302 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DC7212035011100383302 /* LoginVC.swift */; };
+		098DC7242035019700383302 /* ModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DC7232035019700383302 /* ModelUser.swift */; };
 		098EA4B0201FE49F006D7E02 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 098EA4AF201FE49E006D7E02 /* OpenSans-ExtraBold.ttf */; };
+		0996F68B2037759E00BF0B8C /* Krungthep.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0996F68A2037759C00BF0B8C /* Krungthep.ttf */; };
+		0996F68F2037799200BF0B8C /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996F68E2037799200BF0B8C /* InformationVC.swift */; };
+		0996F6912037925800BF0B8C /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996F6902037925800BF0B8C /* CustomNavigationController.swift */; };
+		0996F6942037B33400BF0B8C /* KGTenThousandReasons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0996F6932037B33400BF0B8C /* KGTenThousandReasons.ttf */; };
+		0996F6972037B5BD00BF0B8C /* KeyboardInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996F6962037B5BD00BF0B8C /* KeyboardInputView.swift */; };
+		0996F6992037C51D00BF0B8C /* ButtonInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996F6982037C51D00BF0B8C /* ButtonInputView.swift */; };
 		09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */; };
-		09B33547201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33546201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift */; };
+		09B33547201A84FD005FDEC2 /* FIRDataReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33546201A84FD005FDEC2 /* FIRDataReference.swift */; };
 		09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */; };
 		09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */; };
 		09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB7201FA9E10073BC4C /* Bobbable.swift */; };
@@ -101,11 +96,9 @@
 /* Begin PBXFileReference section */
 		090C8AC620105DD100E58628 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		090C8AC820105E1E00E58628 /* Roundable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roundable.swift; sourceTree = "<group>"; };
-		0913F9ED2021688900760EEA /* LoadableVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableVCExtension.swift; sourceTree = "<group>"; };
 		09189826202F9D7800DD9B6A /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
 		092018852031162000387E0E /* TransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionHandler.swift; sourceTree = "<group>"; };
 		092018872031263A00387E0E /* TransitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionService.swift; sourceTree = "<group>"; };
-		0920188920314EA500387E0E /* ResumeDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDataService.swift; sourceTree = "<group>"; };
 		09202DE6200FC87000320D60 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		09202DE8200FCAAC00320D60 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		09202DEA200FCB6F00320D60 /* Fadeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fadeable.swift; sourceTree = "<group>"; };
@@ -115,39 +108,31 @@
 		09206D2C202BFBB500AFEC6C /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		09206D2E202BFF1C00AFEC6C /* ExpandableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableImageView.swift; sourceTree = "<group>"; };
 		09206D30202BFFF700AFEC6C /* CustomButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonExtension.swift; sourceTree = "<group>"; };
+		0937533C20346AFB0046B8C5 /* FirebaseModelExamHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModelExamHandler.swift; sourceTree = "<group>"; };
 		09388FA1200E585200A8B623 /* Exam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
-		09388FA8200E72AC00A8B623 /* LoadableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableVC.swift; sourceTree = "<group>"; };
-		09388FAA200EEC5300A8B623 /* ThreeBarButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeBarButtonsVC.swift; sourceTree = "<group>"; };
 		093A36C62028F3A2007CA443 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		09428DC5202E27E600EC1376 /* KeyboardSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardSetu\U0010p.swift"; sourceTree = "<group>"; };
 		09428DC9202E392700EC1376 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		09428DCD202E584A00EC1376 /* InputModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputModelView.swift; sourceTree = "<group>"; };
 		09428DCF202E586F00EC1376 /* ModelViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewProtocol.swift; sourceTree = "<group>"; };
 		09428DD1202E5A5600EC1376 /* ModelExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExam.swift; sourceTree = "<group>"; };
 		09428DD3202E5A7100EC1376 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		09428DD5202E5BF600EC1376 /* ModelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelButton.swift; sourceTree = "<group>"; };
 		09497193202E933F00065CAE /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		09497197202EB25600065CAE /* ExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamViewController.swift; sourceTree = "<group>"; };
-		094DDD572017FF5800A9D3F0 /* TwoBarButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoBarButtonsVC.swift; sourceTree = "<group>"; };
 		094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
-		094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVCViewController.swift; sourceTree = "<group>"; };
+		094DDD5B20180EB600A9D3F0 /* DescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		0950C361201A568C007CA442 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Firebase/Google Info Docs/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09554C54202374730043B822 /* ChooseResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseResumeVC.swift; sourceTree = "<group>"; };
 		09554C56202374A80043B822 /* ResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
 		09554C582023A0170043B822 /* EditResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeVC.swift; sourceTree = "<group>"; };
 		09554C5D2023C9AC0043B822 /* EditResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResumeCell.swift; sourceTree = "<group>"; };
+		0958CAD420362C69000D7819 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		095BE573202763950011D55C /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
 		095BE57C2027C66E0011D55C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		095BE57E2027C6920011D55C /* ResumePresentationVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumePresentationVCViewController.swift; sourceTree = "<group>"; };
 		095BE5802027C6B60011D55C /* ResumeLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeLeftView.swift; sourceTree = "<group>"; };
 		095BE5822027C6D70011D55C /* ResumeRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRightView.swift; sourceTree = "<group>"; };
 		095C4B422021291C00271CAB /* PersistantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantService.swift; sourceTree = "<group>"; };
-		095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Employment+CoreDataProperties.swift"; path = "GlobalResume/Model/CoreData/Employment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Education+CoreDataClass.swift"; path = "GlobalResume/Model/CoreData/Education+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		095C4B4720212A6F00271CAB /* Employment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Employment+CoreDataClass.swift"; path = "GlobalResume/Model/CoreData/Employment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		095C4B4820212A6F00271CAB /* ResumeData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ResumeData+CoreDataProperties.swift"; path = "GlobalResume/Model/CoreData/ResumeData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		095C4B4920212A6F00271CAB /* Education+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Education+CoreDataProperties.swift"; path = "GlobalResume/Model/CoreData/Education+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		095C4B4A20212A6F00271CAB /* ResumeData+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ResumeData+CoreDataClass.swift"; path = "GlobalResume/Model/CoreData/ResumeData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		095E1FFF200D617D0078956B /* GlobalResume.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlobalResume.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		095E2002200D617D0078956B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		095E2004200D617D0078956B /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -165,14 +150,19 @@
 		095E203F200D71310078956B /* InputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVC.swift; sourceTree = "<group>"; };
 		095E2044200D9BA80078956B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		095E2045200D9BAD0078956B /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		095E204A200DB6D80078956B /* ResumeDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeDataHandler.swift; sourceTree = "<group>"; };
-		095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoIconButtonsVC.swift; sourceTree = "<group>"; };
-		098324C520124991003B32FF /* Trigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trigger.swift; sourceTree = "<group>"; };
-		098324C720124EF1003B32FF /* OneInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneInstance.swift; sourceTree = "<group>"; };
+		098DC71F2034F59E00383302 /* ResumeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeData.swift; sourceTree = "<group>"; };
+		098DC7212035011100383302 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		098DC7232035019700383302 /* ModelUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelUser.swift; sourceTree = "<group>"; };
 		098EA4AF201FE49E006D7E02 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "../../../../../Downloads/Open-Sans-Light/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		098F1BE8609678B660108273 /* Pods-GlobalResume.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlobalResume.release.xcconfig"; path = "Pods/Target Support Files/Pods-GlobalResume/Pods-GlobalResume.release.xcconfig"; sourceTree = "<group>"; };
+		0996F68A2037759C00BF0B8C /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Krungthep.ttf; path = ../../../../../../../Library/Fonts/Krungthep.ttf; sourceTree = "<group>"; };
+		0996F68E2037799200BF0B8C /* InformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
+		0996F6902037925800BF0B8C /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		0996F6932037B33400BF0B8C /* KGTenThousandReasons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KGTenThousandReasons.ttf; path = ../../../../../Library/Fonts/KGTenThousandReasons.ttf; sourceTree = "<group>"; };
+		0996F6962037B5BD00BF0B8C /* KeyboardInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInputView.swift; sourceTree = "<group>"; };
+		0996F6982037C51D00BF0B8C /* ButtonInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonInputView.swift; sourceTree = "<group>"; };
 		09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRFirebaseService.swift; sourceTree = "<group>"; };
-		09B33546201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRCollectionReferenceParent.swift; sourceTree = "<group>"; };
+		09B33546201A84FD005FDEC2 /* FIRDataReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDataReference.swift; sourceTree = "<group>"; };
 		09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamEndedVC.swift; sourceTree = "<group>"; };
 		09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobbingImageView.swift; sourceTree = "<group>"; };
 		09CE5FB7201FA9E10073BC4C /* Bobbable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bobbable.swift; sourceTree = "<group>"; };
@@ -218,7 +208,6 @@
 		0913F9EC2021687000760EEA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0913F9ED2021688900760EEA /* LoadableVCExtension.swift */,
 				09206D28202BE8E500AFEC6C /* UIColorExtensions.swift */,
 				09206D2C202BFBB500AFEC6C /* UIFontExtension.swift */,
 				09206D30202BFFF700AFEC6C /* CustomButtonExtension.swift */,
@@ -243,8 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				09428DC4202E27D400EC1376 /* Classes */,
-				098324C720124EF1003B32FF /* OneInstance.swift */,
-				09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */,
 				095C4B422021291C00271CAB /* PersistantService.swift */,
 			);
 			path = Utils;
@@ -253,6 +240,7 @@
 		0922C82020321AE50034BC16 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
+				0958CAD420362C69000D7819 /* CustomTransition.swift */,
 				092018852031162000387E0E /* TransitionHandler.swift */,
 				092018872031263A00387E0E /* TransitionService.swift */,
 			);
@@ -262,10 +250,17 @@
 		0922C82120321AF10034BC16 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				095E204A200DB6D80078956B /* ResumeDataHandler.swift */,
-				0920188920314EA500387E0E /* ResumeDataService.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		0937533B20346AC10046B8C5 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */,
+				0937533C20346AFB0046B8C5 /* FirebaseModelExamHandler.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		09388FA0200E583900A8B623 /* Constants */ = {
@@ -273,9 +268,8 @@
 			children = (
 				09428DD3202E5A7100EC1376 /* Type.swift */,
 				09388FA1200E585200A8B623 /* Exam.swift */,
-				098324C520124991003B32FF /* Trigger.swift */,
 				09202DE6200FC87000320D60 /* Gender.swift */,
-				09B33546201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift */,
+				09B33546201A84FD005FDEC2 /* FIRDataReference.swift */,
 				09206D2A202BFAE600AFEC6C /* ResumeInfo.swift */,
 			);
 			path = Constants;
@@ -286,10 +280,9 @@
 			children = (
 				09497197202EB25600065CAE /* ExamViewController.swift */,
 				09428DCF202E586F00EC1376 /* ModelViewProtocol.swift */,
-				090C8AC820105E1E00E58628 /* Roundable.swift */,
-				09388FA8200E72AC00A8B623 /* LoadableVC.swift */,
-				09202DEE200FCF9C00320D60 /* Animations */,
 				09189826202F9D7800DD9B6A /* Inputable.swift */,
+				090C8AC820105E1E00E58628 /* Roundable.swift */,
+				09202DEE200FCF9C00320D60 /* Animations */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -297,32 +290,12 @@
 		09428DC4202E27D400EC1376 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0937533B20346AC10046B8C5 /* Firebase */,
 				09428DC5202E27E600EC1376 /* KeyboardSetup.swift */,
 				0922C82120321AF10034BC16 /* Data */,
 				0922C82020321AE50034BC16 /* Transitions */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		09428DCB202E51FF00EC1376 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				095C4B4A20212A6F00271CAB /* ResumeData+CoreDataClass.swift */,
-				095C4B4820212A6F00271CAB /* ResumeData+CoreDataProperties.swift */,
-				095C4B4720212A6F00271CAB /* Employment+CoreDataClass.swift */,
-				095C4B4520212A6F00271CAB /* Employment+CoreDataProperties.swift */,
-				095C4B4620212A6F00271CAB /* Education+CoreDataClass.swift */,
-				095C4B4920212A6F00271CAB /* Education+CoreDataProperties.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		09428DCC202E520C00EC1376 /* ModelViews */ = {
-			isa = PBXGroup;
-			children = (
-				09428DCD202E584A00EC1376 /* InputModelView.swift */,
-			);
-			path = ModelViews;
 			sourceTree = "<group>";
 		};
 		09554C5C2023A7A70043B822 /* EditResume */ = {
@@ -412,13 +385,13 @@
 			isa = PBXGroup;
 			children = (
 				09554C5C2023A7A70043B822 /* EditResume */,
+				098DC7212035011100383302 /* LoginVC.swift */,
+				0996F68E2037799200BF0B8C /* InformationVC.swift */,
 				095E2004200D617D0078956B /* MainVC.swift */,
 				095E203F200D71310078956B /* InputVC.swift */,
-				095E204C200DC85C0078956B /* TwoIconButtonsVC.swift */,
-				09388FAA200EEC5300A8B623 /* ThreeBarButtonsVC.swift */,
-				094DDD572017FF5800A9D3F0 /* TwoBarButtonsVC.swift */,
-				094DDD5B20180EB600A9D3F0 /* DescriptionVCViewController.swift */,
+				094DDD5B20180EB600A9D3F0 /* DescriptionVC.swift */,
 				09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */,
+				0996F6902037925800BF0B8C /* CustomNavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -426,6 +399,7 @@
 		095E203B200D661E0078956B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0996F6952037B56500BF0B8C /* InformationViews */,
 				095BE57B2027C6580011D55C /* Resume */,
 				090C8AC620105DD100E58628 /* CustomButton.swift */,
 				095E203D200D669C0078956B /* CircleView.swift */,
@@ -444,8 +418,8 @@
 				09497193202E933F00065CAE /* ModelManager.swift */,
 				09428DD1202E5A5600EC1376 /* ModelExam.swift */,
 				09428DD5202E5BF600EC1376 /* ModelButton.swift */,
-				09428DCC202E520C00EC1376 /* ModelViews */,
-				09428DCB202E51FF00EC1376 /* CoreData */,
+				098DC71F2034F59E00383302 /* ResumeData.swift */,
+				098DC7232035019700383302 /* ModelUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -453,11 +427,22 @@
 		095E2043200D9B9B0078956B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0996F6932037B33400BF0B8C /* KGTenThousandReasons.ttf */,
 				098EA4AF201FE49E006D7E02 /* OpenSans-ExtraBold.ttf */,
 				095E2045200D9BAD0078956B /* OpenSans-Regular.ttf */,
+				0996F68A2037759C00BF0B8C /* Krungthep.ttf */,
 				095E2044200D9BA80078956B /* OpenSans-Light.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		0996F6952037B56500BF0B8C /* InformationViews */ = {
+			isa = PBXGroup;
+			children = (
+				0996F6962037B5BD00BF0B8C /* KeyboardInputView.swift */,
+				0996F6982037C51D00BF0B8C /* ButtonInputView.swift */,
+			);
+			path = InformationViews;
 			sourceTree = "<group>";
 		};
 		B953C61C6422254F0106A8ED /* Frameworks */ = {
@@ -602,6 +587,8 @@
 				0950C362201A568C007CA442 /* GoogleService-Info.plist in Resources */,
 				095E200D200D617D0078956B /* Assets.xcassets in Resources */,
 				095E2008200D617D0078956B /* Main.storyboard in Resources */,
+				0996F68B2037759E00BF0B8C /* Krungthep.ttf in Resources */,
+				0996F6942037B33400BF0B8C /* KGTenThousandReasons.ttf in Resources */,
 				093A36C72028F3A2007CA443 /* Launch Screen.storyboard in Resources */,
 				098EA4B0201FE49F006D7E02 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
@@ -760,15 +747,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResume/Pods-GlobalResume-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/ConfettiView/ConfettiView.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ConfettiView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -789,33 +788,26 @@
 				09428DD6202E5BF600EC1376 /* ModelButton.swift in Sources */,
 				095E203E200D669C0078956B /* CircleView.swift in Sources */,
 				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
+				0996F68F2037799200BF0B8C /* InformationVC.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
 				095BE5832027C6D70011D55C /* ResumeRightView.swift in Sources */,
-				095C4B4F20212A7000271CAB /* Education+CoreDataProperties.swift in Sources */,
-				095C4B4E20212A7000271CAB /* ResumeData+CoreDataProperties.swift in Sources */,
+				098DC7242035019700383302 /* ModelUser.swift in Sources */,
 				095C4B432021291C00271CAB /* PersistantService.swift in Sources */,
-				09428DCE202E584A00EC1376 /* InputModelView.swift in Sources */,
-				095C4B4B20212A7000271CAB /* Employment+CoreDataProperties.swift in Sources */,
 				09428DD0202E586F00EC1376 /* ModelViewProtocol.swift in Sources */,
-				098324C820124EF1003B32FF /* OneInstance.swift in Sources */,
-				095E204D200DC85C0078956B /* TwoIconButtonsVC.swift in Sources */,
 				09497198202EB25600065CAE /* ExamViewController.swift in Sources */,
-				094DDD5C20180EB600A9D3F0 /* DescriptionVCViewController.swift in Sources */,
-				094DDD582017FF5800A9D3F0 /* TwoBarButtonsVC.swift in Sources */,
+				094DDD5C20180EB600A9D3F0 /* DescriptionVC.swift in Sources */,
 				09554C5E2023C9AC0043B822 /* EditResumeCell.swift in Sources */,
-				0913F9EE2021688900760EEA /* LoadableVCExtension.swift in Sources */,
-				0920188A20314EA500387E0E /* ResumeDataService.swift in Sources */,
-				098324C620124991003B32FF /* Trigger.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
+				0996F6972037B5BD00BF0B8C /* KeyboardInputView.swift in Sources */,
 				09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */,
-				095C4B4D20212A7000271CAB /* Employment+CoreDataClass.swift in Sources */,
-				09388FA9200E72AC00A8B623 /* LoadableVC.swift in Sources */,
 				090C8AC920105E1E00E58628 /* Roundable.swift in Sources */,
-				09B33547201A84FD005FDEC2 /* FIRCollectionReferenceParent.swift in Sources */,
+				09B33547201A84FD005FDEC2 /* FIRDataReference.swift in Sources */,
+				0996F6912037925800BF0B8C /* CustomNavigationController.swift in Sources */,
 				095BE57F2027C6920011D55C /* ResumePresentationVCViewController.swift in Sources */,
 				092018882031263A00387E0E /* TransitionService.swift in Sources */,
 				09554C57202374A80043B822 /* ResumeCell.swift in Sources */,
 				09554C55202374730043B822 /* ChooseResumeVC.swift in Sources */,
+				098DC7202034F59E00383302 /* ResumeData.swift in Sources */,
 				09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */,
 				095BE5812027C6B60011D55C /* ResumeLeftView.swift in Sources */,
 				09206D2F202BFF1C00AFEC6C /* ExpandableImageView.swift in Sources */,
@@ -835,17 +827,17 @@
 				090C8AC720105DD100E58628 /* CustomButton.swift in Sources */,
 				095BE57D2027C66E0011D55C /* HistoryView.swift in Sources */,
 				09428DD2202E5A5600EC1376 /* ModelExam.swift in Sources */,
-				095E204B200DB6D80078956B /* ResumeDataHandler.swift in Sources */,
+				0996F6992037C51D00BF0B8C /* ButtonInputView.swift in Sources */,
 				09206D29202BE8E500AFEC6C /* UIColorExtensions.swift in Sources */,
 				09497194202E933F00065CAE /* ModelManager.swift in Sources */,
-				095C4B4C20212A7000271CAB /* Education+CoreDataClass.swift in Sources */,
 				09554C592023A0170043B822 /* EditResumeVC.swift in Sources */,
 				092018862031162000387E0E /* TransitionHandler.swift in Sources */,
 				09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */,
 				09428DCA202E392700EC1376 /* UIViewExtension.swift in Sources */,
-				09388FAB200EEC5300A8B623 /* ThreeBarButtonsVC.swift in Sources */,
+				0958CAD520362C69000D7819 /* CustomTransition.swift in Sources */,
+				098DC7222035011100383302 /* LoginVC.swift in Sources */,
+				0937533D20346AFB0046B8C5 /* FirebaseModelExamHandler.swift in Sources */,
 				095E200B200D617D0078956B /* GlobalResume.xcdatamodeld in Sources */,
-				095C4B5020212A7000271CAB /* ResumeData+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,6 +996,7 @@
 			baseConfigurationReference = 805B89746B92149B9FF41B00 /* Pods-GlobalResume.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BMHTCPUWH7;
 				INFOPLIST_FILE = GlobalResume/Info.plist;
@@ -1022,6 +1015,7 @@
 			baseConfigurationReference = 098F1BE8609678B660108273 /* Pods-GlobalResume.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BMHTCPUWH7;
 				INFOPLIST_FILE = GlobalResume/Info.plist;

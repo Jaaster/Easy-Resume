@@ -14,10 +14,12 @@ class ModelExam {
     var title: String
     var color: UIColor
     var buttonModels: [ModelButton]?
-    var parentModelExamManager: ModelManager<ModelExam>
-    var childModelExamManager: ModelManager<ModelExam>?
+    // MARK: - Only needed if the type variable of ModelExam is of type .description 
+    var descriptions: [String]?
+    unowned var parentModelExamManager: ModelManager<ModelExam>
+    weak var childModelExamManager: ModelManager<ModelExam>?
     
-    init(exam: Exam, type: Type, title: String, color: UIColor, buttonModels: [ModelButton] = [], parentModelExamManager: ModelManager<ModelExam> ,childModelExamManager: ModelManager<ModelExam>? = nil) {
+    init(exam: Exam, type: Type, title: String, color: UIColor, buttonModels: [ModelButton]? = nil, parentModelExamManager: ModelManager<ModelExam> ,childModelExamManager: ModelManager<ModelExam>? = nil, descriptions: [String]? = nil) {
         self.exam = exam
         self.type = type
         self.title = title
@@ -25,6 +27,7 @@ class ModelExam {
         self.buttonModels = buttonModels
         self.parentModelExamManager = parentModelExamManager
         self.childModelExamManager = childModelExamManager
+        self.descriptions = descriptions
     }
 }
 

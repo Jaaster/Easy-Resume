@@ -24,37 +24,37 @@ class ResumeRightView: UIView {
     
     
     func setupViews() {
-        
-        let email = customView(titleString: "Email:", infoString: resume.email)
-        let phone = customView(titleString: "Phone:", infoString: resume.phone_number)
-        let zip_code = customView(titleString: "Zip Code:", infoString: resume.zip_code)
-        let gender = customView(titleString: "Gender:", infoString: resume.gender)
-        
-        let myViews = [email, phone, zip_code, gender]
-        heightAnchor.constraint(equalToConstant: CGFloat(myViews.count) * 55 + 20).isActive = true
-        
-        var lastView: UIView = self
-        
-        for v in myViews {
-            if v .isHidden {
-                continue
-            }
-            
-            addSubview(v)
-            
-            if myViews.index(of: v) == 0 {
-                v.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-                
-            } else {
-                v.topAnchor.constraint(equalTo: lastView.bottomAnchor, constant: 20).isActive = true
-            }
-            
-            v.leadingAnchor.constraint(equalTo: lastView.leadingAnchor).isActive = true
-            v.trailingAnchor.constraint(equalTo: lastView.trailingAnchor).isActive = true
-            v.heightAnchor.constraint(equalToConstant: 35).isActive = true
-            lastView = v
-        }
-        
+       
+//        let email = customView(titleString: "Email:", infoString: resume.email)
+//        let phone = customView(titleString: "Phone:", infoString: resume.phone_number)
+//        let zip_code = customView(titleString: "Zip Code:", infoString: resume.zip_code)
+//        let gender = customView(titleString: "Gender:", infoString: resume.gender)
+//
+//        let myViews = [email, phone, zip_code, gender]
+//        heightAnchor.constraint(equalToConstant: CGFloat(myViews.count) * 55 + 20).isActive = true
+//        
+//        var lastView: UIView = self
+//        
+//        for v in myViews {
+//            if v .isHidden {
+//                continue
+//            }
+//            
+//            addSubview(v)
+//            
+//            if myViews.index(of: v) == 0 {
+//                v.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+//                
+//            } else {
+//                v.topAnchor.constraint(equalTo: lastView.bottomAnchor, constant: 20).isActive = true
+//            }
+//            
+//            v.leadingAnchor.constraint(equalTo: lastView.leadingAnchor).isActive = true
+//            v.trailingAnchor.constraint(equalTo: lastView.trailingAnchor).isActive = true
+//            v.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//            lastView = v
+//        }
+//        
     }
     
     

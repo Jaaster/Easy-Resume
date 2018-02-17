@@ -11,7 +11,6 @@ import UIKit
 class InputVC: UIViewController, ExamViewController {
     
     var modelManager: ModelManager<ModelExam>!
-    var dataHandler: ResumeDataHandler!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var barView: UIView!
@@ -25,8 +24,7 @@ class InputVC: UIViewController, ExamViewController {
     }
     func updateViewsWithNewData() {
         circleView.round()
-        let keyboard = Keyboard(inputableVC: self)
-        keyboard?.setup()
+        
         guard let currentModelExam = modelManager.currentModel else { return }
         
         let color = currentModelExam.color
@@ -43,17 +41,7 @@ class InputVC: UIViewController, ExamViewController {
 }
 
 extension InputVC: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let text = textField.text {
-            if !text.isEmpty{
-                textField.endEditing(true)
-                let transitionHandler = TransitionHandler(currentExamViewController: self)
-                transitionHandler.decideCourse(data: text)
-                return true
-            }
-        }
-        return false
-    }
+   
 }
 
 extension InputVC: Inputable {

@@ -11,7 +11,7 @@ class EditResumeCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         var label = UILabel()
-        let font = UIFont.myFontRegular.withSize(25)
+        let font = UIFont.crayon.withSize(25)
 
         label.textColor = UIColor.white
         label.font = font
@@ -24,7 +24,7 @@ class EditResumeCell: UICollectionViewCell {
     
     let descriptingView: UITextView = {
         var textView = UITextView()
-        let font = UIFont.myFontRegular.withSize(15)
+        let font = UIFont.crayon.withSize(15)
         
         textView.textColor = UIColor.white
         textView.font = font
