@@ -7,6 +7,3 @@
 //
 
 import UIKit
-class ExpandableImageView: UIImageView, Expandable {
-    var toggle: Bool = false 
-}

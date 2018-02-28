@@ -7,25 +7,31 @@
 //
 
 import UIKit
-class MainVC: UIViewController, ExamViewController {
+import FirebaseAuth
+
+class MainVC: UIViewController {
     
     // MARK: Already Initialized Variables
-    var modelManager: ModelManager<ModelExam>!
     
-    lazy var backGroundImageView: UIImageView = {
+    var isUserAuthenticated: Bool {
+        return Auth.auth().currentUser?.uid != nil
+    }
+
+    private lazy var backGroundImageView: UIImageView = {
         let imageView = UIImageView(frame: view.frame)
         imageView.image = UIImage(named: "MainBG")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    lazy var personImageView: UIImageView = {
+    private lazy var personImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: view.frame.origin.x, y: view.frame.origin.y+view.frame.height/2, width: view.frame.width, height: view.frame.height/2))
         imageView.image = UIImage(named: "Person")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Krungthep", size: 48)
         label.text = "EASY RESUME"
@@ -35,10 +41,11 @@ class MainVC: UIViewController, ExamViewController {
         return label
     }()
     
-    lazy var createButton: UIButton = {
+    private lazy var createButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("CREATE RESUME", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.crayon.withSize(20)
+        button.setTitleColor(UIColor.darkGray, for: .normal)
         button.titleLabel?.textAlignment = .center
         button.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -47,10 +54,14 @@ class MainVC: UIViewController, ExamViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !isUserAuthenticated {
+            navigationController?.pushViewController(LoginVC(), animated: true)
+        }
+        
         setupViews()
         animatePerson()
         animateTitle()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,42 +69,40 @@ class MainVC: UIViewController, ExamViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     
-    func setupViews() {
-        view.addSubview(backGroundImageView)
-        view.addSubview(titleLabel)
-        view.addSubview(personImageView)
-        view.addSubview(createButton)
-        
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        
-        createButton.topAnchor.constraint(equalTo: personImageView.topAnchor, constant: 20).isActive = true
-        createButton.centerXAnchor.constraint(equalTo: personImageView.centerXAnchor).isActive = true
-        createButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        createButton.heightAnchor.constraint(equalToConstant: 150).isActive = true
-    }
-    
-    func updateViewsWithNewData() {}
-
 }
 
-// MARK: -
+// MARK: - Targets
 extension MainVC {
     
-    @objc func createButtonPressed() {
-        let transitionHandler = TransitionHandler(currentExamViewController: self)
+    @objc private func createButtonPressed() {
+        guard let navigationController = navigationController as? CustomNavigationController else { return }
+        let transitionHandler = TransitionHandler(navigationController: navigationController)
         transitionHandler.decideCourse(data: nil)
     }
 }
 
+// MARK: - Views and Animations
 private extension MainVC {
+    
+    func setupViews() {
+        addSubViews()
+        
+        titleLabel.anchor(view.safeAreaLayoutGuide.topAnchor, left: view.leadingAnchor, bottom: nil, right: view.trailingAnchor, topConstant: 0, leftConstant: 10, bottomConsant: 0, rightConstant: -10, widthConstant: 0, heightConstant: 75)
+        
+        createButton.topAnchor.constraint(equalTo: personImageView.topAnchor, constant: 20).isActive = true
+        createButton.centerXAnchor.constraint(equalTo: personImageView.centerXAnchor).isActive = true
+        createButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        createButton.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    
+    func addSubViews() {
+        view.addSubview(backGroundImageView)
+        view.addSubview(titleLabel)
+        view.addSubview(personImageView)
+        view.addSubview(createButton)
+    }
+    
     func animatePerson() {
         let transform = CGAffineTransform(translationX: 0.0, y: view.frame.height/2)
         personImageView.transform = transform

@@ -9,6 +9,6 @@
 import UIKit
 
 protocol ModelViewProtocol {
-    var exam: ModelExam { get set }
+    var exam: ExamModel { get set }
     func updateViews()
 }

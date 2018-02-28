@@ -10,30 +10,40 @@ import UIKit
 
 class InformationVC: UIViewController, ExamViewController {
     
-    var modelManager: ModelManager<ModelExam>!
-    let box = "[   ]"
-    lazy var bgImageView: UIImageView = {
+    private let emptyBox = "[   ] "
+    private let checkedBox = "[X] "
+    
+    private lazy var bgImageView: UIImageView = {
         let imageView = UIImageView(frame: view.frame)
         imageView.image = UIImage(named: "TableBackground")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    let editingPaper: UIImageView = {
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.crayon.withSize(30)
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let editingPaper: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Editing Paper")
-        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "Papers")
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    let keyBoardInputView: KeyboardInputView = {
+    private let keyBoardInputView: KeyboardInputView = {
         let view = KeyboardInputView()
         view.translatesAutoresizingMaskIntoConstraints = false 
         return view
     }()
     
-    let buttonInputView: ButtonInputView = {
+    private let buttonInputView: ButtonInputView = {
         let view = ButtonInputView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view 
@@ -49,6 +59,102 @@ class InformationVC: UIViewController, ExamViewController {
     }
 }
 
+// MARK: - Views
+private extension InformationVC {
+    
+    func setupViews() {
+        guard let navigationController = navigationController as? CustomNavigationController else { return }
+        guard let currentModel = navigationController.modelManager.currentModel else { return }
+        
+        addSubViews()
+        updateTitleText(currentModel: currentModel)
+        
+        editingPaper.anchor(view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, right: view.safeAreaLayoutGuide.trailingAnchor, topConstant: 20, leftConstant: 10, bottomConsant: 0, rightConstant: -10, widthConstant: 0, heightConstant: view.frame.height/2)
+        
+        if getInputType() == .keyboard {
+            
+            titleLabel.anchor(editingPaper.topAnchor, left: editingPaper.leadingAnchor, bottom: nil, right: editingPaper.trailingAnchor, topConstant: 50, leftConstant: 45, bottomConsant: 0, rightConstant: -45, widthConstant: 0, heightConstant: 35)
+            keyBoardInputView.anchor(titleLabel.bottomAnchor, left: titleLabel.leadingAnchor, bottom: nil, right: titleLabel.trailingAnchor, topConstant: 20, leftConstant: 0, bottomConsant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 45)
+            
+            buttonInputView.removeFromSuperview()
+            updateViewsForKeyboardInput(currentModel: currentModel)
+        } else {
+            buttonInputView.allEdgesConstraints(parentView: editingPaper, spacing: 45)
+            titleLabel.anchor(editingPaper.topAnchor, left: buttonInputView.leadingAnchor, bottom: nil, right: buttonInputView.trailingAnchor, topConstant: 50, leftConstant: 0, bottomConsant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 35)
+            keyBoardInputView.removeFromSuperview()
+            updateViewsForButtonInput(currentModel: currentModel)
+        }
+    }
+    
+    func addSubViews() {
+        view.addSubview(bgImageView)
+        view.addSubview(editingPaper)
+        view.addSubview(keyBoardInputView)
+        view.addSubview(buttonInputView)
+        view.addSubview(titleLabel)
+    }
+    
+    func updateTitleText(currentModel: ExamModel) {
+        titleLabel.text = currentModel.title
+        titleLabel.textColor = currentModel.color
+    }
+    
+    func updateViewsForKeyboardInput(currentModel: ExamModel) {
+        
+        let keyboard = KeyboardSetup(textField: keyBoardInputView.inputTextField, textView: nil, viewController: self)
+        keyboard?.setup()
+        
+        keyBoardInputView.inputTextField.text = ""
+        keyBoardInputView.inputTextField.placeholder = "e.g something"
+        keyBoardInputView.inputTextField.textColor = currentModel.color
+        keyBoardInputView.inputTextField.delegate = self
+    }
+    
+    func updateViewsForButtonInput(currentModel: ExamModel) {
+        guard let buttonModels = currentModel.buttonModels else { return }
+        buttonInputView.buttons = []
+        
+        for i in 0..<buttonModels.count {
+            buttonInputView.addButton()
+            let button = buttonInputView.buttons[i]
+            let attributes = emptyBox.myAttributedString(color: .gray, font: UIFont.crayon)
+            let titleAttributes = buttonModels[i].title.myAttributedString(color: buttonModels[i].color, font: UIFont.crayon)
+            attributes.append(titleAttributes)
+            
+            button.setAttributedTitle(attributes, for: .normal)
+            button.addTarget(self, action: Selector(("boxButtonPressed:")), for: .touchUpInside)
+        }
+        buttonInputView.setupViews()
+    }
+}
+
+// MARK: - Targets, these targets are added in KeyboardSetup
+extension InformationVC {
+    @objc func doneButtonPressed() {
+        guard let data = keyBoardInputView.inputTextField.text else { return }
+        handleTransportation(data: data)
+    }
+    
+    @objc func boxButtonPressed(_ button: UIButton) {
+        guard let attributedText = button.titleLabel?.attributedText else { return }
+        let boxAttributes = attributedText.attributedSubstring(from: NSRange(0..<emptyBox.count)) as? NSMutableAttributedString
+        boxAttributes?.mutableString.setString(checkedBox)
+        
+        let titleAttributes = attributedText.attributedSubstring(from: NSRange(emptyBox.count..<attributedText.string.count))
+        boxAttributes?.append(titleAttributes)
+        
+        button.setAttributedTitle(boxAttributes, for: .normal)
+        button.superview?.isUserInteractionEnabled = false
+        let when = DispatchTime.now() + 0.2
+        DispatchQueue.main.asyncAfter(deadline: when, execute: {
+            let data = titleAttributes.string
+            button.superview?.isUserInteractionEnabled = true
+            self.handleTransportation(data: data)
+        })
+    }
+}
+
+// MARK: - Delegates
 extension InformationVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -61,80 +167,6 @@ extension InformationVC: UITextFieldDelegate {
         }
         return false
     }
-    
-    @objc func doneButtonPressed() {
-        guard let data = keyBoardInputView.inputTextField.text else { return }
-        
-        handleTransportation(data: data)
-    }
-    
-    @objc func buttonPressed(_ button: UIButton) {
-            guard var data = button.titleLabel?.text else { return }
-            data = data.replacingOccurrences(of: box, with: "[X]")
-            button.setTitle(data, for: .normal)
-        
-            let when = DispatchTime.now() + 0.5
-            DispatchQueue.main.asyncAfter(deadline: when, execute: {
-                data = data.replacingOccurrences(of: "[X]", with: "")
-                self.handleTransportation(data: data)
-            })
-     
-    }
-}
-
-private extension InformationVC {
-    func setupViews() {
-        guard let currentModel = modelManager.currentModel else { return }
-        
-        view.addSubview(bgImageView)
-        view.addSubview(editingPaper)
-        view.addSubview(keyBoardInputView)
-        view.addSubview(buttonInputView)
-        
-        editingPaper.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        editingPaper.topAnchor.constraint(equalTo: view.topAnchor, constant: 35).isActive = true
-        editingPaper.widthAnchor.constraint(equalToConstant: view.frame.width-40).isActive = true
-        
-
-        if getInputType() == .keyboard {
-            buttonInputView.removeFromSuperview()
-            keyBoardInputView.allEdgesConstraints(parentView: editingPaper, spacing: 5)
-            keyBoardInputView.titleLabel.text = currentModel.title
-            keyBoardInputView.titleLabel.textColor = currentModel.color
-            updateViewsForKeyboardInput(currentModel: currentModel)
-        } else {
-            keyBoardInputView.removeFromSuperview()
-            buttonInputView.allEdgesConstraints(parentView: editingPaper, spacing: 5)
-            buttonInputView.titleLabel.text = currentModel.title
-            buttonInputView.titleLabel.textColor = currentModel.color
-            updateViewsForButtonInput(currentModel: currentModel)
-        }
-    }
-    
-    func updateViewsForKeyboardInput(currentModel: ModelExam) {
-        
-        let keyboard = Keyboard(textField: keyBoardInputView.inputTextField, examViewController: self)
-        keyboard?.setup()
-        
-        keyBoardInputView.inputTextField.text = ""
-        keyBoardInputView.inputTextField.placeholder = "e.g something"
-        keyBoardInputView.inputTextField.textColor = currentModel.color
-        keyBoardInputView.inputTextField.delegate = self
-    }
-    
-    func updateViewsForButtonInput(currentModel: ModelExam) {
-        guard let buttonModels = currentModel.buttonModels else { return }
-        buttonInputView.buttons = []
-        
-        for i in 0..<buttonModels.count {
-            buttonInputView.addButton()
-            let button = buttonInputView.buttons[i]
-            button.setTitle("\(box)\(buttonModels[i].title)", for: .normal)
-            button.setTitleColor(buttonModels[i].color, for: .normal)
-            button.addTarget(self, action: Selector(("buttonPressed:")), for: .touchUpInside)
-        }
-        buttonInputView.setupViews()
-    }
 }
 
 private extension InformationVC {
@@ -145,7 +177,8 @@ private extension InformationVC {
     }
     
     func getInputType() -> InputType {
-        guard let currentModel = modelManager.currentModel else { return .keyboard}
+        guard let navigationController = navigationController as? CustomNavigationController else { return .keyboard }
+        guard let currentModel = navigationController.modelManager.currentModel else { return .keyboard}
         
         if hasButtonModels(modelExam: currentModel) {
             return .button
@@ -154,12 +187,13 @@ private extension InformationVC {
         }
     }
     
-    func hasButtonModels(modelExam: ModelExam) -> Bool {
+    func hasButtonModels(modelExam: ExamModel) -> Bool {
         return modelExam.buttonModels != nil
     }
     
     func handleTransportation(data: String) {
-        let transitionHandler = TransitionHandler(currentExamViewController: self)
+        guard let navigationController = navigationController as? CustomNavigationController else { return }
+        let transitionHandler = TransitionHandler(navigationController: navigationController)
         transitionHandler.decideCourse(data: data)
     }
 }

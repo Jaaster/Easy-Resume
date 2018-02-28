@@ -9,16 +9,8 @@
 import UIKit
 
 class ButtonInputView: UIView {
-    var buttons: [UIButton] = []
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.crayon.withSize(30)
-        label.adjustsFontSizeToFitWidth = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    var buttons: [UIButton] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,15 +29,7 @@ extension ButtonInputView {
     
     func setupViews() {
         removeSubviews()
-        addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-      
-        if !buttons.isEmpty {
-            addButtonsToViewWithConstraints()
-        }
+        addButtonsToViewWithConstraints()
     }
 }
 
@@ -56,16 +40,20 @@ private extension ButtonInputView {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.textAlignment = .left
         button.titleLabel?.leadingAnchor.constraint(equalTo: button.leadingAnchor).isActive = true
-        button.titleLabel?.font = UIFont.crayon.withSize(25)
+        button.titleLabel?.font = UIFont.crayon.withSize(20)
         button.titleLabel?.isUserInteractionEnabled = false 
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
     
     func addButtonsToViewWithConstraints() {
+        guard let firstButton = buttons.first else { return }
+        addSubview(firstButton)
+        firstButton.anchor(topAnchor, left: leadingAnchor, bottom: nil, right: trailingAnchor, topConstant: 60, leftConstant: 10, bottomConsant: 0, rightConstant: -10, widthConstant: 0, heightConstant: 35)
         
-        var lastView: UIView = titleLabel
-        for button in buttons {
+        
+        var lastView: UIView = firstButton
+        for button in buttons.dropFirst() {
             superview?.addSubview(button)
             button.topAnchor.constraint(equalTo: lastView.bottomAnchor, constant: 25).isActive = true
             button.leadingAnchor.constraint(equalTo: lastView.leadingAnchor).isActive = true

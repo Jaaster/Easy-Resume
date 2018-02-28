@@ -10,6 +10,6 @@ import UIKit
 extension UIFont {
     static let krung = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "Krungthep"))
     static let crayon = UIFont(name: "KGTenThousandReasons", size: 25)!
-    static let myFontRegular = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "KGTenThousandReasons"))
+    static let myFontRegular = UIFont.preferredFont(forTextStyle: UIFontTextStyle.init(rawValue: "Krungthep"))
 
 }

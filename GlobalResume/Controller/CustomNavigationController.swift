@@ -10,10 +10,14 @@ import UIKit
 
 class CustomNavigationController: UINavigationController {
 
+    var currentResume: ResumeModel?
     let transition = CustomTransition()
+    var modelManager = ModelManager<ExamModel>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         transitioningDelegate = self
+        navigationBar.isHidden = true 
     }
 }
 

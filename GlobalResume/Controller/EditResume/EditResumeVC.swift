@@ -154,11 +154,11 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     private func editData(exam: Exam, info: ResumeInfo) {
         isEditingInfo = true
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: exam.rawValue)
+        let vc = sb.instantiateViewController(withIdentifier: "REmove this code ")
         currentEditor = info
         if let examViewController = vc as? ExamViewController {
             //TODO: Make functional
-            examViewController.modelManager.currentModel = ModelExam(exam: exam, type: Type.informationInput, title: "TODO RESUMEEDITVC", color: UIColor.myRed, parentModelExamManager: ModelManager<ModelExam>())
+//            examViewController.modelManager.currentModel = ModelExam(exam: exam, type: VCType.informationInput, title: "TODO RESUMEEDITVC", color: UIColor.myRed, parentModelExamManager: ModelManager<ModelExam>())
             view.addSubview(whenEditingView)
             present(vc, animated: true)
             //TODO: Load data

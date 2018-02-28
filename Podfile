@@ -9,10 +9,9 @@ target 'GlobalResume' do
 
 	pod 'Firebase/Core'
  	pod 'Firebase/Database'
-	pod 'Firebase/Firestore'
+	pod 'Firebase/Auth'
 	pod 'ConfettiView', '~> 0.1'
 
-  
   target 'GlobalResumeTests' do
     inherit! :search_paths
     # Pods for testing

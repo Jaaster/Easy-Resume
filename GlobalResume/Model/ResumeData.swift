@@ -7,9 +7,9 @@
 //
 
 import Foundation
-
-class ResumeData {
-    var name: String = ""
-    
-    
+// This model is not used by a view, it simply stores this data and is mainly used by FirebaseHandler
+class ResumeModel {
+    var name = ""
+    var currentEmployment: EmploymentModel?
+    var currentEducation: EducationModel?
 }

@@ -9,6 +9,5 @@
 import UIKit
 
 protocol ExamViewController: class {
-    var modelManager: ModelManager<ModelExam>! { get set }
     func updateViewsWithNewData()
 }

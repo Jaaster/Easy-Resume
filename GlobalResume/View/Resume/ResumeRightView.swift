@@ -10,7 +10,7 @@ import UIKit
 
 class ResumeRightView: UIView {
     
-    var resume: ResumeData! {
+    var resume: ResumeModel! {
         willSet {
             resume = newValue
             setupViews()
