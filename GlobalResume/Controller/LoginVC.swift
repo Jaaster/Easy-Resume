@@ -74,6 +74,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isToolbarHidden = true
         setupDelegates()
         setupViews()
     }
@@ -83,7 +84,7 @@ class LoginVC: UIViewController {
 extension LoginVC {
     @objc private func handleUserAuthentication() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        
+
         if registeringToggle {
            register(email: email, password: password)
         } else {

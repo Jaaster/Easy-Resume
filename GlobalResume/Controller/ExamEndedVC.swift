@@ -11,7 +11,7 @@ import ConfettiView
 class ExamEndedVC: UIViewController {
    
     var modelManager: ModelManager<ExamModel>!
-    var gender: Gender!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()

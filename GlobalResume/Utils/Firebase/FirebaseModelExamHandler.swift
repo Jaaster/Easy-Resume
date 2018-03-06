@@ -8,21 +8,4 @@
 
 import Foundation
 
-class FirebaseModelExamHandler {
-    
-    private var firebaseService: FIRFirebaseService
-    
-    init() {
-        firebaseService = FIRFirebaseService()
-    }
-}
-
-extension FirebaseModelExamHandler {
-    
-    func getModels() -> [ExamModel]? {
-        if let values = firebaseService.getData(for: FIRDataReferencePath.models) {
-            
-        }
-        return nil
-    }
-}
+class FirebaseModelExamHandler {}

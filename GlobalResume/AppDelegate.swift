@@ -18,9 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
         
-        let mainVC = MainVC()
-        
+        let mainVC = InformationVC()
+//        let tabBarController = UITabBarController()
+
         let navigationController = CustomNavigationController(rootViewController: mainVC)
+        
+//        tabBarController.viewControllers = [navigationController]
+//        navigationController.tabBarController!.tabBar.items = [UITabBarItem(title: "User Settings", image: nil, tag: 0),   UITabBarItem(title: "Resumes", image: nil, tag: 1), UITabBarItem(title: "Jobs", image: nil, tag: 2)]
+
         let generator = ModelExamDefaultsGenerator()
         navigationController.modelManager = generator.generateModelManagerWithModels()
             

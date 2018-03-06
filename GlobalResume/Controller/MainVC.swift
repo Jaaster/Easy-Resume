@@ -54,7 +54,7 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.setToolbarHidden(false, animated: true)
         if !isUserAuthenticated {
             navigationController?.pushViewController(LoginVC(), animated: true)
         }
@@ -68,8 +68,6 @@ class MainVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
-    
 }
 
 // MARK: - Targets

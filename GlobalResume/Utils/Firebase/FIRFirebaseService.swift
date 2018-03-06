@@ -29,8 +29,8 @@ extension FIRFirebaseService {
         let value = value.configureToVariableName()
         
         ref.updateChildValues([value : data]) { (error, ref) in
-            if error != nil {
-                print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
     } 
@@ -40,8 +40,8 @@ extension FIRFirebaseService {
         let ref = resumeReference(uid: uid, resume: forResume).child(FIRDataReferencePath.employment.rawValue).child(employment)
         
         ref.updateChildValues([value.configureToVariableName() : data]) { (error, ref) in
-            if error != nil {
-                print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
     }
@@ -51,8 +51,8 @@ extension FIRFirebaseService {
         let ref = resumeReference(uid: uid, resume: forResume).child(FIRDataReferencePath.education.rawValue).child(education)
         
         ref.updateChildValues([value.configureToVariableName() : data]) { (error, ref) in
-            if error != nil {
-                print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
             }
         }
     }

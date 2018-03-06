@@ -12,7 +12,7 @@ class ResumeRightView: UIView {
     
     var resume: ResumeModel! {
         willSet {
-            resume = newValue
+//            resume = newValue
             setupViews()
 
         }

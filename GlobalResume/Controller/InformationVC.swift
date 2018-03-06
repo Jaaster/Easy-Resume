@@ -12,6 +12,29 @@ class InformationVC: UIViewController, ExamViewController {
     
     private let emptyBox = "[   ] "
     private let checkedBox = "[X] "
+    private var startAndEnd = (false, false)
+    private var isStartDatePicker = true
+    
+    private var startDate: String? {
+        willSet {
+            updateTitle(forButton: startDateButton, with: newValue)
+        }
+    }
+    
+    private var endDate: String? {
+        willSet {
+            updateTitle(forButton: endDateButton, with: newValue)
+        }
+    }
+    
+    private var hasDatePicker: Bool {
+        get {
+            return startDateButton != nil && endDateButton != nil
+        }
+    }
+    
+    private let slidingAnimationDuration = 1.0
+    private lazy var underScreenTransform = CGAffineTransform.init(translationX: 0, y: view.bounds.height)
     
     private lazy var bgImageView: UIImageView = {
         let imageView = UIImageView(frame: view.frame)
@@ -49,8 +72,45 @@ class InformationVC: UIViewController, ExamViewController {
         return view 
     }()
     
+   private lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.frame = CGRect(x: 0, y: view.center.y, width: view.frame.width, height: view.frame.height/2)
+        datePicker.setValue(UIColor.white, forKey: "textColor")
+        datePicker.backgroundColor = UIColor.darkGray.withAlphaComponent(0.7)
+        datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        datePicker.transform = underScreenTransform
+        return datePicker
+    }()
+    
+    private lazy var datePickerViewBarView: UIView = {
+        let view = UIView()
+        let barHeight: CGFloat = 49
+        view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: barHeight)
+        view.backgroundColor = UIColor.gray.withAlphaComponent(0.9)
+        view.translatesAutoresizingMaskIntoConstraints = false
+      
+        let button = UIButton(type: .system)
+        let buttonWidth: CGFloat = 100
+        let buttonFrame = CGRect(x: view.bounds.width - buttonWidth, y: 0, width: buttonWidth, height: barHeight)
+        
+        button.setTitle("Done", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.frame = buttonFrame
+        button.addTarget(self, action: #selector(datePickerDoneButtonPressed), for: .touchUpInside)
+        view.addSubview(button)
+        view.transform = underScreenTransform
+        return view
+    }()
+    
+    private var startDateButton: UIButton?
+    private var endDateButton: UIButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setToolbarHidden(true, animated: true)
+
         setupViews()
     }
     
@@ -68,6 +128,8 @@ private extension InformationVC {
         
         addSubViews()
         updateTitleText(currentModel: currentModel)
+        
+        datePickerViewBarView.anchor(nil, left: view.leadingAnchor, bottom: datePicker.topAnchor, right: view.trailingAnchor, topConstant: 0, leftConstant: 0, bottomConsant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 49)
         
         editingPaper.anchor(view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, right: view.safeAreaLayoutGuide.trailingAnchor, topConstant: 20, leftConstant: 10, bottomConsant: 0, rightConstant: -10, widthConstant: 0, heightConstant: view.frame.height/2)
         
@@ -92,6 +154,8 @@ private extension InformationVC {
         view.addSubview(keyBoardInputView)
         view.addSubview(buttonInputView)
         view.addSubview(titleLabel)
+        view.addSubview(datePicker)
+        view.addSubview(datePickerViewBarView)
     }
     
     func updateTitleText(currentModel: ExamModel) {
@@ -123,13 +187,46 @@ private extension InformationVC {
             
             button.setAttributedTitle(attributes, for: .normal)
             button.addTarget(self, action: Selector(("boxButtonPressed:")), for: .touchUpInside)
+            
+            if button.titleLabel!.text!.contains("START") {
+                startDateButton = button
+            } else if button.titleLabel!.text!.contains("END") {
+                endDateButton = button
+            }
         }
         buttonInputView.setupViews()
     }
 }
 
-// MARK: - Targets, these targets are added in KeyboardSetup
+// MARK: - Targets
 extension InformationVC {
+    
+    @objc private func datePickerValueChanged() {
+        let date = dateFormatter(date: datePicker.date)
+        if isStartDatePicker {
+            startAndEnd.0 = true
+            startDate = date
+        } else {
+            startAndEnd.1 = true
+            endDate = date
+        }
+    }
+    
+    @objc func datePickerDoneButtonPressed() {
+        
+        UIView.animate(withDuration: slidingAnimationDuration, animations: {
+            self.datePicker.transform = self.underScreenTransform
+            self.datePickerViewBarView.transform = self.underScreenTransform
+        })
+        
+        if allDatesHaveBeenSet() {
+            handleTransportation(data: "\(startDate) - \(endDate)")
+        }
+        
+        datePicker.superview?.isUserInteractionEnabled = true
+    }
+    
+    // These targets are setup in KeyboardSetup
     @objc func doneButtonPressed() {
         guard let data = keyBoardInputView.inputTextField.text else { return }
         handleTransportation(data: data)
@@ -137,6 +234,18 @@ extension InformationVC {
     
     @objc func boxButtonPressed(_ button: UIButton) {
         guard let attributedText = button.titleLabel?.attributedText else { return }
+        if hasDatePicker {
+            
+            if button == startDateButton {
+                isStartDatePicker = true
+            } else if button == endDateButton {
+                isStartDatePicker = false
+            }
+            
+            loadDatePicker()
+            return
+        }
+        
         let boxAttributes = attributedText.attributedSubstring(from: NSRange(0..<emptyBox.count)) as? NSMutableAttributedString
         boxAttributes?.mutableString.setString(checkedBox)
         
@@ -145,6 +254,7 @@ extension InformationVC {
         
         button.setAttributedTitle(boxAttributes, for: .normal)
         button.superview?.isUserInteractionEnabled = false
+        
         let when = DispatchTime.now() + 0.2
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
             let data = titleAttributes.string
@@ -191,9 +301,41 @@ private extension InformationVC {
         return modelExam.buttonModels != nil
     }
     
+    func updateTitle(forButton: UIButton?, with title: String?) {
+        forButton?.setAttributedTitle(nil, for: .normal)
+        forButton?.setTitle(title, for: .normal)
+        forButton?.titleLabel?.textAlignment = .center
+    }
+    
     func handleTransportation(data: String) {
         guard let navigationController = navigationController as? CustomNavigationController else { return }
         let transitionHandler = TransitionHandler(navigationController: navigationController)
         transitionHandler.decideCourse(data: data)
+    }
+    
+    func shouldTransition() {
+        if startAndEnd == (true, true) {
+            guard let startDate = startDateButton?.titleLabel?.text, let endDate = endDateButton?.titleLabel?.text else { return }
+            let data = "\(startDate) - \(endDate)"
+            handleTransportation(data: data)
+        }
+    }
+    
+    func dateFormatter(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        let string = formatter.string(from: date)
+        return string
+    }
+    
+    func loadDatePicker() {
+        UIView.animate(withDuration: slidingAnimationDuration) {
+            self.datePicker.transform = CGAffineTransform.identity
+            self.datePickerViewBarView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func allDatesHaveBeenSet() -> Bool {
+        return startAndEnd == (true, true)
     }
 }

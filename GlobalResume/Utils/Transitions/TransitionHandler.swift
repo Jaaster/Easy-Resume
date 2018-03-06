@@ -35,9 +35,7 @@ extension TransitionHandler {
     
     // MARK: - Decides if the view controller should present/dismiss or reload views
     func decideCourse(data: String?) {
-        
-        print("title: \(currentModelExam.title)   parent: \(modelManager) models: \(modelManager.models)   child: \(currentModelExam.subModelManager)   models: \(currentModelExam.subModelManager?.models)")
-        
+
             // MARK: - Has childModelManager, which means we need to start going through its collection of models
         if let childModelManager = currentModelExam.subModelManager {
             // MARK: - Start going through the models in the child model manager
@@ -91,8 +89,8 @@ private extension TransitionHandler {
     func transitionTo(nextModelExam: ExamModel, data: String?) {
         dataManagement(currentExam: currentModelExam.exam, data: data)
         
-        
         let nextViewController = getViewController(for: nextModelExam.type)
+
         modelManager.currentModel = nextModelExam
         navigationController.pushViewController(nextViewController, animated: true)
     }
