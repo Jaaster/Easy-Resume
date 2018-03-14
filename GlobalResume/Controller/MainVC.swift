@@ -35,6 +35,7 @@ class MainVC: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: "Krungthep", size: 48)
         label.text = "EASY RESUME"
+        label.adjustsFontSizeToFitWidth = true 
         label.textAlignment = .center
         label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,13 +52,20 @@ class MainVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setToolbarHidden(false, animated: true)
         if !isUserAuthenticated {
             navigationController?.pushViewController(LoginVC(), animated: true)
         }
+        
+//        let resumeHandler = ResumeModelHandler()
+//        let test = resumeHandler.alreadyHasResume(withResumeName: "Test")
+//        print(test)
+//        let test2 = resumeHandler.createResume(resumeName: "Test")
+//        print(test2)
+//        let test3 = resumeHandler.readResumeModels(sortDescriptor: nil, predicate: nil)
+//        print(test3)
         
         setupViews()
         animatePerson()
@@ -67,6 +75,7 @@ class MainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setToolbarHidden(false, animated: true)
     }
 }
 

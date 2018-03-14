@@ -10,21 +10,28 @@ import Foundation
 
 struct ModelExamDefaultsGenerator {
     
-    func generateModelManagerWithModels() -> ModelManager<ExamModel> {
+    func generateTestModelManagerWithModels() -> ModelManager<ExamModel> {
         let topModelManager = ModelManager<ExamModel>()
 
+        let model = ExamModel(exam: .jobDescription, type: .informationInput)
+        
+        topModelManager.models = [model]
+        return topModelManager
+    }
+    
+    func generateDefaultModelManagerWithModels() -> ModelManager<ExamModel> {
+        let topModelManager = ModelManager<ExamModel>()
         let menu = ExamModel(exam: .menu, type: .main)
-//        let resumeName = ExamModel(exam: .resumeName, type: .informationInput)
+        let resumeName = ExamModel(exam: .resumeName, type: .informationInput)
         let date = ExamModel(exam: .educationRecord, type: .informationInput, buttonModels: [ButtomModel(title: "START", color: .black), ButtomModel(title: "END", color: .black)])
-//        let name = ExamModel(exam: .name, type: .informationInput)
-//        let gender = ExamModel(exam: .gender, type: .informationInput, buttonModels: [ButtomModel(title: "MALE", color: .myBlue), ButtomModel(title: "FEMALE", color: .myPink)])
-//        let email = ExamModel(exam: .email, type: .informationInput)
-//
-//        var employmentStatus = ExamModel(exam: .employmentStatus, type: .informationInput, buttonModels: [ButtomModel(title: "EMPLOYED", color: .darkGray), ButtomModel(title: "UNEMPLOYED", color: .darkGray), ButtomModel(title: "NO HISTORY", color: .darkGray)])
-//        employmentStatus.subModelManager = employmentStatusChildModelManager()
-
-//        topModelManager.models = [menu, resumeName, name, gender, employmentStatus, email]
-        topModelManager.models = [date]
+        let name = ExamModel(exam: .name, type: .informationInput)
+        let gender = ExamModel(exam: .gender, type: .informationInput, buttonModels: [ButtomModel(title: "MALE", color: .myBlue), ButtomModel(title: "FEMALE", color: .myPink)])
+        let email = ExamModel(exam: .email, type: .informationInput)
+        
+        var employmentStatus = ExamModel(exam: .employmentStatus, type: .informationInput, buttonModels: [ButtomModel(title: "EMPLOYED", color: .darkGray), ButtomModel(title: "UNEMPLOYED", color: .darkGray), ButtomModel(title: "NO HISTORY", color: .darkGray)])
+        employmentStatus.subModelManager = employmentStatusChildModelManager()
+        
+        topModelManager.models = [menu, resumeName, name, gender, employmentStatus, email]
         return topModelManager
     }
     

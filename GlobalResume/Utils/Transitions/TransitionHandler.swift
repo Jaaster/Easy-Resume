@@ -117,8 +117,8 @@ private extension TransitionHandler {
         if let currentResume = navigationController.currentResume {
             firebaseHandler.handleData(resume: currentResume, exam: currentExam, data: data)
         } else {
-            let resume = ResumeModel()
-            resume.name = data
+            let resume = ResumeData()
+            resume.resumeName = data
             navigationController.currentResume = resume
             firebaseHandler.handleData(resume: resume, exam: currentExam, data: data)
         }

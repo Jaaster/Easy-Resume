@@ -12,7 +12,6 @@ class InformationVC: UIViewController, ExamViewController {
     
     private let emptyBox = "[   ] "
     private let checkedBox = "[X] "
-    private var startAndEnd = (false, false)
     private var isStartDatePicker = true
     
     private var startDate: String? {
@@ -204,10 +203,8 @@ extension InformationVC {
     @objc private func datePickerValueChanged() {
         let date = dateFormatter(date: datePicker.date)
         if isStartDatePicker {
-            startAndEnd.0 = true
             startDate = date
         } else {
-            startAndEnd.1 = true
             endDate = date
         }
     }
@@ -219,7 +216,8 @@ extension InformationVC {
             self.datePickerViewBarView.transform = self.underScreenTransform
         })
         
-        if allDatesHaveBeenSet() {
+        // Values have been set
+        if let startDate = startDate, let endDate = endDate {
             handleTransportation(data: "\(startDate) - \(endDate)")
         }
         
@@ -313,14 +311,6 @@ private extension InformationVC {
         transitionHandler.decideCourse(data: data)
     }
     
-    func shouldTransition() {
-        if startAndEnd == (true, true) {
-            guard let startDate = startDateButton?.titleLabel?.text, let endDate = endDateButton?.titleLabel?.text else { return }
-            let data = "\(startDate) - \(endDate)"
-            handleTransportation(data: data)
-        }
-    }
-    
     func dateFormatter(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
@@ -333,9 +323,5 @@ private extension InformationVC {
             self.datePicker.transform = CGAffineTransform.identity
             self.datePickerViewBarView.transform = CGAffineTransform.identity
         }
-    }
-    
-    func allDatesHaveBeenSet() -> Bool {
-        return startAndEnd == (true, true)
     }
 }

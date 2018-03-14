@@ -93,7 +93,7 @@ class DescriptionVC: UIViewController, ExamViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setToolbarHidden(true, animated: true)
-
+        navigationController?.setNavigationBarHidden(true, animated: true)
         examplesView.examplesTableView.delegate = self
         examplesView.examplesTableView.dataSource = self
         updateViewsWithNewData()

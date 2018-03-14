@@ -10,7 +10,7 @@ import UIKit
 
 class CustomNavigationController: UINavigationController {
 
-    var currentResume: ResumeModel?
+    var currentResume: ResumeData?
     let transition = CustomTransition()
     var modelManager = ModelManager<ExamModel>()
     
@@ -19,14 +19,14 @@ class CustomNavigationController: UINavigationController {
         super.viewDidLoad()
         transitioningDelegate = self
         toolbar.isTranslucent = true
-        toolbar.barStyle = .blackTranslucent
+        toolbar.barStyle = .black
+        
     }
     
     override func viewDidLayoutSubviews() {
         toolbar.setItems(createBarButtons(), animated: true)
     }
 }
-
 
 extension CustomNavigationController {
     
@@ -36,9 +36,14 @@ extension CustomNavigationController {
     
     @objc func handleResumesButton() {
         
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let resumeVC = ResumesVC(collectionViewLayout: layout)
+        pushViewController(resumeVC, animated: true)
     }
     
     @objc func handleJobsButton() {
+        
         
     }
 }
@@ -50,12 +55,9 @@ private extension CustomNavigationController {
         let resumes = UIBarButtonItem(title: "Resumes", style: .plain, target: self, action: #selector(handleResumesButton))
         let jobs = UIBarButtonItem(title: "Jobs", style: .plain, target: self, action: #selector(handleJobsButton))
         
-        
         return [settings, flexibleSpace, resumes, flexibleSpace, jobs]
     }
-    
 }
-
 
 extension CustomNavigationController: UIViewControllerTransitioningDelegate{
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

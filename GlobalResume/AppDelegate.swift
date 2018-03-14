@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,26 +18,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
-        
-        let mainVC = InformationVC()
-//        let tabBarController = UITabBarController()
+        let firebaseService = FIRFirebaseService()
+        firebaseService.listenToUsersResumeData()
 
+        let mainVC = MainVC()
+        
         let navigationController = CustomNavigationController(rootViewController: mainVC)
         
-//        tabBarController.viewControllers = [navigationController]
-//        navigationController.tabBarController!.tabBar.items = [UITabBarItem(title: "User Settings", image: nil, tag: 0),   UITabBarItem(title: "Resumes", image: nil, tag: 1), UITabBarItem(title: "Jobs", image: nil, tag: 2)]
-
         let generator = ModelExamDefaultsGenerator()
-        navigationController.modelManager = generator.generateModelManagerWithModels()
+        navigationController.modelManager = generator.generateDefaultModelManagerWithModels()
             
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true
     }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
+    
+    // MARK: - Core Data stack
+    
+    private var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        let container = NSPersistentContainer(name: "GlobalResume")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    lazy var context: NSManagedObjectContext = {
+        return persistentContainer.viewContext
+    }()
+    
+    // MARK: - Core Data Saving support
+     func saveContext () {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }

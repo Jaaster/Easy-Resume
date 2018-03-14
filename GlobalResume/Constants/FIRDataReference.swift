@@ -12,6 +12,6 @@ enum FIRDataReferencePath: String {
     case models = "models"
     case users = "users"
     case resumes = "resumes"
-    case employment = "employment"
-    case education = "education"
+    case employment = "employment_models"
+    case education = "education_models"
 }

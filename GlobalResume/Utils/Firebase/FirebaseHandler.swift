@@ -7,36 +7,37 @@
 //
 
 import Foundation
-
+import UIKit
 struct FirebaseHandler {
     
-    
-    func handleData(resume: ResumeModel, exam: Exam, data: String) {
+    let context = (UIApplication.shared.delegate as! AppDelegate).context
+
+    func handleData(resume: ResumeData, exam: Exam, data: String) {
         let firebaseService = FIRFirebaseService()
         
         switch whatType(exam: exam) {
         case .normal:
-            firebaseService.updateData(forResume: resume.name, value: exam, with: data)
+            firebaseService.updateData(forResume: resume.resumeName, value: exam, with: data)
         case .employment:
         // update data for employment
             if let currentEmployment = resume.currentEmployment {
-                firebaseService.updateData(forResume: resume.name, employment: currentEmployment.companyName, value: exam, with: data)
+                firebaseService.updateData(forResume: resume.resumeName, employment: currentEmployment.companyName!, value: exam, with: data)
             } else {
-                var employment = EmploymentModel()
+                let employment = EmploymentModel(context: context)
                 employment.companyName = data
                 resume.currentEmployment = employment
-                firebaseService.updateData(forResume: resume.name, employment: employment.companyName, value: exam, with: data)
+                firebaseService.updateData(forResume: resume.resumeName, employment: employment.companyName!, value: exam, with: data)
             }
             
         case .education:
             // Update data for education
             if let currentEducation = resume.currentEducation {
-                firebaseService.updateData(forResume: resume.name, education: currentEducation.schoolName, value: exam, with: data)
+                firebaseService.updateData(forResume: resume.resumeName, education: currentEducation.schoolName!, value: exam, with: data)
             } else {
-                var education = EducationModel()
+                var education = EducationModel(context: context)
                 education.schoolName = data
                 resume.currentEducation = education
-                firebaseService.updateData(forResume: resume.name, education: education.schoolName, value: exam, with: data)
+                firebaseService.updateData(forResume: resume.resumeName, education: education.schoolName!, value: exam, with: data)
             }
             break
         }

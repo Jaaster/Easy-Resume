@@ -7,10 +7,14 @@
 //
 
 import Firebase
+import FirebaseAuth
 
-class FIRFirebaseService { }
+class FIRFirebaseService {
+    let uid = Auth.auth().currentUser?.uid
+}
 
 extension FIRFirebaseService {
+    
     func getData(for path: FIRDataReferencePath) -> Any? {
         let reference = resumeReference(uid: "", resume: "")
         var value: Any?
@@ -21,14 +25,23 @@ extension FIRFirebaseService {
         return value
     }
     
+    func listenToUsersResumeData() {
+        let reference = userReference().child(FIRDataReferencePath.resumes.rawValue)
+        let resumeModelHandler = ResumeModelHandler()
+        reference.observe( .value) { (snapshot) in
+            if let value = snapshot.value as? [String : AnyObject] {
+                resumeModelHandler.updateModelsFromDataBase(data: value)
+            }
+        }
+    }
+    
+    
     func updateData(forResume: String, value: Exam, with data: String) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let ref = resumeReference(uid: uid, resume: forResume).child(forResume)
+        let ref = resumeReference(uid: uid, resume: forResume)
         
-        let value = value.configureToVariableName()
-        
-        ref.updateChildValues([value : data]) { (error, ref) in
+        ref.updateChildValues([value.configureToVariableName() : data]) { (error, ref) in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -61,6 +74,10 @@ extension FIRFirebaseService {
 private extension FIRFirebaseService {
 
     func resumeReference(uid: String, resume: String) -> DatabaseReference {
-        return Database.database().reference().child(FIRDataReferencePath.users.rawValue).child(uid).child(FIRDataReferencePath.resumes.rawValue).child(resume)
+        return userReference().child(FIRDataReferencePath.resumes.rawValue).child(resume)
+    }
+    
+    func userReference() -> DatabaseReference {
+        return Database.database().reference().child(FIRDataReferencePath.users.rawValue).child(uid ?? "Nil User")
     }
 }
