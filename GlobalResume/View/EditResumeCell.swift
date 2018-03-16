@@ -22,19 +22,20 @@ class EditResumeCell: UICollectionViewCell {
         return label
     }()
     
-    let descriptingView: UITextView = {
-        var textView = UITextView()
+    
+    
+    let descriptingView: UILabel = {
+        var label = UILabel()
         let font = UIFont.crayon.withSize(15)
         
-        textView.textColor = UIColor.white
-        textView.font = font
-        textView.isEditable = false
-        textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isUserInteractionEnabled = false
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.backgroundColor = .clear
-        return textView
+        label.textColor = UIColor.white
+        label.font = font
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
+        label.backgroundColor = .clear
+        return label
     }()
     
     override init(frame: CGRect) {

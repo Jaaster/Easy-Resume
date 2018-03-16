@@ -58,6 +58,8 @@ class MainVC: UIViewController {
         if !isUserAuthenticated {
             navigationController?.pushViewController(LoginVC(), animated: true)
         }
+        let firebaseService = FIRFirebaseService()
+        firebaseService.listenToUsersResumeData()
         
 //        let resumeHandler = ResumeModelHandler()
 //        let test = resumeHandler.alreadyHasResume(withResumeName: "Test")

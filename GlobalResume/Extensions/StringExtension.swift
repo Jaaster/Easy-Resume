@@ -25,6 +25,16 @@ extension String {
             return (regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "$1_$2").lowercased())     }
     }
     
+    var titleCase: String {
+        get {
+            let pattern = "([A-Z])"
+            
+            let regex = try? NSRegularExpression(pattern: pattern, options: [])
+            let range = NSRange(location: 0, length: characters.count)
+            return (regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: " $1"))!.uppercased()//.replacingOccurrences(of: "_", with: " ")
+        }
+    }
+    
     func myAttributedString(color: UIColor, font: UIFont) -> NSMutableAttributedString {
         let attributes = NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor : color, NSAttributedStringKey.font : font])
         return attributes

@@ -72,6 +72,16 @@ extension TransitionHandler {
             modelManager.resetCurrentModel()
         }
     }
+    
+    // MARK: - Takes the next model exam to be presented and the data entered by the user for the previous exam.
+    func transitionTo(nextModelExam: ExamModel, data: String?) {
+        dataManagement(currentExam: currentModelExam.exam, data: data)
+        
+        let nextViewController = getViewController(for: nextModelExam.type)
+        
+        modelManager.currentModel = nextModelExam
+        navigationController.pushViewController(nextViewController, animated: true)
+    }
 }
 
 private extension TransitionHandler {
@@ -83,16 +93,6 @@ private extension TransitionHandler {
         } else {
             updateCurrentViewController(to: nextModelExam, data: data)
         }
-    }
-    
-    // MARK: - Takes the next model exam to be presented and the data entered by the user for the previous exam. 
-    func transitionTo(nextModelExam: ExamModel, data: String?) {
-        dataManagement(currentExam: currentModelExam.exam, data: data)
-        
-        let nextViewController = getViewController(for: nextModelExam.type)
-
-        modelManager.currentModel = nextModelExam
-        navigationController.pushViewController(nextViewController, animated: true)
     }
     
     func popToRootViewController() {

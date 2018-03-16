@@ -23,8 +23,8 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.setToolbarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setToolbarHidden(false, animated: true)
         
         setupViews()
         collectionView?.register(ResumeCell.self, forCellWithReuseIdentifier: "ResumeCell")
@@ -33,7 +33,7 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         print(resumes)
         
         let resumeHandler = ResumeModelHandler()
-        resumes = resumeHandler.readResumeModels(sortDescriptor: nil, predicate: nil)
+        resumes = resumeHandler.readModels(type: ResumeModel(), sortDescriptor: nil, predicate: nil)
     }
 
     func addSubviews() {
@@ -69,6 +69,13 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Present Editor for that specific Resume
+        
+        let selectedResume = resumes[indexPath.row]
+        let editResumeVC = EditResumeVC()
+        editResumeVC.currentResumeModel = selectedResume
+        editResumeVC.titleLabel.text = selectedResume.resumeName
+        editResumeVC.propertiesType = EditResumeVC.PropertiesType.menu
+        navigationController?.pushViewController(editResumeVC, animated: true)
     }
 }
 
@@ -109,5 +116,4 @@ class ResumeCell: UICollectionViewCell {
         
         titleLabel.anchor(paperImage.centerYAnchor, left: paperImage.leadingAnchor, bottom: nil, right: paperImage.trailingAnchor, topConstant: -40, leftConstant: 20, bottomConsant: 0, rightConstant: -30, widthConstant: 0, heightConstant: 80)
     }
-    
 }

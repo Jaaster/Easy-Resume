@@ -6,12 +6,14 @@
         <attribute name="educationRecor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="specificFieldOfStudy" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toResume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResumeModel" inverseName="educationModels" inverseEntity="ResumeModel" syncable="YES"/>
     </entity>
     <entity name="EmploymentModel" representedClassName="EmploymentModel" syncable="YES" codeGenerationType="class">
         <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="employmentRecord" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toResume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResumeModel" inverseName="employmentModels" inverseEntity="ResumeModel" syncable="YES"/>
     </entity>
     <entity name="ResumeModel" representedClassName="ResumeModel" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,12 +24,12 @@
         <attribute name="profileDescriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="resumeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="educationModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EducationModel" syncable="YES"/>
-        <relationship name="employmentModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmploymentModel" syncable="YES"/>
+        <relationship name="educationModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EducationModel" inverseName="toResume" inverseEntity="EducationModel" syncable="YES"/>
+        <relationship name="employmentModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmploymentModel" inverseName="toResume" inverseEntity="EmploymentModel" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EducationModel" positionX="-198" positionY="-130" width="135" height="120"/>
-        <element name="EmploymentModel" positionX="88" positionY="-90" width="128" height="105"/>
+        <element name="EducationModel" positionX="-270" positionY="-180" width="135" height="135"/>
+        <element name="EmploymentModel" positionX="198" positionY="-246" width="128" height="120"/>
         <element name="ResumeModel" positionX="-72" positionY="-429" width="128" height="195"/>
     </elements>
 </model>

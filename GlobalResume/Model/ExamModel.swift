@@ -7,7 +7,7 @@
 //
 
 import UIKit
-struct ExamModel {
+class ExamModel {
     
     var exam: Exam
     var type: VCType

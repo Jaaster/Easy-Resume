@@ -31,6 +31,18 @@ class ModelManager<model: Managable>: ModelManaging {
     }
 }
 
+extension ModelManaging where model == ExamModel {
+    func modelFrom(exam: Exam) -> model? {
+        guard let models = models else {return nil}
+        for model in models {
+            if model.exam == exam {
+                return model
+            }
+        }
+        return nil
+    }
+}
+
 extension ModelManager {
     
     func modelAfter(model: model) -> model? {

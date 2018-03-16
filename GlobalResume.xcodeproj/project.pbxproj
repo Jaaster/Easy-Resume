@@ -14,7 +14,6 @@
 		09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DEA200FCB6F00320D60 /* Fadeable.swift */; };
 		09202DF2200FD6E300320D60 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09202DF1200FD6E300320D60 /* Loadable.swift */; };
 		09206D29202BE8E500AFEC6C /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D28202BE8E500AFEC6C /* UIColorExtensions.swift */; };
-		09206D2B202BFAE600AFEC6C /* ResumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D2A202BFAE600AFEC6C /* ResumeInfo.swift */; };
 		09206D2D202BFBB500AFEC6C /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D2C202BFBB500AFEC6C /* UIFontExtension.swift */; };
 		09206D2F202BFF1C00AFEC6C /* ExpandableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09206D2E202BFF1C00AFEC6C /* ExpandableImageView.swift */; };
 		0933FA5120393F4B00DE70FF /* DescriptionExamplesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0933FA5020393F4B00DE70FF /* DescriptionExamplesView.swift */; };
@@ -63,6 +62,7 @@
 		09AC5734204653FD00241354 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC5733204653FD00241354 /* StringExtension.swift */; };
 		09B33545201A83F9005FDEC2 /* FIRFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */; };
 		09B33547201A84FD005FDEC2 /* FIRDataReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B33546201A84FD005FDEC2 /* FIRDataReference.swift */; };
+		09B90CEF205A081200A1B398 /* NSManagedObjectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B90CEE205A081200A1B398 /* NSManagedObjectsExtensions.swift */; };
 		09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */; };
 		09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */; };
 		09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE5FB7201FA9E10073BC4C /* Bobbable.swift */; };
@@ -96,7 +96,6 @@
 		09202DEA200FCB6F00320D60 /* Fadeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fadeable.swift; sourceTree = "<group>"; };
 		09202DF1200FD6E300320D60 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		09206D28202BE8E500AFEC6C /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		09206D2A202BFAE600AFEC6C /* ResumeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeInfo.swift; sourceTree = "<group>"; };
 		09206D2C202BFBB500AFEC6C /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		09206D2E202BFF1C00AFEC6C /* ExpandableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableImageView.swift; sourceTree = "<group>"; };
 		0933FA5020393F4B00DE70FF /* DescriptionExamplesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionExamplesView.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		09AC5733204653FD00241354 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		09B33544201A83F9005FDEC2 /* FIRFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRFirebaseService.swift; sourceTree = "<group>"; };
 		09B33546201A84FD005FDEC2 /* FIRDataReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRDataReference.swift; sourceTree = "<group>"; };
+		09B90CEE205A081200A1B398 /* NSManagedObjectsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectsExtensions.swift; sourceTree = "<group>"; };
 		09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamEndedVC.swift; sourceTree = "<group>"; };
 		09CE5FB5201FA9C30073BC4C /* BobbingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BobbingImageView.swift; sourceTree = "<group>"; };
 		09CE5FB7201FA9E10073BC4C /* Bobbable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bobbable.swift; sourceTree = "<group>"; };
@@ -201,6 +201,7 @@
 				09206D2C202BFBB500AFEC6C /* UIFontExtension.swift */,
 				09428DC9202E392700EC1376 /* UIViewExtension.swift */,
 				09AC5733204653FD00241354 /* StringExtension.swift */,
+				09B90CEE205A081200A1B398 /* NSManagedObjectsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 				09428DD3202E5A7100EC1376 /* VCType.swift */,
 				09388FA1200E585200A8B623 /* Exam.swift */,
 				09B33546201A84FD005FDEC2 /* FIRDataReference.swift */,
-				09206D2A202BFAE600AFEC6C /* ResumeInfo.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -746,7 +746,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09206D2B202BFAE600AFEC6C /* ResumeInfo.swift in Sources */,
 				09428DD6202E5BF600EC1376 /* ButtomModel.swift in Sources */,
 				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
 				0996F68F2037799200BF0B8C /* InformationVC.swift in Sources */,
@@ -761,6 +760,7 @@
 				09554C5E2023C9AC0043B822 /* EditResumeCell.swift in Sources */,
 				09388FA2200E585200A8B623 /* Exam.swift in Sources */,
 				0996F6972037B5BD00BF0B8C /* KeyboardInputView.swift in Sources */,
+				09B90CEF205A081200A1B398 /* NSManagedObjectsExtensions.swift in Sources */,
 				09CE5FB6201FA9C30073BC4C /* BobbingImageView.swift in Sources */,
 				09B33547201A84FD005FDEC2 /* FIRDataReference.swift in Sources */,
 				0996F6912037925800BF0B8C /* CustomNavigationController.swift in Sources */,
