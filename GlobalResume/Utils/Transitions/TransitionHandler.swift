@@ -15,11 +15,12 @@ class TransitionHandler {
     private var currentModelExam: ExamModel
     private var navigationController: CustomNavigationController
     private var modelManager: ModelManager<ExamModel>
+    private var isEditingCurrentResume: Bool
     
     init(navigationController: CustomNavigationController) {
         self.navigationController = navigationController
         modelManager = navigationController.modelManager
-        
+        isEditingCurrentResume = navigationController.isEditingCurrentResume
         if let currentModel = modelManager.currentModel {
             currentModelExam = currentModel
         } else {
@@ -35,7 +36,14 @@ extension TransitionHandler {
     
     // MARK: - Decides if the view controller should present/dismiss or reload views
     func decideCourse(data: String?) {
-
+        
+        if isEditingCurrentResume {
+            // Just pop the current view controller as we do not need to continue through the list of ExamModels
+            handleData(currentExam: currentModelExam.exam, data: data)
+            navigationController.popViewController(animated: true)
+            return
+        }
+        
             // MARK: - Has childModelManager, which means we need to start going through its collection of models
         if let childModelManager = currentModelExam.subModelManager {
             // MARK: - Start going through the models in the child model manager
@@ -75,7 +83,7 @@ extension TransitionHandler {
     
     // MARK: - Takes the next model exam to be presented and the data entered by the user for the previous exam.
     func transitionTo(nextModelExam: ExamModel, data: String?) {
-        dataManagement(currentExam: currentModelExam.exam, data: data)
+        handleData(currentExam: currentModelExam.exam, data: data)
         
         let nextViewController = getViewController(for: nextModelExam.type)
         
@@ -102,7 +110,7 @@ private extension TransitionHandler {
     // MARK: - Updates the views to the next ModelExam
     func updateCurrentViewController(to nextModelExam: ExamModel, data: String?) {
         
-        dataManagement(currentExam: currentModelExam.exam, data: data)
+        handleData(currentExam: currentModelExam.exam, data: data)
        
         modelManager.currentModel = nextModelExam
         guard let topViewController = navigationController.topViewController as? ExamViewController else { return }
@@ -111,7 +119,7 @@ private extension TransitionHandler {
     }
     
     // MARK: - Decides what to do with the data
-    func dataManagement(currentExam: Exam, data: String?) {
+    func handleData(currentExam: Exam, data: String?) {
         guard let data = data else { return }
         let firebaseHandler = FirebaseHandler()
         if let currentResume = navigationController.currentResume {
@@ -138,11 +146,6 @@ private extension TransitionHandler {
         case .examEnded:
             return ExamEndedVC()
         }
-    }
-    
-    // MARK: - Checks to see if there is a resume being edited by the user
-    func isEditingCurrentResume() -> Bool {
-        return false
     }
     
     // MARK: - Should transition

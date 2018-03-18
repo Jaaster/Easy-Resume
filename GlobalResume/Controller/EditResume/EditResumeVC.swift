@@ -11,14 +11,26 @@ import UIKit
 class EditResumeVC: UIViewController {
 
     typealias color = UIColor
-    var currentResumeModel: ResumeModel!
+    
+    var currentResumeModel: ResumeModel! 
     
     var currentEmploymentModel: EmploymentModel?
     var currentEducationModel: EducationModel?
     
     private let resumeModelHandler = ResumeModelHandler()
+    
     private let addButtonTitle = "ADD"
     private let backButtonTitle = "BACK"
+    private let cellID = "editResumeCell"
+
+    var buttons: [String] {
+        get {
+            if propertiesType == .editEmployment || propertiesType == .editEducation {
+                return [backButtonTitle]
+            }
+            return [addButtonTitle, backButtonTitle]
+        }
+    }
     
     var propertiesType: PropertiesType! {
         willSet {
@@ -30,7 +42,6 @@ class EditResumeVC: UIViewController {
     
     var propertiesForCells: [String] {
         get {
-            let staticButtons = [addButtonTitle, backButtonTitle]
             let result: [String]
             switch propertiesType {
             case .menu:
@@ -41,17 +52,20 @@ class EditResumeVC: UIViewController {
                 result = resumeModelHandler.employmentCompanyNames(ofResume: currentResumeModel)
             case .contactInfo:
                 result = resumeModelHandler.contactInfoValues(ofResume: currentResumeModel)
-            default :
+            case .editEmployment:
+                result = resumeModelHandler.employmentValues(ofEmployment: currentEmploymentModel)
+            default:
                 return []
             }
             
-            return result + staticButtons
+            return result + buttons
         }
     }
     
     var descriptionsForCells: [String] {
         get {
             var result = [String]()
+            
             switch propertiesType {
             case .menu:
                     return []
@@ -69,28 +83,31 @@ class EditResumeVC: UIViewController {
                         result.append(name)
                     }
                 }
+                
+            case .editEmployment:
+                guard let employmentModel = currentEmploymentModel else {return []}
+                result = Array(employmentModel.entity.attributesByName.keys)
             case .contactInfo:
-                result += Array(currentResumeModel.entity.attributesByName.keys).filter  { currentResumeModel.value(forKey: $0) != nil && $0 != "resumeName" }
+                result = Array(currentResumeModel.entity.attributesByName.keys).filter  { currentResumeModel.value(forKey: $0) != nil && $0 != "resumeName" }
             default :
                 return []
             }
+            
             return result.map({ (value) -> String in
                 return value.titleCase
             })
         }
     }
     
-    private let cellid = "editResumeCell"
 
     lazy var titleLabel: UILabel = {
         var label = UILabel()
         let font = UIFont.myFontRegular.withSize(35)
-        label.textColor = color.myBlue
+        label.textColor = .black
         label.font = font
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .red
         return label
     }()
 
@@ -98,7 +115,6 @@ class EditResumeVC: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .gray
         return collectionView
     }()
 
@@ -106,8 +122,19 @@ class EditResumeVC: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(EditResumeCell.self, forCellWithReuseIdentifier: cellid)
+        collectionView.register(EditResumeCell.self, forCellWithReuseIdentifier: cellID)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
+        var indexPaths = [IndexPath]()
+        for index in descriptionsForCells.indices {
+            indexPaths.append(IndexPath(item: index, section: 0))
+        }
+        collectionView.reloadItems(at: indexPaths)
+    }
+    
+    override func viewDidLayoutSubviews() {
         setupViews()
     }
 
@@ -125,7 +152,6 @@ class EditResumeVC: UIViewController {
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
-        collectionView.reloadData()
     }
     enum PropertiesType: String  {
         case educationList = "Education"
@@ -144,75 +170,110 @@ class EditResumeVC: UIViewController {
 
 extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellTitle = propertiesForCells[indexPath.row]
+    
+    func edit(resume: ResumeModel, exam: Exam) {
+        guard let navigationController = navigationController as? CustomNavigationController else { return }
+        guard let modelExam = navigationController.modelManager.modelFrom(exam: exam) else { return }
         
-        switch cellTitle {
-        case addButtonTitle:
+        let transitionHandler = TransitionHandler(navigationController: navigationController)
+        navigationController.isEditingCurrentResume = true
+        // Issue with updating data in firebase. 
+        if let resumeData = navigationController.currentResume {
+            resumeData.resumeName = currentResumeModel.resumeName!
             
-            break
-        case backButtonTitle:
-            //pop view
-            navigationController?.popViewController(animated: true)
-        default:
-            //Push new viewcontroller
-           
-            if propertiesType == .contactInfo {
-                let cellDescription = descriptionsForCells[indexPath.row]
-                if let navigationController = self.navigationController as? CustomNavigationController {
-                    if let exam = Exam(rawValue: cellDescription) {
-                        if let model = navigationController.modelManager.modelFrom(exam: exam) {
-                            let transitionHandler = TransitionHandler(navigationController: navigationController)
-                            transitionHandler.transitionTo(nextModelExam: model, data: nil)
-                            let resumeData = ResumeData()
-                            resumeData.resumeName = currentResumeModel.resumeName!
-                            navigationController.currentResume = resumeData
-                        }
-                    }
-                }
+            if let currentEmploymentModel = currentEmploymentModel {
+                resumeData.currentEmployment = currentEmploymentModel
+            } else if let currentEducationModel = currentEducationModel {
+                resumeData.currentEducation = currentEducationModel
             }
+        } else {
             
             
-            
-            let vc = EditResumeVC()
-            
-            vc.currentResumeModel = currentResumeModel
-            if let property = PropertiesType.init(rawValue: propertiesForCells[indexPath.row]) {
-                switch property {
-                case .editEducation:
-                    let models = Array(currentResumeModel.educationModels!)
-                    vc.currentEducationModel = models[indexPath.row] as? EducationModel
-                case .editEmployment:
-                    let models = Array(currentResumeModel.employmentModels!)
-                    vc.currentEmploymentModel = models[indexPath.row] as? EmploymentModel
-                default :
-                    break
-                }
-                vc.propertiesType = property
-                navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        transitionHandler.transitionTo(nextModelExam: modelExam, data: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.section == 1 {
+            let cellTitle = buttons[indexPath.row]
+            if cellTitle == addButtonTitle {
+                return
+            } else if cellTitle == backButtonTitle {
+                navigationController?.popViewController(animated: true)
+                return
             }
         }
-    }
+        
+        if propertiesType == .contactInfo {
+            let cellDescription = descriptionsForCells[indexPath.row]
+                if let exam = Exam(rawValue: cellDescription) {
+                    edit(resume: currentResumeModel, exam: exam)
+                    return
+                }
+        } else if propertiesType == .editEmployment || propertiesType == .editEducation {
+            let cellDescription = descriptionsForCells[indexPath.row]
+            if let exam = Exam(rawValue: cellDescription) {
+                edit(resume: currentResumeModel, exam: exam)
+                return
+            }
+        }
 
+        let vc = EditResumeVC()
+        
+        vc.currentResumeModel = currentResumeModel
+        if let property = PropertiesType.init(rawValue: propertiesForCells[indexPath.row]) {
+            vc.propertiesType = property
+            
+        } else {
+            
+            if propertiesType == .employmentList {
+                let models = Array(currentResumeModel.employmentModels!)
+                vc.currentEmploymentModel = models[indexPath.row] as? EmploymentModel
+                vc.propertiesType = .editEmployment
+            } else if propertiesType == .educationList {
+                let models = Array(currentResumeModel.educationModels!)
+                vc.currentEducationModel = models[indexPath.row] as? EducationModel
+                vc.propertiesType = .editEducation
+            }
+        }
+        navigationController?.pushViewController(vc, animated: true)
+        }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath) as? EditResumeCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? EditResumeCell {
             let index = indexPath.row
-            cell.titleLabel.text = propertiesForCells[index]
-            if descriptionsForCells.count > index && index < propertiesForCells.count-1{
-                cell.descriptingView.text = descriptionsForCells[index]
+            var titleText: String = ""
+            
+            if indexPath.section == 0 {
+                titleText = propertiesForCells[index]
+                if index < descriptionsForCells.count {
+                    cell.describingLabel.text = descriptionsForCells[index]
+                }
+            } else if indexPath.section == 1 {
+                titleText = buttons[index]
+                cell.describingLabel.text = ""
             }
+            
+          
+            cell.titleLabel.text = "[\(titleText)]"
+            
             return cell
         }
         return UICollectionViewCell()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return propertiesForCells.count
+        if section == 0 {
+            return propertiesForCells.count-buttons.count
+        }
+        
+        return buttons.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -223,4 +284,3 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return 1
     }
 }
-

@@ -195,6 +195,20 @@ struct ResumeModelHandler {
         }
         return result
     }
+
+    
+    func employmentValues(ofEmployment: EmploymentModel?) -> [String] {
+        guard let ofEmployment = ofEmployment else { return []}
+        var result = [String]()
+        for key in ofEmployment.entity.propertiesByName.keys {
+            if let value = ofEmployment.value(forKey: key) as? String {
+                result.append(value)
+            } else {
+                // Key most likely is toResume do nothing, however may need to change this in the future for employmeny models that do not have all of their values
+            }
+        }
+        return result
+    }
     
     func educationSchoolNames(ofResume: ResumeModel) -> [String] {
         guard let educationModels = ofResume.educationModels else { return [] }
@@ -211,3 +225,4 @@ struct ResumeModelHandler {
         return result
     }
 }
+

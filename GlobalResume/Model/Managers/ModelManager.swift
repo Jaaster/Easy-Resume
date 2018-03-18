@@ -12,7 +12,6 @@ protocol ModelManaging {
     associatedtype model: Managable
     var currentModel: model? { get set }
     var models: [model]? { get set }
-    var childModelManager: ModelManager<model>? { get set }
     func modelAfter(model: model) -> model?
     func get(at index: Int) -> model?
 }
@@ -20,7 +19,6 @@ protocol ModelManaging {
 protocol Managable { }
 
 class ModelManager<model: Managable>: ModelManaging {
-    var childModelManager: ModelManager<model>?
     var currentModel: model?
     private var lastFoundElement: model?
     
@@ -33,10 +31,20 @@ class ModelManager<model: Managable>: ModelManaging {
 
 extension ModelManaging where model == ExamModel {
     func modelFrom(exam: Exam) -> model? {
-        guard let models = models else {return nil}
-        for model in models {
-            if model.exam == exam {
-                return model
+        if let models = models  {
+            for model in models {
+                if model.exam == exam {
+                    return model
+                }
+                if let subModelManager = model.subModelManager {
+                    if let models = subModelManager.models {
+                        for model in models {
+                            if model.exam == exam {
+                                return model
+                            }
+                        }
+                    }
+                }
             }
         }
         return nil

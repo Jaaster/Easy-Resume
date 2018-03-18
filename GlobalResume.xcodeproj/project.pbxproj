@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090962AF205C2CCD009A1FF0 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */; };
 		090F95C1203A5BA900626BB7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090F95C0203A5BA900626BB7 /* Launch Screen.storyboard */; };
 		09189827202F9D7800DD9B6A /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189826202F9D7800DD9B6A /* Inputable.swift */; };
 		092018862031162000387E0E /* TransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092018852031162000387E0E /* TransitionHandler.swift */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		090F95C0203A5BA900626BB7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		09189826202F9D7800DD9B6A /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
 		092018852031162000387E0E /* TransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionHandler.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				09428DC9202E392700EC1376 /* UIViewExtension.swift */,
 				09AC5733204653FD00241354 /* StringExtension.swift */,
 				09B90CEE205A081200A1B398 /* NSManagedObjectsExtensions.swift */,
+				090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				095BE574202763950011D55C /* PopupVC.swift in Sources */,
 				09189827202F9D7800DD9B6A /* Inputable.swift in Sources */,
 				095BE57D2027C66E0011D55C /* HistoryView.swift in Sources */,
+				090962AF205C2CCD009A1FF0 /* ArrayExtension.swift in Sources */,
 				09428DD2202E5A5600EC1376 /* ExamModel.swift in Sources */,
 				0996F6992037C51D00BF0B8C /* ButtonInputView.swift in Sources */,
 				095BECE120537F3A00E605C5 /* ResumeModelHandler.swift in Sources */,

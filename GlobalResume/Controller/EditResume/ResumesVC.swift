@@ -23,9 +23,6 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setToolbarHidden(false, animated: true)
-        
         setupViews()
         collectionView?.register(ResumeCell.self, forCellWithReuseIdentifier: "ResumeCell")
         collectionView?.bounces = true
@@ -36,6 +33,11 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         resumes = resumeHandler.readModels(type: ResumeModel(), sortDescriptor: nil, predicate: nil)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setToolbarHidden(false, animated: true)
+    }
+    
     func addSubviews() {
         collectionView?.backgroundView = bgImageView
     }
@@ -74,8 +76,17 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         let editResumeVC = EditResumeVC()
         editResumeVC.currentResumeModel = selectedResume
         editResumeVC.titleLabel.text = selectedResume.resumeName
-        editResumeVC.propertiesType = EditResumeVC.PropertiesType.menu
-        navigationController?.pushViewController(editResumeVC, animated: true)
+        editResumeVC.propertiesType = .menu
+        
+        guard let navigationController = navigationController as? CustomNavigationController else { return }
+        let resumeData = ResumeData()
+        
+        if let resumeName = selectedResume.resumeName {
+            resumeData.resumeName = resumeName
+        }
+        
+        navigationController.currentResume = resumeData
+        navigationController.pushViewController(editResumeVC, animated: true)
     }
 }
 

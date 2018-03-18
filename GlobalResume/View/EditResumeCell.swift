@@ -13,7 +13,7 @@ class EditResumeCell: UICollectionViewCell {
         var label = UILabel()
         let font = UIFont.crayon.withSize(25)
 
-        label.textColor = UIColor.white
+        label.textColor = .black
         label.font = font
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
@@ -24,11 +24,11 @@ class EditResumeCell: UICollectionViewCell {
     
     
     
-    let descriptingView: UILabel = {
+    let describingLabel: UILabel = {
         var label = UILabel()
         let font = UIFont.crayon.withSize(15)
         
-        label.textColor = UIColor.white
+        label.textColor = .gray
         label.font = font
         label.textAlignment = .center
         label.isUserInteractionEnabled = false
@@ -41,9 +41,9 @@ class EditResumeCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
        
-        backgroundColor = UIColor.myBlue
+        backgroundColor = .white
         addSubview(titleLabel)
-        addSubview(descriptingView)
+        addSubview(describingLabel)
         updateViews()
     }
     
@@ -57,9 +57,9 @@ class EditResumeCell: UICollectionViewCell {
         titleLabel.heightAnchor.constraint(equalToConstant: 38).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         
-        descriptingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        descriptingView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        descriptingView.widthAnchor.constraint(equalTo: titleLabel.widthAnchor, multiplier: 0.50).isActive = true
-        descriptingView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        describingLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        describingLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        describingLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor, multiplier: 0.50).isActive = true
+        describingLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }
