@@ -79,13 +79,14 @@ class ResumesVC: UICollectionViewController, UICollectionViewDelegateFlowLayout 
         editResumeVC.propertiesType = .menu
         
         guard let navigationController = navigationController as? CustomNavigationController else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let resumeData = ResumeData()
         
-        if let resumeName = selectedResume.resumeName {
-            resumeData.resumeName = resumeName
+        if let uid = selectedResume.uid {
+            resumeData.uid = uid
         }
         
-        navigationController.currentResume = resumeData
+        appDelegate.currentResume = resumeData
         navigationController.pushViewController(editResumeVC, animated: true)
     }
 }

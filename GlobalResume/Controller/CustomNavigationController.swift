@@ -10,11 +10,8 @@ import UIKit
 
 class CustomNavigationController: UINavigationController {
 
-    var currentResume: ResumeData?
     let transition = CustomTransition()
-    var modelManager = ModelManager<ExamModel>()
-    var isEditingCurrentResume = false 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         transitioningDelegate = self

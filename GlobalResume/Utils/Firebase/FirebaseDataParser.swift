@@ -12,6 +12,9 @@ import CoreData
 
 struct FirebaseDataParser {
     
+    // UUID for all models are the last ref child
+    
+    
     let context: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         context.parent = (UIApplication.shared.delegate as! AppDelegate).context
@@ -23,7 +26,8 @@ struct FirebaseDataParser {
         
         for (index, element) in data.enumerated() {
             if let value = element.value as? [String : AnyObject] {
-                let resume = resumeModelFrom(data: value)
+                let uid = element.key
+                let resume = resumeModelFrom(resumeID: uid, data: value)
                 result[index] = resume
             }
         }
@@ -34,8 +38,10 @@ struct FirebaseDataParser {
 
 private extension FirebaseDataParser {
     
-    func resumeModelFrom(data: [String : AnyObject]) -> ResumeModel {
-        let model = ResumeModel(context: context)
+    func resumeModelFrom(resumeID: String, data: [String : AnyObject]) -> ResumeModel {
+        let resumeModel = ResumeModel(context: context)
+        resumeModel.uid = resumeID
+        
         let employmentKey = FIRDataReferencePath.employment.rawValue
         let educationKey = FIRDataReferencePath.education.rawValue
         for (key, value) in data {
@@ -45,7 +51,7 @@ private extension FirebaseDataParser {
                     let employmentModels = employmentModelsFrom(data: newData)
                     for eModel in employmentModels {
                         if let eModel = eModel {
-                            model.addToEmploymentModels(eModel)
+                            resumeModel.addToEmploymentModels(eModel)
                         }
                     }
                 }
@@ -55,34 +61,42 @@ private extension FirebaseDataParser {
                     let educationModels = educationModelsFrom(data: newData)
                     for eModel in educationModels {
                         if let eModel = eModel {
-                            model.addToEducationModels(eModel)
+                            resumeModel.addToEducationModels(eModel)
                         }
                     }
                 }
             } else {
                 // ResumeModel Values
-                model.setValue(value, forKey: key.camelCase!)
+                resumeModel.setValue(value, forKey: key.camelCase!)
             }
         }
-        return model
+        
+        for e in resumeModel.entity.propertiesByName.keys {
+            print("property: \(e)  ||  value: \(resumeModel.value(forKey: e))")
+        }
+        
+        return resumeModel
     }
     
     func educationModelsFrom(data: [String : AnyObject]) -> [EducationModel?] {
-        var result = Array<EducationModel?>(repeating: nil, count: data.count)
-        for (index, element) in data.enumerated() {
-            if let data = element.value as? [String : AnyObject] {
-                result[index] = educationModelFrom(data: data)
-            }
-        }
-        return result
+//        var result = Array<EducationModel?>(repeating: nil, count: data.count)
+//        for (index, element) in data.enumerated() {
+//            if let data = element.value as? [String : AnyObject] {
+//                result[index] = educationModelFrom(data: data)
+//            }
+//        }
+//        return result
+        return []
     }
     
     func employmentModelsFrom(data: [String : AnyObject]) -> [EmploymentModel?] {
         var result = Array<EmploymentModel?>(repeating: nil, count: data.keys.count)
-        
+
         for (index, element) in data.enumerated() {
             if let data = element.value as? [String : AnyObject] {
-                result[index] = employmentModelFrom(data: data)
+                let uid = element.key
+                result[index] = employmentModelFrom(employmentModelID: uid, data: data)
+                
             }
         }
         return result
@@ -97,8 +111,9 @@ private extension FirebaseDataParser {
         return result
     }
     
-    func employmentModelFrom(data: [String : AnyObject]) -> EmploymentModel {
+    func employmentModelFrom(employmentModelID: String, data: [String : AnyObject]) -> EmploymentModel {
         let result = EmploymentModel(context: context)
+        result.uid = employmentModelID
         for (key, value) in data {
             let key = key.camelCase!
             result.setValue(value, forKey: key)

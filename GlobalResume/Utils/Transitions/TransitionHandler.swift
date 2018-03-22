@@ -16,11 +16,12 @@ class TransitionHandler {
     private var navigationController: CustomNavigationController
     private var modelManager: ModelManager<ExamModel>
     private var isEditingCurrentResume: Bool
+    private let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     init(navigationController: CustomNavigationController) {
         self.navigationController = navigationController
-        modelManager = navigationController.modelManager
-        isEditingCurrentResume = navigationController.isEditingCurrentResume
+        modelManager = appDelegate.modelManager
+        isEditingCurrentResume = appDelegate.isEditingCurrentResume
         if let currentModel = modelManager.currentModel {
             currentModelExam = currentModel
         } else {
@@ -121,13 +122,15 @@ private extension TransitionHandler {
     // MARK: - Decides what to do with the data
     func handleData(currentExam: Exam, data: String?) {
         guard let data = data else { return }
+        
         let firebaseHandler = FirebaseHandler()
-        if let currentResume = navigationController.currentResume {
+        if let currentResume = appDelegate.currentResume {
             firebaseHandler.handleData(resume: currentResume, exam: currentExam, data: data)
         } else {
             let resume = ResumeData()
-            resume.resumeName = data
-            navigationController.currentResume = resume
+            let uid = UUID().uuidString
+            resume.uid = uid
+            appDelegate.currentResume = resume
             firebaseHandler.handleData(resume: resume, exam: currentExam, data: data)
         }
     }

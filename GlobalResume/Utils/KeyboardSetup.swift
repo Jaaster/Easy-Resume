@@ -8,21 +8,25 @@
 import UIKit
 
 // MARK: Customizes the passed in textfield to a certain set of standards.
+
+
+
+
 struct KeyboardSetup {
     
     private var textField: UITextField?
     private var textView: UITextView?
     private var currentExam: Exam
-    private var viewController: UIViewController
+    private var inputable: Inputable
 
-    init?(textField: UITextField?, textView: UITextView?, viewController: UIViewController) {
-        guard let navigationController = viewController.navigationController as? CustomNavigationController else { return nil }
-        guard let currentExam = navigationController.modelManager.currentModel?.exam else { return nil}
+    init?(textField: UITextField?, textView: UITextView?, inputableViewController: Inputable) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        guard let currentExam = appDelegate.modelManager.currentModel?.exam else { return nil}
         
         self.currentExam = currentExam
         self.textField = textField
         self.textView = textView
-        self.viewController = viewController
+        self.inputable = inputableViewController
     }
 }
 
@@ -93,15 +97,9 @@ private extension KeyboardSetup {
         // MARK: Checks to see if the
         let toolBar = UIToolbar()
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: inputable, action: #selector(inputable.doneButtonPressed))
         
-        if let informationVC = viewController as? InformationVC {
-            let button = UIBarButtonItem(barButtonSystemItem: .done, target: informationVC, action: #selector(informationVC.doneButtonPressed))
-            toolBar.setItems([flexibleSpace, button], animated: false)
-        } else if let descriptionVC = viewController as? DescriptionVC {
-            let button = UIBarButtonItem(barButtonSystemItem: .done, target: descriptionVC, action: #selector(descriptionVC.doneButtonPressed))
-            toolBar.setItems([flexibleSpace, button], animated: false)
-        }
-        
+        toolBar.setItems([flexibleSpace, button], animated: false)
         toolBar.sizeToFit()
         if let textField = textField {
             textField.inputAccessoryView = toolBar

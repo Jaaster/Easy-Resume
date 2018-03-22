@@ -9,7 +9,7 @@
 import Foundation
 // This model is not used by a view, it simply stores this data and is mainly used by FirebaseHandler
 class ResumeData {
-    var resumeName = ""
+    var uid = ""
     var currentEmployment: EmploymentModel?
     var currentEducation: EducationModel?
 }

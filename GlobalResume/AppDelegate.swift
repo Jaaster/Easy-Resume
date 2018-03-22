@@ -13,6 +13,10 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var currentResume: ResumeData?
+    var modelManager = ModelManager<ExamModel>()
+    var isEditingCurrentResume = false
+    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -25,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = CustomNavigationController(rootViewController: mainVC)
         
         let generator = ModelExamDefaultsGenerator()
-        navigationController.modelManager = generator.generateDefaultModelManagerWithModels()
+        modelManager = generator.generateDefaultModelManagerWithModels()
             
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

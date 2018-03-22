@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="EducationModel" representedClassName="EducationModel" syncable="YES" codeGenerationType="class">
         <attribute name="educationDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="educationLevel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="educationRecor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="specificFieldOfStudy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="toResume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResumeModel" inverseName="educationModels" inverseEntity="ResumeModel" syncable="YES"/>
     </entity>
     <entity name="EmploymentModel" representedClassName="EmploymentModel" syncable="YES" codeGenerationType="class">
@@ -13,6 +14,7 @@
         <attribute name="employmentRecord" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="toResume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResumeModel" inverseName="employmentModels" inverseEntity="ResumeModel" syncable="YES"/>
     </entity>
     <entity name="ResumeModel" representedClassName="ResumeModel" syncable="YES" codeGenerationType="class">
@@ -23,13 +25,14 @@
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profileDescriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="resumeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="educationModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EducationModel" inverseName="toResume" inverseEntity="EducationModel" syncable="YES"/>
         <relationship name="employmentModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmploymentModel" inverseName="toResume" inverseEntity="EmploymentModel" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EducationModel" positionX="-270" positionY="-180" width="135" height="135"/>
-        <element name="EmploymentModel" positionX="198" positionY="-246" width="128" height="120"/>
-        <element name="ResumeModel" positionX="-72" positionY="-429" width="128" height="195"/>
+        <element name="EducationModel" positionX="-270" positionY="-180" width="135" height="150"/>
+        <element name="EmploymentModel" positionX="198" positionY="-246" width="128" height="135"/>
+        <element name="ResumeModel" positionX="-72" positionY="-429" width="128" height="210"/>
     </elements>
 </model>

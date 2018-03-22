@@ -36,7 +36,7 @@ class DescriptionVC: UIViewController, ExamViewController {
         textView.font = UIFont.crayon.withSize(18)
         textView.textAlignment = .center
         textView.textColor = .gray
-        let keyboardSetup = KeyboardSetup(textField: nil, textView: textView, viewController: self)
+        let keyboardSetup = KeyboardSetup(textField: nil, textView: textView, inputableViewController: self)
         keyboardSetup?.setup()
         
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,8 +101,8 @@ class DescriptionVC: UIViewController, ExamViewController {
     
     func updateViewsWithNewData() {
         view.removeSubviews()
-        guard let navigationController = navigationController as? CustomNavigationController else { return }
-        if let currentModel = navigationController.modelManager.currentModel {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        if let currentModel = appDelegate.modelManager.currentModel {
             titleLabel.text = currentModel.title
             if let descriptions = currentModel.descriptions {
                 examples = descriptions
@@ -157,7 +157,7 @@ private extension DescriptionVC {
     }
 }
 // MARK: - Targets
-extension DescriptionVC {
+extension DescriptionVC: Inputable {
     
     // MARK: - Will present Examples
     @objc private func phoneButtonPressed() {

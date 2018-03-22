@@ -13,7 +13,11 @@ class InformationVC: UIViewController, ExamViewController {
     private let emptyBox = "[   ] "
     private let checkedBox = "[X] "
     private var isStartDatePicker = true
-    
+
+    private var currentModel: ExamModel? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        return appDelegate.modelManager.currentModel
+    }
     private var startDate: String? {
         willSet {
             updateTitle(forButton: startDateButton, with: newValue)
@@ -27,9 +31,7 @@ class InformationVC: UIViewController, ExamViewController {
     }
     
     private var hasDatePicker: Bool {
-        get {
-            return startDateButton != nil && endDateButton != nil
-        }
+        return startDateButton != nil && endDateButton != nil
     }
     
     private let slidingAnimationDuration = 1.0
@@ -122,8 +124,7 @@ class InformationVC: UIViewController, ExamViewController {
 private extension InformationVC {
     
     func setupViews() {
-        guard let navigationController = navigationController as? CustomNavigationController else { return }
-        guard let currentModel = navigationController.modelManager.currentModel else { return }
+        guard let currentModel = currentModel else { return }
         
         addSubViews()
         updateTitleText(currentModel: currentModel)
@@ -164,7 +165,7 @@ private extension InformationVC {
     
     func updateViewsForKeyboardInput(currentModel: ExamModel) {
         
-        let keyboard = KeyboardSetup(textField: keyBoardInputView.inputTextField, textView: nil, viewController: self)
+        let keyboard = KeyboardSetup(textField: keyBoardInputView.inputTextField, textView: nil, inputableViewController: self )
         keyboard?.setup()
         
         keyBoardInputView.inputTextField.text = ""
@@ -198,7 +199,7 @@ private extension InformationVC {
 }
 
 // MARK: - Targets
-extension InformationVC {
+extension InformationVC: Inputable {
     
     @objc private func datePickerValueChanged() {
         let date = dateFormatter(date: datePicker.date)
@@ -285,8 +286,7 @@ private extension InformationVC {
     }
     
     func getInputType() -> InputType {
-        guard let navigationController = navigationController as? CustomNavigationController else { return .keyboard }
-        guard let currentModel = navigationController.modelManager.currentModel else { return .keyboard}
+        guard let currentModel = currentModel else { return .keyboard}
         
         if hasButtonModels(modelExam: currentModel) {
             return .button

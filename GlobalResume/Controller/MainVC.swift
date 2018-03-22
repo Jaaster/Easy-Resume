@@ -52,14 +52,17 @@ class MainVC: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setToolbarHidden(false, animated: true)
+
         if !isUserAuthenticated {
             navigationController?.pushViewController(LoginVC(), animated: true)
         }
         let firebaseService = FIRFirebaseService()
-        firebaseService.listenToUsersResumeData()
+        
+        firebaseService.listenForUserResumeDataChange()
         
 //        let resumeHandler = ResumeModelHandler()
 //        let test = resumeHandler.alreadyHasResume(withResumeName: "Test")

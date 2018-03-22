@@ -35,59 +35,61 @@ struct ResumeModelHandler {
         } catch {
             print(error.localizedDescription)
         }
-       
+        
         return result
     }
     
-    func createResume(resumeName: String) -> Bool {
-        
-        if alreadyHasResume(withResumeName: resumeName) {
-            return false
-        } else {
-            let resumeModel = ResumeModel(context: context)
-            resumeModel.name = resumeName
-            try? context.save()
-            return true
-        }
-    }
-    
-    func alreadyHasResume(withResumeName: String) -> Bool {
-        let predicateForSpecificName = NSPredicate(format: "resumeName = %@", withResumeName)
-        return !readModels(type: ResumeModel(), sortDescriptor: nil, predicate: predicateForSpecificName).isEmpty
-    }
-
     func updateModelsFromDataBase(data: [String : AnyObject]) {
+        
+        
+        // Do I have a uid that matches one on the device?
+        // If not create a new one, otherwise update the device to the data on the firebase.
+        
+        
         let firebaseConverter = FirebaseDataParser()
-
+        
         for firebaseResume in firebaseConverter.convertDataToResumeModels(data: data) {
             if let firebaseResume = firebaseResume  {
-                if alreadyHasResume(withResumeName: firebaseResume.resumeName!) {
-                    // Allow firebase resume to update resumes in context
-                    let predicate = NSPredicate(format: "resumeName = %@", firebaseResume.resumeName!)
-                    let resumesWithName: [ResumeModel] = readModels(type: ResumeModel(), sortDescriptor: nil, predicate: predicate)
-                    //transfer values to resume in the main context
-                    for coreDataResume in resumesWithName {
-                        
-                        copyAttributes(ofResume: firebaseResume, toResume: coreDataResume)
-                        
-                        for model in firebaseResume.educationModels! {
-                            if let firebaseEducation = model as? EducationModel {
-                                /// Which education should be set?
-                                copyAttributes(ofEducation: firebaseEducation, toResume: coreDataResume)
-                            }
-                        }
-                        
-                        for model in firebaseResume.employmentModels! {
-                            if let firebaseEmployment = model as? EmploymentModel {
-                                copyAttributes(ofEmployment: firebaseEmployment, toResume: coreDataResume)
-                            }
-                        }
-                    }
-                } else {
+                
+                guard let firebaseUID = firebaseResume.uid else {
                     // Add resume to context
                     let coreDataResume = ResumeModel(context: context)
+                    // TODO update data in firebase
+                    coreDataResume.uid = UUID().uuidString
                     copyAttributes(ofResume: firebaseResume, toResume: coreDataResume)
+                    return
                 }
+                
+                let getResumesWithUID = NSPredicate(format: "uid = %@", firebaseUID)
+                let coreDataResumes: [ResumeModel] = readModels(type: ResumeModel(), sortDescriptor: nil, predicate: getResumesWithUID)
+                var coreDataResume: ResumeModel!
+                
+                if coreDataResumes.isEmpty {
+                    // Create new resume
+                    coreDataResume = ResumeModel(context: context)
+                } else {
+                    // Get coreDataResume that correlates with the firebaseResume
+                    if let resume = coreDataResumes.first {
+                        coreDataResume = resume
+                    }
+                }
+                // Handle the updates here
+                var educationModels = [EducationModel]()
+                var employmentModels = [EmploymentModel]()
+                
+                firebaseResume.educationModels?.forEach { if let educationModel = $0 as? EducationModel {
+                    educationModels.append(educationModel)
+                    }
+                }
+                
+                firebaseResume.employmentModels?.forEach { if let employmentModel = $0 as? EmploymentModel {
+                    employmentModels.append(employmentModel)
+                    }
+                }
+                
+                copyAttributes(ofResume: firebaseResume, toResume: coreDataResume)
+                copyAttributes(ofEmploymentModels: employmentModels, toResume: coreDataResume)
+                copyAttributes(ofEducationModels: educationModels, toResume: coreDataResume)
             }
         }
         
@@ -101,31 +103,32 @@ struct ResumeModelHandler {
         }
     }
     
-    private func copyAttributes(ofEducation: EducationModel, toResume: ResumeModel) {
-        let entity = ofEducation.entity
-
-        let educationModels = toResume.educationModels
+    private func copyAttributes(ofEmploymentModels: [EmploymentModel], toResume: ResumeModel) {
         
-        /// Create new Education Model and set values
-        if educationModels?.count == 0 {
-            let newEducationModel = EducationModel(context: context)
+        let toResumeEmploymentModels = toResume.employmentModels
+        for ofEmploymentModel in ofEmploymentModels {
+            let entity = ofEmploymentModel.entity
             
-            for key in newEducationModel.entity.attributesByName.keys {
-                newEducationModel.setValue(ofEducation.value(forKey: key), forKey: key)
+            /// Create new Education Model and set values
+            if toResumeEmploymentModels?.count == 0 {
+                let newEmploymentModel = EmploymentModel(context: context)
+                
+                for key in entity.attributesByName.keys {
+                    newEmploymentModel.setValue(ofEmploymentModel.value(forKey: key), forKey: key)
+                }
+                
+                toResume.addToEmploymentModels(newEmploymentModel)
+                return
             }
             
-            toResume.addToEducationModels(newEducationModel)
-            return
-        }
-        
-        // already has models so update the values
-        for model in educationModels! {
-            if let educationModel = model as? EducationModel {
-            if let name = ofEducation.schoolName, let name1 = educationModel.schoolName {
-                    // Is same model
-                    if name == name1 {
+            
+            // already has models so update the values
+            for model in toResumeEmploymentModels! {
+                if let employmentModel = model as? EmploymentModel {
+                    if ofEmploymentModel.uid == employmentModel.uid {
+                        // Is same model
                         for key in entity.attributesByName.keys {
-                            educationModel.setValue(ofEducation.value(forKey: key), forKey: key)
+                            employmentModel.setValue(ofEmploymentModel.value(forKey: key), forKey: key)
                         }
                     }
                 }
@@ -133,29 +136,33 @@ struct ResumeModelHandler {
         }
     }
     
-    private func copyAttributes(ofEmployment: EmploymentModel, toResume: ResumeModel) {
-        let entity = ofEmployment.entity
+    private func copyAttributes(ofEducationModels: [EducationModel], toResume: ResumeModel) {
         
-        let employmentModels = toResume.employmentModels
         
-        if employmentModels?.count == 0 {
-            let newEmploymentModel = EmploymentModel(context: context)
+        let toResumeEducationModels = toResume.educationModels
+        for ofEducationModel in ofEducationModels {
+            let entity = ofEducationModel.entity
             
-            for key in newEmploymentModel.entity.attributesByName.keys {
-                newEmploymentModel.setValue(ofEmployment.value(forKey: key), forKey: key)
+            /// Create new Education Model and set values
+            if toResumeEducationModels?.count == 0 {
+                let newEducationModel = EducationModel(context: context)
+                
+                for key in entity.attributesByName.keys {
+                    newEducationModel.setValue(ofEducationModel.value(forKey: key), forKey: key)
+                }
+                
+                toResume.addToEducationModels(newEducationModel)
+                return
             }
             
-            toResume.addToEmploymentModels(newEmploymentModel)
-            return
-        }
-        
-        for model in employmentModels! {
-            if let employmentModel = model as? EmploymentModel {
-                if let name = ofEmployment.companyName, let name1 = employmentModel.companyName {
-                    // Is same model
-                    if name == name1 {
+            
+            // already has models so update the values
+            for model in toResumeEducationModels! {
+                if let educationModel = model as? EducationModel {
+                    if ofEducationModel.schoolName == educationModel.schoolName {
+                        // Is same model
                         for key in entity.attributesByName.keys {
-                            employmentModel.setValue(ofEmployment.value(forKey: key), forKey: key)
+                            educationModel.setValue(ofEducationModel.value(forKey: key), forKey: key)
                         }
                     }
                 }
@@ -170,17 +177,20 @@ struct ResumeModelHandler {
             toResume.setValue(value, forKey: key)
         }
     }
+}
+
+/// Get values for UI display from models
+extension ResumeModelHandler {
     
-    func contactInfoValues(ofResume: ResumeModel) -> [String] {
+    func contactInfoValues(ofResume: ResumeModel, filter elements: [String]) -> [String] {
         var result = [String]()
-        for propertyKey in ofResume.entity.propertiesByName.keys.filter({ $0 != "resumeName"}) {
+        for propertyKey in ofResume.entity.propertiesByName.keys.filter({!elements.contains($0)}) {
             if let propertyValue = ofResume.value(forKey: propertyKey) as? String {
                 result.append(propertyValue)
             }
         }
         return result
     }
-    
     
     func employmentCompanyNames(ofResume: ResumeModel) -> [String] {
         var result = [String]()
@@ -195,12 +205,12 @@ struct ResumeModelHandler {
         }
         return result
     }
-
     
-    func employmentValues(ofEmployment: EmploymentModel?) -> [String] {
+    
+    func employmentValues(ofEmployment: EmploymentModel?, filter elements: [String]) -> [String] {
         guard let ofEmployment = ofEmployment else { return []}
         var result = [String]()
-        for key in ofEmployment.entity.propertiesByName.keys {
+        for key in ofEmployment.entity.propertiesByName.keys.filter({ !elements.contains($0)}) {
             if let value = ofEmployment.value(forKey: key) as? String {
                 result.append(value)
             } else {
@@ -225,4 +235,3 @@ struct ResumeModelHandler {
         return result
     }
 }
-

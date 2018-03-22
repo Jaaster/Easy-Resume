@@ -13,16 +13,16 @@ class EditResumeVC: UIViewController {
     typealias color = UIColor
     
     var currentResumeModel: ResumeModel! 
-    
     var currentEmploymentModel: EmploymentModel?
     var currentEducationModel: EducationModel?
     
     private let resumeModelHandler = ResumeModelHandler()
+    private let cellID = "editResumeCell"
+    private let unwantedPropertiesForCells = ["uid"]
     
     private let addButtonTitle = "ADD"
     private let backButtonTitle = "BACK"
-    private let cellID = "editResumeCell"
-
+    
     var buttons: [String] {
         get {
             if propertiesType == .editEmployment || propertiesType == .editEducation {
@@ -51,9 +51,9 @@ class EditResumeVC: UIViewController {
             case .employmentList:
                 result = resumeModelHandler.employmentCompanyNames(ofResume: currentResumeModel)
             case .contactInfo:
-                result = resumeModelHandler.contactInfoValues(ofResume: currentResumeModel)
+                result = resumeModelHandler.contactInfoValues(ofResume: currentResumeModel, filter: unwantedPropertiesForCells)
             case .editEmployment:
-                result = resumeModelHandler.employmentValues(ofEmployment: currentEmploymentModel)
+                result = resumeModelHandler.employmentValues(ofEmployment: currentEmploymentModel, filter: unwantedPropertiesForCells)
             default:
                 return []
             }
@@ -86,9 +86,9 @@ class EditResumeVC: UIViewController {
                 
             case .editEmployment:
                 guard let employmentModel = currentEmploymentModel else {return []}
-                result = Array(employmentModel.entity.attributesByName.keys)
+                result = Array(employmentModel.entity.attributesByName.keys).filter({!unwantedPropertiesForCells.contains($0)})
             case .contactInfo:
-                result = Array(currentResumeModel.entity.attributesByName.keys).filter  { currentResumeModel.value(forKey: $0) != nil && $0 != "resumeName" }
+                result = Array(currentResumeModel.entity.attributesByName.keys).filter  { currentResumeModel.value(forKey: $0) != nil && !unwantedPropertiesForCells.contains($0) }
             default :
                 return []
             }
@@ -131,8 +131,10 @@ class EditResumeVC: UIViewController {
         for index in descriptionsForCells.indices {
             indexPaths.append(IndexPath(item: index, section: 0))
         }
+        
         collectionView.reloadItems(at: indexPaths)
     }
+    
     
     override func viewDidLayoutSubviews() {
         setupViews()
@@ -173,13 +175,14 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func edit(resume: ResumeModel, exam: Exam) {
         guard let navigationController = navigationController as? CustomNavigationController else { return }
-        guard let modelExam = navigationController.modelManager.modelFrom(exam: exam) else { return }
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        guard let modelExam = appDelegate.modelManager.modelFrom(exam: exam) else { return }
         
         let transitionHandler = TransitionHandler(navigationController: navigationController)
-        navigationController.isEditingCurrentResume = true
+        appDelegate.isEditingCurrentResume = true
         // Issue with updating data in firebase. 
-        if let resumeData = navigationController.currentResume {
-            resumeData.resumeName = currentResumeModel.resumeName!
+        if let resumeData = appDelegate.currentResume {
+            resumeData.uid = resume.uid!
             
             if let currentEmploymentModel = currentEmploymentModel {
                 resumeData.currentEmployment = currentEmploymentModel

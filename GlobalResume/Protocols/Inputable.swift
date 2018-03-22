@@ -9,7 +9,5 @@
 import UIKit
 
 @objc protocol Inputable {
-    var textField: UITextField! { get set }
-    
     @objc func doneButtonPressed()
 }
