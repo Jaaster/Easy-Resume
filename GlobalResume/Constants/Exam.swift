@@ -15,7 +15,7 @@ enum Exam: String {
     case name = "NAME"
     case gender = "GENDER"
     case email = "EMAIL"
-    case number = "PHONE NUMBER"
+    case phoneNumber = "PHONE NUMBER"
     case zipcode = "ZIP CODE"
     case profileDescription = "PROFILE DESCRIPTION"
 

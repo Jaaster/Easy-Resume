@@ -7,9 +7,22 @@
 //
 
 import CoreData
-
-extension ResumeModel {
-    
-   
+protocol UIDable where Self: NSManagedObject {
+    func getUID() -> String?
 }
 
+extension ResumeModel: UIDable {
+    func getUID() -> String? {
+        return uid
+    }
+}
+extension EducationModel: UIDable {
+    func getUID() -> String? {
+        return uid
+    }
+}
+extension EmploymentModel: UIDable {
+    func getUID() -> String? {
+        return uid
+    }
+}

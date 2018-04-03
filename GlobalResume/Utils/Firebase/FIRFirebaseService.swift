@@ -25,7 +25,6 @@ extension FIRFirebaseService {
         }
     }
     
-    
     func updateData(resumeID: String, value: Exam, data: String) {
         
         let ref = resumeReference(resumeID: resumeID)

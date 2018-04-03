@@ -33,7 +33,7 @@ struct FirebaseHandler {
 
             let resumeHandler = ResumeModelHandler()
             let predicate = NSPredicate(format: "uid == %@", currentEmployment.uid!)
-            let models = resumeHandler.readModels(type: EmploymentModel(), sortDescriptor: nil, predicate: predicate)
+            let models = resumeHandler.readModels(objectType: EmploymentModel(), sortDescriptor: nil, predicate: predicate)
             
             if let firstEmployment = models.first {
                 //coverting coredata to json then saving that json on firebase

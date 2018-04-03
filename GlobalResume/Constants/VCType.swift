@@ -7,10 +7,11 @@
 //
 
 import Foundation
-
+import UIKit
 enum VCType: String {
-    case main = "main"
-    case informationInput = "informationInput"
-    case descriptionInput = "descriptionInput"
-    case examEnded = "examEnded"
+    case main = "MainVC"
+    case informationInput = "InformationInputVC"
+    case descriptionInput = "DescriptionVC"
+    case examEnded = "ExamEndedVC"
 }
+

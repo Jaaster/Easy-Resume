@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0907A5522066A16A005319F2 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A5512066A16A005319F2 /* NSObjectExtension.swift */; };
 		090962AF205C2CCD009A1FF0 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */; };
 		090F95C1203A5BA900626BB7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090F95C0203A5BA900626BB7 /* Launch Screen.storyboard */; };
 		09189827202F9D7800DD9B6A /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189826202F9D7800DD9B6A /* Inputable.swift */; };
@@ -90,6 +91,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0907A5512066A16A005319F2 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		090F95C0203A5BA900626BB7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		09189826202F9D7800DD9B6A /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				09AC5733204653FD00241354 /* StringExtension.swift */,
 				09B90CEE205A081200A1B398 /* NSManagedObjectsExtensions.swift */,
 				090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */,
+				0907A5512066A16A005319F2 /* NSObjectExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				09206D29202BE8E500AFEC6C /* UIColorExtensions.swift in Sources */,
 				09497194202E933F00065CAE /* ModelManager.swift in Sources */,
 				09554C592023A0170043B822 /* EditResumeVC.swift in Sources */,
+				0907A5522066A16A005319F2 /* NSObjectExtension.swift in Sources */,
 				092018862031162000387E0E /* TransitionHandler.swift in Sources */,
 				09A47BE820559EE800BCE65C /* FirebaseDataParser.swift in Sources */,
 				09202DE9200FCAAC00320D60 /* Animatable.swift in Sources */,

@@ -11,17 +11,35 @@ import UIKit
 class TransitionHandler {
 
     // MARK: Initializing variables
-    private var examEnded: Bool = false
+    private var examEnded = false
     private var currentModelExam: ExamModel
     private var navigationController: CustomNavigationController
     private var modelManager: ModelManager<ExamModel>
-    private var isEditingCurrentResume: Bool
+    
+    private var isEditingCurrentResume: Bool {
+        get {
+            return appDelegate.isEditingCurrentResume
+        }
+        set {
+            appDelegate.isEditingCurrentResume = newValue
+        }
+    }
+    
+    private var isAddingChildModel: Bool {
+        get {
+            return appDelegate.isAddingChildModels
+        }
+        set {
+            appDelegate.isAddingChildModels = newValue
+        }
+    }
+    
     private let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     init(navigationController: CustomNavigationController) {
         self.navigationController = navigationController
         modelManager = appDelegate.modelManager
-        isEditingCurrentResume = appDelegate.isEditingCurrentResume
+        
         if let currentModel = modelManager.currentModel {
             currentModelExam = currentModel
         } else {
@@ -61,9 +79,14 @@ extension TransitionHandler {
                     transitionOrUpdate(nextModelExam: nextModelExam, data: data)
                     return
                 } else {
-                    if let nextExamModel = modelManager.modelAfter(model: modelManager.lastFoundElementOfModel()!) {
-                        transitionOrUpdate(nextModelExam: nextExamModel, data: data)
-                        return
+                    
+                    if let lastUsedModel = modelManager.lastFoundElementOfModel() {
+                        if let nextExamModel = modelManager.modelAfter(model: lastUsedModel) {
+                            transitionOrUpdate(nextModelExam: nextExamModel, data: data)
+                            return
+                        } else {
+                            navigationController.popViewController(animated: true)
+                        }
                     }
                 }
             }
@@ -75,9 +98,15 @@ extension TransitionHandler {
            transitionOrUpdate(nextModelExam: nextExamModel, data: data)
             return
         } else {
-            // MARK: - Dismiss To the root View Controller is manditory after the user has completed creating the resume
-            popToRootViewController()
-            // MARK: - Resetsa the current model to the first one, which is the main/menu
+            if isAddingChildModel {
+                let editVCS = navigationController.viewControllers.filter({ $0 is EditResumeVC })
+                if let editVC = editVCS.first {
+                    navigationController.popToViewController(editVC, animated: true)
+                }
+            } else {
+                popToRootViewController()
+            }
+            
             modelManager.resetCurrentModel()
         }
     }
@@ -90,6 +119,15 @@ extension TransitionHandler {
         
         modelManager.currentModel = nextModelExam
         navigationController.pushViewController(nextViewController, animated: true)
+    }
+    
+    // MARK: Start creating EmploymentModels and EducationModels here
+    func addEmployment() {
+        if let model = modelManager.modelFrom(exam: .employmentStatus) {
+            currentModelExam = model
+            isAddingChildModel = true
+            decideCourse(data: nil)
+        }
     }
 }
 
@@ -126,6 +164,7 @@ private extension TransitionHandler {
         let firebaseHandler = FirebaseHandler()
         if let currentResume = appDelegate.currentResume {
             firebaseHandler.handleData(resume: currentResume, exam: currentExam, data: data)
+            
         } else {
             let resume = ResumeData()
             let uid = UUID().uuidString
@@ -154,7 +193,8 @@ private extension TransitionHandler {
     // MARK: - Should transition
     // TODO: change condition of statement
     func shouldTransition(type: VCType) -> Bool {
-        return currentModelExam.type != type
+        let currentVCName = String(describing: navigationController.topViewController)
+        return currentVCName != type.rawValue
     }
     
     // MARK: - When the resume created by the user has been completed

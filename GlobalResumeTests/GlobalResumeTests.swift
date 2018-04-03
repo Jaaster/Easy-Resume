@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import GlobalResume
+@testable import GlobalResumeTests
 
 class GlobalResumeTests: XCTestCase {
     

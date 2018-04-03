@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentResume: ResumeData?
     var modelManager = ModelManager<ExamModel>()
     var isEditingCurrentResume = false
-    
+    var isAddingChildModels = false 
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
-    
+        persistentContainer.viewContext.undoManager = nil
 
         let mainVC = MainVC()
         

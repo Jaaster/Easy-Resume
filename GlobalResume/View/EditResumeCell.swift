@@ -22,8 +22,6 @@ class EditResumeCell: UICollectionViewCell {
         return label
     }()
     
-    
-    
     let describingLabel: UILabel = {
         var label = UILabel()
         let font = UIFont.crayon.withSize(15)

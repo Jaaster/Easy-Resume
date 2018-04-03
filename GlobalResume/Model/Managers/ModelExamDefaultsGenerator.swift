@@ -27,11 +27,11 @@ struct ModelExamDefaultsGenerator {
         let name = ExamModel(exam: .name, type: .informationInput)
         let gender = ExamModel(exam: .gender, type: .informationInput, buttonModels: [ButtomModel(title: "MALE", color: .myBlue), ButtomModel(title: "FEMALE", color: .myPink)])
         let email = ExamModel(exam: .email, type: .informationInput)
-        
-        var employmentStatus = ExamModel(exam: .employmentStatus, type: .informationInput, buttonModels: [ButtomModel(title: "EMPLOYED", color: .darkGray), ButtomModel(title: "UNEMPLOYED", color: .darkGray), ButtomModel(title: "NO HISTORY", color: .darkGray)])
+        let phoneNumber = ExamModel(exam: .phoneNumber, type: .informationInput)
+        let employmentStatus = ExamModel(exam: .employmentStatus, type: .informationInput, buttonModels: [ButtomModel(title: "EMPLOYED", color: .darkGray), ButtomModel(title: "UNEMPLOYED", color: .darkGray), ButtomModel(title: "NO HISTORY", color: .darkGray)])
         employmentStatus.subModelManager = employmentStatusChildModelManager()
         
-        topModelManager.models = [menu, resumeName, name, gender, employmentStatus, email]
+        topModelManager.models = [menu, date, resumeName, name, gender, phoneNumber, employmentStatus, email]
         return topModelManager
     }
     

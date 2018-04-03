@@ -15,7 +15,7 @@ struct FirebaseDataParser {
     // UUID for all models are the last ref child
     
     
-    let context: NSManagedObjectContext = {
+    let sketchpadContext: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
         context.parent = (UIApplication.shared.delegate as! AppDelegate).context
         return context
@@ -39,14 +39,15 @@ struct FirebaseDataParser {
 private extension FirebaseDataParser {
     
     func resumeModelFrom(resumeID: String, data: [String : AnyObject]) -> ResumeModel {
-        let resumeModel = ResumeModel(context: context)
+        let resumeModel = ResumeModel(context: sketchpadContext)
         resumeModel.uid = resumeID
         
         let employmentKey = FIRDataReferencePath.employment.rawValue
         let educationKey = FIRDataReferencePath.education.rawValue
         for (key, value) in data {
+//            print("K: \(key)  ||  V: \(value)")
             if key == employmentKey {
-                if let newData = data[key] as? [String : AnyObject] {
+                if let newData = value as? [String : AnyObject] {
                     //EmplomentModels
                     let employmentModels = employmentModelsFrom(data: newData)
                     for eModel in employmentModels {
@@ -56,24 +57,24 @@ private extension FirebaseDataParser {
                     }
                 }
             } else if key == educationKey {
-                if let newData = data[key] as? [String : AnyObject] {
-                    //EducationModels
-                    let educationModels = educationModelsFrom(data: newData)
-                    for eModel in educationModels {
-                        if let eModel = eModel {
-                            resumeModel.addToEducationModels(eModel)
-                        }
-                    }
-                }
+//                if let newData = data[key] as? [String : AnyObject] {
+//                    //EducationModels
+//                    let educationModels = educationModelsFrom(data: newData)
+//                    for eModel in educationModels {
+//                        if let eModel = eModel {
+//                            resumeModel.addToEducationModels(eModel)
+//                        }
+//                    }
+//                }
             } else {
                 // ResumeModel Values
                 resumeModel.setValue(value, forKey: key.camelCase!)
             }
         }
         
-        for e in resumeModel.entity.propertiesByName.keys {
-            print("property: \(e)  ||  value: \(resumeModel.value(forKey: e))")
-        }
+//        for e in resumeModel.entity.propertiesByName.keys {
+//            print("property: \(e)  ||  value: \(resumeModel.value(forKey: e))")
+//        }
         
         return resumeModel
     }
@@ -103,7 +104,7 @@ private extension FirebaseDataParser {
     }
     
     func educationModelFrom(data: [String : AnyObject]) -> EducationModel {
-        let result = EducationModel(context: context)
+        let result = EducationModel(context: sketchpadContext)
         for (key, value) in data {
             let key = key.camelCase!
             result.setValue(value, forKey: key)
@@ -112,7 +113,7 @@ private extension FirebaseDataParser {
     }
     
     func employmentModelFrom(employmentModelID: String, data: [String : AnyObject]) -> EmploymentModel {
-        let result = EmploymentModel(context: context)
+        let result = EmploymentModel(context: sketchpadContext)
         result.uid = employmentModelID
         for (key, value) in data {
             let key = key.camelCase!
