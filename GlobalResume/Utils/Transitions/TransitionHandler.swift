@@ -118,11 +118,12 @@ extension TransitionHandler {
         let nextViewController = getViewController(for: nextModelExam.type)
         
         modelManager.currentModel = nextModelExam
+        navigationController.setNavigationBarHidden(true, animated: true)
         navigationController.pushViewController(nextViewController, animated: true)
     }
     
     // MARK: Start creating EmploymentModels and EducationModels here
-    func addEmployment() {
+    func createEmploymentModel() {
         if let model = modelManager.modelFrom(exam: .employmentStatus) {
             currentModelExam = model
             isAddingChildModel = true

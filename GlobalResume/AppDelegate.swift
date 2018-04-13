@@ -11,6 +11,7 @@ import Firebase
 import CoreData
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var currentResume: ResumeData?

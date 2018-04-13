@@ -30,8 +30,9 @@ struct ModelExamDefaultsGenerator {
         let phoneNumber = ExamModel(exam: .phoneNumber, type: .informationInput)
         let employmentStatus = ExamModel(exam: .employmentStatus, type: .informationInput, buttonModels: [ButtomModel(title: "EMPLOYED", color: .darkGray), ButtomModel(title: "UNEMPLOYED", color: .darkGray), ButtomModel(title: "NO HISTORY", color: .darkGray)])
         employmentStatus.subModelManager = employmentStatusChildModelManager()
-        
-        topModelManager.models = [menu, date, resumeName, name, gender, phoneNumber, employmentStatus, email]
+        let profileDescrition = ExamModel(exam: .profileDescription, type: .descriptionInput, buttonModels: nil, descriptions: ["I am awesome", "I am funny", "I am Dwight Schrute"])
+        let zipcode = ExamModel(exam: .zipcode, type: .informationInput)
+        topModelManager.models = [menu, date, resumeName, name, gender, phoneNumber, zipcode, employmentStatus, email, profileDescrition]
         return topModelManager
     }
     

@@ -1,4 +1,3 @@
-//
 //  NSManagedObjectsExtensions.swift
 //  GlobalResume
 //
@@ -7,6 +6,7 @@
 //
 
 import CoreData
+
 protocol UIDable where Self: NSManagedObject {
     func getUID() -> String?
 }

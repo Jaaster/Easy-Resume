@@ -101,32 +101,26 @@ struct ResumeModelHandler {
         for ofModel in ofModels {
             let keys = ofModel.entity.attributesByName.keys
             let newModel: T!
-            if let uid = ofModel.getUID() {
-                if let model = relationshipModel(uid: uid, type: T()) {
-                    newModel = model
-                    print("model")
-                    print(model)
-                } else {
-                    print("new model")
-                    newModel = T(context: context)
-                  
-                }
-                
-                if let newModel = newModel as? EmploymentModel {
-                    toResume.addToEmploymentModels(newModel)
-                } else if let newModel = newModel as? EducationModel {
-                    toResume.addToEducationModels(newModel)
-                }
-                
+            
+            guard let uid = ofModel.getUID() else { continue }
+            if let model = relationshipModel(uid: uid, type: T()) {
+                newModel = model
+                print(model)
             } else {
-                continue
+                newModel = T(context: context)
             }
             
+            if let newModel = newModel as? EmploymentModel {
+                toResume.addToEmploymentModels(newModel)
+            } else if let newModel = newModel as? EducationModel {
+                toResume.addToEducationModels(newModel)
+            }
             for key in keys {
                 newModel.setValue(ofModel.value(forKey: key), forKey: key)
             }
         }
     }
+    
     
     private func relationshipModel<T: NSManagedObject>(uid: String, type: T) -> T? {
         let predicate = NSPredicate(format: "uid == %@", uid)

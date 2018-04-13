@@ -7,6 +7,7 @@
 ////
 //
 import UIKit
+import CoreData
 
 class EditResumeVC: UIViewController {
 
@@ -32,7 +33,7 @@ class EditResumeVC: UIViewController {
             return propertiesType.rawValue
         }
     }
-
+    
     var propertiesType: PropertiesType!
     
     var propertiesForCells: [(title: String, description: String)] {
@@ -99,6 +100,7 @@ class EditResumeVC: UIViewController {
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         collectionView.isPagingEnabled = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .white
         return collectionView
     }()
 
@@ -107,7 +109,12 @@ class EditResumeVC: UIViewController {
             return propertiesType == .educationList || propertiesType == .employmentList
         }
     }
-
+    
+    var isTrashButtonAllowed: Bool {
+        get {
+            return propertiesType == .editEducation || propertiesType == .editEmployment
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,25 +126,23 @@ class EditResumeVC: UIViewController {
         
         if isAddButtonAllowed {
             navigationItem.rightBarButtonItem = createAddButton()
+        } else if isTrashButtonAllowed {
+            navigationItem.rightBarButtonItem = createTrashButton()
         }
     }
     
     func createAddButton() -> UIBarButtonItem {
         return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addModel))
     }
+
+    func createTrashButton() -> UIBarButtonItem {
+        return UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteModel))
+
+    }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-//        let predicate = NSPredicate(format: "uid = %@", currentResumeModel.uid!)
-//        currentResumeModel = resumeModelHandler.readModels(objectType: ResumeModel(), sortDescriptor: nil, predicate: predicate).first
         navigationController?.setNavigationBarHidden(false, animated: true)
-        var indexPaths = [IndexPath]()
-        
-        for index in descriptionsForCells.indices {
-            indexPaths.append(IndexPath(item: index, section: 0))
-        }
-        currentResumeModel.managedObjectContext?.refresh(currentResumeModel, mergeChanges: true)
-        collectionView.reloadItems(at: indexPaths)
+        collectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -179,7 +184,6 @@ private extension EditResumeVC {
         guard let navigationController = navigationController as? CustomNavigationController else { return }
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         guard let modelExam = appDelegate.modelManager.modelFrom(exam: exam) else { return }
-        
         let transitionHandler = TransitionHandler(navigationController: navigationController)
         appDelegate.isEditingCurrentResume = true
         // Issue with updating data in firebase.
@@ -200,12 +204,54 @@ private extension EditResumeVC {
     
     @objc func addModel() {
         guard let navigationController = navigationController as? CustomNavigationController else { return }
-        let transportHandler = TransitionHandler(navigationController: navigationController)
+        let transitionHandler = TransitionHandler(navigationController: navigationController)
         if propertiesType == .employmentList {
-            // Create a new employment model
-            transportHandler.addEmployment()
+            transitionHandler.createEmploymentModel()
         } else {
             print("")
+        }
+    }
+    
+    @objc func deleteModel() {
+        guard let modelUID = whatModelUIDToDelete() else { return }
+        guard let context = currentResumeModel.managedObjectContext else { return }
+        guard let resumeUID = currentResumeModel.uid else { return }
+        let firebaseService = FIRFirebaseService()
+        
+        if let model = whatModelToDelete() {
+            firebaseService.delete(resumeID: resumeUID, employmentID: modelUID)
+            context.delete(model)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func whatModelUIDToDelete() -> String? {
+        switch propertiesType {
+        case .editEmployment:
+            return currentEmploymentModel?.uid
+        case .editEducation:
+            return currentEducationModel?.uid
+        case .menu:
+            return currentResumeModel.uid
+        default:
+             return nil
+        }
+    }
+    func whatModelToDelete() -> NSManagedObject? {
+        switch propertiesType {
+        case .editEmployment:
+            return currentEmploymentModel
+        case .editEducation:
+            return currentEducationModel
+        case .menu:
+            return currentResumeModel
+        default:
+            return nil
         }
     }
 }
@@ -228,24 +274,25 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             }
         }
 
-        let vc = EditResumeVC()
+        let newVC = EditResumeVC()
         
-        vc.currentResumeModel = currentResumeModel
+        newVC.currentResumeModel = currentResumeModel
         if let property = PropertiesType.init(rawValue: propertiesForCells[indexPath.row].title) {
-            vc.propertiesType = property
+            newVC.propertiesType = property
             
         } else {
             if propertiesType == .employmentList {
                 let models = Array(currentResumeModel.employmentModels!)
-                vc.currentEmploymentModel = models[indexPath.row] as? EmploymentModel
-                vc.propertiesType = .editEmployment
+                newVC.currentEmploymentModel = models[indexPath.row] as? EmploymentModel
+                newVC.propertiesType = .editEmployment
             } else if propertiesType == .educationList {
                 let models = Array(currentResumeModel.educationModels!)
-                vc.currentEducationModel = models[indexPath.row] as? EducationModel
-                vc.propertiesType = .editEducation
+                newVC.currentEducationModel = models[indexPath.row] as? EducationModel
+                newVC.propertiesType = .editEducation
             }
         }
-        navigationController?.pushViewController(vc, animated: true)
+        
+        navigationController?.pushViewController(newVC, animated: true)
         }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -278,8 +325,9 @@ extension EditResumeVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: view.frame.width, height: view.frame.height / CGFloat(propertiesForCells.count))
+        guard let navigationController = navigationController else { return CGSize(width: 0.0, height: 0.0)}
+        let navigationItemHeight = navigationController.navigationBar.frame.height
+        return CGSize(width: view.frame.width, height: navigationItemHeight * 2)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
