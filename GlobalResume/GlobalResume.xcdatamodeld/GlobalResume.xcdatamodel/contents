@@ -3,9 +3,9 @@
     <entity name="EducationModel" representedClassName="EducationModel" syncable="YES" codeGenerationType="class">
         <attribute name="educationDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="educationLevel" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="educationRecor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="educationRecord" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fieldOfStudy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="specificFieldOfStudy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="toResume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResumeModel" inverseName="educationModels" inverseEntity="ResumeModel" syncable="YES"/>
     </entity>

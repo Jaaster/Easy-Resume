@@ -130,6 +130,14 @@ extension TransitionHandler {
             decideCourse(data: nil)
         }
     }
+    
+    func createEducationModel() {
+        if let model = modelManager.modelFrom(exam: .educationStatus) {
+            currentModelExam = model
+            isAddingChildModel = true
+            decideCourse(data: nil)
+        }
+    }
 }
 
 private extension TransitionHandler {

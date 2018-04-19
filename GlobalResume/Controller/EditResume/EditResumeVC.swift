@@ -207,6 +207,8 @@ private extension EditResumeVC {
         let transitionHandler = TransitionHandler(navigationController: navigationController)
         if propertiesType == .employmentList {
             transitionHandler.createEmploymentModel()
+        } else if propertiesType == .educationList {
+            transitionHandler.createEducationModel()
         } else {
             print("")
         }

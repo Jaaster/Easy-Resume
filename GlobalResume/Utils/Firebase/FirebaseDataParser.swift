@@ -57,37 +57,32 @@ private extension FirebaseDataParser {
                     }
                 }
             } else if key == educationKey {
-//                if let newData = data[key] as? [String : AnyObject] {
-//                    //EducationModels
-//                    let educationModels = educationModelsFrom(data: newData)
-//                    for eModel in educationModels {
-//                        if let eModel = eModel {
-//                            resumeModel.addToEducationModels(eModel)
-//                        }
-//                    }
-//                }
+                if let newData = data[key] as? [String : AnyObject] {
+                    //EducationModels
+                    let educationModels = educationModelsFrom(data: newData)
+                    for eModel in educationModels {
+                        if let eModel = eModel {
+                            resumeModel.addToEducationModels(eModel)
+                        }
+                    }
+                }
             } else {
                 // ResumeModel Values
                 resumeModel.setValue(value, forKey: key.camelCase!)
             }
         }
-        
-//        for e in resumeModel.entity.propertiesByName.keys {
-//            print("property: \(e)  ||  value: \(resumeModel.value(forKey: e))")
-//        }
-        
         return resumeModel
     }
     
     func educationModelsFrom(data: [String : AnyObject]) -> [EducationModel?] {
-//        var result = Array<EducationModel?>(repeating: nil, count: data.count)
-//        for (index, element) in data.enumerated() {
-//            if let data = element.value as? [String : AnyObject] {
-//                result[index] = educationModelFrom(data: data)
-//            }
-//        }
-//        return result
-        return []
+        var result = Array<EducationModel?>(repeating: nil, count: data.keys.count)
+        
+        for (index, element) in data.enumerated() {
+            if let data = element.value as? [String : AnyObject] {
+                result[index] = educationModelFrom(data: data)
+            }
+        }
+        return result
     }
     
     func employmentModelsFrom(data: [String : AnyObject]) -> [EmploymentModel?] {

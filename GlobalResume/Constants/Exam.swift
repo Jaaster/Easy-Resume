@@ -32,7 +32,7 @@ enum Exam: String {
 
     case schoolName = "SCHOOL NAME"
     case educationLevel = "EDUCATION LEVEL"
-    case specificFieldOfStudy = "FIELD OF STUDY"
+    case fieldOfStudy = "FIELD OF STUDY"
     case educationRecord = "EDUCATION RECORD"
     case educationDescription = "EDUCATION DESCRIPTION"
 

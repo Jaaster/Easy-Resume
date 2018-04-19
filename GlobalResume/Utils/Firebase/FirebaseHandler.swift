@@ -20,41 +20,42 @@ struct FirebaseHandler {
         case .normal:
             firebaseService.updateData(resumeID: id, value: exam, data: data)
         case .employment:
-            // update data for employment
-            guard let currentEmployment = resume.currentEmployment else {
-                let employment = EmploymentModel(context: context)
-                let employmentUID = UUID().uuidString
-                employment.uid = employmentUID
-                employment.companyName = data
-                resume.currentEmployment = employment
-                firebaseService.updateEmploymentData(resumeID: id, employmentID: employmentUID , value: exam, data: data)
+            guard let uid = resume.currentEmployment?.uid else {
+                let newUid = UUID().uuidString
+                let newEmploymentModel = EmploymentModel(context: context)
+                newEmploymentModel.uid = newUid
+                newEmploymentModel.companyName = data
+                resume.currentEmployment = newEmploymentModel
+                firebaseService.updateEmploymentData(resumeID: id, employmentID: newUid , value: exam, data: data)
                 return
             }
-
+            // update data for employment
             let resumeHandler = ResumeModelHandler()
-            let predicate = NSPredicate(format: "uid == %@", currentEmployment.uid!)
+            let predicate = NSPredicate(format: "uid == %@", uid)
             let models = resumeHandler.readModels(objectType: EmploymentModel(), sortDescriptor: nil, predicate: predicate)
             
-            if let firstEmployment = models.first {
-                //coverting coredata to json then saving that json on firebase
-                guard let employmentID = firstEmployment.uid else {
-                    print("EmploymentModel does not have a uid")
-                    return
-                    
-                }
-                firebaseService.updateEmploymentData(resumeID: resume.uid, employmentID: employmentID, value: exam, data: data)
+            if !models.isEmpty {
+                firebaseService.updateEmploymentData(resumeID: resume.uid, employmentID: uid, value: exam, data: data)
             }
             
         case .education:
-            // Update data for education
-//            if let currentEducation = resume.currentEducation {
-//                firebaseService.updateData(forResume: resume.resumeName, education: currentEducation.schoolName!, value: exam, with: data)
-//            } else {
-//                let education = EducationModel(context: context)
-//                education.schoolName = data
-//                resume.currentEducation = education
-//                firebaseService.updateData(forResume: resume.resumeName, education: education.schoolName!, value: exam, with: data)
-//            }
+            guard let uid = resume.currentEducation?.uid else {
+                let newUid = UUID().uuidString
+                let newEducationModel = EducationModel(context: context)
+                newEducationModel.uid = newUid
+                newEducationModel.schoolName = data
+                resume.currentEducation = newEducationModel
+                firebaseService.updateEducationData(resumeID: id, educationID: newUid , value: exam, data: data)
+                return
+            }
+            // update data for employment
+            let resumeHandler = ResumeModelHandler()
+            let predicate = NSPredicate(format: "uid == %@", uid)
+            let models = resumeHandler.readModels(objectType: EducationModel(), sortDescriptor: nil, predicate: predicate)
+            
+            if !models.isEmpty {
+                firebaseService.updateEducationData(resumeID: resume.uid, educationID: uid, value: exam, data: data)
+            }
             break
         }
     }
@@ -64,7 +65,6 @@ struct FirebaseHandler {
         case employment
         case education
     }
-    
 }
 
 private extension FirebaseHandler {
@@ -73,7 +73,7 @@ private extension FirebaseHandler {
         switch exam {
         case .employmentRecord, .jobTitle, .jobDescription, .companyName:
             return DataType.employment
-        case .schoolName, .educationLevel, .specificFieldOfStudy, .educationRecord, .educationDescription:
+        case .schoolName, .educationLevel, .fieldOfStudy, .educationRecord, .educationDescription:
             return DataType.education
         default:
             return DataType.normal

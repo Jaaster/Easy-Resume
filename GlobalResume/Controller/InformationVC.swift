@@ -111,7 +111,6 @@ class InformationVC: UIViewController, ExamViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setToolbarHidden(true, animated: true)
-
         setupViews()
     }
     

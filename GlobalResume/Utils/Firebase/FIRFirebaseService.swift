@@ -49,23 +49,6 @@ extension FIRFirebaseService {
         
     }
     
-//    func updateData(forResume: String, employment: String?, education: String?, with data: [String : AnyObject]) {
-//        var ref: DatabaseReference = resumeReference(resumeID: forResume)
-//
-//        if let employment = employment {
-//            ref = ref.child(FIRDataReferencePath.employment.rawValue).child(employment)
-//
-//        } else if let education = education {
-//            ref = ref.child(FIRDataReferencePath.education.rawValue).child(education)
-//        }
-//        ref.updateChildValues(data) { (error, _) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-    
-    
     func updateEmploymentData(resumeID: String, employmentID: String, value: Exam, data: String) {
         let ref = resumeReference(resumeID: resumeID).child(FIRDataReferencePath.employment.rawValue).child(employmentID)
         
@@ -76,15 +59,15 @@ extension FIRFirebaseService {
         }
     }
     
-//    func updateData(forResume: String, education: String, value: Exam, with data: String) {
-//        let ref = resumeReference(resume: forResume).child(FIRDataReferencePath.education.rawValue).child(education)
-//
-//        ref.updateChildValues([value.configureToVariableName() : data]) { (error, ref) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+    func updateEducationData(resumeID: String, educationID: String, value: Exam, data: String) {
+        let ref = resumeReference(resumeID: resumeID).child(FIRDataReferencePath.education.rawValue).child(educationID)
+        
+        ref.updateChildValues([value.configureToVariableName() : data]) { (error, ref) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 private extension FIRFirebaseService {

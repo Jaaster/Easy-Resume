@@ -26,7 +26,7 @@
 		09428DD0202E586F00EC1376 /* ModelViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DCF202E586F00EC1376 /* ModelViewProtocol.swift */; };
 		09428DD2202E5A5600EC1376 /* ExamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD1202E5A5600EC1376 /* ExamModel.swift */; };
 		09428DD4202E5A7100EC1376 /* VCType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD3202E5A7100EC1376 /* VCType.swift */; };
-		09428DD6202E5BF600EC1376 /* ButtomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD5202E5BF600EC1376 /* ButtomModel.swift */; };
+		09428DD6202E5BF600EC1376 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09428DD5202E5BF600EC1376 /* ButtonModel.swift */; };
 		09497194202E933F00065CAE /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09497193202E933F00065CAE /* ModelManager.swift */; };
 		09497198202EB25600065CAE /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09497197202EB25600065CAE /* ExamViewController.swift */; };
 		094DDD5A20180D8C00A9D3F0 /* ExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */; };
@@ -110,7 +110,7 @@
 		09428DCF202E586F00EC1376 /* ModelViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewProtocol.swift; sourceTree = "<group>"; };
 		09428DD1202E5A5600EC1376 /* ExamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamModel.swift; sourceTree = "<group>"; };
 		09428DD3202E5A7100EC1376 /* VCType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCType.swift; sourceTree = "<group>"; };
-		09428DD5202E5BF600EC1376 /* ButtomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtomModel.swift; sourceTree = "<group>"; };
+		09428DD5202E5BF600EC1376 /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
 		09497193202E933F00065CAE /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		09497197202EB25600065CAE /* ExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamViewController.swift; sourceTree = "<group>"; };
 		094DDD5920180D8C00A9D3F0 /* ExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCell.swift; sourceTree = "<group>"; };
@@ -391,7 +391,7 @@
 			children = (
 				0960435D20451B89007EE565 /* Managers */,
 				09428DD1202E5A5600EC1376 /* ExamModel.swift */,
-				09428DD5202E5BF600EC1376 /* ButtomModel.swift */,
+				09428DD5202E5BF600EC1376 /* ButtonModel.swift */,
 				098DC71F2034F59E00383302 /* ResumeData.swift */,
 				098DC7232035019700383302 /* ModelUser.swift */,
 			);
@@ -752,7 +752,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09428DD6202E5BF600EC1376 /* ButtomModel.swift in Sources */,
+				09428DD6202E5BF600EC1376 /* ButtonModel.swift in Sources */,
 				09202DEB200FCB6F00320D60 /* Fadeable.swift in Sources */,
 				0996F68F2037799200BF0B8C /* InformationVC.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,

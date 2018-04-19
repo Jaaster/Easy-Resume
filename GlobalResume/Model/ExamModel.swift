@@ -13,12 +13,12 @@ class ExamModel {
     var type: VCType
     var title: String
     var color: UIColor
-    var buttonModels: [ButtomModel]?
+    var buttonModels: [ButtonModel]?
     // NOTE: - Only needed if the type variable of ModelExam is of type .description
     var descriptions: [String]?
     var subModelManager: ModelManager<ExamModel>?
     
-    init(exam: Exam, type: VCType, buttonModels: [ButtomModel]? = nil, descriptions: [String]? = nil) {
+    init(exam: Exam, type: VCType, buttonModels: [ButtonModel]? = nil, descriptions: [String]? = nil) {
         self.exam = exam
         self.type = type
         self.title = exam.rawValue
