@@ -45,8 +45,9 @@ extension FIRFirebaseService {
         ref.removeValue()
     }
     
-    func delete(forResume: String, education: String) {
-        
+    func delete(resumeID: String, educationID: String) {
+        let ref = resumeReference(resumeID: resumeID).child(FIRDataReferencePath.education.rawValue).child(educationID)
+        ref.removeValue()
     }
     
     func updateEmploymentData(resumeID: String, employmentID: String, value: Exam, data: String) {

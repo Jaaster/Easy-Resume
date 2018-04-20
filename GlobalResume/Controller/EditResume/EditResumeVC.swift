@@ -49,7 +49,9 @@ class EditResumeVC: UIViewController {
             case .personalInfo:
                 result = resumeModelHandler.contactInfoValues(ofResume: currentResumeModel, filter: unwantedPropertiesForCells)
             case .editEmployment:
-                result = resumeModelHandler.employmentValues(ofEmployment: currentEmploymentModel, filter: unwantedPropertiesForCells)
+                result = resumeModelHandler.modelValues(ofModel: currentEmploymentModel, filter: unwantedPropertiesForCells)
+            case .editEducation:
+                result = resumeModelHandler.modelValues(ofModel: currentEducationModel, filter: unwantedPropertiesForCells)
             default:
                 return []
             }
@@ -83,6 +85,9 @@ class EditResumeVC: UIViewController {
             case .editEmployment:
                 guard let employmentModel = currentEmploymentModel else {return []}
                 result = Array(employmentModel.entity.attributesByName.keys).filter({!unwantedPropertiesForCells.contains($0)})
+            case .editEducation:
+                guard let educationModel = currentEducationModel else { return []}
+                result = Array(educationModel.entity.attributesByName.keys).filter({!unwantedPropertiesForCells.contains($0)})
             case .personalInfo:
                 result = Array(currentResumeModel.entity.attributesByName.keys).filter  {!unwantedPropertiesForCells.contains($0) }
             default :
@@ -221,7 +226,12 @@ private extension EditResumeVC {
         let firebaseService = FIRFirebaseService()
         
         if let model = whatModelToDelete() {
-            firebaseService.delete(resumeID: resumeUID, employmentID: modelUID)
+            
+            if propertiesType == .editEmployment {
+                firebaseService.delete(resumeID: resumeUID, employmentID: modelUID)
+            } else if propertiesType == .editEducation {
+                firebaseService.delete(resumeID: resumeUID, educationID: modelUID)
+            }
             context.delete(model)
             do {
                 try context.save()

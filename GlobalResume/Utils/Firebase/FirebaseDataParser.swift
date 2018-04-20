@@ -45,7 +45,7 @@ private extension FirebaseDataParser {
         let employmentKey = FIRDataReferencePath.employment.rawValue
         let educationKey = FIRDataReferencePath.education.rawValue
         for (key, value) in data {
-//            print("K: \(key)  ||  V: \(value)")
+            print("K: \(key)  ||  V: \(value)")
             if key == employmentKey {
                 if let newData = value as? [String : AnyObject] {
                     //EmplomentModels
@@ -79,7 +79,8 @@ private extension FirebaseDataParser {
         
         for (index, element) in data.enumerated() {
             if let data = element.value as? [String : AnyObject] {
-                result[index] = educationModelFrom(data: data)
+                let uid = element.key
+                result[index] = educationModelFrom(educationModelID: uid, data: data)
             }
         }
         return result
@@ -98,8 +99,9 @@ private extension FirebaseDataParser {
         return result
     }
     
-    func educationModelFrom(data: [String : AnyObject]) -> EducationModel {
+    func educationModelFrom(educationModelID: String, data: [String : AnyObject]) -> EducationModel {
         let result = EducationModel(context: sketchpadContext)
+        result.uid = educationModelID
         for (key, value) in data {
             let key = key.camelCase!
             result.setValue(value, forKey: key)
