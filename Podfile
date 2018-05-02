@@ -11,8 +11,10 @@ target 'GlobalResume' do
  	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'ConfettiView', '~> 0.1'
-
-  target 'GlobalResumeTests' do
+	pod 'GooglePlaces'
+	pod 'GooglePlacePicker'
+	pod 'GoogleMaps' 
+ target 'GlobalResumeTests' do
     inherit! :search_paths
     # Pods for testing
   end

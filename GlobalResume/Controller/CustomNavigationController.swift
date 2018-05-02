@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlacePicker
 
 class CustomNavigationController: UINavigationController {
 
@@ -17,7 +18,6 @@ class CustomNavigationController: UINavigationController {
         transitioningDelegate = self
         toolbar.isTranslucent = true
         toolbar.barStyle = .black
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,8 +40,12 @@ extension CustomNavigationController {
     }
     
     @objc func handleJobsButton() {
+        let config = GMSPlacePickerConfig(viewport: nil)
         
         
+        
+        let mapViewController = MapViewController(config: config)
+        pushViewController(mapViewController, animated: true)
     }
 }
 private extension CustomNavigationController {

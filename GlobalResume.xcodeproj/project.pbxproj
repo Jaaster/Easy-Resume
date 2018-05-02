@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0905DA842099747700185937 /* PickMileRangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905DA832099747700185937 /* PickMileRangeVC.swift */; };
+		0905DA86209974B800185937 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905DA85209974B800185937 /* CGPointExtension.swift */; };
 		0907A5522066A16A005319F2 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A5512066A16A005319F2 /* NSObjectExtension.swift */; };
 		090962AF205C2CCD009A1FF0 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */; };
+		090C3E58208A9BB800F23231 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C3E57208A9BB800F23231 /* MapViewController.swift */; };
 		090F95C1203A5BA900626BB7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090F95C0203A5BA900626BB7 /* Launch Screen.storyboard */; };
 		09189827202F9D7800DD9B6A /* Inputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09189826202F9D7800DD9B6A /* Inputable.swift */; };
 		092018862031162000387E0E /* TransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092018852031162000387E0E /* TransitionHandler.swift */; };
@@ -91,8 +94,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0905DA832099747700185937 /* PickMileRangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickMileRangeVC.swift; sourceTree = "<group>"; };
+		0905DA85209974B800185937 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		0907A5512066A16A005319F2 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		090C3E57208A9BB800F23231 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		090F95C0203A5BA900626BB7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		09189826202F9D7800DD9B6A /* Inputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inputable.swift; sourceTree = "<group>"; };
 		092018852031162000387E0E /* TransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionHandler.swift; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 				09B90CEE205A081200A1B398 /* NSManagedObjectsExtensions.swift */,
 				090962AE205C2CCD009A1FF0 /* ArrayExtension.swift */,
 				0907A5512066A16A005319F2 /* NSObjectExtension.swift */,
+				0905DA85209974B800185937 /* CGPointExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -367,6 +374,8 @@
 				094DDD5B20180EB600A9D3F0 /* DescriptionVC.swift */,
 				09CE5FB3201FA5AF0073BC4C /* ExamEndedVC.swift */,
 				0996F6902037925800BF0B8C /* CustomNavigationController.swift */,
+				090C3E57208A9BB800F23231 /* MapViewController.swift */,
+				0905DA832099747700185937 /* PickMileRangeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -480,8 +489,6 @@
 				095E2012200D617D0078956B /* Sources */,
 				095E2013200D617D0078956B /* Frameworks */,
 				095E2014200D617D0078956B /* Resources */,
-				D68BEEBFE6190260CF4B7C38 /* [CP] Embed Pods Frameworks */,
-				E54471AF824BC838071592C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -501,8 +508,6 @@
 				095E201D200D617D0078956B /* Sources */,
 				095E201E200D617D0078956B /* Frameworks */,
 				095E201F200D617D0078956B /* Resources */,
-				A157DB4F17555C6382DCEAE5 /* [CP] Embed Pods Frameworks */,
-				A18A9745B5D98815CA948FEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -644,75 +649,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A157DB4F17555C6382DCEAE5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResumeUITests/Pods-GlobalResumeUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A18A9745B5D98815CA948FEA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResumeUITests/Pods-GlobalResumeUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D68BEEBFE6190260CF4B7C38 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResumeTests/Pods-GlobalResumeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E54471AF824BC838071592C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResumeTests/Pods-GlobalResumeTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F892DE3C67564871D5510FD4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GlobalResume/Pods-GlobalResume-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -757,6 +709,7 @@
 				0996F68F2037799200BF0B8C /* InformationVC.swift in Sources */,
 				095E2005200D617D0078956B /* MainVC.swift in Sources */,
 				0960435F20451C04007EE565 /* ModelExamDefaultsGenerator.swift in Sources */,
+				0905DA86209974B800185937 /* CGPointExtension.swift in Sources */,
 				09AC57322046443400241354 /* FirebaseHandler.swift in Sources */,
 				095BE5832027C6D70011D55C /* ResumeRightView.swift in Sources */,
 				098DC7242035019700383302 /* ModelUser.swift in Sources */,
@@ -772,6 +725,7 @@
 				0996F6912037925800BF0B8C /* CustomNavigationController.swift in Sources */,
 				095BE57F2027C6920011D55C /* ResumePresentationVCViewController.swift in Sources */,
 				09554C57202374A80043B822 /* ResumeCell.swift in Sources */,
+				0905DA842099747700185937 /* PickMileRangeVC.swift in Sources */,
 				09554C55202374730043B822 /* ResumesVC.swift in Sources */,
 				098DC7202034F59E00383302 /* ResumeData.swift in Sources */,
 				09CE5FB8201FA9E10073BC4C /* Bobbable.swift in Sources */,
@@ -785,6 +739,7 @@
 				09428DD4202E5A7100EC1376 /* VCType.swift in Sources */,
 				09CE5FB4201FA5AF0073BC4C /* ExamEndedVC.swift in Sources */,
 				09206D2D202BFBB500AFEC6C /* UIFontExtension.swift in Sources */,
+				090C3E58208A9BB800F23231 /* MapViewController.swift in Sources */,
 				095BE574202763950011D55C /* PopupVC.swift in Sources */,
 				09189827202F9D7800DD9B6A /* Inputable.swift in Sources */,
 				095BE57D2027C66E0011D55C /* HistoryView.swift in Sources */,

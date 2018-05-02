@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import CoreData
+import GooglePlaces
+import GoogleMaps
 
 @UIApplicationMain
 
@@ -26,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         persistentContainer.viewContext.undoManager = nil
 
         let mainVC = MainVC()
-        
         let navigationController = CustomNavigationController(rootViewController: mainVC)
         
         let generator = ModelExamDefaultsGenerator()
@@ -35,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
+        let key = "AIzaSyDI1qTMM2v5ssdx-_OdJEZKdew5OjAvlvI"
+        GMSPlacesClient.provideAPIKey(key)
+        GMSServices.provideAPIKey(key)
         return true
     }
     
